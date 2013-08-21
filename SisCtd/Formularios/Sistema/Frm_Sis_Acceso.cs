@@ -120,7 +120,7 @@ namespace SisCtd
             {
                 sIdPerfil = "";
                 if (lstPerfiles.SelectedItems.Count > 0) sIdPerfil = lstPerfiles.SelectedValue.ToString();
-                Dt = oBL_Sis_Usuario.Listar(sIdPerfil,chkTodosUsuarios.Checked);
+                Dt = oBL_Sis_Usuario.Listar_Accesos(sIdPerfil,chkTodosUsuarios.Checked);
 
                 if (oListar == Helper.eListar.Grilla)
                 {

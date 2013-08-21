@@ -44,7 +44,8 @@ namespace SisCtd
 
         public enum eOpcion
         {
-            Nuevo, Modificar, Consultar, Eliminar, Exportar, Reportar
+            Nuevo, Modificar, Consultar
+            //, Eliminar, Exportar, Reportar
         }
 
 

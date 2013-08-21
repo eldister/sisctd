@@ -90,16 +90,16 @@ namespace SisCtd
             switch (vNode)
             {
 
-                case "0101": mFormHijo.Text = " Registro de Datos"; break;
-                case "0104": mFormHijo.Text = " Registro de Sub-Productos"; break;
-                case "0105": mFormHijo.Text = " Registro de Territorios"; break;
-                case "0106": mFormHijo.Text = " Registro de Oficinas"; break;
-                case "0107": mFormHijo.Text = " Registro de Estados"; break;
-                case "0108": mFormHijo.Text = " Registro de Areas"; break;
-                case "0110": mFormHijo.Text = " Registro de Tarjetas"; break;
-                case "0111": mFormHijo.Text = " Registro de Ejecutivos"; break;
+                //case "0101": mFormHijo.Text = " Registro de Datos"; break;
+                //case "0104": mFormHijo.Text = " Registro de Sub-Productos"; break;
+                //case "0105": mFormHijo.Text = " Registro de Territorios"; break;
+                //case "0106": mFormHijo.Text = " Registro de Oficinas"; break;
+                //case "0107": mFormHijo.Text = " Registro de Estados"; break;
+                //case "0108": mFormHijo.Text = " Registro de Areas"; break;
+                //case "0110": mFormHijo.Text = " Registro de Tarjetas"; break;
+                //case "0111": mFormHijo.Text = " Registro de Ejecutivos"; break;
 
-                //Registro
+                ////Registro
                 case "0203": mFormHijo.Text = " Registro de Documentos Nuevos"; break;
                 case "0206": mFormHijo.Text = " Registro de Documentos Index"; break;
 
@@ -200,7 +200,7 @@ namespace SisCtd
 
 
                 //Sistema
-
+                case "0901": mFormHijo = new Frm_Sis_Usuarios(); Abrir(); break;
                 case "0902": mFormHijo = new Frm_Sis_Acceso(); Abrir_Normal(); break;
                 
              
