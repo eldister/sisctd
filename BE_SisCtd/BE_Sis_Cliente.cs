@@ -1,103 +1,66 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BESisCtd
 {
     public class BE_Sis_Cliente
     {
-        #region Fields
-
-        private string _IdCliente;
-        private string _Descripcion;
-        private bool _Estado;
-        private DateTime _FechaRegistro;
-        private string _HoraRegistro;
-        private string _UsuarioRegistro;
-        private List<BE_Sis_Cliente> _Lista = new List<BE_Sis_Cliente>();
-
-        #endregion
-
         #region Constructors
 
-        public BE_Sis_Cliente(string IdCliente, string Descripcion, bool Estado, DateTime FechaRegistro, string HoraRegistro, string UsuarioRegistro)
-            {
-                this._IdCliente = IdCliente;
-                this._Descripcion = Descripcion;
-                this._Estado = Estado;
-                this._FechaRegistro = FechaRegistro;
-                this._HoraRegistro = HoraRegistro;
-                this._UsuarioRegistro = UsuarioRegistro;
-            }
+		/// <summary>
+		/// Initializes a new instance of the Sis_ClienteBE class.
+		/// </summary>
+		public BE_Sis_Cliente()
+		{
+		}
 
-        public BE_Sis_Cliente()
-        {
+		/// <summary>
+		/// Initializes a new instance of the Sis_ClienteBE class.
+		/// </summary>
+        public BE_Sis_Cliente(string idCliente, string descripcion, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+		{
+			this.IdCliente = idCliente;
+			this.Descripcion = descripcion;
+			this.Estado = estado;
+			this.FechaRegistro = fechaRegistro;
+			this.HoraRegistro = horaRegistro;
+			this.UsuarioRegistro = usuarioRegistro;
+		}
 
-        }
-        
-        public void Agregar(BE_Sis_Cliente oCliente)
-        {
-            _Lista.Add(oCliente);
-        }
+		#endregion
 
-        public BE_Sis_Cliente GetRegistro(string sIdCliente)
-        { 
-            
-            foreach(BE_Sis_Cliente i in _Lista)
-            {
-                if (i.IdCliente == sIdCliente)
-                { return i;
-                }
+		#region Properties
+		/// <summary>
+		/// Gets or sets the IdCliente value.
+		/// </summary>
+		public string IdCliente { get; set; }
 
-            }
-            return null;
-        }
+		/// <summary>
+		/// Gets or sets the Descripcion value.
+		/// </summary>
+		public string Descripcion { get; set; }
 
-               
-        #endregion
+		/// <summary>
+		/// Gets or sets the Modulo value.
+		/// </summary>
 
-        #region Properties
+		public bool Estado { get; set; }
 
-        public virtual string IdCliente
-        {
-            get { return _IdCliente; }
+		/// <summary>
+		/// Gets or sets the FechaRegistro value.
+		/// </summary>
+		public DateTime FechaRegistro { get; set; }
 
-            set { _IdCliente = value; }
-        }
-        public virtual string Descripcion
-        {
-            get { return _Descripcion; }
-            set { _Descripcion = value; }
-        }
+		/// <summary>
+		/// Gets or sets the HoraRegistro value.
+		/// </summary>
+		public string HoraRegistro { get; set; }
 
-        public virtual bool Estado
-        {
-            get { return _Estado; }
-            set { _Estado = value; }
-        }
-        public virtual DateTime FechaRegistro
-        {
-            get { return _FechaRegistro; }
-            set { _FechaRegistro = value; }
-        }
-        public virtual string HoraRegistro
-        {
-            get { return _HoraRegistro; }
-            set { _HoraRegistro = value; }
-        }
-        public virtual string UsuarioRegistro
-        {
-            get { return _UsuarioRegistro; }
-            set { _UsuarioRegistro = value; }
-        }
-        public virtual List<BE_Sis_Cliente> Lista
-        {
-            get { return _Lista; }
-            set { _Lista = value; }
-        }
+		/// <summary>
+		/// Gets or sets the UsuarioRegistro value.
+		/// </summary>
+		public string UsuarioRegistro { get; set; }
 
-        #endregion
+		#endregion
 
     }
 }

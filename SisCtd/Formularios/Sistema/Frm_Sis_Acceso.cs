@@ -18,6 +18,7 @@ namespace SisCtd
         string sIdusuario = "";
         Boolean bPrimeraCarga = true;
         Cls_Sis_Acceso oAcceso = new Cls_Sis_Acceso();
+        BL_Sis_Cliente oBL_Sis_Cliente = new BL_Sis_Cliente(); 
         BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
         BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
         #endregion
@@ -119,7 +120,7 @@ namespace SisCtd
             {
                 sIdPerfil = "";
                 if (lstPerfiles.SelectedItems.Count > 0) sIdPerfil = lstPerfiles.SelectedValue.ToString();
-                Dt = oAcceso.Listar_Usuarios(sIdPerfil,chkTodosUsuarios.Checked);
+                Dt = oBL_Sis_Usuario.Listar(sIdPerfil,chkTodosUsuarios.Checked);
 
                 if (oListar == Helper.eListar.Grilla)
                 {
@@ -162,7 +163,7 @@ namespace SisCtd
             try
             {
                 Get_IdUasuario(false);
-                Dt = oAcceso.Listar_UsuarioCliente(sIdusuario);
+                Dt = oBL_Sis_Cliente.Listar_UsuarioCliente(sIdusuario);
                 if (oListar == Helper.eListar.Grilla)
                 {
                     dgClientes.DataSource = Dt;
@@ -392,7 +393,7 @@ namespace SisCtd
             string sIdcliente = dgClientes.Rows[dgClientes.CurrentCellAddress.Y].Cells["idcliente"].Value.ToString().Trim();
 
             if (MessageBox.Show("¿Está seguro de Quitar el Cliente : " + sIdcliente + " al usuario : " + sIdusuario + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-            oAcceso.QuitarUsuarioCliente(sIdusuario, sIdcliente);
+            oBL_Sis_Cliente.QuitarUsuarioCliente(sIdusuario, sIdcliente);
             Listar_Clientes(Helper.eListar.Grilla);
             dgClientes.Focus();
         }
