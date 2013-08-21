@@ -186,6 +186,18 @@
     <Compile Include="Formularios\Sistema\Frm_Sis_Perfil_Det.designer.cs">
       <DependentUpon>Frm_Sis_Perfil_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios.designer.cs">
+      <DependentUpon>Frm_Sis_Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.designer.cs">
+      <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_Detalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +281,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Perfil_Det.resx">
       <DependentUpon>Frm_Sis_Perfil_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Usuarios.resx">
+      <DependentUpon>Frm_Sis_Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.resx">
+      <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Detalle.resx">
       <DependentUpon>Frm_T_Detalle.cs</DependentUpon>

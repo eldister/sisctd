@@ -13,9 +13,13 @@ namespace BLSisCtd
         DL_Sis_Usuario oDL_Sis_Usuario = new DL_Sis_Usuario();
 
         #region Listados
-        public DataTable Listar(string sIdPerfil, Boolean bTodos)
+        public DataTable Listar(string sNombre, string sEstado)
         {
-            return oDL_Sis_Usuario.Listar(sIdPerfil, bTodos);
+            return oDL_Sis_Usuario.Listar(sNombre, sEstado);
+        }
+        public DataTable Listar_Accesos(string sIdPerfil, Boolean bTodos)
+        {
+            return oDL_Sis_Usuario.Listar_Accesos(sIdPerfil, bTodos);
         }
         public DataTable Buscar(string sFiltro, string sValor)
         {

@@ -11,7 +11,20 @@ namespace DLSisCtd
         string sSql;
 
         #region Listados
-        public DataTable Listar(string sIdPerfil, Boolean bTodos)
+        public DataTable Listar(string sNombre, string sEstado)
+        {
+            sSql = "select 	a.IdUsuario, a.Nombre,b.Descripcion as Perfil,Correo,";
+            sSql += "       case when Estado=1 then '' else 'I' end as Estado, ";
+            sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
+            sSql += "from 	sis_usuario a ";
+            sSql += "       left join sis_Perfil b on a.IdPerfil=b.Idperfil ";
+            sSql += "where  a.Nombre like '%" + sNombre + "%'";
+            if (sEstado == "A") sSql += "and Estado=1 ";
+            if (sEstado == "I") sSql += "and Estado=0 ";
+            sSql += "order by a.Nombre ";
+            return ConexionDAO.fDatatable(sSql);
+        }
+        public DataTable Listar_Accesos(string sIdPerfil, Boolean bTodos)
         {
             sSql = "select 	a.IdUsuario, a.Nombre,a.idPerfil+' '+b.Descripcion as Perfil ";
             sSql += "from 	sis_usuario a ";
