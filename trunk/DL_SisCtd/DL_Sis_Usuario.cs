@@ -11,28 +11,28 @@ namespace DLSisCtd
         string sSql;
 
         #region Listados
-        public DataTable Listar()
+        public DataTable Listar(string sIdPerfil, Boolean bTodos)
         {
-            sSql = "select 	* ";
-            sSql += "from 	Sis_Usuario ";
-            sSql += "order by Nombre ";
+            sSql = "select 	a.IdUsuario, a.Nombre,a.idPerfil+' '+b.Descripcion as Perfil ";
+            sSql += "from 	sis_usuario a ";
+            sSql += "       left join sis_Perfil b on a.IdPerfil=b.Idperfil ";
+            if (!bTodos) sSql += "where  a.idperfil='" + sIdPerfil + "'";
+            sSql += "order by a.Nombre ";
             return ConexionDAO.fDatatable(sSql);
         }
-        //public DataTable BuscarUsuarioIron(string sFiltro, string sValor)
-        //{
-        //    sSql = "select 	idusuario as Id_Usuario,Nombre ";
-        //    sSql += "from 	sis_usuarios ";
-        //    sSql += "where  descrip like '%DMS%' and ";
-        //    sSql += (sFiltro == "C" ? "idusuario" : "Nombre") + " like '%" + sValor + "%' ";
-        //    sSql += "order by " + (sFiltro == "C" ? "idusuario" : "Nombre");
-        //    return Helper.fDatatable_Cn(Helper.sCnSisIron, sSql);
-        //}
-
+        public DataTable Buscar(string sFiltro, string sValor)
+        {
+            sSql = "select 	idusuario as Id_Usuario,Nombre ";
+            sSql += "from 	sis_usuarios ";
+            sSql += "where  descrip like '%DMS%' and ";
+            sSql += (sFiltro == "C" ? "idusuario" : "Nombre") + " like '%" + sValor + "%' ";
+            sSql += "order by " + (sFiltro == "C" ? "idusuario" : "Nombre");
+            return ConexionDAO.fDatatable_Cn(ConexionDAO.sCnSisIron, sSql);
+        }
 
         #endregion
 
         #region Obtener Valores
-
         public BE_Sis_Usuario Get_Usuario(string sIdUsuario)
         {
             sSql = "select * from Sis_Usuario where IdUsuario = '" + sIdUsuario + "'";
@@ -40,16 +40,12 @@ namespace DLSisCtd
             return MakeUsuario(ConexionDAO.fDatatable(sSql));
 
         }
-        public Boolean Existe_UsuarioClientes(string sIdusuario)
+        public Boolean Existe(string sIdusuario)
         {
-            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from Sis_UsuarioCliente where IdUsuario ='" + sIdusuario + "' "));
+            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from sis_usuario where idusuario ='" + sIdusuario + "' "));
             return (nCant > 0 ? true : false);
         }
-        public Boolean Existe_UsuarioCliente(string sIdusuario, string sIdcliente)
-        {
-            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from Sis_UsuarioCliente where IdUsuario ='" + sIdusuario + "' and Idcliente='" + sIdcliente + "' "));
-            return (nCant > 0 ? true : false);
-        }
+
         #endregion
 
         #region Operaciones
@@ -71,7 +67,13 @@ namespace DLSisCtd
             usuario.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
             return usuario;
         }
-
+        public void Grabar(string sIdUsuario, string sIdPerfil)
+        {
+            sSql = "insert into Sis_Usuario values ";
+            sSql += "('" + sIdUsuario + "','" + sIdUsuario + "','" + sIdPerfil + "', ";
+            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdUsuario + "') ";
+            ConexionDAO.fExecute(sSql);
+        }
         public void Modificar_Contraseña(string sIdusuario, string sContraseña)
         {
             sSql = "update	Sis_Usuario ";
@@ -79,7 +81,11 @@ namespace DLSisCtd
             sSql += "where	idusuario = '" + sIdusuario + "' ";
             ConexionDAO.fExecute(sSql);
         }
-        
+        public void Eliminar(string sIdUsuario)
+        {
+            sSql = "delete from Sis_Usuario where IdUsuario = '" + sIdUsuario + "'  ";
+            ConexionDAO.fExecute(sSql);
+        }
 
         #endregion
     }

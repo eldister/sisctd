@@ -13,24 +13,7 @@ namespace SisCtd
         BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
 
         #region Listados
-        public DataTable Listar_Usuarios(string sIdPerfil,Boolean bTodos)
-        {
-            sSql = "select 	a.IdUsuario, a.Nombre,a.idPerfil+' '+b.Descripcion as Perfil ";
-            sSql += "from 	sis_usuario a ";
-            sSql += "       left join sis_Perfil b on a.IdPerfil=b.Idperfil ";
-            if (!bTodos) sSql += "where  a.idperfil='" + sIdPerfil + "'";
-            sSql += "order by a.Nombre ";
-            return Helper.fDatatable(sSql);
-        }
-        public DataTable Listar_UsuarioCliente(string sIdusuario)
-        {
-            sSql = "select	a.IdCliente,b.Descripcion ";
-            sSql += "from	sis_usuariocliente a left join Sis_Cliente b on a.IdCliente=b.IdCliente ";
-            sSql += "where	a.IdUsuario='" + sIdusuario + "' ";
-            sSql += "order by b.Descripcion ";
-            return Helper.fDatatable(sSql);
-        }
-       
+
         public DataTable Listar_Perfiles()
         {
             sSql = "select  idPerfil,";
@@ -64,23 +47,13 @@ namespace SisCtd
             int nCant = Convert.ToInt32(Helper.fEscalar("select count(*) from sis_usuario where idperfil ='" + sIdperfil + "' "));
             return (nCant > 0 ? true : false);
         }
-        public Boolean Existe_Usuario(string sIdusuario)
-        {
-            int nCant = Convert.ToInt32(Helper.fEscalar("select count(*) from sis_usuario where idusuario ='" + sIdusuario + "' "));
-            return (nCant > 0 ? true : false);
-        }
+
         public string Get_IdPerfilUsuario(string sIdusuario)
         {
             sSql = "select a.idPerfil+' '+b.Descripcion from Sis_Usuario a inner join Sis_Perfil b on a.IdPerfil=b.IdPerfil where a.idUsuario='" + sIdusuario + "' ";
             return Convert.ToString(Helper.fEscalar(sSql));
         }
 
-
-
-        public DataTable Get_Registro_Usuario(string sIdusuario)
-        {
-            return Helper.fDatatable("select * from Sis_Usuario where idusuario = '" + sIdusuario + "'");
-        }
         #endregion
 
         #region Operaciones
@@ -191,44 +164,9 @@ namespace SisCtd
             sSql += "where	idperfil = '" + sIdperfil + "' and idmenu = '" + sIdMenu + "' ";
             Helper.fExecute(sSql);
         }
-        //public void AgregarUsuario(string sIdUsuario, string sIdPerfil)
-        //{
-        //    Cls_Sis_Sistema oSistema = new Cls_Sis_Sistema();
-        //    sSql = "insert into Sis_Usuario values ";
-        //    sSql += "('" + sIdUsuario + "','" + oSistema.Get_Nombre_Usuario(sIdUsuario) + "','" + sIdPerfil + "', ";
-        //    sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-        //    Helper.fExecute(sSql);
-        //}
 
-        public void Modificar_Perfil_Usuario(string sIdUsuario, string sIdPerfil)
-        {
-            sSql = "update Sis_Usuario set ";
-            sSql += "IdPerfil= '" + sIdPerfil + "' ";
-            sSql += "where Idusuario='" + sIdUsuario + "' ";
-            Helper.fExecute(sSql);
-        }
 
-        public void EliminarUsuario(string sIdUsuario)
-        {
-            sSql = "delete from Sis_Usuario ";
-            sSql += "where	IdUsuario = '" + sIdUsuario + "'  ";
-            Helper.fExecute(sSql);
-        }
 
-        //ClienteUsuario
-        public void AgregarUsuarioCliente(string sIdUsuario, string sIdcliente)
-        {
-            sSql = "insert into Sis_UsuarioCliente values ";
-            sSql += "('" + sIdUsuario + "','" + sIdcliente + "', ";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-            Helper.fExecute(sSql);
-        }
-        public void QuitarUsuarioCliente(string sIdUsuario,string sIdCliente)
-        {
-            sSql = "delete from Sis_UsuarioCliente ";
-            sSql += "where	IdUsuario = '" + sIdUsuario + "' and Idcliente='" + sIdCliente + "' ";
-            Helper.fExecute(sSql);
-        }
         #endregion
     }
 }
