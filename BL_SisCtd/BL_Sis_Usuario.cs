@@ -45,17 +45,21 @@ namespace BLSisCtd
         #endregion
 
         #region Operaciones
-        public void Grabar(string sIdUsuario, string sIdPerfil)
+        public void Insertar(BE_Sis_Usuario oBE_Sis_Usuario, string sIdusuarioTra)
         {
-            oDL_Sis_Usuario.Grabar(sIdUsuario, sIdPerfil);
+            oDL_Sis_Usuario.Insertar(oBE_Sis_Usuario, sIdusuarioTra);
         }
-        public void Modificar_Contraseña(string sIdusuario, string sContraseña)
+        public void Modificar(BE_Sis_Usuario oBE_Sis_Usuario)
         {
-            oDL_Sis_Usuario.Modificar_Contraseña(sIdusuario, sContraseña);
+            oDL_Sis_Usuario.Modificar(oBE_Sis_Usuario, sIdusuarioTra);
         }
         public void Eliminar(string sIdUsuario)
         {
             oDL_Sis_Usuario.Eliminar(sIdUsuario);
+        }
+        public void Modificar_Contraseña(string sIdusuario, string sContraseña)
+        {
+            oDL_Sis_Usuario.Modificar_Contraseña(sIdusuario, sContraseña);
         }
 
         #endregion
