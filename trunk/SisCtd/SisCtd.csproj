@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0936EC57-40AE-441B-85C5-6ECAA2408873}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SisCtd</RootNamespace>
+    <AssemblyName>SisGpd10</AssemblyName>
+    <ApplicationIcon>reportes.ico</ApplicationIcon>
+    <StartupObject>
+    </StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>2430C1AA0B54F1DE30739D93B3A38159C161EE18</ManifestCertificateThumbprint>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>\\10.50.92.130\Instaladores\SisGpd10\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ProductName>SisGpd10</ProductName>
+    <PublisherName>Iron Mountain S.A</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationVersion>10.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MigControls">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Windows\Controles.Net\MigControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\Cls_Rep_Reportes.cs" />
+    <Compile Include="Clases\Cls_Sis_Sistema.cs" />
+    <Compile Include="Clases\Cls_T_Areas.cs" />
+    <Compile Include="Clases\Cls_T_Datos.cs" />
+    <Compile Include="Clases\Cls_T_Ejecutivos.cs" />
+    <Compile Include="Clases\Cls_T_Estados.cs" />
+    <Compile Include="Clases\Cls_T_Oficinas.cs" />
+    <Compile Include="Clases\Cls_T_Productos.cs" />
+    <Compile Include="Clases\Cls_T_Separadoras.cs" />
+    <Compile Include="Clases\Cls_T_SubProductos.cs" />
+    <Compile Include="Clases\Cls_T_Tarjetas.cs" />
+    <Compile Include="Clases\Cls_T_Territorios.cs" />
+    <Compile Include="Clases\Cls_T_TipoDocumentos.cs" />
+    <Compile Include="Clases\Cls_T_TipoOperacion.cs" />
+    <Compile Include="Clases\Cls_T_UsuariosWeb.cs" />
+    <Compile Include="Clases\Cls_Sis_Acceso.cs" />
+    <Compile Include="Clases\HelperDL.cs" />
+    <Compile Include="Clases\SQLHelper.cs" />
+    <Compile Include="Formularios\Consultas\Frm_Con_Registro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Consultas\Frm_Con_Registro.designer.cs">
+      <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reportes\Frm_Rep_Completitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reportes\Frm_Rep_Completitud.designer.cs">
+      <DependentUpon>Frm_Rep_Completitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reportes\Frm_Rep_Registros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reportes\Frm_Rep_Registros.designer.cs">
+      <DependentUpon>Frm_Rep_Registros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Accesol_Mod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Accesol_Mod.designer.cs">
+      <DependentUpon>Frm_Sis_Accesol_Mod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_About.designer.cs">
+      <DependentUpon>Frm_About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Acceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Acceso.designer.cs">
+      <DependentUpon>Frm_Sis_Acceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Busquedas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Busquedas.designer.cs">
+      <DependentUpon>Frm_Sis_Busquedas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Contraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Contraseña.designer.cs">
+      <DependentUpon>Frm_Sis_Contraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Formatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Formatos.designer.cs">
+      <DependentUpon>Frm_Sis_Formatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Login.designer.cs">
+      <DependentUpon>Frm_Sis_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Principal.designer.cs">
+      <DependentUpon>Frm_Sis_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_ReportesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_ReportesView.designer.cs">
+      <DependentUpon>Frm_Sis_ReportesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Perfil_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Perfil_Det.designer.cs">
+      <DependentUpon>Frm_Sis_Perfil_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Separadoras_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Separadoras_Det.designer.cs">
+      <DependentUpon>Frm_T_Separadoras_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Separadoras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Separadoras.designer.cs">
+      <DependentUpon>Frm_T_Separadoras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Detalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Detalle.designer.cs">
+      <DependentUpon>Frm_T_Detalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.designer.cs">
+      <DependentUpon>Frm_T_TipoDocumento_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento.designer.cs">
+      <DependentUpon>Frm_T_TipoDocumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Listados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Listados.designer.cs">
+      <DependentUpon>Frm_T_Listados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Oficinas_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Oficinas_Det.designer.cs">
+      <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Productos_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Productos_Det.designer.cs">
+      <DependentUpon>Frm_T_Productos_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Productos.designer.cs">
+      <DependentUpon>Frm_T_Productos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_SubProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_SubProducto.designer.cs">
+      <DependentUpon>Frm_T_SubProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Tarjetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Tarjetas.designer.cs">
+      <DependentUpon>Frm_T_Tarjetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.designer.cs">
+      <DependentUpon>Frm_T_TipoOperacion_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion.designer.cs">
+      <DependentUpon>Frm_T_TipoOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Consultas\Frm_Con_Registro.resx">
+      <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reportes\Frm_Rep_Completitud.resx">
+      <DependentUpon>Frm_Rep_Completitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reportes\Frm_Rep_Registros.resx">
+      <DependentUpon>Frm_Rep_Registros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Accesol_Mod.resx">
+      <DependentUpon>Frm_Sis_Accesol_Mod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_About.resx">
+      <DependentUpon>Frm_About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Acceso.resx">
+      <DependentUpon>Frm_Sis_Acceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Busquedas.resx">
+      <DependentUpon>Frm_Sis_Busquedas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Contraseña.resx">
+      <DependentUpon>Frm_Sis_Contraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Formatos.resx">
+      <DependentUpon>Frm_Sis_Formatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Login.resx">
+      <DependentUpon>Frm_Sis_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Principal.resx">
+      <DependentUpon>Frm_Sis_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_ReportesView.resx">
+      <DependentUpon>Frm_Sis_ReportesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Perfil_Det.resx">
+      <DependentUpon>Frm_Sis_Perfil_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Separadoras_Det.resx">
+      <DependentUpon>Frm_T_Separadoras_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Separadoras.resx">
+      <DependentUpon>Frm_T_Separadoras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Detalle.resx">
+      <DependentUpon>Frm_T_Detalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.resx">
+      <DependentUpon>Frm_T_TipoDocumento_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoDocumento.resx">
+      <DependentUpon>Frm_T_TipoDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Listados.resx">
+      <DependentUpon>Frm_T_Listados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Oficinas_Det.resx">
+      <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Productos_Det.resx">
+      <DependentUpon>Frm_T_Productos_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Productos.resx">
+      <DependentUpon>Frm_T_Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_SubProducto.resx">
+      <DependentUpon>Frm_T_SubProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Tarjetas.resx">
+      <DependentUpon>Frm_T_Tarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.resx">
+      <DependentUpon>Frm_T_TipoOperacion_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoOperacion.resx">
+      <DependentUpon>Frm_T_TipoOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\TmpDocumento.datasource" />
+    <None Include="Properties\DataSources\TmpDocumentoDatos.datasource" />
+    <None Include="Properties\DataSources\TmpSeparadora.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utilitario\Entidades Temp\TmpDocumento.cs" />
+    <Compile Include="Utilitario\Entidades Temp\TmpDocumentoDatos.cs" />
+    <Compile Include="Utilitario\Entidades Temp\TmpLegajo.cs" />
+    <Compile Include="Utilitario\Entidades Temp\TmpSeparadora.cs" />
+    <Compile Include="Utilitario\ListViewColumnSort.cs" />
+    <Compile Include="Utilitario\MaskedTextBoxCell.cs" />
+    <Compile Include="Utilitario\MaskedTextBoxColumn.cs" />
+    <Compile Include="Utilitario\MaskedTextBoxEditingControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoPant.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toolbar.Close.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toolbar.Delete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toolbar.Edit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toolbar.Erase.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toolbar.New.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toolbar.Print.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toolbar.Save.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\xls.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\REFRESH.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagrama.cd" />
+    <None Include="Resources\045.ico" />
+    <None Include="Resources\interface.gif" />
+    <Content Include="reportes.ico" />
+    <Content Include="Resources\210.ICO" />
+    <Content Include="Resources\APPTL.ICO" />
+    <None Include="Resources\ATTACHED.ICO" />
+    <None Include="Resources\descarga.png" />
+    <Content Include="Resources\down.ico" />
+    <None Include="Resources\iconoima.jpg" />
+    <None Include="Resources\Formato Busqueda Gpd.JPG" />
+    <None Include="Resources\icon_web.jpg" />
+    <Content Include="Resources\Imagen1.jpg" />
+    <None Include="Resources\LogoBbva.jpg" />
+    <None Include="Resources\LogoInterbank.jpg" />
+    <None Include="Resources\LogoHsbc.jpg" />
+    <None Include="Resources\LogoNextel.bmp" />
+    <Content Include="Resources\LogoPant2.jpg" />
+    <None Include="Resources\logopdf.jpg" />
+    <None Include="Resources\LogoSaga.bmp" />
+    <None Include="Resources\logo_financor.gif" />
+    <None Include="Resources\logo_bbvaCar.JPG" />
+    <None Include="Resources\Logo_Backus.jpg" />
+    <None Include="Resources\Logo_Cencosud.jpg" />
+    <None Include="Resources\logo_vsistems.jpg" />
+    <Content Include="Resources\up.ico" />
+    <None Include="Resources\usu.gif" />
+    <None Include="Resources\Toolbar.Open.gif" />
+    <None Include="Resources\DBTABLE.BMP" />
+    <None Include="Resources\log.gif" />
+    <None Include="Resources\minus.gif" />
+    <None Include="Resources\plus.gif" />
+    <None Include="Resources\parar.GIF" />
+    <None Include="Resources\stop.GIF" />
+    <None Include="Resources\Aceptar.ico" />
+    <None Include="Resources\OK.bmp" />
+    <None Include="Resources\Ejecutar.ICO" />
+    <None Include="Usuario_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Formularios\Procesos\" />
+    <Folder Include="Formularios\Registro\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE_SisCtd\BE_SisCtd.csproj">
+      <Project>{999D0395-80BE-43E2-B8D8-2C96D16AAB80}</Project>
+      <Name>BE_SisCtd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BL_SisCtd\BL_SisCtd.csproj">
+      <Project>{18001EF3-87D8-4CAF-950B-421B7866B066}</Project>
+      <Name>BL_SisCtd</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
