@@ -21,7 +21,15 @@ namespace DLSisCtd
             sSql += "order by a.descripcion ";
             return ConexionDAO.fDatatable(sSql);
         }
-
+        public DataTable BuscarCliente(string sFiltro, string sValor)
+        {
+            sSql = "select 	IdCliente,Descripcion ";
+            sSql += "from 	Sis_Cliente ";
+            sSql += "where  estado=1 and ";
+            sSql += (sFiltro == "C" ? "idcliente" : "Descripcion") + " like '%" + sValor + "%' ";
+            sSql += "order by " + (sFiltro == "C" ? "idcliente" : "Descripcion");
+            return ConexionDAO.fDatatable(sSql);
+        }
         #endregion
 
         #region Obtener Valores

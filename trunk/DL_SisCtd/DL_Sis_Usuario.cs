@@ -40,7 +40,16 @@ namespace DLSisCtd
             return MakeUsuario(ConexionDAO.fDatatable(sSql));
 
         }
-
+        public Boolean Existe_UsuarioClientes(string sIdusuario)
+        {
+            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from Sis_UsuarioCliente where IdUsuario ='" + sIdusuario + "' "));
+            return (nCant > 0 ? true : false);
+        }
+        public Boolean Existe_UsuarioCliente(string sIdusuario, string sIdcliente)
+        {
+            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from Sis_UsuarioCliente where IdUsuario ='" + sIdusuario + "' and Idcliente='" + sIdcliente + "' "));
+            return (nCant > 0 ? true : false);
+        }
         #endregion
 
         #region Operaciones

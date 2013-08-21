@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using BLSisCtd;
 namespace SisCtd
 {
     public partial class Frm_Rep_Registros : Form
@@ -15,7 +16,7 @@ namespace SisCtd
         }
         Cls_T_Oficinas oOficinas = new Cls_T_Oficinas();
         Cls_Rep_Reportes oReportes = new Cls_Rep_Reportes();
-        Cls_Sis_Sistema oSistema = new Cls_Sis_Sistema();
+        BL_Sis_Sistema BL_Sis_Sistema = new BL_Sis_Sistema();
         Cls_T_TipoOperacion oTiptran = new Cls_T_TipoOperacion();
         int nOpc = 0;
 
@@ -48,10 +49,10 @@ namespace SisCtd
             TextBox txt = (TextBox)sender;
             switch (txt.Name)
             {
-                case "txtOfi": Helper.eTablaBus = Helper.eTablas.Oficinas; break;
-                case "txtIdtiptran": Helper.sParamBus1 = ""; Helper.eTablaBus = Helper.eTablas.Tipo_Transac; break;
+                //case "txtOfi": Helper.eTablaBus = Helper.eTablas.Oficinas; break;
+                //case "txtIdtiptran": Helper.sParamBus1 = ""; Helper.eTablaBus = Helper.eTablas.Tipo_Transac; break;
             }
-            Helper.Buscar(txt);
+            //Helper.Buscar(txt);
         }
 
         private void opcFile_KeyPress(object sender, KeyPressEventArgs e)
@@ -163,7 +164,7 @@ namespace SisCtd
         }
         private void Leer_Proceso()
         {
-            lblProc.Text = " Último Proceso : " + oSistema.Get_Parametro("fecdatos");
+            lblProc.Text = " Último Proceso : " + BL_Sis_Sistema.Get_Parametro("fecdatos",Helper.oBE_Sis_Cliente.IdCliente);
         }
 
         private void txtIdtiptran_TextChanged(object sender, EventArgs e)

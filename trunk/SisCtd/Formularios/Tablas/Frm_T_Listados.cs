@@ -258,21 +258,7 @@ namespace SisCtd
         {
             switch (eTabla)
             {
-                case Helper.eTablas.SubProductos:
-                    string sIdprod = "", sIdsubprod = "";
-                    if (Dg1.Rows.Count > 0)
-                    {
-                        sIdprod = Dg1.Rows[Dg1.CurrentCellAddress.Y].Cells["Producto"].Value.ToString();
-                        sIdsubprod = Dg1.Rows[Dg1.CurrentCellAddress.Y].Cells["SubProducto"].Value.ToString();
-                    }
-                    Frm_T_SubProducto fSubp = new Frm_T_SubProducto(nOpc, sIdprod, sIdsubprod);
-                    fSubp.ShowDialog();
-                    if (fSubp.bGrabo == true)
-                    {
-                        Listar(0);
-                        Helper.Buscar_Grilla(Dg1, fSubp.sIdprod + fSubp.sIdsubprod, 0);
-                    } fSubp.Dispose();
-                    break;
+                
                 case Helper.eTablas.Oficinas :
                     Frm_T_Oficinas_Det fOfi = new Frm_T_Oficinas_Det(nOpc, Get_Id(false));
                     fOfi.ShowDialog();
@@ -281,15 +267,6 @@ namespace SisCtd
                         Listar(0);
                         Helper.Buscar_Grilla(Dg1, fOfi.sIdOficina, 0);
                     } fOfi.Dispose();
-                    break;
-                case Helper.eTablas.Tarjetas:
-                    Frm_T_Tarjetas fTar = new Frm_T_Tarjetas(nOpc, Get_Id(false));
-                    fTar.ShowDialog();
-                    if (fTar.bGrabo == true)
-                    {
-                        Listar(0);
-                        Helper.Buscar_Grilla(Dg1, fTar.sIdtarjeta, 0);
-                    } fTar.Dispose();
                     break;
                 default:
                     Frm_T_Detalle fDet = new Frm_T_Detalle(nOpc, eTabla, Get_Id(false));

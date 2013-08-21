@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using BLSisCtd;
 namespace SisCtd
 {
     public partial class Frm_T_Oficinas_Det : Form
@@ -22,7 +23,8 @@ namespace SisCtd
                 
         Cls_T_Oficinas OOficina = new Cls_T_Oficinas();
         Cls_T_Territorios OTerritorio = new Cls_T_Territorios();
-        Cls_Sis_Sistema oSistema = new Cls_Sis_Sistema();
+        BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
+
         private void Frm_T_Oficinas_Det_Activated(object sender, EventArgs e)
         {
             if (qOpc == 2) { txtDescrip.Focus(); }
@@ -149,7 +151,7 @@ namespace SisCtd
         {
             if (e.KeyCode == Keys.F1)
             {
-                Helper.eTablaBus = Helper.eTablaBus = Helper.eTablas.Ubigeo; Helper.Buscar(txtUbigeo);
+                //Helper.eTablaBus = Helper.eTablaBus = Helper.eTablas.Ubigeo; Helper.Buscar(txtUbigeo);
             }
         }
 
@@ -159,7 +161,7 @@ namespace SisCtd
             {
                 if (txtUbigeo.Text.Trim() != "")
                 {
-                    lblUbigeo.Text = oSistema.Get_Descrip_Ubigeo(txtUbigeo.Text);
+                    lblUbigeo.Text = oBL_Sis_Sistema.Get_Descrip_Ubigeo(txtUbigeo.Text);
                 }
                 else { lblUbigeo.Text = ""; }
             }

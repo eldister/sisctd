@@ -17,7 +17,10 @@ namespace BLSisCtd
         {
             return oCliente.Listar(sIdperfil, sIdusuario, sEstado);
         }
-
+        public DataTable BuscarCliente(string sFiltro, string sValor)
+        {
+            return oCliente.BuscarCliente(sFiltro, sValor);
+        }
         #endregion
 
         #region Obtener Valores
