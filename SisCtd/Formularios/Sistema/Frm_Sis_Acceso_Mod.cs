@@ -5,30 +5,32 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using BLSisCtd;
+
 namespace SisCtd
 {
-    public partial class Frm_Sis_Accesol_Mod : Form
+    public partial class Frm_Sis_Acceso_Mod : Form
     {
         #region Declaracion de Variables
 
         public Boolean bGrabo = false;
         public string sIdPerfil = "";
-        Cls_Sis_Acceso oAcceso = new Cls_Sis_Acceso();
+        BL_Sis_Perfil oBL_Sis_Perfil = new BL_Sis_Perfil();
 
         #endregion
 
         #region Iniciar Formulario
 
-        public Frm_Sis_Accesol_Mod()
+        public Frm_Sis_Acceso_Mod()
         {
             InitializeComponent();
         }
-        private void Frm_Sis_Perfil_Det_Load(object sender, EventArgs e)
+        private void Frm_Sis_Acceso_Mod_Load(object sender, EventArgs e)
         {
-            Helper.LLenar_Combobox(oAcceso.Listar_Perfiles(), cboPerfiles, "des", "idPerfil");
+            Helper.LLenar_Combobox(oBL_Sis_Perfil.Listar_Combo(), cboPerfiles, "des", "idPerfil");
            
         }
-        private void Frm_Sis_Perfil_Det_KeyPress(object sender, KeyPressEventArgs e)
+        private void Frm_Sis_Acceso_Mod_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Escape)) this.Close();
         }

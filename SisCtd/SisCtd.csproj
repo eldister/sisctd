@@ -107,7 +107,6 @@
     <Compile Include="Clases\Cls_T_TipoDocumentos.cs" />
     <Compile Include="Clases\Cls_T_TipoOperacion.cs" />
     <Compile Include="Clases\Cls_T_UsuariosWeb.cs" />
-    <Compile Include="Clases\Cls_Sis_Acceso.cs" />
     <Compile Include="Clases\SQLHelper.cs" />
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.cs">
       <SubType>Form</SubType>
@@ -127,11 +126,11 @@
     <Compile Include="Formularios\Reportes\Frm_Rep_Registros.designer.cs">
       <DependentUpon>Frm_Rep_Registros.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Sistema\Frm_Sis_Accesol_Mod.cs">
+    <Compile Include="Formularios\Sistema\Frm_Sis_Acceso_Mod.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Sistema\Frm_Sis_Accesol_Mod.designer.cs">
-      <DependentUpon>Frm_Sis_Accesol_Mod.cs</DependentUpon>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Acceso_Mod.designer.cs">
+      <DependentUpon>Frm_Sis_Acceso_Mod.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Sistema\Frm_About.cs">
       <SubType>Form</SubType>
@@ -241,8 +240,8 @@
     <EmbeddedResource Include="Formularios\Reportes\Frm_Rep_Registros.resx">
       <DependentUpon>Frm_Rep_Registros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Accesol_Mod.resx">
-      <DependentUpon>Frm_Sis_Accesol_Mod.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Acceso_Mod.resx">
+      <DependentUpon>Frm_Sis_Acceso_Mod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_About.resx">
       <DependentUpon>Frm_About.cs</DependentUpon>

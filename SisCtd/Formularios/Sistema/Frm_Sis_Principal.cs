@@ -13,7 +13,7 @@ namespace SisCtd
         #region Declaración Variables
         BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
         BL_Sis_Cliente oBL_Sis_Cliente = new BL_Sis_Cliente();
-        Cls_Sis_Acceso oAcceso = new Cls_Sis_Acceso();
+        BL_Sis_Perfil oBL_Sis_Perfil = new BL_Sis_Perfil();
 
         public string FormActivo;
         string vNode;

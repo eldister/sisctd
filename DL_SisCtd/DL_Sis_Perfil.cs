@@ -1,97 +1,90 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using BESisCtd;
 using System.Data;
 using System.Data.SqlClient;
-using BESisCtd;
-using BLSisCtd;
-namespace SisCtd
+
+namespace DLSisCtd
 {
-    public class Cls_Sis_Acceso
+    public class DL_Sis_Perfil
     {
-        string sSql = "";
-        BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
-
+        string sSql;
+        DL_Sis_Sistema oDL_Sis_Sistema = new DL_Sis_Sistema();
         #region Listados
-
-        public DataTable Listar_Perfiles()
-        {
-            sSql = "select  idPerfil,";
-            sSql += "       Descripcion,idPerfil+' '+Descripcion as Des ";
-            sSql += "from 	Sis_Perfil ";
-            sSql += "where  Idperfil<>'00' ";
-            sSql += " order by descripcion ";
-            return Helper.fDatatable(sSql);
-        }
-        public DataTable Listar_Perfiles_Exportar()
+        public DataTable Listar()
         {
             sSql = "select  idPerfil,";
             sSql += "       Descripcion,FechaRegistro,HoraRegistro,UsuarioRegistro ";
             sSql += "from 	Sis_Perfil ";
             sSql += "where  Idperfil<>'00' ";
             sSql += " order by descripcion ";
-            return Helper.fDatatable(sSql);
+            return ConexionDAO.fDatatable(sSql);
         }
-        
+        public DataTable Listar_Combo()
+        {
+            sSql = "select  idPerfil,";
+            sSql += "       Descripcion,idPerfil+' '+Descripcion as Des ";
+            sSql += "from 	Sis_Perfil ";
+            sSql += "where  Idperfil<>'00' ";
+            sSql += " order by descripcion ";
+            return ConexionDAO.fDatatable(sSql);
+        }
         #endregion
 
         #region Obtener Valores
 
-
-        public DataTable Get_Registro_Perfil(string sIdPerfil)
+        public BE_Sis_Perfil Get_Perfil(string sIdPerfil)
         {
-            return Helper.fDatatable("select * from Sis_Perfil where idPerfil = '" + sIdPerfil + "'");
-        }
-        public Boolean Existe_Perfil_Usuarios(string sIdperfil)
-        {
-            int nCant = Convert.ToInt32(Helper.fEscalar("select count(*) from sis_usuario where idperfil ='" + sIdperfil + "' "));
-            return (nCant > 0 ? true : false);
-        }
+            sSql = "select * from Sis_Perfil where IdPerfil = '" + sIdPerfil + "'";
 
-        public string Get_IdPerfilUsuario(string sIdusuario)
-        {
-            sSql = "select a.idPerfil+' '+b.Descripcion from Sis_Usuario a inner join Sis_Perfil b on a.IdPerfil=b.IdPerfil where a.idUsuario='" + sIdusuario + "' ";
-            return Convert.ToString(Helper.fEscalar(sSql));
-        }
+            return Make(ConexionDAO.fDatatable(sSql));
 
+        }
         #endregion
 
         #region Operaciones
-
-        public string Grabar_Perfil(Helper.eOpcion qOpcion, string sIdperfil, string sDescripcion)
+        protected virtual BE_Sis_Perfil Make(DataTable dt)
         {
-            if (qOpcion == Helper.eOpcion.Nuevo)
-            {
+            if (dt.Rows.Count <= 0) return null;
 
-                sSql = "select right('00'+convert(varchar(2),max(convert(int,idperfil))+1),2) from sis_perfil ";
+            BE_Sis_Perfil oBE_Sis_Perfil = new BE_Sis_Perfil();
 
-                sIdperfil = Convert.ToString(Helper.fEscalar(sSql));
-                sSql = "insert into sis_perfil ";
-                sSql += "values('" + sIdperfil + "','" + sDescripcion + "',convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-            }
-
-            if (qOpcion == Helper.eOpcion.Modificar)
-            {
-
-                sSql = "update  sis_perfil	set ";
-                sSql += "       descripcion='" + sDescripcion + "' ";
-                sSql += "where idperfil='" + sIdperfil + "' ";
-
-            }
-
-            Helper.fExecute(sSql);
+            oBE_Sis_Perfil.IdPerfil = dt.Rows[0]["IdPerfil"].ToString().Trim();
+            oBE_Sis_Perfil.Descripcion = dt.Rows[0]["Descripcion"].ToString().Trim();
+            oBE_Sis_Perfil.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
+            oBE_Sis_Perfil.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
+            oBE_Sis_Perfil.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
+            return oBE_Sis_Perfil;
+        }
+        public string Insertar(BE_Sis_Perfil oBE_Sis_Perfil, string sIdUsuarioTra)
+        {
+            sSql = "select right('00'+convert(varchar(2),max(convert(int,idperfil))+1),2) from sis_perfil ";
+            string sIdperfil = Convert.ToString(ConexionDAO.fEscalar(sSql));
+            sSql = "insert into sis_perfil ";
+            sSql += "values('" + sIdperfil + "','" + oBE_Sis_Perfil.Descripcion + "',convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdUsuarioTra + "') ";
+            ConexionDAO.fExecute(sSql);
             return sIdperfil;
         }
-        public void EliminarPerfil(string sIdperfil)
+        public void Modificar(BE_Sis_Perfil oBE_Sis_Perfil)
+        {
+            sSql = "update  sis_perfil	set ";
+            sSql += "       descripcion='" + oBE_Sis_Perfil.Descripcion + "' ";
+            sSql += "where idperfil='" + oBE_Sis_Perfil.IdPerfil + "' ";
+            ConexionDAO.fExecute(sSql);
+        }
+        public void Eliminar(string sIdperfil)
         {
             sSql = "delete from sis_menuPerfil where idperfil='" + sIdperfil + "' ";
-            Helper.fExecute(sSql);
+            ConexionDAO.fExecute(sSql);
             sSql = "delete from sis_perfil where idperfil='" + sIdperfil + "' ";
-            Helper.fExecute(sSql);
+            ConexionDAO.fExecute(sSql);
         }
+
         public void Asignar_Acceso(string sIdPerfil, string sIdMenu)
         {
-            using (SqlConnection sCn = new SqlConnection(Helper.sConexion))
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
             {
                 sCn.Open();
                 SqlTransaction sTrans = sCn.BeginTransaction();
@@ -119,14 +112,14 @@ namespace SisCtd
         }
         public void Quitar_Acceso(string sIdPerfil, string sIdMenu)
         {
-            using (SqlConnection sCn = new SqlConnection(Helper.sConexion))
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
             {
                 sCn.Open();
                 SqlTransaction sTrans = sCn.BeginTransaction();
                 try
                 {
-                    
-                    if (oBL_Sis_Sistema.Get_Agrupador(sIdMenu))
+
+                    if (oDL_Sis_Sistema.Get_Agrupador(sIdMenu))
                     {
                         sSql = "delete from sis_menuperfil ";
                         sSql += "where idperfil='" + sIdPerfil + "' and idmenu in ";
@@ -138,7 +131,7 @@ namespace SisCtd
                     {
                         sSql = "select count(*) from sis_menuperfil a inner join Sis_Menu b on a.IdMenu=b.IdMenu ";
                         sSql += "where idperfil='" + sIdPerfil + "' and Estado=1 and idmenupadre=(Select IdMenuPadre from Sis_Menu where IdMenu='" + sIdMenu + "')";
-                        int nItems = Convert.ToInt16(Helper.fEscalar(sSql));
+                        int nItems = Convert.ToInt16(ConexionDAO.fEscalar(sSql));
 
                         if (nItems <= 1)
                         {
@@ -157,15 +150,13 @@ namespace SisCtd
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
         }
-        public void ModificarAcceso(string sIdperfil, string sIdMenu,string sAcceso)
+        public void ModificarAcceso(string sIdperfil, string sIdMenu, string sAcceso)
         {
             sSql = "update	Sis_MenuPerfil ";
             sSql += "set 	accesos = '" + sAcceso + "' ";
             sSql += "where	idperfil = '" + sIdperfil + "' and idmenu = '" + sIdMenu + "' ";
-            Helper.fExecute(sSql);
+            ConexionDAO.fExecute(sSql);
         }
-
-
 
         #endregion
     }

@@ -21,8 +21,8 @@ namespace SisCtd
 
         private void Frm_Sis_Login_Load(object sender, EventArgs e)
         {
-            //TxtUsu.Text = "admin";
-            //TxtPas.Text = "09346670";
+            TxtUsu.Text = "admin";
+            TxtPas.Text = "123456";
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)

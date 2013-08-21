@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionDAO.cs" />
+    <Compile Include="DL_Sis_Perfil.cs" />
     <Compile Include="DL_Sis_Sistema.cs" />
     <Compile Include="DL_Sis_Usuario.cs" />
     <Compile Include="DL_Sis_Cliente.cs" />
