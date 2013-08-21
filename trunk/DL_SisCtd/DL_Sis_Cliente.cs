@@ -45,7 +45,7 @@ namespace DLSisCtd
         {
             sSql = "select * from Sis_Cliente where Idcliente = '" + sIdCliente + "'";
 
-            return MakeUsuario(ConexionDAO.fDatatable(sSql));
+            return Make(ConexionDAO.fDatatable(sSql));
 
         }
         public Boolean Existe_UsuarioClientes(string sIdusuario)
@@ -62,17 +62,17 @@ namespace DLSisCtd
         #endregion
 
         #region Operaciones
-        protected virtual BE_Sis_Cliente MakeUsuario(DataTable dt)
+        protected virtual BE_Sis_Cliente Make(DataTable dt)
         {
             if (dt.Rows.Count <= 0) return null;
 
-            BE_Sis_Cliente usuario = new BE_Sis_Cliente();
+            BE_Sis_Cliente oBE_Sis_Cliente = new BE_Sis_Cliente();
 
-            usuario.IdCliente = dt.Rows[0]["Idcliente"].ToString().Trim();
-            usuario.Descripcion = dt.Rows[0]["descripcion"].ToString().Trim();
-            usuario.Estado= (Boolean)dt.Rows[0]["Estado"];
+            oBE_Sis_Cliente.IdCliente = dt.Rows[0]["Idcliente"].ToString().Trim();
+            oBE_Sis_Cliente.Descripcion = dt.Rows[0]["descripcion"].ToString().Trim();
+            oBE_Sis_Cliente.Estado= (Boolean)dt.Rows[0]["Estado"];
 
-            return usuario;
+            return oBE_Sis_Cliente;
         }
         public void AgregarUsuarioCliente(string sIdUsuario, string sIdcliente, string sIdusuarioTra)
         {

@@ -1,6 +1,6 @@
 ﻿namespace SisCtd
 {
-    partial class Frm_Sis_Accesol_Mod
+    partial class Frm_Sis_Acceso_Mod
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -96,8 +96,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Modificar Perfil";
-            this.Load += new System.EventHandler(this.Frm_Sis_Perfil_Det_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Sis_Perfil_Det_KeyPress);
+            this.Load += new System.EventHandler(this.Frm_Sis_Acceso_Mod_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Sis_Acceso_Mod_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

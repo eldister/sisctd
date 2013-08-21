@@ -37,7 +37,7 @@ namespace DLSisCtd
         {
             sSql = "select * from Sis_Usuario where IdUsuario = '" + sIdUsuario + "'";
 
-            return MakeUsuario(ConexionDAO.fDatatable(sSql));
+            return Make(ConexionDAO.fDatatable(sSql));
 
         }
         public Boolean Existe(string sIdusuario)
@@ -45,27 +45,31 @@ namespace DLSisCtd
             int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from sis_usuario where idusuario ='" + sIdusuario + "' "));
             return (nCant > 0 ? true : false);
         }
-
+        public Boolean Existe_Perfil(string sIdperfil)
+        {
+            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from sis_usuario where idperfil ='" + sIdperfil + "' "));
+            return (nCant > 0 ? true : false);
+        }
         #endregion
 
         #region Operaciones
-        protected virtual BE_Sis_Usuario MakeUsuario(DataTable dt)
+        protected virtual BE_Sis_Usuario Make(DataTable dt)
         {
             if (dt.Rows.Count <= 0) return null;
 
-            BE_Sis_Usuario usuario = new BE_Sis_Usuario();
+            BE_Sis_Usuario oBE_Sis_Usuario = new BE_Sis_Usuario();
 
-            usuario.IdUsuario = dt.Rows[0]["IdUsuario"].ToString().Trim();
-            usuario.Nombre = dt.Rows[0]["Nombre"].ToString().Trim();
-            usuario.IdPerfil = dt.Rows[0]["IdPerfil"].ToString().Trim();
-            usuario.Correo = dt.Rows[0]["Correo"].ToString().Trim();
-            usuario.Contraseña = dt.Rows[0]["Contraseña"].ToString().Trim();
+            oBE_Sis_Usuario.IdUsuario = dt.Rows[0]["IdUsuario"].ToString().Trim();
+            oBE_Sis_Usuario.Nombre = dt.Rows[0]["Nombre"].ToString().Trim();
+            oBE_Sis_Usuario.IdPerfil = dt.Rows[0]["IdPerfil"].ToString().Trim();
+            oBE_Sis_Usuario.Correo = dt.Rows[0]["Correo"].ToString().Trim();
+            oBE_Sis_Usuario.Contraseña = dt.Rows[0]["Contraseña"].ToString().Trim();
 
-            usuario.Estado = (Boolean)dt.Rows[0]["Estado"];
-            usuario.FechaRegistro =(DateTime) dt.Rows[0]["FechaRegistro"];
-            usuario.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
-            usuario.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
-            return usuario;
+            oBE_Sis_Usuario.Estado = (Boolean)dt.Rows[0]["Estado"];
+            oBE_Sis_Usuario.FechaRegistro =(DateTime) dt.Rows[0]["FechaRegistro"];
+            oBE_Sis_Usuario.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
+            oBE_Sis_Usuario.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
+            return oBE_Sis_Usuario;
         }
         public void Grabar(string sIdUsuario, string sIdPerfil)
         {

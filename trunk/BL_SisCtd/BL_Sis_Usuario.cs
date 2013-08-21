@@ -33,6 +33,10 @@ namespace BLSisCtd
         {
             return oDL_Sis_Usuario.Existe(sIdusuario);
         }
+        public Boolean Existe_Perfil(string sIdperfil)
+        {
+            return oDL_Sis_Usuario.Existe_Perfil(sIdperfil);
+        }
 
         #endregion
 

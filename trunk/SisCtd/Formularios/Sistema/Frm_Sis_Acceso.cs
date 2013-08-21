@@ -17,7 +17,7 @@ namespace SisCtd
         string sIdmenu = "";
         string sIdusuario = "";
         Boolean bPrimeraCarga = true;
-        Cls_Sis_Acceso oAcceso = new Cls_Sis_Acceso();
+        BL_Sis_Perfil oBL_Sis_Perfil = new BL_Sis_Perfil();
         BL_Sis_Cliente oBL_Sis_Cliente = new BL_Sis_Cliente(); 
         BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
         BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
@@ -67,12 +67,12 @@ namespace SisCtd
             {
                 if (oListar == Helper.eListar.Grilla)
                 {
-                    Helper.LLenar_Listbox(oAcceso.Listar_Perfiles(), lstPerfiles, "des", "idPerfil");
+                    Helper.LLenar_Listbox(oBL_Sis_Perfil.Listar_Combo(), lstPerfiles, "des", "idPerfil");
                     if (lstPerfiles.Items.Count > 0) lstPerfiles.SelectedIndex = 0;
                 }
                 else
                 {
-                    Helper.Exportar(oAcceso.Listar_Perfiles_Exportar());
+                    Helper.Exportar(oBL_Sis_Perfil.Listar());
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -237,7 +237,7 @@ namespace SisCtd
         {
             if (lstPerfiles.SelectedItems.Count <= 0) return;
             sIdPerfil = lstPerfiles.SelectedValue.ToString();
-            if (oAcceso.Existe_Perfil_Usuarios(sIdPerfil) == true)
+            if (oBL_Sis_Usuario.Existe_Perfil(sIdPerfil) == true)
             {
                 MessageBox.Show("El Perfil ha sido asignado a un usuario, Verificar", "Validación de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -249,7 +249,7 @@ namespace SisCtd
             //}
             if (MessageBox.Show("¿Está seguro de Eliminar el Perfil: " + lstPerfiles.Text + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
 
-            oAcceso.EliminarPerfil(sIdPerfil);
+            oBL_Sis_Perfil.Eliminar(sIdPerfil);
             Listar_Perfiles(Helper.eListar.Grilla);
         }
         private void bExportar_Click(object sender, EventArgs e)
@@ -287,7 +287,7 @@ namespace SisCtd
             {
                 if (sIdmenu == "") return;
                 sIdPerfil = lstPerfiles.SelectedValue.ToString();
-                oAcceso.Asignar_Acceso(sIdPerfil, sIdmenu);
+                oBL_Sis_Perfil.Asignar_Acceso(sIdPerfil, sIdmenu);
                 Cargar_Menus();
             }
             catch (Exception Er)
@@ -317,7 +317,7 @@ namespace SisCtd
             {
                 if (sIdmenu == "") return;
                 sIdPerfil = lstPerfiles.SelectedValue.ToString();
-                oAcceso.Quitar_Acceso(sIdPerfil, sIdmenu);
+                oBL_Sis_Perfil.Quitar_Acceso(sIdPerfil, sIdmenu);
                 Cargar_Menus();
             }
             catch (Exception Er)
@@ -346,7 +346,7 @@ namespace SisCtd
                     sAccesoMenu += ChkImprimir.Checked == true ? "1" : "0";
                     sAccesoMenu += ChkExportar.Checked == true ? "1" : "0";
 
-                    oAcceso.ModificarAcceso(sIdPerfil,sIdmenu, sAccesoMenu);
+                    oBL_Sis_Perfil.ModificarAcceso(sIdPerfil,sIdmenu, sAccesoMenu);
             }
             catch (Exception Er)
             {
