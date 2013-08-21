@@ -94,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Cls_Rep_Reportes.cs" />
-    <Compile Include="Clases\Cls_Sis_Sistema.cs" />
     <Compile Include="Clases\Cls_T_Areas.cs" />
     <Compile Include="Clases\Cls_T_Datos.cs" />
     <Compile Include="Clases\Cls_T_Ejecutivos.cs" />
@@ -109,7 +108,6 @@
     <Compile Include="Clases\Cls_T_TipoOperacion.cs" />
     <Compile Include="Clases\Cls_T_UsuariosWeb.cs" />
     <Compile Include="Clases\Cls_Sis_Acceso.cs" />
-    <Compile Include="Clases\HelperDL.cs" />
     <Compile Include="Clases\SQLHelper.cs" />
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.cs">
       <SubType>Form</SubType>
@@ -189,18 +187,6 @@
     <Compile Include="Formularios\Sistema\Frm_Sis_Perfil_Det.designer.cs">
       <DependentUpon>Frm_Sis_Perfil_Det.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Separadoras_Det.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Separadoras_Det.designer.cs">
-      <DependentUpon>Frm_T_Separadoras_Det.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Separadoras.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Separadoras.designer.cs">
-      <DependentUpon>Frm_T_Separadoras.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_Detalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,30 +216,6 @@
     </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_Oficinas_Det.designer.cs">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Productos_Det.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Productos_Det.designer.cs">
-      <DependentUpon>Frm_T_Productos_Det.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Productos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Productos.designer.cs">
-      <DependentUpon>Frm_T_Productos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_SubProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_SubProducto.designer.cs">
-      <DependentUpon>Frm_T_SubProducto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Tarjetas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_Tarjetas.designer.cs">
-      <DependentUpon>Frm_T_Tarjetas.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.cs">
       <SubType>Form</SubType>
@@ -309,12 +271,6 @@
     <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Perfil_Det.resx">
       <DependentUpon>Frm_Sis_Perfil_Det.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Separadoras_Det.resx">
-      <DependentUpon>Frm_T_Separadoras_Det.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Separadoras.resx">
-      <DependentUpon>Frm_T_Separadoras.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Detalle.resx">
       <DependentUpon>Frm_T_Detalle.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,18 +285,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Oficinas_Det.resx">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Productos_Det.resx">
-      <DependentUpon>Frm_T_Productos_Det.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Productos.resx">
-      <DependentUpon>Frm_T_Productos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_SubProducto.resx">
-      <DependentUpon>Frm_T_SubProducto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Tarjetas.resx">
-      <DependentUpon>Frm_T_Tarjetas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.resx">
       <DependentUpon>Frm_T_TipoOperacion_Det.cs</DependentUpon>
@@ -385,12 +329,6 @@
     <None Include="Resources\control.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LogoPant.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Toolbar.Close.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -432,17 +370,7 @@
     <None Include="Resources\Formato Busqueda Gpd.JPG" />
     <None Include="Resources\icon_web.jpg" />
     <Content Include="Resources\Imagen1.jpg" />
-    <None Include="Resources\LogoBbva.jpg" />
-    <None Include="Resources\LogoInterbank.jpg" />
-    <None Include="Resources\LogoHsbc.jpg" />
-    <None Include="Resources\LogoNextel.bmp" />
-    <Content Include="Resources\LogoPant2.jpg" />
     <None Include="Resources\logopdf.jpg" />
-    <None Include="Resources\LogoSaga.bmp" />
-    <None Include="Resources\logo_financor.gif" />
-    <None Include="Resources\logo_bbvaCar.JPG" />
-    <None Include="Resources\Logo_Backus.jpg" />
-    <None Include="Resources\Logo_Cencosud.jpg" />
     <None Include="Resources\logo_vsistems.jpg" />
     <Content Include="Resources\up.ico" />
     <None Include="Resources\usu.gif" />

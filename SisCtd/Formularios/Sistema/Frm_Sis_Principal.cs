@@ -11,8 +11,8 @@ namespace SisCtd
     public partial class Frm_Sis_Principal : Form
     {
         #region Declaración Variables
-        Cls_Sis_Sistema oSistema = new Cls_Sis_Sistema();
-        BL_Sis_Cliente oCliente = new BL_Sis_Cliente();
+        BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
+        BL_Sis_Cliente oBL_Sis_Cliente = new BL_Sis_Cliente();
         Cls_Sis_Acceso oAcceso = new Cls_Sis_Acceso();
 
         public string FormActivo;
@@ -37,7 +37,7 @@ namespace SisCtd
             lblUsuario.Text = " Usuario : " + Helper.oBE_Sis_Usuario.IdUsuario + " - " + Helper.oBE_Sis_Usuario.Nombre;
 
             DataTable Dt = new DataTable();
-            Dt = oCliente.Listar(Helper.oBE_Sis_Usuario.IdPerfil, Helper.oBE_Sis_Usuario.IdUsuario, "A");
+            Dt = oBL_Sis_Cliente.Listar(Helper.oBE_Sis_Usuario.IdPerfil, Helper.oBE_Sis_Usuario.IdUsuario, "A");
 
             System.Object[] ItemObject = new System.Object[Dt.Rows.Count];
             for (int i = 0; i <= Dt.Rows.Count - 1; i++)
@@ -57,7 +57,7 @@ namespace SisCtd
                 try
                 {
                     CtlMDI = (MdiClient)Ctl;
-                    CtlMDI.BackgroundImage = global::SisCtd.Properties.Resources.LogoPant;
+                    //CtlMDI.BackgroundImage = global::SisCtd.Properties.Resources.;
                 }
                 catch (InvalidCastException)
                 {
@@ -66,7 +66,7 @@ namespace SisCtd
             try
             {
                 TreOpc.Nodes.Clear();
-                Helper.Cargar_menu(oAcceso.Listar_Menu(Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
+                Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -146,7 +146,6 @@ namespace SisCtd
             {
                 case "0101": mFormHijo = new Frm_T_Listados(Helper.eTablas.Datos); Abrir(); break;
                 case "0102": mFormHijo = new Frm_T_TipoDocumento(); Abrir(); break;
-                case "0103": mFormHijo = new Frm_T_Productos(); Abrir(); break;
                 case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.SubProductos); Abrir(); break;
                 case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Territorios); Abrir(); break;
                 case "0106": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
@@ -155,8 +154,6 @@ namespace SisCtd
                 case "0109": mFormHijo = new Frm_T_TipoOperacion(); Abrir(); break;
                 case "0110": mFormHijo = new Frm_T_Listados(Helper.eTablas.Tarjetas); Abrir(); break;
                 case "0111": mFormHijo = new Frm_T_Listados(Helper.eTablas.Ejecutivos); Abrir(); break;
-                case "0112": mFormHijo = new Frm_T_Separadoras(); Abrir(); break;
-
 
                 
                 //Pedidos
@@ -252,9 +249,9 @@ namespace SisCtd
         }
         private void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Helper.oBE_Sis_Cliente = oCliente.Get_Cliente(cboCliente.Text);
+            Helper.oBE_Sis_Cliente = oBL_Sis_Cliente.Get_Cliente(cboCliente.Text);
             TreOpc.Nodes.Clear();
-            Helper.Cargar_menu(oAcceso.Listar_Menu(Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
+            Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
             CambiarLogo();
             SendKeys.Send("{F5}");
         }
@@ -264,7 +261,7 @@ namespace SisCtd
         private void TreOpc_AfterSelect(object sender, TreeViewEventArgs e)
         {
             vNode = e.Node.Name.Trim();
-            Helper.sAcceso = oAcceso.Get_Acceso(Helper.oBE_Sis_Usuario.IdPerfil, vNode);
+            Helper.sAcceso = oBL_Sis_Sistema.Get_Acceso(Helper.oBE_Sis_Usuario.IdPerfil, vNode);
         }
         private void TreOpc_DoubleClick(object sender, EventArgs e)
         {

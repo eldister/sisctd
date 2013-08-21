@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using BLSisCtd;
 namespace SisCtd
 {
     public partial class Frm_Sis_Acceso : Form
@@ -17,9 +17,9 @@ namespace SisCtd
         string sIdmenu = "";
         string sIdusuario = "";
         Boolean bPrimeraCarga = true;
-        Cls_Sis_Sistema oSistema = new Cls_Sis_Sistema();
-        Cls_Sis_Acceso oAcceso = new Cls_Sis_Acceso(); 
-        
+        Cls_Sis_Acceso oAcceso = new Cls_Sis_Acceso();
+        BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
+        BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
         #endregion
 
         #region Iniciar Formulario
@@ -97,8 +97,8 @@ namespace SisCtd
                 if (lstPerfiles.SelectedItems.Count <= 0) return;
                 sIdPerfil = lstPerfiles.SelectedValue.ToString();
 
-                Helper.Cargar_menu(oAcceso.Listar_Menu(sIdPerfil, "Menu"), "", null, treMenu, true);
-                Helper.Cargar_menu(oAcceso.Listar_Menu(sIdPerfil, "Perfil"), "", null, treMenuPerfil, true);
+                Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(sIdPerfil, "Menu"), "", null, treMenu, true);
+                Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(sIdPerfil, "Perfil"), "", null, treMenuPerfil, true);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -193,8 +193,8 @@ namespace SisCtd
 
                 string sAccesos = "";
                 string sAccesosMenu = "";
-                sAccesos = oAcceso.Get_Acceso("00", sIdmenu);
-                sAccesosMenu = oAcceso.Get_Acceso(lstPerfiles.SelectedValue.ToString(), sIdmenu);
+                sAccesos = oBL_Sis_Sistema.Get_Acceso("00", sIdmenu);
+                sAccesosMenu = oBL_Sis_Sistema.Get_Acceso(lstPerfiles.SelectedValue.ToString(), sIdmenu);
 
                 ChkNuevo.Enabled = (sAccesos.Substring(0, 1) == "1") ? true : false;
                 ChkModificar.Enabled = (sAccesos.Substring(1, 1) == "1") ? true : false;
@@ -298,7 +298,7 @@ namespace SisCtd
         {
             sIdmenu = e.Node.Name.Trim();
 
-            if (oAcceso.Get_Agrupador(sIdmenu) == false)
+            if (oBL_Sis_Sistema.Get_Agrupador(sIdmenu) == false)
             {
                 PanPermisos.Enabled = true;
                 HabilitarAcceso();
@@ -367,19 +367,19 @@ namespace SisCtd
         }
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            if (Get_IdUasuario(true) == false) return;
-            Helper.eTablaBus = Helper.eTablas.Clientes;
-            string sIdcliente = Helper.Buscar();
-            if (sIdcliente == "") return;
-            if (oAcceso.Existe_UsuarioCliente(sIdusuario, sIdcliente))
-            {
-                MessageBox.Show("El Cliente " + sIdcliente + " ya ha sido asignado al Usuario " + sIdusuario + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                dgClientes.Focus(); return;
-            }
+            //if (Get_IdUasuario(true) == false) return;
+            //Helper.eTablaBus = Helper.eTablas.Clientes;
+            //string sIdcliente = Helper.Buscar();
+            //if (sIdcliente == "") return;
+            //if (oBL_Sis_Usuario.Existe_UsuarioCliente(sIdusuario, sIdcliente))
+            //{
+            //    MessageBox.Show("El Cliente " + sIdcliente + " ya ha sido asignado al Usuario " + sIdusuario + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    dgClientes.Focus(); return;
+            //}
 
-            oAcceso.AgregarUsuarioCliente(sIdusuario, sIdcliente);
-            Listar_Clientes(Helper.eListar.Grilla);
-            Helper.Buscar_Grilla(dgClientes, sIdcliente, 0);
+            //oAcceso.AgregarUsuarioCliente(sIdusuario, sIdcliente);
+            //Listar_Clientes(Helper.eListar.Grilla);
+            //Helper.Buscar_Grilla(dgClientes, sIdcliente, 0);
         }
 
         private void btnQuitarCliente_Click(object sender, EventArgs e)

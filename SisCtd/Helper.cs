@@ -85,7 +85,6 @@ namespace SisCtd
             Personas = 19,
             Clientes = 20
         }
-        public static eTablas eTablaBus;
         public static string sParamBus1;
         public static string sParamBus2;
         public static string sParamBus3;
@@ -1104,17 +1103,17 @@ namespace SisCtd
             }
         }
 
-        public static void Buscar(TextBox txt)
+        public static void Buscar(TextBox txt,DataTable Dt)
         {
-            Frm_Sis_Busquedas fBus = new Frm_Sis_Busquedas();
+            Frm_Sis_Busquedas fBus = new Frm_Sis_Busquedas(Dt);
             fBus.ShowDialog();
             if (fBus.sValor != "") txt.Text = fBus.sValor;
             fBus.Dispose();
         }
-        public static string Buscar()
+        public static string Buscar(DataTable Dt)
         {
             string sValor = "";
-            Frm_Sis_Busquedas fBus = new Frm_Sis_Busquedas();
+            Frm_Sis_Busquedas fBus = new Frm_Sis_Busquedas(Dt);
             fBus.ShowDialog();
             if (fBus.sValor != "") sValor = fBus.sValor;
             fBus.Dispose();

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using BLSisCtd;
 namespace SisCtd
 {
     public partial class Frm_T_TipoOperacion : Form
@@ -13,7 +14,7 @@ namespace SisCtd
 
         #region Declaración Variables
         Cls_T_TipoOperacion oTipoOperacion = new Cls_T_TipoOperacion();
-        Cls_Sis_Sistema oSistema = new Cls_Sis_Sistema();
+        BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
 
         private Boolean bPaso = false;
         private string sIdproducto = "";
@@ -190,7 +191,7 @@ namespace SisCtd
             }
             oTipoOperacion.Upd_Critico(sIdproducto, sIdTipoOperacion, bCritico);
 
-            oSistema.Grabar_Historial("TipoOperacion", "Critico", sIdproducto + "_" + sIdTipoOperacion, "Update", Convert.ToString(!bCritico), Convert.ToString(bCritico), sValor);
+            oBL_Sis_Sistema.Grabar_Historial(Helper.oBE_Sis_Cliente.IdCliente, "TipoOperacion", "Critico", sIdproducto + "_" + sIdTipoOperacion, "Update", Convert.ToString(!bCritico), Convert.ToString(bCritico), sValor,Helper.oBE_Sis_Usuario.IdUsuario);
 
             string sId = sIdproducto + sIdTipoOperacion;
             Listar(0);
@@ -215,7 +216,7 @@ namespace SisCtd
             }
             oTipoOperacion.Upd_Digitalizable(sIdproducto, sIdTipoOperacion, bDigita);
 
-            oSistema.Grabar_Historial("TipoOperacion", "Digita", sIdproducto + "_" + sIdTipoOperacion, "Update", Convert.ToString(!bDigita), Convert.ToString(bDigita), sValor);
+            oBL_Sis_Sistema.Grabar_Historial(Helper.oBE_Sis_Cliente.IdCliente, "TipoOperacion", "Digita", sIdproducto + "_" + sIdTipoOperacion, "Update", Convert.ToString(!bDigita), Convert.ToString(bDigita), sValor, Helper.oBE_Sis_Usuario.IdUsuario);
             string sId = sIdproducto + sIdTipoOperacion;
             Listar(0);
             Helper.Buscar_Grilla(Dg1, sId, 0);
@@ -228,7 +229,7 @@ namespace SisCtd
         }
         private void bHistorial_Click(object sender, EventArgs e)
         {
-            Helper.Exportar(oSistema.Listar_Historial("'TipoOperacion','TipoOperacionAnexos'"), "Tipos_Operacion_Historial");
+            Helper.Exportar(oBL_Sis_Sistema.Listar_Historial("'TipoOperacion','TipoOperacionAnexos'",Helper.oBE_Sis_Cliente.IdCliente), "Tipos_Operacion_Historial");
         }
         private void bCerrar_Click(object sender, EventArgs e)
         {
@@ -282,20 +283,20 @@ namespace SisCtd
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!Get_IdTipoOperacion(true)) return;
-            Helper.eTablaBus = Helper.eTablas.TiposDoc;
-            sIdTipoDocumento = Helper.Buscar();
-            if (sIdTipoDocumento != "")
-            {
-                if (oTipoOperacion.Existe_Documento(sIdproducto, sIdTipoOperacion, sIdTipoDocumento))
-                {
-                    MessageBox.Show("El Registro Seleccionado ya ha sido Ingresado", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                }
+            //if (!Get_IdTipoOperacion(true)) return;
+            //Helper.eTablaBus = Helper.eTablas.TiposDoc;
+            //sIdTipoDocumento = Helper.Buscar();
+            //if (sIdTipoDocumento != "")
+            //{
+            //    if (oTipoOperacion.Existe_Documento(sIdproducto, sIdTipoOperacion, sIdTipoDocumento))
+            //    {
+            //        MessageBox.Show("El Registro Seleccionado ya ha sido Ingresado", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //    }
 
-                oTipoOperacion.Agregar_TipoDocumento(sIdproducto, sIdTipoOperacion, sIdTipoDocumento);
-                Listar_Documentos();
-                Helper.Buscar_Grilla(Dg2, sIdTipoDocumento, 0);
-            }
+            //    oTipoOperacion.Agregar_TipoDocumento(sIdproducto, sIdTipoOperacion, sIdTipoDocumento);
+            //    Listar_Documentos();
+            //    Helper.Buscar_Grilla(Dg2, sIdTipoDocumento, 0);
+            //}
         }
         private void btnQuitar_Click(object sender, EventArgs e)
         {
@@ -334,7 +335,7 @@ namespace SisCtd
             }
             oTipoOperacion.Upd_Critico_TipoDocumento(sIdproducto, sIdTipoOperacion, sIdTipoDocumento, bCritico);
 
-            oSistema.Grabar_Historial("TipoOperacionAnexos", "Critico", sIdproducto + "_" + sIdTipoOperacion + "_" + sIdTipoDocumento, "Update", Convert.ToString(!bCritico), Convert.ToString(bCritico), sValor);
+            oBL_Sis_Sistema.Grabar_Historial(Helper.oBE_Sis_Cliente.IdCliente, "TipoOperacionAnexos", "Critico", sIdproducto + "_" + sIdTipoOperacion + "_" + sIdTipoDocumento, "Update", Convert.ToString(!bCritico), Convert.ToString(bCritico), sValor, Helper.oBE_Sis_Usuario.IdUsuario);
             
             Listar_Documentos();
             Helper.Buscar_Grilla(Dg2, sIdTipoDocumento, 0);
@@ -360,7 +361,7 @@ namespace SisCtd
             }
             oTipoOperacion.Upd_Digitalizable_TipoDocumento(sIdproducto, sIdTipoOperacion, sIdTipoDocumento, bDigita);
 
-            oSistema.Grabar_Historial("TipoOperacionAnexos", "Digita", sIdproducto + "_" + sIdTipoOperacion + "_" + sIdTipoDocumento, "Update", Convert.ToString(!bDigita), Convert.ToString(bDigita), sValor);
+            oBL_Sis_Sistema.Grabar_Historial(Helper.oBE_Sis_Cliente.IdCliente, "TipoOperacionAnexos", "Digita", sIdproducto + "_" + sIdTipoOperacion + "_" + sIdTipoDocumento, "Update", Convert.ToString(!bDigita), Convert.ToString(bDigita), sValor, Helper.oBE_Sis_Usuario.IdUsuario);
 
             Listar_Documentos();
             Helper.Buscar_Grilla(Dg2, sIdTipoDocumento, 0);

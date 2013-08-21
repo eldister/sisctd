@@ -141,8 +141,7 @@ namespace SisCtd
             private void btnAgregar_Click(object sender, EventArgs e)
             {
                 if (Get_IdDocu(true) == "") return;
-                Helper.eTablaBus = Helper.eTablas.Datos;
-                sIddato = Helper.Buscar();
+                //sIddato = Helper.Buscar();
                 if (sIddato != "")
                 {
                     if (oTipoDoc.Existe_Dato(sIddocu, sIddato))

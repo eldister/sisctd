@@ -43,6 +43,7 @@
     <Compile Include="BL_ConexionDAO.cs" />
     <Compile Include="BL_Sis_Cliente.cs" />
     <Compile Include="BL_Sis_Usuario.cs" />
+    <Compile Include="BL_Sis_Sistema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,11 +4,14 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using BESisCtd;
+using BLSisCtd;
 namespace SisCtd
 {
     public class Cls_Sis_Acceso
     {
         string sSql = "";
+        BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
+
         #region Listados
         public DataTable Listar_Usuarios(string sIdPerfil,Boolean bTodos)
         {
@@ -27,30 +30,7 @@ namespace SisCtd
             sSql += "order by b.Descripcion ";
             return Helper.fDatatable(sSql);
         }
-        public DataTable Listar_Menu(string sIdperfil, string sMenu)
-        {
-            
-            if (sIdperfil == "00")
-                sSql = "select *,isnull(IdMenuPadre,'') as sIdMenuPadre from Sis_Menu where Estado=1 order by Orden";
-            else
-            {
-                if (sMenu == "Menu")
-                {
-                    sSql = "select *,isnull(IdMenuPadre,'') as sIdMenuPadre from Sis_Menu where Idmenu not in ";
-                    sSql += "(select a.idmenu from 	Sis_MenuPerfil a left join Sis_Menu b on a.Idmenu = b.Idmenu ";
-                    sSql += "where	a.Idperfil = '" + sIdperfil + "' and Agrupador=0 ) and Estado=1  ";
-                    sSql += "order by orden ";
-                }
-                else
-                {
-                    sSql = "select  b.*,isnull(b.IdMenuPadre,'') as sIdMenuPadre ";
-                    sSql += "from   Sis_MenuPerfil a ";
-                    sSql += "       left join Sis_Menu b on a.idmenu = b.idmenu ";
-                    sSql += "where	a.IdPerfil = '" + sIdperfil + "' and b.Estado=1 order by orden";
-                }
-            }
-            return Helper.fDatatable(sSql);
-        }
+       
         public DataTable Listar_Perfiles()
         {
             sSql = "select  idPerfil,";
@@ -73,18 +53,8 @@ namespace SisCtd
         #endregion
 
         #region Obtener Valores
-        public string Get_Acceso(string sIdperfil, string sIdmenu)
-        {
-            if (sIdperfil == "00")
-                sSql = "select accesos from sis_menu where idmenu='" + sIdmenu + "' ";
-            else
-                sSql = "select accesos from Sis_menuPerfil where idmenu='" + sIdmenu + "' and idperfil='" + sIdperfil + "'";
-            return Convert.ToString(Helper.fEscalar(sSql));
-        }
-        public Boolean Get_Agrupador(string sIdMenu)
-        {
-            return Convert.ToBoolean(Helper.fEscalar("select agrupador from Sis_Menu where idMenu='" + sIdMenu + "'"));
-        }
+
+
         public DataTable Get_Registro_Perfil(string sIdPerfil)
         {
             return Helper.fDatatable("select * from Sis_Perfil where idPerfil = '" + sIdPerfil + "'");
@@ -105,16 +75,7 @@ namespace SisCtd
             return Convert.ToString(Helper.fEscalar(sSql));
         }
 
-        public Boolean Existe_UsuarioClientes(string sIdusuario)
-        {
-            int nCant = Convert.ToInt32(Helper.fEscalar("select count(*) from Sis_UsuarioCliente where IdUsuario ='" + sIdusuario + "' "));
-            return (nCant > 0 ? true : false);
-        }
-        public Boolean Existe_UsuarioCliente(string sIdusuario,string sIdcliente)
-        {
-            int nCant = Convert.ToInt32(Helper.fEscalar("select count(*) from Sis_UsuarioCliente where IdUsuario ='" + sIdusuario + "' and Idcliente='" + sIdcliente + "' "));
-            return (nCant > 0 ? true : false);
-        }
+
 
         public DataTable Get_Registro_Usuario(string sIdusuario)
         {
@@ -191,8 +152,8 @@ namespace SisCtd
                 SqlTransaction sTrans = sCn.BeginTransaction();
                 try
                 {
-
-                    if (Get_Agrupador(sIdMenu))
+                    
+                    if (oBL_Sis_Sistema.Get_Agrupador(sIdMenu))
                     {
                         sSql = "delete from sis_menuperfil ";
                         sSql += "where idperfil='" + sIdPerfil + "' and idmenu in ";

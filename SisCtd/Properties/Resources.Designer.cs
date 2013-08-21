@@ -172,41 +172,6 @@ namespace SisCtd.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap logo {
-            get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Logo_Backus {
-            get {
-                object obj = ResourceManager.GetObject("Logo_Backus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap logo_bbvaCar {
-            get {
-                object obj = ResourceManager.GetObject("logo_bbvaCar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap Logo_Cencosud {
-            get {
-                object obj = ResourceManager.GetObject("Logo_Cencosud", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap logo_financor {
-            get {
-                object obj = ResourceManager.GetObject("logo_financor", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap logo_vsistems {
             get {
                 object obj = ResourceManager.GetObject("logo_vsistems", resourceCulture);
@@ -214,58 +179,9 @@ namespace SisCtd.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap LogoBbva {
-            get {
-                object obj = ResourceManager.GetObject("LogoBbva", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap LogoHsbc {
-            get {
-                object obj = ResourceManager.GetObject("LogoHsbc", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap LogoInterbank {
-            get {
-                object obj = ResourceManager.GetObject("LogoInterbank", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap LogoNextel {
-            get {
-                object obj = ResourceManager.GetObject("LogoNextel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap LogoPant {
-            get {
-                object obj = ResourceManager.GetObject("LogoPant", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap LogoPant2 {
-            get {
-                object obj = ResourceManager.GetObject("LogoPant2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap logopdf {
             get {
                 object obj = ResourceManager.GetObject("logopdf", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap LogoSaga {
-            get {
-                object obj = ResourceManager.GetObject("LogoSaga", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
