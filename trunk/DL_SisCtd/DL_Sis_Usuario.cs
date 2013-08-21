@@ -84,11 +84,32 @@ namespace DLSisCtd
             oBE_Sis_Usuario.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
             return oBE_Sis_Usuario;
         }
-        public void Grabar(string sIdUsuario, string sIdPerfil)
+        public void Insertar(BE_Sis_Usuario oBE_Sis_Usuario, string sIdusuarioTra)
         {
             sSql = "insert into Sis_Usuario values ";
-            sSql += "('" + sIdUsuario + "','" + sIdUsuario + "','" + sIdPerfil + "', ";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdUsuario + "') ";
+            sSql += "(";
+            sSql += "'" + oBE_Sis_Usuario.IdUsuario + "',";
+            sSql += "'" + oBE_Sis_Usuario.Nombre + "', ";
+            sSql += "'" + oBE_Sis_Usuario.IdPerfil + "', ";
+            sSql += "'" + oBE_Sis_Usuario.Correo + "', ";
+            sSql += "'" + oBE_Sis_Usuario.Contraseña + "', ";
+            sSql += "'" + (oBE_Sis_Usuario.Estado ? "1" : "0") + "',";
+            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdusuarioTra + "') ";
+            ConexionDAO.fExecute(sSql);
+        }
+        public void Modificar(BE_Sis_Usuario oBE_Sis_Usuario)
+        {
+            sSql = "update  Sis_Usuario set ";
+            sSql += "       Nombre='" + oBE_Sis_Usuario.Nombre + "', ";
+            sSql += "       IdPerfil='" + oBE_Sis_Usuario.IdPerfil + "', ";
+            sSql += "       Correo='" + oBE_Sis_Usuario.Correo + "', ";
+            sSql += "       Estado='" + (oBE_Sis_Usuario.Estado ? "1" : "0") + "' ";
+            sSql += "where  IdUsuario='" + oBE_Sis_Usuario.IdUsuario + "' ";
+            ConexionDAO.fExecute(sSql);
+        }
+        public void Eliminar(string sIdUsuario)
+        {
+            sSql = "delete from Sis_Usuario where IdUsuario = '" + sIdUsuario + "'  ";
             ConexionDAO.fExecute(sSql);
         }
         public void Modificar_Contraseña(string sIdusuario, string sContraseña)
@@ -98,11 +119,7 @@ namespace DLSisCtd
             sSql += "where	idusuario = '" + sIdusuario + "' ";
             ConexionDAO.fExecute(sSql);
         }
-        public void Eliminar(string sIdUsuario)
-        {
-            sSql = "delete from Sis_Usuario where IdUsuario = '" + sIdUsuario + "'  ";
-            ConexionDAO.fExecute(sSql);
-        }
+        
 
         #endregion
     }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
+using BESisCtd;
 namespace SisCtd
 {
     public partial class Frm_Sis_Usuarios_Det : Form
@@ -13,48 +14,49 @@ namespace SisCtd
         #region Declaración Variables
         public string sIdusuario = "";
         public Boolean bGrabo = false;
-        int qOpc;
+        Helper.eOpcion qOpcion;
 
         BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
+        BE_Sis_Usuario oBE_Sis_Usuario = new BE_Sis_Usuario();
 
         #endregion
 
         #region Iniciar Formulario
-        public Frm_Sis_Usuarios_Det(int Opc, string _Idusuario)
+        public Frm_Sis_Usuarios_Det(Helper.eOpcion _qOpcion, string _Idusuario)
         {
             InitializeComponent();
-            qOpc = Opc;
+            qOpcion = _qOpcion;
             sIdusuario = _Idusuario;
         }
 
         private void Frm_Sis_Usuarios_Det_Load(object sender, EventArgs e)
         {
             Helper.LLenar_Combobox(oBL_Sis_Usuario.Listar("", "", 2), cboProducto, "des", "id");
-            switch (qOpc)
+            switch (qOpcion)
             {
                 case 3:
                     this.Text = " Nuevo";
-                    cboEst.SelectedIndex = 0;
+                    cboEstado.SelectedIndex = 0;
                     if (sIdproducto != "") cboProducto.SelectedValue = sIdproducto;
 
                     cboCritico.Enabled = true;
-                    cboDigita.Enabled = true;
+                    cboPerfil.Enabled = true;
 
                     break;
                 case 1:
                 case 2:
-                    if (qOpc == 1)
+                    if (qOpcion == 1)
                     {
                         this.Text = " Consulta";
-                        txtDescrip.ReadOnly = true;
-                        BtnGrabar.Visible = false;
+                        txtNombre.ReadOnly = true;
+                        btnGrabar.Visible = false;
                     }
                     else
                     {
                         this.Text = " Modificar";
 
                     }
-                    txtCodigo.ReadOnly = true;
+                    txtIdUsuario.ReadOnly = true;
                     cboProducto.Enabled = false;
                     DataTable Dt = new DataTable();
                     try
@@ -62,13 +64,13 @@ namespace SisCtd
                         Dt = oTipoOperacion.Get_Registro(sIdproducto, sIdTipoOperacion);
                         if (Dt.Rows.Count > 0)
                         {
-                            txtCodigo.Text = sIdTipoOperacion.Trim();
-                            txtDescrip.Text = Dt.Rows[0]["descripcion"].ToString().Trim();
+                            txtIdUsuario.Text = sIdTipoOperacion.Trim();
+                            txtNombre.Text = Dt.Rows[0]["descripcion"].ToString().Trim();
                             cboProducto.SelectedValue = Dt.Rows[0]["idproducto"].ToString().Trim();
                             cboNat.Text = Dt.Rows[0]["naturaleza"].ToString().Trim();
                             cboCritico.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["critico"]) ? 0 : 1;
-                            cboDigita.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["Digitalizable"]) ? 0 : 1;
-                            cboEst.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["estado"]) ? 0 : 1;
+                            cboPerfil.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["Digitalizable"]) ? 0 : 1;
+                            cboEstado.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["estado"]) ? 0 : 1;
                         }
                         Dt.Dispose();
                     }
@@ -79,8 +81,8 @@ namespace SisCtd
         }
         private void Frm_Sis_Usuarios_Det_Activated(object sender, EventArgs e)
         {
-            if (qOpc == 2) { txtDescrip.Focus(); }
-            if (qOpc == 1) { BtnCancelar.Focus(); }
+            if (qOpcion == Helper.eOpcion.Modificar) { txtNombre.Focus(); }
+            if (qOpcion == Helper.eOpcion.Consultar) { btnCancelar.Focus(); }
         }
         private void Frm_Sis_Usuarios_Det_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -94,50 +96,34 @@ namespace SisCtd
         {
             try
             {
-                if (cboProducto.Text.Trim() == "")
+                if (txtIdUsuario.Text.Trim() == "")
                 {
-                    MessageBox.Show("Seleccione un Producto", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    cboProducto.Focus(); return;
+                    MessageBox.Show("Ingrese el Id de Usuario", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtIdUsuario.Focus(); return;
                 }
-                if (txtCodigo.Text.Trim() == "")
+                if (oBL_Sis_Usuario.Existe(txtIdUsuario.Text) == true & qOpcion == Helper.eOpcion.Nuevo)
                 {
-                    MessageBox.Show("Ingrese el Código", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtCodigo.Focus(); return;
-                }
-                if (oTipoOperacion.Existe(cboProducto.SelectedValue.ToString(), txtCodigo.Text) == true & qOpc == 3)
-                {
-                    MessageBox.Show("El Código ya existe. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtCodigo.Focus(); return;
+                    MessageBox.Show("El Id de Usuario ya existe. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtIdUsuario.Focus(); return;
                 }
 
-                if (txtDescrip.Text.Trim() == "")
+                if (txtNombre.Text.Trim() == "")
                 {
-                    MessageBox.Show("Ingrese la Descripción", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtDescrip.Focus(); return;
-                }
-                if (cboNat.Text.Trim() == "")
-                {
-                    MessageBox.Show("Seleccione la Naturaleza de la Operación", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    cboNat.Focus(); return;
+                    MessageBox.Show("Ingrese un Nombre", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtNombre.Focus(); return;
                 }
 
-                if (cboCritico.Text.Trim() == "")
+                if (cboPerfil.Text.Trim() == "")
                 {
-                    MessageBox.Show("Seleccione si la Operación es Crítico", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    cboCritico.Focus(); return;
+                    MessageBox.Show("Seleccione un Perfil", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    cboPerfil.Focus(); return;
                 }
 
-                if (cboDigita.Text.Trim() == "")
-                {
-                    MessageBox.Show("Seleccione si la Operación es Digitalizable", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    cboDigita.Focus(); return;
-                }
-
-                oTipoOperacion.Grabar(qOpc, cboProducto.SelectedValue.ToString(), txtCodigo.Text, txtDescrip.Text,cboNat.Text
-                    , (cboCritico.SelectedIndex == 0), (cboDigita.SelectedIndex == 0), (cboEst.SelectedIndex == 0));
+                oTipoOperacion.Grabar(qOpcion, cboProducto.SelectedValue.ToString(), txtIdUsuario.Text, txtNombre.Text,cboNat.Text
+                    , (cboCritico.SelectedIndex == 0), (cboPerfil.SelectedIndex == 0), (cboEstado.SelectedIndex == 0));
 
                 sIdproducto = cboProducto.SelectedValue.ToString();
-                sIdTipoOperacion = txtCodigo.Text; bGrabo = true; this.Close();
+                sIdTipoOperacion = txtIdUsuario.Text; bGrabo = true; this.Close();
             }
             catch (Exception Er)
             { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }

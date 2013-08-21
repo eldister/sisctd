@@ -82,7 +82,7 @@ namespace SisCtd
         {
             if (Dg1.Rows.Count <= 0)
             {
-                if (bMsg == true) MessageBox.Show("Seleccione un Tipo de Operación", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (bMsg == true) MessageBox.Show("Seleccione un Usuario", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 sIdusuario = ""; return false;
             }
             else
