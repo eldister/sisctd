@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="Usuario.Cls_Datos">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Datos.cs</FileName>
+      <HashCode>AAEAAAABAEQAAAAAAAAAAAAAAAABQAAAIAAAAAEAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_TipoDocumentos">
+    <Position X="2.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_TipoDocumentos.cs</FileName>
+      <HashCode>BAEQABAAAEQAAAAkAAAABAAAAAABQAAAIAAAAAEAAEQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Productos">
+    <Position X="4.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Productos.cs</FileName>
+      <HashCode>QAEQABABAEQAgAAEQAAAQAAAAAAAQAAAIAAIAAEAAEQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_SubProductos">
+    <Position X="6.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_SubProductos.cs</FileName>
+      <HashCode>AAEAAAAAAEAAAAAAAAAAAAAAAAAAQAAAIAAAAAUAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Estados">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Estados.cs</FileName>
+      <HashCode>AAEAAAAAAEQAAAAAAAAAAAAAAAAAQAAAIAAAAAEAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Areas">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Areas.cs</FileName>
+      <HashCode>AAEAAAAAAEQAAAAAAAAAAAAAAAABQAAAIAAAAAEAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Territorios">
+    <Position X="2.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Territorios.cs</FileName>
+      <HashCode>AAEAAAAAAEQAAAAAAgAAAAAAAAAAQAAAIAAAAAEAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Oficinas">
+    <Position X="4.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Oficinas.cs</FileName>
+      <HashCode>AAEAAAIgCEQAAAAAAAAAAAAAAAAAQACEIAAAAAEAAgw=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Recojos">
+    <Position X="6.75" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Recojos.cs</FileName>
+      <NewMemberFileName>Clases\Cls_Transmital.cs</NewMemberFileName>
+      <HashCode>AAEAAAAAAEQAAAAAAAAAAAIAAgAAQAAQIAAAAAEAAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Transmital">
+    <Position X="6.75" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Transmital.cs</FileName>
+      <HashCode>ABEAAQEAAARAAEQAAAIAAAAAgAIgQCAAIACEAgEAgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Files">
+    <Position X="9" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Files.cs</FileName>
+      <HashCode>BAMAQAAEAUQAAAAAAAAAIAAAIAAYQACAIAAEAAEgAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Contratos">
+    <Position X="9" Y="5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Contratos.cs</FileName>
+      <HashCode>AAEQIAAgAEQBAACAAEAAAAEAAQAIQIAAIAAAAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Documentos">
+    <Position X="11.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Documentos.cs</FileName>
+      <HashCode>AAEQABAEAERAAAAAAAAAAAAAIAAAQQAAIAAAAAEAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Usuario.Cls_Pedidos">
+    <Position X="13.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Clases\Cls_Pedidos.cs</FileName>
+      <HashCode>DAEBgCABCBJEAKBAAIABAAAACAgICAAAIAAAABAgRAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

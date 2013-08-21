@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE_SisCtd", "BE_SisCtd\BE_SisCtd.csproj", "{999D0395-80BE-43E2-B8D8-2C96D16AAB80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL_SisCtd", "DL_SisCtd\DL_SisCtd.csproj", "{18F64A40-9FE9-4CBB-B842-07086790DE8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL_SisCtd", "BL_SisCtd\BL_SisCtd.csproj", "{18001EF3-87D8-4CAF-950B-421B7866B066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisCtd", "SisCtd\SisCtd.csproj", "{0936EC57-40AE-441B-85C5-6ECAA2408873}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{999D0395-80BE-43E2-B8D8-2C96D16AAB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{999D0395-80BE-43E2-B8D8-2C96D16AAB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{999D0395-80BE-43E2-B8D8-2C96D16AAB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{999D0395-80BE-43E2-B8D8-2C96D16AAB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F64A40-9FE9-4CBB-B842-07086790DE8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F64A40-9FE9-4CBB-B842-07086790DE8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F64A40-9FE9-4CBB-B842-07086790DE8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F64A40-9FE9-4CBB-B842-07086790DE8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18001EF3-87D8-4CAF-950B-421B7866B066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18001EF3-87D8-4CAF-950B-421B7866B066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18001EF3-87D8-4CAF-950B-421B7866B066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18001EF3-87D8-4CAF-950B-421B7866B066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0936EC57-40AE-441B-85C5-6ECAA2408873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0936EC57-40AE-441B-85C5-6ECAA2408873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0936EC57-40AE-441B-85C5-6ECAA2408873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0936EC57-40AE-441B-85C5-6ECAA2408873}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal
