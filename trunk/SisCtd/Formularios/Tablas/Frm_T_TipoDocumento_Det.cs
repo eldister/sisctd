@@ -22,7 +22,6 @@ namespace SisCtd
         DataTable Dt = new DataTable();
 
         Cls_T_TipoDocumentos oTipoDoc = new Cls_T_TipoDocumentos();
-        Cls_T_Separadoras oSeparadoras = new Cls_T_Separadoras();
 
         private void Frm_Mnt_Docum_Det_Load(object sender, EventArgs e)
         {

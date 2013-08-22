@@ -21,12 +21,11 @@ namespace SisCtd
         public Boolean bGrabo = false;        
         int qOpc;
                 
-        Cls_T_Productos oProductos = new Cls_T_Productos();
         Cls_T_TipoOperacion oTipoOperacion = new Cls_T_TipoOperacion();
 
         private void Frm_T_TipoOperacion_Det_Load(object sender, EventArgs e)
         {
-            Helper.LLenar_Combobox(oProductos.Listar("", "", 2), cboProducto, "des", "id");
+            //Helper.LLenar_Combobox(oProductos.Listar("", "", 2), cboProducto, "des", "id");
             switch (qOpc)
             {
                 case 3:

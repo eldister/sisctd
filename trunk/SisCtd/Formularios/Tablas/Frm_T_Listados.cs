@@ -25,9 +25,7 @@ namespace SisCtd
         Cls_T_Datos oDatos = new Cls_T_Datos();
         Cls_T_Estados oEstados = new Cls_T_Estados();
         Cls_T_Areas oAreas = new Cls_T_Areas();
-        Cls_T_SubProductos oSubprod = new Cls_T_SubProductos();
         Cls_T_Oficinas oOficinas = new Cls_T_Oficinas();
-        Cls_T_Tarjetas oTarjetas = new Cls_T_Tarjetas();
         Cls_T_Ejecutivos oEjecutivos = new Cls_T_Ejecutivos();
 
         private void Frm_T_Listados_Load(object sender, EventArgs e)
@@ -68,12 +66,9 @@ namespace SisCtd
                     case Helper.eTablas.Datos: Dt = oDatos.Listar("D",txtDescrip.Text, cboEstado.SelectedIndex); break;
                     case Helper.eTablas.Estados: Dt = oEstados.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
                     case Helper.eTablas.Areas: Dt = oAreas.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
-                    case Helper.eTablas.SubProductos: Dt = oSubprod.Listar(txtDescrip.Text, cboEstado.SelectedIndex); break;
                     case Helper.eTablas.Oficinas: 
                         Dt = oOficinas.Listar("D",txtDescrip.Text);
                         lblEstado.Visible = false; cboEstado.Visible = false; break;
-                    
-                    case Helper.eTablas.Tarjetas: Dt = oTarjetas.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
                     case Helper.eTablas.Ejecutivos: Dt = oEjecutivos.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
                 }
                 if (nOpc == 0)
@@ -176,16 +171,6 @@ namespace SisCtd
                         if (MessageBox.Show("¿Está seguro que desea de Eliminar el Area : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
                         oAreas.Eliminar(sId);
                         break;
-                    case Helper.eTablas.SubProductos:
-                        string sIdprod = "", sIdsubprod = "";
-                        if (Dg1.Rows.Count > 0)
-                        {
-                            sIdprod = Dg1.Rows[Dg1.CurrentCellAddress.Y].Cells["Producto"].Value.ToString();
-                            sIdsubprod = Dg1.Rows[Dg1.CurrentCellAddress.Y].Cells["SubProducto"].Value.ToString();
-                        }
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar el Sub-Producto : " + sIdsubprod.Trim() + " del Producto : " + sIdprod + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oSubprod.Elminar(sIdprod, sIdsubprod);
-                        break;
                     case Helper.eTablas.Oficinas:
                         string sIdoficina = Get_Id(true);
                         if (oOficinas.Existe_UsuariosWeb(sIdoficina) == true)
@@ -220,15 +205,6 @@ namespace SisCtd
 
                         if (MessageBox.Show("¿Está seguro que desea de Eliminar la Oficina : " + sIdoficina + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
                         oOficinas.Eliminar(sIdoficina);
-                        break;
-
-                    case Helper.eTablas.Tarjetas:
-                        if (oTarjetas.Existe_Operaciones(sId) == true)
-                        {
-                            MessageBox.Show("La Tarjeta ya ha sido asignada a uno o más Operaciones. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                        }
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar la Tarjeta: " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oTarjetas.Eliminar(sId);
                         break;
 
                     case Helper.eTablas.Ejecutivos:

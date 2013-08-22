@@ -11,7 +11,6 @@ namespace SisCtd
 {
     public partial class Frm_Sis_Acceso : Form
     {
-
         #region Declaración Variables
         string sIdPerfil = "";
         string sIdmenu = "";
@@ -181,7 +180,6 @@ namespace SisCtd
             { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
         }
-        
         private void Cancelar()
         {
             this.Close();
@@ -368,21 +366,19 @@ namespace SisCtd
         }
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            //if (Get_IdUasuario(true) == false) return;
-            //Helper.eTablaBus = Helper.eTablas.Clientes;
-            //string sIdcliente = Helper.Buscar();
-            //if (sIdcliente == "") return;
-            //if (oBL_Sis_Usuario.Existe_UsuarioCliente(sIdusuario, sIdcliente))
-            //{
-            //    MessageBox.Show("El Cliente " + sIdcliente + " ya ha sido asignado al Usuario " + sIdusuario + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    dgClientes.Focus(); return;
-            //}
+            if (Get_IdUasuario(true) == false) return;
+            string sIdcliente = Helper.Buscar(oBL_Sis_Cliente.Buscar());
+            if (sIdcliente == "") return;
+            if (oBL_Sis_Cliente.Existe_UsuarioCliente(sIdusuario, sIdcliente))
+            {
+                MessageBox.Show("El Cliente " + sIdcliente + " ya ha sido asignado al Usuario " + sIdusuario + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                dgClientes.Focus(); return;
+            }
 
-            //oAcceso.AgregarUsuarioCliente(sIdusuario, sIdcliente);
-            //Listar_Clientes(Helper.eListar.Grilla);
-            //Helper.Buscar_Grilla(dgClientes, sIdcliente, 0);
+            oBL_Sis_Cliente.AgregarUsuarioCliente(sIdusuario, sIdcliente, Helper.oBE_Sis_Usuario.IdUsuario);
+            Listar_Clientes(Helper.eListar.Grilla);
+            Helper.Buscar_Grilla(dgClientes, sIdcliente, 0);
         }
-
         private void btnQuitarCliente_Click(object sender, EventArgs e)
         {
             if (dgClientes.Rows.Count <= 0)
