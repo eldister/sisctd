@@ -120,7 +120,6 @@ namespace SisCtd
                         oBE_T_Posicion.IdPosicion = txtCodigo.Text.Trim();
                         oBE_T_Posicion.Descripcion = txtDescripcion.Text.Trim();
                         oBE_T_Posicion.Estado = (cboEstado.SelectedIndex == 0);
-                        
                         break;
                 }
 

@@ -33,7 +33,6 @@ namespace SisCtd
             this.KeyPreview = true;
 
             tabPrincipal.Dock = DockStyle.Fill;
-            lblServidor.Text = " Servidor : " + Helper.sDBservidor + "  -  BD : " + Helper.sDBnombre;
             lblVersion.Text = " Versión : 1.0" ;
             lblUsuario.Text = " Usuario : " + BE_Helper.oBE_Sis_Usuario.IdUsuario + " - " + BE_Helper.oBE_Sis_Usuario.Nombre;
 
@@ -90,7 +89,7 @@ namespace SisCtd
             cboCliente.Enabled = false;
             switch (vNode)
             {
-                case "0101": mFormHijo.Text = " Posiciones"; break;
+                case "0101": mFormHijo.Text = " Registro de Posiciones"; break;
 
             }
             foreach (TabPage TB in tabPrincipal.TabPages)

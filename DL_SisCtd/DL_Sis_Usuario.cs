@@ -33,14 +33,13 @@ namespace DLSisCtd
             sSql += "order by a.Nombre ";
             return ConexionDAO.fDatatable(sSql);
         }
-        public DataTable Buscar(string sFiltro, string sValor)
+        public DataTable Buscar()
         {
-            sSql = "select 	idusuario as Id_Usuario,Nombre ";
+            sSql = "select 	idusuario as Codigo,Nombre as Descripcion ";
             sSql += "from 	sis_usuarios ";
-            sSql += "where  descrip like '%DMS%' and ";
-            sSql += (sFiltro == "C" ? "idusuario" : "Nombre") + " like '%" + sValor + "%' ";
-            sSql += "order by " + (sFiltro == "C" ? "idusuario" : "Nombre");
-            return ConexionDAO.fDatatable_Cn(ConexionDAO.sCnSisIron, sSql);
+            sSql += "where  Estado=1 ";
+            sSql += "order by Nombre ";
+            return ConexionDAO.fDatatable(sSql);
         }
 
         #endregion
@@ -55,8 +54,7 @@ namespace DLSisCtd
         }
         public Boolean Existe(string sIdusuario)
         {
-            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from sis_usuario where idusuario ='" + sIdusuario + "' "));
-            return (nCant > 0 ? true : false);
+            return (Get_Usuario(sIdusuario) != null ? true : false);
         }
         public Boolean Existe_Perfil(string sIdperfil)
         {
@@ -94,7 +92,7 @@ namespace DLSisCtd
             sSql += "'" + oBE_Sis_Usuario.Correo + "', ";
             sSql += "'" + oBE_Sis_Usuario.Contraseña + "', ";
             sSql += "'" + (oBE_Sis_Usuario.Estado ? "1" : "0") + "',";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + oBE_Sis_Usuario.UsuarioRegistro + "') ";
+            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
         }
         public void Modificar(BE_Sis_Usuario oBE_Sis_Usuario)

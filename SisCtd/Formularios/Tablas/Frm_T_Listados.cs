@@ -96,7 +96,6 @@ namespace SisCtd
         {
             switch (eTabla)
             {
-                
                 //case Helper.eTablas.Oficinas :
                 //    Frm_T_Oficinas_Det fOfi = new Frm_T_Oficinas_Det(nOpc, Get_Id(false));
                 //    fOfi.ShowDialog();
@@ -107,14 +106,14 @@ namespace SisCtd
                 //    } fOfi.Dispose();
                 //    break;
                 default:
-                    //Frm_T_Detalle fDet = new Frm_T_Detalle(nOpc, eTabla, Get_Id(false));
-                    //fDet.ShowDialog();
-                    //if (fDet.bGrabo == true)
-                    //{
-                    //    Listar(0);
-                    //    Helper.Buscar_Grilla(Dg1, fDet.sIdtabla, 0);
-                    //}
-                    //fDet.Dispose();
+                    Frm_T_Detalle fDet = new Frm_T_Detalle(qOpcion, eTabla, Get_Id(false));
+                    fDet.ShowDialog();
+                    if (fDet.bGrabo == true)
+                    {
+                        Listar(0);
+                        Helper.Buscar_Grilla(Dg1, fDet.sIdtabla, 0);
+                    }
+                    fDet.Dispose();
                     break;
             }
         }

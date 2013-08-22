@@ -21,9 +21,9 @@ namespace BLSisCtd
         {
             return oDL_Sis_Usuario.Listar_Accesos(sIdPerfil, bTodos);
         }
-        public DataTable Buscar(string sFiltro, string sValor)
+        public DataTable Buscar()
         {
-            return oDL_Sis_Usuario.Buscar(sFiltro, sValor);
+            return oDL_Sis_Usuario.Buscar();
         }
 
         #endregion

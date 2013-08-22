@@ -12,7 +12,6 @@ namespace SisCtd
         [STAThread]
         static void Main()
         {
-            Helper.ConfigServidor();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Frm_Sis_Login fAcceso = new Frm_Sis_Login();

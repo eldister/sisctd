@@ -5,17 +5,17 @@ using System.Data;
 using BESisCtd;
 namespace DLSisCtd
 {
-    public class DL_T_Posicion
+    public class DL_T_Gerencia
     {
         string sSql;
 
         #region Listados
         public DataTable Listar(string sDescripcion, string sEstado)
         {
-            sSql = "select 	a.IdPosicion, a.Descripcion, ";
+            sSql = "select 	a.IdGerencia, a.Descripcion, ";
             sSql += "       case when Estado=1 then '' else 'I' end as Estado, ";
             sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
-            sSql += "from 	T_Posicion a ";
+            sSql += "from 	T_Gerencia a ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
             sSql += "       a.Descripcion like '%" + sDescripcion + "%'";
             if (sEstado == "A") sSql += "and Estado=1 ";
@@ -25,10 +25,10 @@ namespace DLSisCtd
         }
         public DataTable Buscar()
         {
-            sSql = "select 	T_Posicion as Codigo, Descripcion ";
-            sSql += "from 	T_Posicion ";
+            sSql = "select 	IdGerencia as Codigo, Descripcion ";
+            sSql += "from 	T_Gerencia ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "where  Estado=1 ";
+            sSql += "       Estado=1 ";
             sSql += "order by Descripcion";
             return ConexionDAO.fDatatable(sSql);
         }
