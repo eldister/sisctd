@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
-
+using BESisCtd;
 namespace SisCtd
 {
     public partial class Frm_Sis_Login : Form
@@ -33,7 +33,7 @@ namespace SisCtd
                 cboCliente.Focus(); return;
             }
 
-            Helper.oBE_Sis_Cliente = oBL_Sis_Cliente.Get_Cliente(cboCliente.Text);
+            BE_Helper.oBE_Sis_Cliente = oBL_Sis_Cliente.Get_Cliente(cboCliente.Text);
             this.DialogResult = DialogResult.OK;
             Hide();
         }
@@ -57,9 +57,9 @@ namespace SisCtd
                 
                 try
                 {
-                    Helper.oBE_Sis_Usuario = oBL_Sis_Usuario.Get_Usuario(TxtUsu.Text.Trim());
+                    BE_Helper.oBE_Sis_Usuario = oBL_Sis_Usuario.Get_Usuario(TxtUsu.Text.Trim());
 
-                    if (Helper.oBE_Sis_Usuario == null)
+                    if (BE_Helper.oBE_Sis_Usuario == null)
                     {
                         MessageBox.Show("El usuario ingresado no existe. Verificar", "Ingreso al Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         TxtUsu.Focus();
@@ -67,16 +67,16 @@ namespace SisCtd
                     }
                     else
                     {
-                        if (!Helper.oBE_Sis_Usuario.Estado)
+                        if (!BE_Helper.oBE_Sis_Usuario.Estado)
                         {
                             MessageBox.Show("Usuario bloqueado, comuníquese con el área de Sistemas por favor.", "Ingreso al Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             TxtUsu.Focus();
                             return;
                         }
-                        string sContraseña = Helper.DecryptText(Helper.oBE_Sis_Usuario.Contraseña).Trim().ToUpper();
+                        string sContraseña = Helper.DecryptText(BE_Helper.oBE_Sis_Usuario.Contraseña).Trim().ToUpper();
                         if (sContraseña == TxtPas.Text.Trim().ToUpper())
                         {
-                            Helper.LLenar_Combobox(oBL_Sis_Cliente.Listar(Helper.oBE_Sis_Usuario.IdPerfil, Helper.oBE_Sis_Usuario.IdUsuario, "A"), cboCliente, 0);
+                            Helper.LLenar_Combobox(oBL_Sis_Cliente.Listar("A"), cboCliente, 0);
                             cboCliente.Focus();
                         }
                         else

@@ -45,6 +45,7 @@
     <Compile Include="BL_Sis_Usuario.cs" />
     <Compile Include="BL_Sis_Sistema.cs" />
     <Compile Include="BL_Sis_Perfil.cs" />
+    <Compile Include="BL_T_Posicion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

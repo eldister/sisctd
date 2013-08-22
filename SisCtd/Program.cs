@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using BESisCtd;
 namespace SisCtd
 {
     static class Program
@@ -19,7 +19,7 @@ namespace SisCtd
             if (fAcceso.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 fAcceso.Close();
-                if (Helper.oBE_Sis_Usuario.IdUsuario.ToUpper() == Helper.DecryptText(Helper.oBE_Sis_Usuario.Contraseña).ToUpper())
+                if (BE_Helper.oBE_Sis_Usuario.IdUsuario.ToUpper() == Helper.DecryptText(BE_Helper.oBE_Sis_Usuario.Contraseña).ToUpper())
                 {
                     Frm_Sis_Contraseña fDet = new Frm_Sis_Contraseña(true);
                     fDet.ShowDialog();

@@ -21,9 +21,6 @@ namespace SisCtd
 {
     public class Helper
     {
-        public static BE_Sis_Cliente oBE_Sis_Cliente = new BE_Sis_Cliente();
-        public static BE_Sis_Usuario oBE_Sis_Usuario = new BE_Sis_Usuario();
-        
         public static string sAcceso;
 
         public static string sDBservidor;
@@ -64,31 +61,19 @@ namespace SisCtd
 
         public enum eTablas
         {
-            Datos = 0,
+            Posiciones = 0,
+
+            Datos = 10,
             Areas = 1,
             TiposDoc = 2,
             TiposDoc_Datos = 3,
             Territorios = 4,
             Oficinas = 5,
             Estados = 6,
-            SubProductos = 7,
-            Productos = 8,
-            Tipo_Transac = 9,
-            Tarjetas = 10,
-            DataNextelOrden = 11,
-            DataNextelSolicitud = 12,
-            TiposDoc_Escaneo = 13,
-            Ubigeo = 14,
-            Recojos = 15,
-            Usuarios = 16,
-            Ejecutivos = 17,
-            TiposDoc_RRHH = 18,
-            Personas = 19,
-            Clientes = 20
+
+            Empleados = 17,
         }
-        public static string sParamBus1;
-        public static string sParamBus2;
-        public static string sParamBus3;
+
         //funciones
 
         public static void Buscar_ListView(ListView LV, string sValor, Boolean bSubItems)

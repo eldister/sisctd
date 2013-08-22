@@ -11,11 +11,11 @@ namespace DLSisCtd
         string sSql;
 
         #region Listados
-        public DataTable Listar(string sIdperfil,string sIdusuario, string sEstado)
+        public DataTable Listar(string sEstado)
         {
             sSql = "select 	a.* ";
             sSql += "from 	Sis_Cliente a ";
-            if (sIdperfil != "00") sSql += " inner join Sis_UsuarioCliente b on a.Idcliente=b.Idcliente and b.Idusuario='" + sIdusuario + "'";
+            if (BE_Helper.oBE_Sis_Usuario.IdPerfil != "00") sSql += " inner join Sis_UsuarioCliente b on a.Idcliente=b.Idcliente and b.Idusuario='" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "'";
             if (sEstado == "A") sSql += "where a.estado=1";
             if (sEstado == "I") sSql += "where a.estado=0";
             sSql += "order by a.descripcion ";
@@ -73,11 +73,11 @@ namespace DLSisCtd
 
             return oBE_Sis_Cliente;
         }
-        public void AgregarUsuarioCliente(string sIdUsuario, string sIdcliente, string sIdusuarioTra)
+        public void AgregarUsuarioCliente(string sIdUsuario, string sIdcliente)
         {
             sSql = "insert into Sis_UsuarioCliente values ";
             sSql += "('" + sIdUsuario + "','" + sIdcliente + "', ";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdusuarioTra + "') ";
+            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
         }
         public void QuitarUsuarioCliente(string sIdUsuario, string sIdCliente)

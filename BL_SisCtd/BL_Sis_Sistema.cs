@@ -21,9 +21,9 @@ namespace BLSisCtd
         {
             return oDL_Sis_Sistema.Listar_Historial(sNomtablas, sIdCliente);
         }
-        public DataTable Listar_Menu(string sIdperfil, string sMenu)
+        public DataTable Listar_Menu(string sIdPerfil, string sMenu)
         {
-            return oDL_Sis_Sistema.Listar_Menu(sIdperfil, sMenu);
+            return oDL_Sis_Sistema.Listar_Menu(sIdPerfil, sMenu);
         }
         #endregion
 
@@ -36,9 +36,9 @@ namespace BLSisCtd
         {
             return oDL_Sis_Sistema.Get_Agrupador(sIdMenu);
         }
-        public string Get_Parametro(string sIdparam, string sIdCliente)
+        public string Get_Parametro(string sIdParametro)
         {
-            return oDL_Sis_Sistema.Get_Parametro(sIdCliente, sIdCliente);
+            return oDL_Sis_Sistema.Get_Parametro(sIdParametro);
         }
         public string Get_Descrip_Ubigeo(string sIdubigeo)
         {
@@ -48,9 +48,10 @@ namespace BLSisCtd
         #endregion
 
         #region Operaciones
-        public void Grabar_Historial(string sIdCliente, string sNomtabla, string sNcampo, string sIdregistro, string sAccion, string sValant, string sValact, string sObse, string sIdusuario)
+        public void Grabar_Historial(string sNomtabla, string sNcampo, string sIdregistro, string sAccion, 
+            string sValant, string sValact, string sObse)
         {
-            oDL_Sis_Sistema.Grabar_Historial(sIdCliente, sNomtabla, sNcampo, sIdregistro, sAccion, sValant, sValact, sObse, sIdusuario);
+            oDL_Sis_Sistema.Grabar_Historial(sNomtabla, sNcampo, sIdregistro, sAccion, sValant, sValact, sObse);
         }
 
         #endregion

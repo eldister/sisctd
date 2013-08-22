@@ -33,9 +33,9 @@ namespace BLSisCtd
         #endregion
 
         #region Operaciones
-        public string Insertar(BE_Sis_Perfil oBE_Sis_Perfil, string sIdUsuarioTra)
+        public string Insertar(BE_Sis_Perfil oBE_Sis_Perfil)
         {
-            return oDL_Sis_Perfil.Insertar(oBE_Sis_Perfil, sIdUsuarioTra);
+            return oDL_Sis_Perfil.Insertar(oBE_Sis_Perfil);
         }
         public void Modificar(BE_Sis_Perfil oBE_Sis_Perfil)
         {

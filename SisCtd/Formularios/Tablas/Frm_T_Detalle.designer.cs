@@ -31,10 +31,10 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGrabar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDescrip = new MigControls.MigTextbox();
+            this.txtDescripcion = new MigControls.MigTextbox();
             this.txtCodigo = new MigControls.MigTextbox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboEst = new MigControls.MigCombobox();
+            this.cboEstado = new MigControls.MigCombobox();
             this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -71,20 +71,21 @@
             this.label7.TabIndex = 723;
             this.label7.Text = "Descripción *";
             // 
-            // txtDescrip
+            // txtDescripcion
             // 
-            this.txtDescrip.BackColor = System.Drawing.Color.White;
-            this.txtDescrip.Car_Años = 4;
-            this.txtDescrip.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtDescrip.ColorSalida = System.Drawing.Color.White;
-            this.txtDescrip.Decimales = 2;
-            this.txtDescrip.Location = new System.Drawing.Point(112, 43);
-            this.txtDescrip.MaxLength = 50;
-            this.txtDescrip.Name = "txtDescrip";
-            this.txtDescrip.PasarEnter = true;
-            this.txtDescrip.Size = new System.Drawing.Size(333, 20);
-            this.txtDescrip.TabIndex = 1;
-            this.txtDescrip.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtDescripcion.BackColor = System.Drawing.Color.White;
+            this.txtDescripcion.Car_Años = 4;
+            this.txtDescripcion.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtDescripcion.ColorSalida = System.Drawing.Color.White;
+            this.txtDescripcion.Decimales = 2;
+            this.txtDescripcion.Guiones = false;
+            this.txtDescripcion.Location = new System.Drawing.Point(112, 43);
+            this.txtDescripcion.MaxLength = 50;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.PasarEnter = true;
+            this.txtDescripcion.Size = new System.Drawing.Size(333, 20);
+            this.txtDescripcion.TabIndex = 1;
+            this.txtDescripcion.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
             // txtCodigo
             // 
@@ -93,6 +94,7 @@
             this.txtCodigo.ColorEntrada = System.Drawing.Color.LemonChiffon;
             this.txtCodigo.ColorSalida = System.Drawing.Color.White;
             this.txtCodigo.Decimales = 2;
+            this.txtCodigo.Guiones = false;
             this.txtCodigo.Location = new System.Drawing.Point(112, 15);
             this.txtCodigo.MaxLength = 10;
             this.txtCodigo.Name = "txtCodigo";
@@ -110,23 +112,23 @@
             this.label1.TabIndex = 708;
             this.label1.Text = "Código *";
             // 
-            // cboEst
+            // cboEstado
             // 
-            this.cboEst.BackColor = System.Drawing.Color.White;
-            this.cboEst.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.cboEst.ColorSalida = System.Drawing.Color.White;
-            this.cboEst.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEst.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboEst.FormattingEnabled = true;
-            this.cboEst.Items.AddRange(new object[] {
+            this.cboEstado.BackColor = System.Drawing.Color.White;
+            this.cboEstado.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.cboEstado.ColorSalida = System.Drawing.Color.White;
+            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstado.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEstado.FormattingEnabled = true;
+            this.cboEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboEst.Location = new System.Drawing.Point(112, 70);
-            this.cboEst.Name = "cboEst";
-            this.cboEst.PasarEnter = true;
-            this.cboEst.Size = new System.Drawing.Size(93, 22);
-            this.cboEst.TabIndex = 2;
-            this.cboEst.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
+            this.cboEstado.Location = new System.Drawing.Point(112, 70);
+            this.cboEstado.Name = "cboEstado";
+            this.cboEstado.PasarEnter = true;
+            this.cboEstado.Size = new System.Drawing.Size(93, 22);
+            this.cboEstado.TabIndex = 2;
+            this.cboEstado.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
             // 
             // label14
             // 
@@ -137,13 +139,13 @@
             this.label14.TabIndex = 734;
             this.label14.Text = "Estado *";
             // 
-            // Frm_Mnt_Detalle
+            // Frm_T_Detalle
             // 
             this.ClientSize = new System.Drawing.Size(452, 147);
-            this.Controls.Add(this.cboEst);
+            this.Controls.Add(this.cboEstado);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDescrip);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnCancelar);
@@ -152,13 +154,13 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Frm_Mnt_Detalle";
+            this.Name = "Frm_T_Detalle";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Detalle";
-            this.Load += new System.EventHandler(this.Frm_T_Detalle_Load);
             this.Activated += new System.EventHandler(this.Frm_T_Detalle_Activated);
+            this.Load += new System.EventHandler(this.Frm_T_Detalle_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_T_Detalle_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,10 +172,10 @@
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGrabar;
         private System.Windows.Forms.Label label7;
-        private MigControls.MigTextbox txtDescrip;
+        private MigControls.MigTextbox txtDescripcion;
         private MigControls.MigTextbox txtCodigo;
         private System.Windows.Forms.Label label1;
-        private MigControls.MigCombobox cboEst;
+        private MigControls.MigCombobox cboEstado;
         private System.Windows.Forms.Label label14;
 
     }

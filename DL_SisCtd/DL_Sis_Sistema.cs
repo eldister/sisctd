@@ -29,10 +29,10 @@ namespace DLSisCtd
             sSql += "order by Idhistoria ";
             return ConexionDAO.fDatatable(sSql);
         }
-        public DataTable Listar_Menu(string sIdperfil, string sMenu)
+        public DataTable Listar_Menu(string sIdPerfil, string sMenu)
         {
 
-            if (sIdperfil == "00")
+            if (BE_Helper.oBE_Sis_Usuario.IdPerfil == "00")
                 sSql = "select *,isnull(IdMenuPadre,'') as sIdMenuPadre from Sis_Menu where Estado=1 order by Orden";
             else
             {
@@ -40,7 +40,7 @@ namespace DLSisCtd
                 {
                     sSql = "select *,isnull(IdMenuPadre,'') as sIdMenuPadre from Sis_Menu where Idmenu not in ";
                     sSql += "(select a.idmenu from 	Sis_MenuPerfil a left join Sis_Menu b on a.Idmenu = b.Idmenu ";
-                    sSql += "where	a.Idperfil = '" + sIdperfil + "' and Agrupador=0 ) and Estado=1  ";
+                    sSql += "where	a.Idperfil = '" + sIdPerfil + "' and Agrupador=0 ) and Estado=1  ";
                     sSql += "order by orden ";
                 }
                 else
@@ -48,7 +48,7 @@ namespace DLSisCtd
                     sSql = "select  b.*,isnull(b.IdMenuPadre,'') as sIdMenuPadre ";
                     sSql += "from   Sis_MenuPerfil a ";
                     sSql += "       left join Sis_Menu b on a.idmenu = b.idmenu ";
-                    sSql += "where	a.IdPerfil = '" + sIdperfil + "' and b.Estado=1 order by orden";
+                    sSql += "where	a.IdPerfil = '" + sIdPerfil + "' and b.Estado=1 order by orden";
                 }
             }
             return ConexionDAO.fDatatable(sSql);
@@ -56,21 +56,21 @@ namespace DLSisCtd
         #endregion
 
         #region Obtener Valores
-        public string Get_Acceso(string sIdperfil, string sIdmenu)
+        public string Get_Acceso(string sIdPerfil, string sIdmenu)
         {
-            if (sIdperfil == "00")
+            if (BE_Helper.oBE_Sis_Usuario.IdPerfil == "00")
                 sSql = "select accesos from sis_menu where idmenu='" + sIdmenu + "' ";
             else
-                sSql = "select accesos from Sis_menuPerfil where idmenu='" + sIdmenu + "' and idperfil='" + sIdperfil + "'";
+                sSql = "select accesos from Sis_menuPerfil where idmenu='" + sIdmenu + "' and idperfil='" + sIdPerfil + "'";
             return Convert.ToString(ConexionDAO.fEscalar(sSql));
         }
         public Boolean Get_Agrupador(string sIdMenu)
         {
             return Convert.ToBoolean(ConexionDAO.fEscalar("select agrupador from Sis_Menu where idMenu='" + sIdMenu + "'"));
         }
-        public string Get_Parametro(string sIdparam,string sIdCliente)
+        public string Get_Parametro(string sIdParametro)
         {
-            return Convert.ToString(ConexionDAO.fEscalar("select Valor from Sis_Parametro where IdCliente = '" + sIdCliente + "' and IdParametro='" + sIdparam + "'"));
+            return Convert.ToString(ConexionDAO.fEscalar("select Valor from Sis_Parametro where IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdParametro='" + sIdParametro + "'"));
         }
         public string Get_Descrip_Ubigeo(string sIdubigeo)
         {
@@ -81,11 +81,11 @@ namespace DLSisCtd
         #endregion
 
         #region Operaciones
-        public void Grabar_Historial(string sIdCliente, string sNomtabla, string sNcampo, string sIdregistro, string sAccion, string sValant, string sValact, string sObse, string sIdusuario)
+        public void Grabar_Historial(string sNomtabla, string sNcampo, string sIdregistro, string sAccion, string sValant, string sValact, string sObse)
         {
             sSql = "insert into Sis_Historial values( ";
-            sSql += "'" + sIdCliente + "','" + sNomtabla + "','" + sNcampo + "','" + sIdregistro + "','" + sAccion + "','" + sValant + "','" + sValact + "','" + sObse + "', ";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdusuario + "')";
+            sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "','" + sNomtabla + "','" + sNcampo + "','" + sIdregistro + "','" + sAccion + "','" + sValant + "','" + sValact + "','" + sObse + "', ";
+            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "')";
             ConexionDAO.fExecute(sSql);
         }
 

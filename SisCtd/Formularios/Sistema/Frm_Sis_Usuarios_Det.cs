@@ -120,7 +120,7 @@ namespace SisCtd
                 oBE_Sis_Usuario.Contraseña = Helper.EncryptText(txtIdUsuario.Text.Trim()).Trim();
                 oBE_Sis_Usuario.Estado = (cboEstado.SelectedIndex == 0);
 
-                if (qOpcion == Helper.eOpcion.Nuevo) oBL_Sis_Usuario.Insertar(oBE_Sis_Usuario, Helper.oBE_Sis_Usuario.IdUsuario);
+                if (qOpcion == Helper.eOpcion.Nuevo) oBL_Sis_Usuario.Insertar(oBE_Sis_Usuario);
                 if (qOpcion == Helper.eOpcion.Modificar) oBL_Sis_Usuario.Modificar(oBE_Sis_Usuario);
                     
                 sIdusuario = oBE_Sis_Usuario.IdUsuario; 
