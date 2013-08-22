@@ -5,12 +5,22 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using BLSisCtd;
+using BESisCtd;
+
 namespace SisCtd
 {
     public partial class Frm_T_Listados : Form
     {
+        #region Declaración Variables
+        Helper.eTablas eTabla;
+        BL_T_Posicion oBL_T_Posicion = new BL_T_Posicion();
+        BE_T_Posicion oBE_T_Posicion = new BE_T_Posicion();
 
-        public Frm_T_Listados(Helper.eTablas Tabla)
+        #endregion
+
+        #region Iniciar Formulario
+        public Frm_T_Listados(Helper.eTablas _eTabla)
         {
             InitializeComponent();
             bNuevo.Enabled = Helper.sAcceso.Substring(0, 1) == "1" ? true : false;
@@ -18,16 +28,8 @@ namespace SisCtd
             bEliminar.Enabled = Helper.sAcceso.Substring(2, 1) == "1" ? true : false;
             bExportar.Enabled = Helper.sAcceso.Substring(4, 1) == "1" ? true : false;
             Helper.FormatoGrilla(Dg1);
-            eTabla = Tabla;
+            eTabla = _eTabla;
         }
-        Helper.eTablas eTabla;
-        //Cls_T_Territorios oTerritorios = new Cls_T_Territorios();
-        //Cls_T_Datos oDatos = new Cls_T_Datos();
-        //Cls_T_Estados oEstados = new Cls_T_Estados();
-        //Cls_T_Areas oAreas = new Cls_T_Areas();
-        //Cls_T_Oficinas oOficinas = new Cls_T_Oficinas();
-        //Cls_T_Ejecutivos oEjecutivos = new Cls_T_Ejecutivos();
-
         private void Frm_T_Listados_Load(object sender, EventArgs e)
         {
             cboEstado.SelectedIndex = 0;
@@ -44,46 +46,32 @@ namespace SisCtd
                 case Keys.F7: bExportar.PerformClick(); break;
             }
         }
-
         private void Frm_T_Listados_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 27) oCancelar();
         }
 
-        private void oCancelar()
-        {
-            Helper.Cerrar_Ventana(this, (TabControl)this.Parent.Parent);
-        }
-        private void Listar(int nOpc)
+        #endregion
+
+        #region Metodos
+        private void Listar(Helper.eListar eListar)
         {
             DataTable Dt = new DataTable();
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                //switch (eTabla)
-                //{
-                //    case Helper.eTablas.Territorios: Dt = oTerritorios.Listar(txtDescrip.Text, cboEstado.SelectedIndex); break;
-                //    case Helper.eTablas.Datos: Dt = oDatos.Listar("D",txtDescrip.Text, cboEstado.SelectedIndex); break;
-                //    case Helper.eTablas.Estados: Dt = oEstados.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
-                //    case Helper.eTablas.Areas: Dt = oAreas.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
-                //    case Helper.eTablas.Oficinas: 
-                //        Dt = oOficinas.Listar("D",txtDescrip.Text);
-                //        lblEstado.Visible = false; cboEstado.Visible = false; break;
-                //    case Helper.eTablas.Ejecutivos: Dt = oEjecutivos.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
-                //}
-                if (nOpc == 0)
+                switch (eTabla)
+                {
+                    case Helper.eTablas.Posiciones: Dt = oBL_T_Posicion.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0,1)); break;
+                    
+                    //case Helper.eTablas.Oficinas:
+                    //    Dt = oOficinas.Listar("D", txtDescrip.Text);
+                    //    lblEstado.Visible = false; cboEstado.Visible = false; break;
+                }
+                if (eListar == Helper.eListar.Grilla)
                 {
                     Dg1.DataSource = Dt; Helper.FormatoGrilla(Dg1);
-                    Dg1.Columns["des"].Visible = false;
                     LblMensaje.Text = " Registros Encontrados : " + Dg1.Rows.Count.ToString();
-                    switch (eTabla)
-                    {
-                        case Helper.eTablas.SubProductos: Dg1.Columns["id"].Visible = false; break;
-                        case Helper.eTablas.Oficinas :
-                            Dg1.Columns["idubigeo"].Visible = false;
-                            Dg1.Columns["Ubicación Geográfica"].Visible = false;
-                            Dg1.Columns["Dirección"].Visible = false; break;
-                    }
                 }
                 else
                 {
@@ -95,38 +83,57 @@ namespace SisCtd
             { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
         }
-       
-        private void Dg1_KeyPress(object sender, KeyPressEventArgs e)
+        private string Get_Id(bool bMsg)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            if (Dg1.Rows.Count <= 0)
             {
-                if (Get_Id(true) == "") return;
-                Abrir_Det(1);
+                if (bMsg == true) MessageBox.Show("Seleccione un Registro", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return "";
+            }
+            else { return Dg1.Rows[Dg1.CurrentCellAddress.Y].Cells[0].Value.ToString().Trim(); }
+        }
+        private void Abrir_Detalle(Helper.eOpcion qOpcion)
+        {
+            switch (eTabla)
+            {
+                
+                //case Helper.eTablas.Oficinas :
+                //    Frm_T_Oficinas_Det fOfi = new Frm_T_Oficinas_Det(nOpc, Get_Id(false));
+                //    fOfi.ShowDialog();
+                //    if (fOfi.bGrabo == true)
+                //    {
+                //        Listar(0);
+                //        Helper.Buscar_Grilla(Dg1, fOfi.sIdOficina, 0);
+                //    } fOfi.Dispose();
+                //    break;
+                default:
+                    //Frm_T_Detalle fDet = new Frm_T_Detalle(nOpc, eTabla, Get_Id(false));
+                    //fDet.ShowDialog();
+                    //if (fDet.bGrabo == true)
+                    //{
+                    //    Listar(0);
+                    //    Helper.Buscar_Grilla(Dg1, fDet.sIdtabla, 0);
+                    //}
+                    //fDet.Dispose();
+                    break;
             }
         }
-
-        private void txtIdterri_TextChanged(object sender, EventArgs e)
+        
+        private void oCancelar()
         {
-            Helper.Buscar_Grilla(Dg1, txtCodigo.Text, 0);
+            Helper.Cerrar_Ventana(this, (TabControl)this.Parent.Parent);
         }
 
-        private void txtDescrip_TextChanged(object sender, EventArgs e)
-        {
-            Listar(0);
-        }
+        #endregion
 
-        private void Dg1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (Get_Id(true) == "") return; Abrir_Det(1);
-        }
-
+        #region Eventos Menu
         private void bNuevo_Click(object sender, EventArgs e)
         {
-            Abrir_Det(3);
+            Abrir_Detalle(Helper.eOpcion.Nuevo);
         }
         private void bModificar_Click(object sender, EventArgs e)
         {
-            if (Get_Id(true) == "") return; Abrir_Det(2);
+            if (Get_Id(true) == "") return; Abrir_Detalle(Helper.eOpcion.Modificar);
         }
         private void bEliminar_Click(object sender, EventArgs e)
         {
@@ -223,53 +230,39 @@ namespace SisCtd
         }
         private void bExportar_Click(object sender, EventArgs e)
         {
-            Listar(1);
+            Listar(Helper.eListar.Excel);
         }
         private void bCerrar_Click(object sender, EventArgs e)
         {
             oCancelar();
         }
 
-        private void Abrir_Det(int nOpc)
+        #endregion
+
+        #region Eventos Objetos
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
         {
-            switch (eTabla)
+            Helper.Buscar_Grilla(Dg1, txtCodigo.Text, 0);
+        }
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            Listar(0);
+        }
+
+        private void Dg1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Get_Id(true) == "") return; Abrir_Detalle(Helper.eOpcion.Consultar);
+        }
+        private void Dg1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                
-                case Helper.eTablas.Oficinas :
-                    Frm_T_Oficinas_Det fOfi = new Frm_T_Oficinas_Det(nOpc, Get_Id(false));
-                    fOfi.ShowDialog();
-                    if (fOfi.bGrabo == true)
-                    {
-                        Listar(0);
-                        Helper.Buscar_Grilla(Dg1, fOfi.sIdOficina, 0);
-                    } fOfi.Dispose();
-                    break;
-                default:
-                    Frm_T_Detalle fDet = new Frm_T_Detalle(nOpc, eTabla, Get_Id(false));
-                    fDet.ShowDialog();
-                    if (fDet.bGrabo == true)
-                    {
-                        Listar(0);
-                        Helper.Buscar_Grilla(Dg1, fDet.sIdtabla, 0);
-                    }
-                    fDet.Dispose();
-                    break;
+                if (Get_Id(true) == "") return;
+                Abrir_Detalle(Helper.eOpcion.Consultar);
             }
         }
 
-
-        private string Get_Id(bool bMsg)
-        {
-            if (Dg1.Rows.Count <= 0)
-            {
-                if (bMsg == true) MessageBox.Show("Seleccione un Registro", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return "";
-            }
-            else { return Dg1.Rows[Dg1.CurrentCellAddress.Y].Cells["id"].Value.ToString().Trim(); }
-        }
-
-
-
+        #endregion
 
     }
 }

@@ -5,82 +5,67 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using BLSisCtd;
+using BESisCtd;
+
 namespace SisCtd
 {
     public partial class Frm_T_Detalle : Form
     {
-        public Frm_T_Detalle(int Opc, Helper.eTablas Tabla, string Idtabla)
+        #region Declaración Variables
+        public string sIdtabla;
+        Helper.eTablas eTabla;
+        public Boolean bGrabo = false;
+        Helper.eOpcion qOpcion;
+        
+        BL_T_Posicion oBL_T_Posicion = new BL_T_Posicion();
+        BE_T_Posicion oBE_T_Posicion = new BE_T_Posicion();
+
+        #endregion
+
+        #region Iniciar Formulario
+        public Frm_T_Detalle(Helper.eOpcion _qOpcion, Helper.eTablas _eTabla, string Idtabla)
         {
             InitializeComponent();
-            qOpc = Opc;
-            eTabla = Tabla;
+            qOpcion = _qOpcion;
+            eTabla = _eTabla;
             sIdtabla = Idtabla;
         }
 
-        public string sIdtabla = "";
-        Helper.eTablas eTabla;
-        public Boolean bGrabo = false;
-        int qOpc;
-
-        //Cls_T_Territorios oTerritorios = new Cls_T_Territorios();
-        //Cls_T_Datos oDatos = new Cls_T_Datos();
-        //Cls_T_Estados oEstados = new Cls_T_Estados();
-        //Cls_T_Areas oAreas = new Cls_T_Areas();
-        //Cls_T_Ejecutivos oEjecutivos = new Cls_T_Ejecutivos();
-
         private void Frm_T_Detalle_Load(object sender, EventArgs e)
         {
-            DataTable Dt = new DataTable();
             try
             {
-
-                if (eTabla == Helper.eTablas.Ejecutivos)
+                switch (qOpcion)
                 {
-                    label7.Text = "Nombre *";
-                    txtDescrip.MaxLength = 60;
-                }
-
-                switch (qOpc)
-                {
-                    case 3:
+                    case Helper.eOpcion.Nuevo:
                         this.Text = " Nuevo";
-                        cboEst.SelectedIndex = 0;
+                        cboEstado.SelectedIndex = 0;
                         break;
-                    case 1:
-                    case 2:
+                    case Helper.eOpcion.Modificar:
+                    case Helper.eOpcion.Consultar:
                         txtCodigo.ReadOnly = true;
-                        if (qOpc == 1)
+                        if (qOpcion == Helper.eOpcion.Consultar)
                         {
                             this.Text = " Consultar";
-                            txtDescrip.ReadOnly = true;
+                            txtDescripcion.ReadOnly = true;
                             BtnGrabar.Visible = false;
                         }
                         else
                         {
                             this.Text = " Modificar";
                         }
-                        //switch (eTabla)
-                        //{
-                        //    case Helper.eTablas.Territorios: Dt = oTerritorios.Get_Registro(sIdtabla); break;
-                        //    case Helper.eTablas.Datos: Dt = oDatos.Get_Registro(sIdtabla); break;
-                        //    case Helper.eTablas.Estados: Dt = oEstados.Get_Registro(sIdtabla); break;
-                        //    case Helper.eTablas.Areas: Dt = oAreas.Get_Registro(sIdtabla); break;
-                        //    case Helper.eTablas.Ejecutivos: Dt = oEjecutivos.Get_Registro(sIdtabla); break;
-                        //}
-                        if (Dt.Rows.Count > 0)
+                        txtCodigo.Text = sIdtabla.Trim();
+                        switch (eTabla)
                         {
-                            txtCodigo.Text = sIdtabla.Trim();
-                            switch (eTabla)
-                            { 
-                                case Helper.eTablas.Ejecutivos:
-                                    txtDescrip.Text = Dt.Rows[0]["nombre"].ToString().Trim();
-                                    break;
-                                default:
-                                    txtDescrip.Text = Dt.Rows[0]["descripcion"].ToString().Trim(); break;
-                            }
-                            cboEst.SelectedIndex = (Boolean)Dt.Rows[0]["estado"] == true ? 0 : 1;
+                            case Helper.eTablas.Posiciones: oBE_T_Posicion = oBL_T_Posicion.Get_Posicion(sIdtabla);
+                                if (oBE_T_Posicion != null)
+                                {
+                                    txtDescripcion.Text = oBE_T_Posicion.Descripcion;
+                                    cboEstado.SelectedIndex = oBE_T_Posicion.Estado ? 0 : 1;
+                                }
+                                break;
                         }
-                        Dt.Dispose();
                         break;
                 }
             }
@@ -93,10 +78,13 @@ namespace SisCtd
         }
         private void Frm_T_Detalle_Activated(object sender, EventArgs e)
         {
-            if (qOpc == 2) { txtDescrip.Focus(); }
-            if (qOpc == 1) { BtnCancelar.Focus(); }
+            if (qOpcion == Helper.eOpcion.Modificar) { txtDescripcion.Focus(); }
+            if (qOpcion == Helper.eOpcion.Consultar) { BtnCancelar.Focus(); }
         }
 
+        #endregion
+
+        #region Eventos Objetos
         private void BtnGrabar_Click(object sender, EventArgs e)
         {
             try
@@ -107,16 +95,12 @@ namespace SisCtd
                     txtCodigo.Focus(); return;
                 }
                 Boolean bExiste = false;
-                if (qOpc == 3)
+                if (qOpcion == Helper.eOpcion.Nuevo)
                 {
-                    //switch (eTabla)
-                    //{
-                    //    case Helper.eTablas.Territorios: bExiste = oTerritorios.Existe(txtCodigo.Text); break;
-                    //    case Helper.eTablas.Datos: bExiste = oDatos.Existe(txtCodigo.Text); break;
-                    //    case Helper.eTablas.Estados: bExiste = oEstados.Existe(txtCodigo.Text); break;
-                    //    case Helper.eTablas.Areas: bExiste = oAreas.Existe(txtCodigo.Text); break;
-                    //    case Helper.eTablas.Ejecutivos: bExiste = oEjecutivos.Existe(txtCodigo.Text); break;
-                    //}
+                    switch (eTabla)
+                    {
+                        case Helper.eTablas.Posiciones: bExiste = oBL_T_Posicion.Existe(txtCodigo.Text); break;
+                    }
                     if (bExiste)
                     {
                         MessageBox.Show("El Código ya existe para esta Tabla. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -124,21 +108,36 @@ namespace SisCtd
                     }
                 }
 
-                if (txtDescrip.Text.Trim() == "")
+                if (txtDescripcion.Text.Trim() == "")
                 {
                     MessageBox.Show("Ingrese el Nombre o Descripción", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtDescrip.Focus(); return;
+                    txtDescripcion.Focus(); return;
                 }
 
-                //switch (eTabla)
-                //{
-                //    case Helper.eTablas.Territorios: oTerritorios.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                //    case Helper.eTablas.Datos: oDatos.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                //    case Helper.eTablas.Estados: oEstados.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                //    case Helper.eTablas.Areas: oAreas.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                //    case Helper.eTablas.Ejecutivos: oEjecutivos.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                //}
+                switch (eTabla)
+                {
+                    case Helper.eTablas.Posiciones:
+                        oBE_T_Posicion.IdPosicion = txtCodigo.Text.Trim();
+                        oBE_T_Posicion.Descripcion = txtDescripcion.Text.Trim();
+                        oBE_T_Posicion.Estado = (cboEstado.SelectedIndex == 0);
+                        
+                        break;
+                }
 
+                if (qOpcion == Helper.eOpcion.Nuevo)
+                {
+                    switch (eTabla)
+                    {
+                        case Helper.eTablas.Posiciones: oBL_T_Posicion.Insertar(oBE_T_Posicion); break;
+                    }
+                }
+                if (qOpcion == Helper.eOpcion.Modificar)
+                {
+                    switch (eTabla)
+                    {
+                        case Helper.eTablas.Posiciones: oBL_T_Posicion.Modificar(oBE_T_Posicion); break;
+                    }
+                }
                 sIdtabla = txtCodigo.Text; bGrabo = true; this.Close();
 
             }
@@ -149,5 +148,7 @@ namespace SisCtd
         {
             this.Close();
         }
+
+        #endregion
     }
 }

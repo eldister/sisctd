@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
+using BESisCtd;
 namespace SisCtd
 {
     public partial class Frm_Sis_Principal : Form
@@ -34,10 +35,10 @@ namespace SisCtd
             tabPrincipal.Dock = DockStyle.Fill;
             lblServidor.Text = " Servidor : " + Helper.sDBservidor + "  -  BD : " + Helper.sDBnombre;
             lblVersion.Text = " Versión : 1.0" ;
-            lblUsuario.Text = " Usuario : " + Helper.oBE_Sis_Usuario.IdUsuario + " - " + Helper.oBE_Sis_Usuario.Nombre;
+            lblUsuario.Text = " Usuario : " + BE_Helper.oBE_Sis_Usuario.IdUsuario + " - " + BE_Helper.oBE_Sis_Usuario.Nombre;
 
             DataTable Dt = new DataTable();
-            Dt = oBL_Sis_Cliente.Listar(Helper.oBE_Sis_Usuario.IdPerfil, Helper.oBE_Sis_Usuario.IdUsuario, "A");
+            Dt = oBL_Sis_Cliente.Listar("A");
 
             System.Object[] ItemObject = new System.Object[Dt.Rows.Count];
             for (int i = 0; i <= Dt.Rows.Count - 1; i++)
@@ -46,7 +47,7 @@ namespace SisCtd
             }
             cboCliente.Items.AddRange(ItemObject);
             
-            cboCliente.Text = Helper.oBE_Sis_Cliente.IdCliente;
+            cboCliente.Text = BE_Helper.oBE_Sis_Cliente.IdCliente;
             Dt.Dispose();
 
             CambiarLogo();
@@ -66,7 +67,7 @@ namespace SisCtd
             try
             {
                 TreOpc.Nodes.Clear();
-                Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
+                Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(BE_Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -78,7 +79,7 @@ namespace SisCtd
 
         private void CambiarLogo()
         {
-            switch (Helper.oBE_Sis_Cliente.IdCliente)
+            switch (BE_Helper.oBE_Sis_Cliente.IdCliente)
             {
                 case "DEMO": picLogo.Image = SisCtd.Properties.Resources.logo_vsistems; break;
             }
@@ -89,22 +90,8 @@ namespace SisCtd
             cboCliente.Enabled = false;
             switch (vNode)
             {
+                case "0101": mFormHijo.Text = " Posiciones"; break;
 
-                //case "0101": mFormHijo.Text = " Registro de Datos"; break;
-                //case "0104": mFormHijo.Text = " Registro de Sub-Productos"; break;
-                //case "0105": mFormHijo.Text = " Registro de Territorios"; break;
-                //case "0106": mFormHijo.Text = " Registro de Oficinas"; break;
-                //case "0107": mFormHijo.Text = " Registro de Estados"; break;
-                //case "0108": mFormHijo.Text = " Registro de Areas"; break;
-                //case "0110": mFormHijo.Text = " Registro de Tarjetas"; break;
-                //case "0111": mFormHijo.Text = " Registro de Ejecutivos"; break;
-
-                ////Registro
-                case "0203": mFormHijo.Text = " Registro de Documentos Nuevos"; break;
-                case "0206": mFormHijo.Text = " Registro de Documentos Index"; break;
-
-                case "0215": mFormHijo.Text = " Registro de Index"; break;
-                
             }
             foreach (TabPage TB in tabPrincipal.TabPages)
             {
@@ -144,7 +131,7 @@ namespace SisCtd
             Helper.ComboCliente = cboCliente;
             switch (vNode)
             {
-                //case "0101": mFormHijo = new Frm_T_Listados(Helper.eTablas.Datos); Abrir(); break;
+                case "0101": mFormHijo = new Frm_T_Listados(Helper.eTablas.Posiciones); Abrir(); break;
                 //case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.SubProductos); Abrir(); break;
                 //case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Territorios); Abrir(); break;
                 //case "0106": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
@@ -247,9 +234,9 @@ namespace SisCtd
         }
         private void cboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Helper.oBE_Sis_Cliente = oBL_Sis_Cliente.Get_Cliente(cboCliente.Text);
+            BE_Helper.oBE_Sis_Cliente = oBL_Sis_Cliente.Get_Cliente(cboCliente.Text);
             TreOpc.Nodes.Clear();
-            Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
+            Helper.Cargar_menu(oBL_Sis_Sistema.Listar_Menu(BE_Helper.oBE_Sis_Usuario.IdPerfil, ""), "", null, TreOpc, true);
             CambiarLogo();
             SendKeys.Send("{F5}");
         }
@@ -259,7 +246,7 @@ namespace SisCtd
         private void TreOpc_AfterSelect(object sender, TreeViewEventArgs e)
         {
             vNode = e.Node.Name.Trim();
-            Helper.sAcceso = oBL_Sis_Sistema.Get_Acceso(Helper.oBE_Sis_Usuario.IdPerfil, vNode);
+            Helper.sAcceso = oBL_Sis_Sistema.Get_Acceso(BE_Helper.oBE_Sis_Usuario.IdPerfil, vNode);
         }
         private void TreOpc_DoubleClick(object sender, EventArgs e)
         {

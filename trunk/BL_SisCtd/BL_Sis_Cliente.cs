@@ -12,9 +12,9 @@ namespace BLSisCtd
     {
         DL_Sis_Cliente oDL_Sis_Cliente = new DL_Sis_Cliente();
         #region Listados
-        public DataTable Listar(string sIdperfil, string sIdusuario, string sEstado)
+        public DataTable Listar(string sEstado)
         {
-            return oDL_Sis_Cliente.Listar(sIdperfil, sIdusuario, sEstado);
+            return oDL_Sis_Cliente.Listar(sEstado);
         }
         public DataTable Listar_UsuarioCliente(string sIdusuario)
         {
@@ -44,9 +44,9 @@ namespace BLSisCtd
         #endregion
 
         #region Operaciones
-        public void AgregarUsuarioCliente(string sIdUsuario, string sIdcliente, string sIdusuarioTra)
+        public void AgregarUsuarioCliente(string sIdUsuario, string sIdcliente)
         {
-            oDL_Sis_Cliente.AgregarUsuarioCliente(sIdUsuario, sIdcliente, sIdusuarioTra);
+            oDL_Sis_Cliente.AgregarUsuarioCliente(sIdUsuario, sIdcliente);
         }
         public void QuitarUsuarioCliente(string sIdUsuario, string sIdCliente)
         {

@@ -84,7 +84,7 @@ namespace DLSisCtd
             oBE_Sis_Usuario.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
             return oBE_Sis_Usuario;
         }
-        public void Insertar(BE_Sis_Usuario oBE_Sis_Usuario, string sIdusuarioTra)
+        public void Insertar(BE_Sis_Usuario oBE_Sis_Usuario)
         {
             sSql = "insert into Sis_Usuario values ";
             sSql += "(";
@@ -94,7 +94,7 @@ namespace DLSisCtd
             sSql += "'" + oBE_Sis_Usuario.Correo + "', ";
             sSql += "'" + oBE_Sis_Usuario.Contraseña + "', ";
             sSql += "'" + (oBE_Sis_Usuario.Estado ? "1" : "0") + "',";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdusuarioTra + "') ";
+            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + oBE_Sis_Usuario.UsuarioRegistro + "') ";
             ConexionDAO.fExecute(sSql);
         }
         public void Modificar(BE_Sis_Usuario oBE_Sis_Usuario)
@@ -112,12 +112,13 @@ namespace DLSisCtd
             sSql = "delete from Sis_Usuario where IdUsuario = '" + sIdUsuario + "'  ";
             ConexionDAO.fExecute(sSql);
         }
-        public void Modificar_Contraseña(string sIdusuario, string sContraseña)
+        public void Modificar_Contraseña(string sContraseña)
         {
             sSql = "update	Sis_Usuario ";
             sSql += "set	Contraseña ='" + sContraseña + "' ";
-            sSql += "where	idusuario = '" + sIdusuario + "' ";
+            sSql += "where	idusuario = '" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "' ";
             ConexionDAO.fExecute(sSql);
+            BE_Helper.oBE_Sis_Usuario.Contraseña = sContraseña;
         }
         
 

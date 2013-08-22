@@ -375,7 +375,7 @@ namespace SisCtd
                 dgClientes.Focus(); return;
             }
 
-            oBL_Sis_Cliente.AgregarUsuarioCliente(sIdusuario, sIdcliente, Helper.oBE_Sis_Usuario.IdUsuario);
+            oBL_Sis_Cliente.AgregarUsuarioCliente(sIdusuario, sIdcliente);
             Listar_Clientes(Helper.eListar.Grilla);
             Helper.Buscar_Grilla(dgClientes, sIdcliente, 0);
         }

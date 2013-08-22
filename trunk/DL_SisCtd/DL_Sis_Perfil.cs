@@ -58,12 +58,12 @@ namespace DLSisCtd
             oBE_Sis_Perfil.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
             return oBE_Sis_Perfil;
         }
-        public string Insertar(BE_Sis_Perfil oBE_Sis_Perfil, string sIdUsuarioTra)
+        public string Insertar(BE_Sis_Perfil oBE_Sis_Perfil)
         {
             sSql = "select right('00'+convert(varchar(2),max(convert(int,idperfil))+1),2) from sis_perfil ";
             string sIdperfil = Convert.ToString(ConexionDAO.fEscalar(sSql));
             sSql = "insert into sis_perfil ";
-            sSql += "values('" + sIdperfil + "','" + oBE_Sis_Perfil.Descripcion + "',convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + sIdUsuarioTra + "') ";
+            sSql += "values('" + sIdperfil + "','" + oBE_Sis_Perfil.Descripcion + "',convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
             return sIdperfil;
         }

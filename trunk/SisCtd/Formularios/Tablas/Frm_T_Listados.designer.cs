@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
-            this.txtDescrip = new MigControls.MigTextbox();
+            this.txtDescripcion = new MigControls.MigTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigo = new MigControls.MigTextbox();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             // 
             this.panel1.Controls.Add(this.lblEstado);
             this.panel1.Controls.Add(this.cboEstado);
-            this.panel1.Controls.Add(this.txtDescrip);
+            this.panel1.Controls.Add(this.txtDescripcion);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtCodigo);
             this.panel1.Controls.Add(this.label10);
@@ -94,23 +94,24 @@
             this.cboEstado.Size = new System.Drawing.Size(92, 22);
             this.cboEstado.TabIndex = 2;
             this.cboEstado.Tipo = MigControls.MigCombobox.TipoVal.Numerico;
-            this.cboEstado.SelectedIndexChanged += new System.EventHandler(this.txtDescrip_TextChanged);
+            this.cboEstado.SelectedIndexChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
-            // txtDescrip
+            // txtDescripcion
             // 
-            this.txtDescrip.BackColor = System.Drawing.Color.White;
-            this.txtDescrip.Car_Años = 4;
-            this.txtDescrip.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtDescrip.ColorSalida = System.Drawing.Color.White;
-            this.txtDescrip.Decimales = 2;
-            this.txtDescrip.Location = new System.Drawing.Point(261, 6);
-            this.txtDescrip.MaxLength = 50;
-            this.txtDescrip.Name = "txtDescrip";
-            this.txtDescrip.PasarEnter = true;
-            this.txtDescrip.Size = new System.Drawing.Size(272, 20);
-            this.txtDescrip.TabIndex = 1;
-            this.txtDescrip.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
-            this.txtDescrip.TextChanged += new System.EventHandler(this.txtDescrip_TextChanged);
+            this.txtDescripcion.BackColor = System.Drawing.Color.White;
+            this.txtDescripcion.Car_Años = 4;
+            this.txtDescripcion.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtDescripcion.ColorSalida = System.Drawing.Color.White;
+            this.txtDescripcion.Decimales = 2;
+            this.txtDescripcion.Guiones = false;
+            this.txtDescripcion.Location = new System.Drawing.Point(261, 6);
+            this.txtDescripcion.MaxLength = 50;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.PasarEnter = true;
+            this.txtDescripcion.Size = new System.Drawing.Size(272, 20);
+            this.txtDescripcion.TabIndex = 1;
+            this.txtDescripcion.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // label2
             // 
@@ -128,6 +129,7 @@
             this.txtCodigo.ColorEntrada = System.Drawing.Color.LemonChiffon;
             this.txtCodigo.ColorSalida = System.Drawing.Color.White;
             this.txtCodigo.Decimales = 2;
+            this.txtCodigo.Guiones = false;
             this.txtCodigo.Location = new System.Drawing.Point(63, 6);
             this.txtCodigo.MaxLength = 10;
             this.txtCodigo.Name = "txtCodigo";
@@ -136,7 +138,7 @@
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCodigo.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
-            this.txtCodigo.TextChanged += new System.EventHandler(this.txtIdterri_TextChanged);
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
             // label10
             // 
@@ -169,7 +171,7 @@
             this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
             this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bNuevo.Name = "bNuevo";
-            this.bNuevo.Size = new System.Drawing.Size(58, 20);
+            this.bNuevo.Size = new System.Drawing.Size(62, 20);
             this.bNuevo.Text = "&Nuevo";
             this.bNuevo.ToolTipText = "Nuevo (F3)";
             this.bNuevo.Click += new System.EventHandler(this.bNuevo_Click);
@@ -179,7 +181,7 @@
             this.bModificar.Image = global::SisCtd.Properties.Resources.control;
             this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(70, 20);
+            this.bModificar.Size = new System.Drawing.Size(78, 20);
             this.bModificar.Text = "&Modificar";
             this.bModificar.ToolTipText = "Modificar (F2)";
             this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
@@ -189,7 +191,7 @@
             this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
             this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(63, 20);
+            this.bEliminar.Size = new System.Drawing.Size(70, 20);
             this.bEliminar.Text = "&Eliminar";
             this.bEliminar.ToolTipText = "Eliminar (F4)";
             this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
@@ -204,7 +206,7 @@
             this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
             this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bExportar.Name = "bExportar";
-            this.bExportar.Size = new System.Drawing.Size(69, 20);
+            this.bExportar.Size = new System.Drawing.Size(70, 20);
             this.bExportar.Text = "E&xportar";
             this.bExportar.ToolTipText = "Exportar (F7)";
             this.bExportar.Click += new System.EventHandler(this.bExportar_Click);
@@ -219,7 +221,7 @@
             this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
             this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bCerrar.Name = "bCerrar";
-            this.bCerrar.Size = new System.Drawing.Size(47, 20);
+            this.bCerrar.Size = new System.Drawing.Size(49, 20);
             this.bCerrar.Text = "&Salir";
             this.bCerrar.ToolTipText = "Salir (Esc)";
             this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
@@ -267,7 +269,7 @@
             this.Dg1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dg1_CellDoubleClick);
             this.Dg1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dg1_KeyPress);
             // 
-            // Frm_Mnt_Listados
+            // Frm_T_Listados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -279,13 +281,13 @@
             this.Controls.Add(this.Stb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.Name = "Frm_Mnt_Listados";
+            this.Name = "Frm_T_Listados";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = " LIstados";
             this.Load += new System.EventHandler(this.Frm_T_Listados_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_T_Listados_KeyPress);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_T_Listados_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_T_Listados_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.BarraSis.ResumeLayout(false);
@@ -314,7 +316,7 @@
         private System.Windows.Forms.StatusStrip Stb;
         private System.Windows.Forms.ToolStripStatusLabel LblMensaje;
         private MigControls.MigDataGridView Dg1;
-        private MigControls.MigTextbox txtDescrip;
+        private MigControls.MigTextbox txtDescripcion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblEstado;
         private MigControls.MigCombobox cboEstado;

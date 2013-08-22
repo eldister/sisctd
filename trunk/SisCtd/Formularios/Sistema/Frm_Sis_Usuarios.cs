@@ -77,7 +77,6 @@ namespace SisCtd
             { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
         }
-
         private Boolean Get_IdUsuario(bool bMsg)
         {
             if (Dg1.Rows.Count <= 0)
@@ -91,21 +90,21 @@ namespace SisCtd
                 return true;
             }
         }
-
-        private void oCancelar()
-        {
-            Helper.Cerrar_Ventana(this, (TabControl)this.Parent.Parent);
-        }
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
             Frm_Sis_Usuarios_Det fDet = new Frm_Sis_Usuarios_Det(qOpcion, sIdusuario);
             fDet.ShowDialog();
             if (fDet.bGrabo == true)
             {
-                Listar(0);
+                Listar(Helper.eListar.Grilla);
                 Helper.Buscar_Grilla(Dg1, fDet.sIdusuario, 0);
             } fDet.Dispose();
+        }        
+        private void oCancelar()
+        {
+            Helper.Cerrar_Ventana(this, (TabControl)this.Parent.Parent);
         }
+
         #endregion
 
         #region Eventos Menu
@@ -128,7 +127,7 @@ namespace SisCtd
             try
             {
                 oBL_Sis_Usuario.Eliminar(sIdusuario);
-                Listar(0);
+                Listar(Helper.eListar.Grilla);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

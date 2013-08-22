@@ -102,7 +102,7 @@ namespace SisCtd
                     txtDescrip.Focus(); return;
                 }
                 oBE_Sis_Perfil.Descripcion = txtDescrip.Text.Trim();
-                if (qOpcion == Helper.eOpcion.Nuevo) sIdPerfil = oBL_Sis_Perfil.Insertar(oBE_Sis_Perfil, Helper.oBE_Sis_Usuario.IdUsuario);
+                if (qOpcion == Helper.eOpcion.Nuevo) sIdPerfil = oBL_Sis_Perfil.Insertar(oBE_Sis_Perfil);
                 if (qOpcion == Helper.eOpcion.Modificar) oBL_Sis_Perfil.Modificar(oBE_Sis_Perfil);
                 bGrabo = true; this.Close();
             }

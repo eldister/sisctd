@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Xml;
 using Microsoft.Win32;
 using BLSisCtd;
+using BESisCtd;
 namespace SisCtd
 {
     public partial class Frm_Sis_Contraseña : Form
@@ -27,11 +28,11 @@ namespace SisCtd
         }
         private void Frm_Sis_Contraseña_Load(object sender, EventArgs e)
         {
-            lblUsuario.Text = Helper.oBE_Sis_Usuario.IdUsuario;
+            lblUsuario.Text = BE_Helper.oBE_Sis_Usuario.IdUsuario;
             if (bInicio)
             {
                 TxtActual.Enabled = false;
-                TxtActual.Text = Helper.DecryptText(Helper.oBE_Sis_Usuario.Contraseña);
+                TxtActual.Text = Helper.DecryptText(BE_Helper.oBE_Sis_Usuario.Contraseña);
             }
         }
         private void Frm_Sis_Contraseña_KeyPress(object sender, KeyPressEventArgs e)
@@ -50,7 +51,7 @@ namespace SisCtd
                 TxtActual.Focus(); return;
             }
 
-            if (TxtActual.Text.Trim() != Helper.DecryptText(Helper.oBE_Sis_Usuario.Contraseña))
+            if (TxtActual.Text.Trim() != Helper.DecryptText(BE_Helper.oBE_Sis_Usuario.Contraseña))
             {
                 TxtActual.Text = ""; TxtNuevo.Text = ""; txtConfirmar.Text = ""; 
                 MessageBox.Show("La Contraseña Actual no es válida", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -87,8 +88,7 @@ namespace SisCtd
             try
             {
                 string sContraseña = Helper.EncryptText(TxtNuevo.Text);
-                oBL_Sis_Usuario.Modificar_Contraseña(Helper.oBE_Sis_Usuario.IdUsuario, sContraseña);
-                Helper.oBE_Sis_Usuario.Contraseña = sContraseña;
+                oBL_Sis_Usuario.Modificar_Contraseña(sContraseña);
                 bGrabo = true;
 
                 MessageBox.Show("Se ha modificado la Contraseña en forma exitosa.", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
