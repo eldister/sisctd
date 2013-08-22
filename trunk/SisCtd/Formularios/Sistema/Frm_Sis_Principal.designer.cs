@@ -32,7 +32,6 @@ namespace SisCtd
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Sis_Principal));
             this.tabPrincipal = new System.Windows.Forms.TabControl();
             this.stbPrincipal = new System.Windows.Forms.StatusStrip();
-            this.lblServidor = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.MenuSis = new System.Windows.Forms.MenuStrip();
@@ -70,23 +69,12 @@ namespace SisCtd
             // 
             this.stbPrincipal.AutoSize = false;
             this.stbPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblServidor,
             this.lblVersion,
             this.lblUsuario});
             this.stbPrincipal.Location = new System.Drawing.Point(0, 533);
             this.stbPrincipal.Name = "stbPrincipal";
             this.stbPrincipal.Size = new System.Drawing.Size(782, 23);
             this.stbPrincipal.TabIndex = 670;
-            // 
-            // lblServidor
-            // 
-            this.lblServidor.AutoSize = false;
-            this.lblServidor.BackColor = System.Drawing.SystemColors.Control;
-            this.lblServidor.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.lblServidor.Name = "lblServidor";
-            this.lblServidor.Size = new System.Drawing.Size(200, 18);
             // 
             // lblVersion
             // 
@@ -287,7 +275,6 @@ namespace SisCtd
 
         public System.Windows.Forms.TabControl tabPrincipal;
         private System.Windows.Forms.StatusStrip stbPrincipal;
-        private System.Windows.Forms.ToolStripStatusLabel lblServidor;
         private System.Windows.Forms.ToolStripStatusLabel lblVersion;
         private System.Windows.Forms.ToolStripStatusLabel lblUsuario;
         private System.Windows.Forms.MenuStrip MenuSis;

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DL_T_Gerencia.cs" />
     <Compile Include="DL_T_Posicion.cs" />
     <Compile Include="ConexionDAO.cs" />
     <Compile Include="DL_Sis_Perfil.cs" />

@@ -16,19 +16,12 @@ namespace DLSisCtd
         public static string sDBPassword = "123456";
         public static string sDBnombre = "bddoc";
 
-        //SISIRON
-        public static string sCnSisIron = "Server=10.50.100.136;uid=sa;pwd=iron09346670;database=imdata";
-
         // ---- DESARROLLO SQL 2000---------------------------------------------------------------------------------
         //public static string sDBservidor = "10.50.93.203";
         //public static string sDBusuario = "sa";
         //public static string sDBPassword = "123456";
         //public static string sDBnombre = "BdGpd";
 
-        ////SISIRON
-        //public static string sCnSisIron = "Server=10.50.93.203;uid=sa;pwd=123456;database=imdata";
-
-        //-----------------------------------------------------------------------------------------------------------
         public static string sConexion;
 
         public static void ConfigServidor()

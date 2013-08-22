@@ -23,12 +23,6 @@ namespace SisCtd
     {
         public static string sAcceso;
 
-        public static string sDBservidor;
-        public static string sDBnombre;
-        public static string sDBusuario;
-        public static string sDBPassword;
-
-        public static string sConexion;
         public static int nForm;
         public static string sRutaImagenesSQL = "";
 
@@ -650,21 +644,6 @@ namespace SisCtd
         }
 
         public static Boolean GenImagen = false;
-
-        public static void ConfigServidor()
-        {
-
-            Helper.sDBservidor = BL_ConexionDAO.sDBservidor;
-            Helper.sDBnombre = BL_ConexionDAO.sDBnombre;
-            Helper.sDBusuario = BL_ConexionDAO.sDBusuario;
-            Helper.sDBPassword = BL_ConexionDAO.sDBPassword;
-
-            //SISIRON
-
-            ////// CADENA DE CONEXION  *******************************************************************
-            Helper.sConexion = "Server=" + Helper.sDBservidor + ";Uid=" + Helper.sDBusuario + ";Pwd=" + Helper.sDBPassword + ";Database=" + Helper.sDBnombre;
-
-        }
 
         public static void GrabarConfig(string sNombre, string sValor, string sRuta)
         {
