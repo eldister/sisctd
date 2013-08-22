@@ -20,9 +20,9 @@ namespace BLSisCtd
         {
             return oDL_Sis_Cliente.Listar_UsuarioCliente(sIdusuario);
         }
-        public DataTable BuscarCliente(string sFiltro, string sValor)
+        public DataTable Buscar()
         {
-            return oDL_Sis_Cliente.BuscarCliente(sFiltro, sValor);
+            return oDL_Sis_Cliente.Buscar();
         }
 
         #endregion

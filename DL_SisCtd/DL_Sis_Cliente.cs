@@ -29,13 +29,12 @@ namespace DLSisCtd
             sSql += "order by b.Descripcion ";
             return ConexionDAO.fDatatable(sSql);
         }
-        public DataTable BuscarCliente(string sFiltro, string sValor)
+        public DataTable Buscar()
         {
-            sSql = "select 	IdCliente,Descripcion ";
+            sSql = "select 	IdCliente as Codigo, Descripcion ";
             sSql += "from 	Sis_Cliente ";
-            sSql += "where  estado=1 and ";
-            sSql += (sFiltro == "C" ? "idcliente" : "Descripcion") + " like '%" + sValor + "%' ";
-            sSql += "order by " + (sFiltro == "C" ? "idcliente" : "Descripcion");
+            sSql += "where  Estado=1 ";
+            sSql += "order by Descripcion";
             return ConexionDAO.fDatatable(sSql);
         }
         #endregion
