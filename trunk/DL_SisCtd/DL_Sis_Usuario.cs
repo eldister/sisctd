@@ -118,7 +118,14 @@ namespace DLSisCtd
             ConexionDAO.fExecute(sSql);
             BE_Helper.oBE_Sis_Usuario.Contraseña = sContraseña;
         }
-        
+        public void Resetear_Contraseña(string sIdUsuario, string sContraseña)
+        {
+            sSql = "update	Sis_Usuario ";
+            sSql += "set	Contraseña ='" + sContraseña + "' ";
+            sSql += "where	idusuario = '" + sIdUsuario + "' ";
+            ConexionDAO.fExecute(sSql);
+            BE_Helper.oBE_Sis_Usuario.Contraseña = sContraseña;
+        }
 
         #endregion
     }

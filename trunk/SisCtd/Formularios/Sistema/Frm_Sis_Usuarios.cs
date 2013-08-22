@@ -137,7 +137,20 @@ namespace SisCtd
         {
             Listar(Helper.eListar.Excel);
         }
+        private void bResetear_Click(object sender, EventArgs e)
+        {
+            if (!Get_IdUsuario(true)) return;
 
+            //Agregar consistencia de Data al eliminar...
+
+            if (MessageBox.Show("¿Está seguro que desea de Resetear la Contraseña del : " + sIdusuario + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            try
+            {
+                oBL_Sis_Usuario.Resetear_Contraseña(sIdusuario, Helper.EncryptText(sIdusuario));
+                Listar(Helper.eListar.Grilla);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
         private void bCerrar_Click(object sender, EventArgs e)
         {
             oCancelar();
@@ -171,6 +184,8 @@ namespace SisCtd
 
 
         #endregion
+
+
 
     }
 }
