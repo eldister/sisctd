@@ -61,6 +61,10 @@ namespace BLSisCtd
         {
             oDL_Sis_Usuario.Modificar_Contraseña(sContraseña);
         }
+        public void Resetear_Contraseña(string sIdUsuario, string sContraseña)
+        {
+            oDL_Sis_Usuario.Resetear_Contraseña(sIdUsuario, sContraseña);
+        }
 
         #endregion
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
@@ -47,6 +47,8 @@
             this.Stb = new System.Windows.Forms.StatusStrip();
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.Dg1 = new MigControls.MigDataGridView();
+            this.bResetear = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
@@ -157,6 +159,8 @@
             this.bEliminar,
             this.toolStripSeparator1,
             this.bExportar,
+            this.toolStripSeparator3,
+            this.bResetear,
             this.toolStripSeparator2,
             this.bCerrar});
             this.BarraSis.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
@@ -249,8 +253,8 @@
             this.Dg1.AllowUserToAddRows = false;
             this.Dg1.AllowUserToDeleteRows = false;
             this.Dg1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
+            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dg1.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.Dg1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -268,6 +272,20 @@
             this.Dg1.TabIndex = 0;
             this.Dg1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dg1_CellDoubleClick);
             this.Dg1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dg1_KeyPress);
+            // 
+            // bResetear
+            // 
+            this.bResetear.Image = global::SisCtd.Properties.Resources._interface;
+            this.bResetear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bResetear.Name = "bResetear";
+            this.bResetear.Size = new System.Drawing.Size(134, 20);
+            this.bResetear.Text = "Resetear Contraseña";
+            this.bResetear.Click += new System.EventHandler(this.bResetear_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
             // 
             // Frm_Sis_Usuarios
             // 
@@ -320,5 +338,7 @@
         private System.Windows.Forms.Label label3;
         private MigControls.MigCombobox cboEstado;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton bResetear;
     }
 }
