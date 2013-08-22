@@ -18,7 +18,7 @@ namespace DLSisCtd
             sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
             sSql += "from 	sis_usuario a ";
             sSql += "       left join sis_Perfil b on a.IdPerfil=b.Idperfil ";
-            sSql += "where  a.Nombre like '%" + sNombre + "%'";
+            sSql += "where  a.idperfil<>'00' and a.Nombre like '%" + sNombre + "%'";
             if (sEstado == "A") sSql += "and Estado=1 ";
             if (sEstado == "I") sSql += "and Estado=0 ";
             sSql += "order by a.Nombre ";

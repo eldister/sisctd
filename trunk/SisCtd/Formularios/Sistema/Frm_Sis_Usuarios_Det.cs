@@ -18,6 +18,7 @@ namespace SisCtd
 
         BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
         BE_Sis_Usuario oBE_Sis_Usuario = new BE_Sis_Usuario();
+        BL_Sis_Perfil oBL_Sis_Perfil = new BL_Sis_Perfil();
 
         #endregion
 
@@ -31,48 +32,41 @@ namespace SisCtd
 
         private void Frm_Sis_Usuarios_Det_Load(object sender, EventArgs e)
         {
-            Helper.LLenar_Combobox(oBL_Sis_Usuario.Listar("", "", 2), cboProducto, "des", "id");
+            Helper.LLenar_Combobox(oBL_Sis_Perfil.Listar_Combo(), cboPerfil, "des", "idPerfil");
             switch (qOpcion)
             {
-                case 3:
+                case Helper.eOpcion.Nuevo:
                     this.Text = " Nuevo";
                     cboEstado.SelectedIndex = 0;
-                    if (sIdproducto != "") cboProducto.SelectedValue = sIdproducto;
-
-                    cboCritico.Enabled = true;
-                    cboPerfil.Enabled = true;
-
                     break;
-                case 1:
-                case 2:
-                    if (qOpcion == 1)
+                case Helper.eOpcion.Modificar:
+                case Helper.eOpcion.Consultar:
+                    if (qOpcion == Helper.eOpcion.Consultar)
                     {
                         this.Text = " Consulta";
                         txtNombre.ReadOnly = true;
+                        txtCorreo.ReadOnly = true;
+                        cboPerfil.Enabled = false;
+                        cboEstado.Enabled = false;
                         btnGrabar.Visible = false;
                     }
                     else
                     {
                         this.Text = " Modificar";
-
                     }
                     txtIdUsuario.ReadOnly = true;
-                    cboProducto.Enabled = false;
-                    DataTable Dt = new DataTable();
+                    
                     try
                     {
-                        Dt = oTipoOperacion.Get_Registro(sIdproducto, sIdTipoOperacion);
-                        if (Dt.Rows.Count > 0)
+                        oBE_Sis_Usuario = oBL_Sis_Usuario.Get_Usuario(sIdusuario);
+                        if (oBE_Sis_Usuario!=null)
                         {
-                            txtIdUsuario.Text = sIdTipoOperacion.Trim();
-                            txtNombre.Text = Dt.Rows[0]["descripcion"].ToString().Trim();
-                            cboProducto.SelectedValue = Dt.Rows[0]["idproducto"].ToString().Trim();
-                            cboNat.Text = Dt.Rows[0]["naturaleza"].ToString().Trim();
-                            cboCritico.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["critico"]) ? 0 : 1;
-                            cboPerfil.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["Digitalizable"]) ? 0 : 1;
-                            cboEstado.SelectedIndex = Convert.ToBoolean(Dt.Rows[0]["estado"]) ? 0 : 1;
+                            txtIdUsuario.Text = oBE_Sis_Usuario.IdUsuario;
+                            txtNombre.Text = oBE_Sis_Usuario.Nombre;
+                            txtCorreo.Text = oBE_Sis_Usuario.Correo;
+                            cboPerfil.SelectedValue = oBE_Sis_Usuario.IdPerfil;
+                            cboEstado.SelectedIndex = oBE_Sis_Usuario.Estado ? 0 : 1;
                         }
-                        Dt.Dispose();
                     }
                     catch (Exception Er)
                     { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -119,11 +113,18 @@ namespace SisCtd
                     cboPerfil.Focus(); return;
                 }
 
-                oTipoOperacion.Grabar(qOpcion, cboProducto.SelectedValue.ToString(), txtIdUsuario.Text, txtNombre.Text,cboNat.Text
-                    , (cboCritico.SelectedIndex == 0), (cboPerfil.SelectedIndex == 0), (cboEstado.SelectedIndex == 0));
+                oBE_Sis_Usuario.IdUsuario = txtIdUsuario.Text.Trim();
+                oBE_Sis_Usuario.Nombre = txtNombre.Text.Trim();
+                oBE_Sis_Usuario.IdPerfil = cboPerfil.SelectedValue.ToString();
+                oBE_Sis_Usuario.Correo = txtCorreo.Text.Trim();
+                oBE_Sis_Usuario.Contraseña = Helper.EncryptText(txtIdUsuario.Text.Trim()).Trim();
+                oBE_Sis_Usuario.Estado = (cboEstado.SelectedIndex == 0);
 
-                sIdproducto = cboProducto.SelectedValue.ToString();
-                sIdTipoOperacion = txtIdUsuario.Text; bGrabo = true; this.Close();
+                if (qOpcion == Helper.eOpcion.Nuevo) oBL_Sis_Usuario.Insertar(oBE_Sis_Usuario, Helper.oBE_Sis_Usuario.IdUsuario);
+                if (qOpcion == Helper.eOpcion.Modificar) oBL_Sis_Usuario.Modificar(oBE_Sis_Usuario);
+                    
+                sIdusuario = oBE_Sis_Usuario.IdUsuario; 
+                bGrabo = true; this.Close();
             }
             catch (Exception Er)
             { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }

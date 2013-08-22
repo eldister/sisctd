@@ -122,7 +122,6 @@
             this.cboPerfil.ColorEntrada = System.Drawing.Color.LemonChiffon;
             this.cboPerfil.ColorSalida = System.Drawing.Color.White;
             this.cboPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPerfil.Enabled = false;
             this.cboPerfil.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPerfil.FormattingEnabled = true;
             this.cboPerfil.Items.AddRange(new object[] {
