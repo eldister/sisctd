@@ -144,16 +144,14 @@ namespace SisCtd
             Helper.ComboCliente = cboCliente;
             switch (vNode)
             {
-                case "0101": mFormHijo = new Frm_T_Listados(Helper.eTablas.Datos); Abrir(); break;
-                case "0102": mFormHijo = new Frm_T_TipoDocumento(); Abrir(); break;
-                case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.SubProductos); Abrir(); break;
-                case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Territorios); Abrir(); break;
-                case "0106": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
-                case "0107": mFormHijo = new Frm_T_Listados(Helper.eTablas.Estados); Abrir(); break;
-                case "0108": mFormHijo = new Frm_T_Listados(Helper.eTablas.Areas); Abrir(); break;
-                case "0109": mFormHijo = new Frm_T_TipoOperacion(); Abrir(); break;
-                case "0110": mFormHijo = new Frm_T_Listados(Helper.eTablas.Tarjetas); Abrir(); break;
-                case "0111": mFormHijo = new Frm_T_Listados(Helper.eTablas.Ejecutivos); Abrir(); break;
+                //case "0101": mFormHijo = new Frm_T_Listados(Helper.eTablas.Datos); Abrir(); break;
+                //case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.SubProductos); Abrir(); break;
+                //case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Territorios); Abrir(); break;
+                //case "0106": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
+                //case "0107": mFormHijo = new Frm_T_Listados(Helper.eTablas.Estados); Abrir(); break;
+                //case "0108": mFormHijo = new Frm_T_Listados(Helper.eTablas.Areas); Abrir(); break;
+                //case "0110": mFormHijo = new Frm_T_Listados(Helper.eTablas.Tarjetas); Abrir(); break;
+                //case "0111": mFormHijo = new Frm_T_Listados(Helper.eTablas.Ejecutivos); Abrir(); break;
 
                 
                 //Pedidos
@@ -196,7 +194,7 @@ namespace SisCtd
 
                
                 //Reportes
-                case "0801": mFormHijo = new Frm_Rep_Registros(); Abrir_Normal(); break;
+                //case "0801": mFormHijo = new Frm_Rep_Registros(); Abrir_Normal(); break;
 
 
                 //Sistema

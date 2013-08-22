@@ -21,12 +21,12 @@ namespace SisCtd
             eTabla = Tabla;
         }
         Helper.eTablas eTabla;
-        Cls_T_Territorios oTerritorios = new Cls_T_Territorios();
-        Cls_T_Datos oDatos = new Cls_T_Datos();
-        Cls_T_Estados oEstados = new Cls_T_Estados();
-        Cls_T_Areas oAreas = new Cls_T_Areas();
-        Cls_T_Oficinas oOficinas = new Cls_T_Oficinas();
-        Cls_T_Ejecutivos oEjecutivos = new Cls_T_Ejecutivos();
+        //Cls_T_Territorios oTerritorios = new Cls_T_Territorios();
+        //Cls_T_Datos oDatos = new Cls_T_Datos();
+        //Cls_T_Estados oEstados = new Cls_T_Estados();
+        //Cls_T_Areas oAreas = new Cls_T_Areas();
+        //Cls_T_Oficinas oOficinas = new Cls_T_Oficinas();
+        //Cls_T_Ejecutivos oEjecutivos = new Cls_T_Ejecutivos();
 
         private void Frm_T_Listados_Load(object sender, EventArgs e)
         {
@@ -60,17 +60,17 @@ namespace SisCtd
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                switch (eTabla)
-                {
-                    case Helper.eTablas.Territorios: Dt = oTerritorios.Listar(txtDescrip.Text, cboEstado.SelectedIndex); break;
-                    case Helper.eTablas.Datos: Dt = oDatos.Listar("D",txtDescrip.Text, cboEstado.SelectedIndex); break;
-                    case Helper.eTablas.Estados: Dt = oEstados.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
-                    case Helper.eTablas.Areas: Dt = oAreas.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
-                    case Helper.eTablas.Oficinas: 
-                        Dt = oOficinas.Listar("D",txtDescrip.Text);
-                        lblEstado.Visible = false; cboEstado.Visible = false; break;
-                    case Helper.eTablas.Ejecutivos: Dt = oEjecutivos.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
-                }
+                //switch (eTabla)
+                //{
+                //    case Helper.eTablas.Territorios: Dt = oTerritorios.Listar(txtDescrip.Text, cboEstado.SelectedIndex); break;
+                //    case Helper.eTablas.Datos: Dt = oDatos.Listar("D",txtDescrip.Text, cboEstado.SelectedIndex); break;
+                //    case Helper.eTablas.Estados: Dt = oEstados.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
+                //    case Helper.eTablas.Areas: Dt = oAreas.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
+                //    case Helper.eTablas.Oficinas: 
+                //        Dt = oOficinas.Listar("D",txtDescrip.Text);
+                //        lblEstado.Visible = false; cboEstado.Visible = false; break;
+                //    case Helper.eTablas.Ejecutivos: Dt = oEjecutivos.Listar("D", txtDescrip.Text, cboEstado.SelectedIndex); break;
+                //}
                 if (nOpc == 0)
                 {
                     Dg1.DataSource = Dt; Helper.FormatoGrilla(Dg1);
@@ -133,90 +133,90 @@ namespace SisCtd
             string sId = Get_Id(true); if (sId == "") return;
             try
             {
-                switch (eTabla)
-                {
-                    case Helper.eTablas.Territorios:
-                        if (oTerritorios.Existe_Oficinas(sId) == true)
-                        {
-                            MessageBox.Show("El Territorio ya ha sido asignado a una o más oficinas. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                        }
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar el Territorio : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oTerritorios.Eliminar(sId);
-                        break;
-                    case Helper.eTablas.Datos:
-                        if (oDatos.Existe_Productos(sId) == true)
-                        {
-                            MessageBox.Show("El Dato ya ha sido asignado a uno o más Productos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                        }
-                        if (oDatos.Existe_TipoDoc(sId) == true)
-                        {
-                            MessageBox.Show("El Dato ya ha sido asignado a uno o más Tipos de Documento. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                        }
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar el Dato : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oDatos.Eliminar(sId);
-                        break;
-                    case Helper.eTablas.Estados:
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar el Estado : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oEstados.Eliminar(sId);
-                        break;
-                    case Helper.eTablas.Areas:
-                        if (oAreas.Existe_Productos(sId) == true)
-                        {
-                            MessageBox.Show("El Area ya ha sido asignado a uno o más Productos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                        }
-                        if (oAreas.Existe_Ingresos(sId) == true)
-                        {
-                            MessageBox.Show("El Area ya ha sido asignado a uno o más Ingresos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                        }
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar el Area : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oAreas.Eliminar(sId);
-                        break;
-                    case Helper.eTablas.Oficinas:
-                        string sIdoficina = Get_Id(true);
-                        if (oOficinas.Existe_UsuariosWeb(sIdoficina) == true)
-                        {
-                            MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Usuarios Web. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            return;
-                        }
+            //    switch (eTabla)
+            //    {
+            //        case Helper.eTablas.Territorios:
+            //            if (oTerritorios.Existe_Oficinas(sId) == true)
+            //            {
+            //                MessageBox.Show("El Territorio ya ha sido asignado a una o más oficinas. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //            }
+            //            if (MessageBox.Show("¿Está seguro que desea de Eliminar el Territorio : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            //            oTerritorios.Eliminar(sId);
+            //            break;
+            //        case Helper.eTablas.Datos:
+            //            if (oDatos.Existe_Productos(sId) == true)
+            //            {
+            //                MessageBox.Show("El Dato ya ha sido asignado a uno o más Productos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //            }
+            //            if (oDatos.Existe_TipoDoc(sId) == true)
+            //            {
+            //                MessageBox.Show("El Dato ya ha sido asignado a uno o más Tipos de Documento. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //            }
+            //            if (MessageBox.Show("¿Está seguro que desea de Eliminar el Dato : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            //            oDatos.Eliminar(sId);
+            //            break;
+            //        case Helper.eTablas.Estados:
+            //            if (MessageBox.Show("¿Está seguro que desea de Eliminar el Estado : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            //            oEstados.Eliminar(sId);
+            //            break;
+            //        case Helper.eTablas.Areas:
+            //            if (oAreas.Existe_Productos(sId) == true)
+            //            {
+            //                MessageBox.Show("El Area ya ha sido asignado a uno o más Productos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //            }
+            //            if (oAreas.Existe_Ingresos(sId) == true)
+            //            {
+            //                MessageBox.Show("El Area ya ha sido asignado a uno o más Ingresos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //            }
+            //            if (MessageBox.Show("¿Está seguro que desea de Eliminar el Area : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            //            oAreas.Eliminar(sId);
+            //            break;
+            //        case Helper.eTablas.Oficinas:
+            //            string sIdoficina = Get_Id(true);
+            //            if (oOficinas.Existe_UsuariosWeb(sIdoficina) == true)
+            //            {
+            //                MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Usuarios Web. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //                return;
+            //            }
 
-                        if (oOficinas.Existe_UsuWebOficinas(sIdoficina) == true)
-                        {
-                            MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Accesos de Usuarios Web. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            return;
-                        }
+            //            if (oOficinas.Existe_UsuWebOficinas(sIdoficina) == true)
+            //            {
+            //                MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Accesos de Usuarios Web. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //                return;
+            //            }
 
-                        if (oOficinas.Existe_Recojos(sIdoficina) == true)
-                        {
-                            MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Recojos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            return;
-                        }
+            //            if (oOficinas.Existe_Recojos(sIdoficina) == true)
+            //            {
+            //                MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Recojos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //                return;
+            //            }
 
-                        if (oOficinas.Existe_Legajos_Procedencia(sIdoficina) == true)
-                        {
-                            MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Registros en Procedencia. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            return;
-                        }
+            //            if (oOficinas.Existe_Legajos_Procedencia(sIdoficina) == true)
+            //            {
+            //                MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Registros en Procedencia. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //                return;
+            //            }
 
-                        if (oOficinas.Existe_Legajos_Gestora(sIdoficina) == true)
-                        {
-                            MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Registros en Gestora. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            return;
-                        }
+            //            if (oOficinas.Existe_Legajos_Gestora(sIdoficina) == true)
+            //            {
+            //                MessageBox.Show("La oficina " + sIdoficina + " está asignada a uno o más Registros en Gestora. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //                return;
+            //            }
 
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar la Oficina : " + sIdoficina + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oOficinas.Eliminar(sIdoficina);
-                        break;
+            //            if (MessageBox.Show("¿Está seguro que desea de Eliminar la Oficina : " + sIdoficina + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            //            oOficinas.Eliminar(sIdoficina);
+            //            break;
 
-                    case Helper.eTablas.Ejecutivos:
-                        //if (oEjecutivos.Existe_Registro(sId) == true)
-                        //{
-                        //    MessageBox.Show("El Ejecutivo ya ha sido asignado a uno o más Ingresos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
-                        //}
-                        if (MessageBox.Show("¿Está seguro que desea de Eliminar al Ejectuvo: " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                        oEjecutivos.Eliminar(sId);
-                        break;
-                }
-                Listar(0);
+            //        case Helper.eTablas.Ejecutivos:
+            //            //if (oEjecutivos.Existe_Registro(sId) == true)
+            //            //{
+            //            //    MessageBox.Show("El Ejecutivo ya ha sido asignado a uno o más Ingresos. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return;
+            //            //}
+            //            if (MessageBox.Show("¿Está seguro que desea de Eliminar al Ejectuvo: " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            //            oEjecutivos.Eliminar(sId);
+            //            break;
+            //    }
+            //    Listar(0);
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
