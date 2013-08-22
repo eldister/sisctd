@@ -22,11 +22,11 @@ namespace SisCtd
         public Boolean bGrabo = false;
         int qOpc;
 
-        Cls_T_Territorios oTerritorios = new Cls_T_Territorios();
-        Cls_T_Datos oDatos = new Cls_T_Datos();
-        Cls_T_Estados oEstados = new Cls_T_Estados();
-        Cls_T_Areas oAreas = new Cls_T_Areas();
-        Cls_T_Ejecutivos oEjecutivos = new Cls_T_Ejecutivos();
+        //Cls_T_Territorios oTerritorios = new Cls_T_Territorios();
+        //Cls_T_Datos oDatos = new Cls_T_Datos();
+        //Cls_T_Estados oEstados = new Cls_T_Estados();
+        //Cls_T_Areas oAreas = new Cls_T_Areas();
+        //Cls_T_Ejecutivos oEjecutivos = new Cls_T_Ejecutivos();
 
         private void Frm_T_Detalle_Load(object sender, EventArgs e)
         {
@@ -59,14 +59,14 @@ namespace SisCtd
                         {
                             this.Text = " Modificar";
                         }
-                        switch (eTabla)
-                        {
-                            case Helper.eTablas.Territorios: Dt = oTerritorios.Get_Registro(sIdtabla); break;
-                            case Helper.eTablas.Datos: Dt = oDatos.Get_Registro(sIdtabla); break;
-                            case Helper.eTablas.Estados: Dt = oEstados.Get_Registro(sIdtabla); break;
-                            case Helper.eTablas.Areas: Dt = oAreas.Get_Registro(sIdtabla); break;
-                            case Helper.eTablas.Ejecutivos: Dt = oEjecutivos.Get_Registro(sIdtabla); break;
-                        }
+                        //switch (eTabla)
+                        //{
+                        //    case Helper.eTablas.Territorios: Dt = oTerritorios.Get_Registro(sIdtabla); break;
+                        //    case Helper.eTablas.Datos: Dt = oDatos.Get_Registro(sIdtabla); break;
+                        //    case Helper.eTablas.Estados: Dt = oEstados.Get_Registro(sIdtabla); break;
+                        //    case Helper.eTablas.Areas: Dt = oAreas.Get_Registro(sIdtabla); break;
+                        //    case Helper.eTablas.Ejecutivos: Dt = oEjecutivos.Get_Registro(sIdtabla); break;
+                        //}
                         if (Dt.Rows.Count > 0)
                         {
                             txtCodigo.Text = sIdtabla.Trim();
@@ -109,14 +109,14 @@ namespace SisCtd
                 Boolean bExiste = false;
                 if (qOpc == 3)
                 {
-                    switch (eTabla)
-                    {
-                        case Helper.eTablas.Territorios: bExiste = oTerritorios.Existe(txtCodigo.Text); break;
-                        case Helper.eTablas.Datos: bExiste = oDatos.Existe(txtCodigo.Text); break;
-                        case Helper.eTablas.Estados: bExiste = oEstados.Existe(txtCodigo.Text); break;
-                        case Helper.eTablas.Areas: bExiste = oAreas.Existe(txtCodigo.Text); break;
-                        case Helper.eTablas.Ejecutivos: bExiste = oEjecutivos.Existe(txtCodigo.Text); break;
-                    }
+                    //switch (eTabla)
+                    //{
+                    //    case Helper.eTablas.Territorios: bExiste = oTerritorios.Existe(txtCodigo.Text); break;
+                    //    case Helper.eTablas.Datos: bExiste = oDatos.Existe(txtCodigo.Text); break;
+                    //    case Helper.eTablas.Estados: bExiste = oEstados.Existe(txtCodigo.Text); break;
+                    //    case Helper.eTablas.Areas: bExiste = oAreas.Existe(txtCodigo.Text); break;
+                    //    case Helper.eTablas.Ejecutivos: bExiste = oEjecutivos.Existe(txtCodigo.Text); break;
+                    //}
                     if (bExiste)
                     {
                         MessageBox.Show("El Código ya existe para esta Tabla. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -130,14 +130,14 @@ namespace SisCtd
                     txtDescrip.Focus(); return;
                 }
 
-                switch (eTabla)
-                {
-                    case Helper.eTablas.Territorios: oTerritorios.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                    case Helper.eTablas.Datos: oDatos.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                    case Helper.eTablas.Estados: oEstados.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                    case Helper.eTablas.Areas: oAreas.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                    case Helper.eTablas.Ejecutivos: oEjecutivos.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
-                }
+                //switch (eTabla)
+                //{
+                //    case Helper.eTablas.Territorios: oTerritorios.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
+                //    case Helper.eTablas.Datos: oDatos.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
+                //    case Helper.eTablas.Estados: oEstados.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
+                //    case Helper.eTablas.Areas: oAreas.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
+                //    case Helper.eTablas.Ejecutivos: oEjecutivos.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, (cboEst.SelectedIndex == 0)); break;
+                //}
 
                 sIdtabla = txtCodigo.Text; bGrabo = true; this.Close();
 

@@ -93,33 +93,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Cls_Rep_Reportes.cs" />
-    <Compile Include="Clases\Cls_T_Areas.cs" />
-    <Compile Include="Clases\Cls_T_Datos.cs" />
-    <Compile Include="Clases\Cls_T_Ejecutivos.cs" />
-    <Compile Include="Clases\Cls_T_Estados.cs" />
-    <Compile Include="Clases\Cls_T_Oficinas.cs" />
-    <Compile Include="Clases\Cls_T_Territorios.cs" />
-    <Compile Include="Clases\Cls_T_TipoDocumentos.cs" />
-    <Compile Include="Clases\Cls_T_TipoOperacion.cs" />
-    <Compile Include="Clases\SQLHelper.cs" />
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.designer.cs">
       <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Reportes\Frm_Rep_Completitud.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Reportes\Frm_Rep_Completitud.designer.cs">
-      <DependentUpon>Frm_Rep_Completitud.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Reportes\Frm_Rep_Registros.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Reportes\Frm_Rep_Registros.designer.cs">
-      <DependentUpon>Frm_Rep_Registros.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Sistema\Frm_About.cs">
       <SubType>Form</SubType>
@@ -193,18 +171,6 @@
     <Compile Include="Formularios\Tablas\Frm_T_Detalle.designer.cs">
       <DependentUpon>Frm_T_Detalle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.designer.cs">
-      <DependentUpon>Frm_T_TipoDocumento_Det.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento.designer.cs">
-      <DependentUpon>Frm_T_TipoDocumento.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_Listados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,29 +183,11 @@
     <Compile Include="Formularios\Tablas\Frm_T_Oficinas_Det.designer.cs">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.designer.cs">
-      <DependentUpon>Frm_T_TipoOperacion_Det.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TipoOperacion.designer.cs">
-      <DependentUpon>Frm_T_TipoOperacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\Consultas\Frm_Con_Registro.resx">
       <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Reportes\Frm_Rep_Completitud.resx">
-      <DependentUpon>Frm_Rep_Completitud.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Reportes\Frm_Rep_Registros.resx">
-      <DependentUpon>Frm_Rep_Registros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_About.resx">
       <DependentUpon>Frm_About.cs</DependentUpon>
@@ -277,23 +225,11 @@
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Detalle.resx">
       <DependentUpon>Frm_T_Detalle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.resx">
-      <DependentUpon>Frm_T_TipoDocumento_Det.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoDocumento.resx">
-      <DependentUpon>Frm_T_TipoDocumento.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Listados.resx">
       <DependentUpon>Frm_T_Listados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Oficinas_Det.resx">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoOperacion_Det.resx">
-      <DependentUpon>Frm_T_TipoOperacion_Det.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoOperacion.resx">
-      <DependentUpon>Frm_T_TipoOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -417,6 +353,7 @@
   <ItemGroup>
     <Folder Include="Formularios\Procesos\" />
     <Folder Include="Formularios\Registro\" />
+    <Folder Include="Formularios\Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE_SisCtd\BE_SisCtd.csproj">

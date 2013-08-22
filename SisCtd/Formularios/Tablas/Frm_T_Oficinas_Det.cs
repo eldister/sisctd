@@ -21,8 +21,8 @@ namespace SisCtd
         public Boolean bGrabo = false;        
         int qOpc;
                 
-        Cls_T_Oficinas OOficina = new Cls_T_Oficinas();
-        Cls_T_Territorios OTerritorio = new Cls_T_Territorios();
+        //Cls_T_Oficinas OOficina = new Cls_T_Oficinas();
+        //Cls_T_Territorios OTerritorio = new Cls_T_Territorios();
         BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
 
         private void Frm_T_Oficinas_Det_Activated(object sender, EventArgs e)
@@ -41,10 +41,10 @@ namespace SisCtd
             {
                 if (Validacion() == true)
                 {
-                    OOficina.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, cboTerritorio.SelectedValue.ToString(), txtUbigeo.Text, txtDirec.Text,
-                        cboRecojo.Text == "SI" ? true : false,
-                        cboCierre.Text == "SI" ? true : false);
-                    sIdOficina = txtCodigo.Text; bGrabo = true; this.Close();
+                    //OOficina.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, cboTerritorio.SelectedValue.ToString(), txtUbigeo.Text, txtDirec.Text,
+                    //    cboRecojo.Text == "SI" ? true : false,
+                    //    cboCierre.Text == "SI" ? true : false);
+                    //sIdOficina = txtCodigo.Text; bGrabo = true; this.Close();
                 }
             }
             catch (Exception Er) 
@@ -59,11 +59,11 @@ namespace SisCtd
                 txtCodigo.Focus(); return false;
             }
 
-            if (OOficina.Existe(txtCodigo.Text) == true & qOpc == 3)
-            {
-                MessageBox.Show("El Código ya existe. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtCodigo.Focus(); return false;
-            }
+            //if (OOficina.Existe(txtCodigo.Text) == true & qOpc == 3)
+            //{
+            //    MessageBox.Show("El Código ya existe. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    txtCodigo.Focus(); return false;
+            //}
 
             if (txtDescrip.Text.Trim() == "")
             {
@@ -108,7 +108,7 @@ namespace SisCtd
 
         private void Frm_T_Oficinas_Det_Load(object sender, EventArgs e)
         {
-            Helper.LLenar_Combobox(OTerritorio.Listar("", 2), cboTerritorio, "des", "id");
+            //Helper.LLenar_Combobox(OTerritorio.Listar("", 2), cboTerritorio, "des", "id");
             switch (qOpc)
             {
                 case 3:
@@ -130,19 +130,19 @@ namespace SisCtd
                     {
                         this.Text += " - Modificar";
                     }
-                    DataTable Dt = new DataTable();
-                    Dt = OOficina.Get_Registro(sIdOficina);
-                    if (Dt.Rows.Count > 0)
-                    {
-                        txtCodigo.Text = sIdOficina.Trim();
-                        txtDescrip.Text = Dt.Rows[0]["descripcion"].ToString().Trim();
-                        cboTerritorio.SelectedValue = Dt.Rows[0]["idterritorio"].ToString().Trim();
-                        txtUbigeo.Text = Dt.Rows[0]["idubigeo"].ToString().Trim();
-                        txtDirec.Text = Dt.Rows[0]["direccion"].ToString().Trim();
-                        cboRecojo.Text = Convert.ToBoolean(Dt.Rows[0]["recojo"].ToString()) == true ? "SI" : "NO";
-                        cboCierre.Text = Convert.ToBoolean(Dt.Rows[0]["cierre"].ToString()) == true ? "SI" : "NO";
-                    }
-                    Dt.Dispose();
+                    //DataTable Dt = new DataTable();
+                    //Dt = OOficina.Get_Registro(sIdOficina);
+                    //if (Dt.Rows.Count > 0)
+                    //{
+                    //    txtCodigo.Text = sIdOficina.Trim();
+                    //    txtDescrip.Text = Dt.Rows[0]["descripcion"].ToString().Trim();
+                    //    cboTerritorio.SelectedValue = Dt.Rows[0]["idterritorio"].ToString().Trim();
+                    //    txtUbigeo.Text = Dt.Rows[0]["idubigeo"].ToString().Trim();
+                    //    txtDirec.Text = Dt.Rows[0]["direccion"].ToString().Trim();
+                    //    cboRecojo.Text = Convert.ToBoolean(Dt.Rows[0]["recojo"].ToString()) == true ? "SI" : "NO";
+                    //    cboCierre.Text = Convert.ToBoolean(Dt.Rows[0]["cierre"].ToString()) == true ? "SI" : "NO";
+                    //}
+                    //Dt.Dispose();
                     break;
             }
         }
