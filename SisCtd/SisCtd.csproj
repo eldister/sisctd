@@ -99,14 +99,9 @@
     <Compile Include="Clases\Cls_T_Ejecutivos.cs" />
     <Compile Include="Clases\Cls_T_Estados.cs" />
     <Compile Include="Clases\Cls_T_Oficinas.cs" />
-    <Compile Include="Clases\Cls_T_Productos.cs" />
-    <Compile Include="Clases\Cls_T_Separadoras.cs" />
-    <Compile Include="Clases\Cls_T_SubProductos.cs" />
-    <Compile Include="Clases\Cls_T_Tarjetas.cs" />
     <Compile Include="Clases\Cls_T_Territorios.cs" />
     <Compile Include="Clases\Cls_T_TipoDocumentos.cs" />
     <Compile Include="Clases\Cls_T_TipoOperacion.cs" />
-    <Compile Include="Clases\Cls_T_UsuariosWeb.cs" />
     <Compile Include="Clases\SQLHelper.cs" />
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.cs">
       <SubType>Form</SubType>

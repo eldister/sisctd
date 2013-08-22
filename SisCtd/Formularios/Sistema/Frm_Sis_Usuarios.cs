@@ -98,14 +98,13 @@ namespace SisCtd
         }
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
-            //Frm_T_TipoOperacion_Det fDet = new Frm_T_TipoOperacion_Det(nOpc, sIdproducto, sIdTipoOperacion);
-            //fDet.ShowDialog();
-            //if (fDet.bGrabo == true)
-            //{
-            //    Listar(0);
-            //    Helper.Buscar_Grilla(Dg1, fDet.sIdproducto +fDet.sIdTipoOperacion, 0);
-            //    Listar_Documentos();
-            //} fDet.Dispose();
+            Frm_Sis_Usuarios_Det fDet = new Frm_Sis_Usuarios_Det(qOpcion, sIdusuario);
+            fDet.ShowDialog();
+            if (fDet.bGrabo == true)
+            {
+                Listar(0);
+                Helper.Buscar_Grilla(Dg1, fDet.sIdusuario, 0);
+            } fDet.Dispose();
         }
         #endregion
 

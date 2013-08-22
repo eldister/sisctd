@@ -51,7 +51,7 @@ namespace BLSisCtd
         }
         public void Modificar(BE_Sis_Usuario oBE_Sis_Usuario)
         {
-            oDL_Sis_Usuario.Modificar(oBE_Sis_Usuario, sIdusuarioTra);
+            oDL_Sis_Usuario.Modificar(oBE_Sis_Usuario);
         }
         public void Eliminar(string sIdUsuario)
         {
