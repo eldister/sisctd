@@ -36,58 +36,58 @@ namespace DLSisCtd
         #endregion
 
         #region Obtener Valores
-        public BE_T_Posicion Get_Posicion(string IdPosicion)
+        public BE_T_Gerencia Get_Gerencia(string sIdGerencia)
         {
-            sSql = "select  * from T_Posicion ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdPosicion = '" + IdPosicion + "'";
+            sSql = "select  * from T_Gerencia ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdGerencia = '" + sIdGerencia + "'";
 
             return Make(ConexionDAO.fDatatable(sSql));
 
         }
-        public Boolean Existe(string sIdPosicion)
+        public Boolean Existe(string sIdGerencia)
         {
-            return (Get_Posicion(sIdPosicion)!= null ? true : false);
+            return (Get_Gerencia(sIdGerencia) != null ? true : false);
         }
         #endregion
 
         #region Operaciones
-        protected virtual BE_T_Posicion Make(DataTable dt)
+        protected virtual BE_T_Gerencia Make(DataTable dt)
         {
             if (dt.Rows.Count <= 0) return null;
 
-            BE_T_Posicion oBE_T_Posicion = new BE_T_Posicion();
-            oBE_T_Posicion.IdCliente = dt.Rows[0]["IdCliente"].ToString().Trim();
-            oBE_T_Posicion.IdPosicion = dt.Rows[0]["IdPosicion"].ToString().Trim();
-            oBE_T_Posicion.Descripcion = dt.Rows[0]["Descripcion"].ToString().Trim();
-            oBE_T_Posicion.Estado = (Boolean)dt.Rows[0]["Estado"];
-            oBE_T_Posicion.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
-            oBE_T_Posicion.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
-            oBE_T_Posicion.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
-            return oBE_T_Posicion;
+            BE_T_Gerencia oBE_T_Gerencia = new BE_T_Gerencia();
+            oBE_T_Gerencia.IdCliente = dt.Rows[0]["IdCliente"].ToString().Trim();
+            oBE_T_Gerencia.IdGerencia = dt.Rows[0]["IdGerencia"].ToString().Trim();
+            oBE_T_Gerencia.Descripcion = dt.Rows[0]["Descripcion"].ToString().Trim();
+            oBE_T_Gerencia.Estado = (Boolean)dt.Rows[0]["Estado"];
+            oBE_T_Gerencia.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
+            oBE_T_Gerencia.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
+            oBE_T_Gerencia.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
+            return oBE_T_Gerencia;
         }
-        public void Insertar(BE_T_Posicion oBE_T_Posicion)
+        public void Insertar(BE_T_Gerencia oBE_T_Gerencia)
         {
-            sSql = "insert into T_Posicion values ";
+            sSql = "insert into T_Gerencia values ";
             sSql += "(";
             sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
-            sSql += "'" + oBE_T_Posicion.IdPosicion + "',";
-            sSql += "'" + oBE_T_Posicion.Descripcion + "', ";
-            sSql += "'" + (oBE_T_Posicion.Estado ? "1" : "0") + "',";
+            sSql += "'" + oBE_T_Gerencia.IdGerencia + "',";
+            sSql += "'" + oBE_T_Gerencia.Descripcion + "', ";
+            sSql += "'" + (oBE_T_Gerencia.Estado ? "1" : "0") + "',";
             sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
         }
-        public void Modificar(BE_T_Posicion oBE_T_Posicion)
+        public void Modificar(BE_T_Gerencia oBE_T_Gerencia)
         {
-            sSql = "update  T_Posicion set ";
-            sSql += "       Descripcion='" + oBE_T_Posicion.Descripcion + "', ";
-            sSql += "       Estado='" + (oBE_T_Posicion.Estado ? "1" : "0") + "' ";
-            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdPosicion='" + oBE_T_Posicion.IdPosicion + "' ";
+            sSql = "update  T_Gerencia set ";
+            sSql += "       Descripcion='" + oBE_T_Gerencia.Descripcion + "', ";
+            sSql += "       Estado='" + (oBE_T_Gerencia.Estado ? "1" : "0") + "' ";
+            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdGerencia='" + oBE_T_Gerencia.IdGerencia + "' ";
             ConexionDAO.fExecute(sSql);
         }
-        public void Eliminar(string sIdPosicion)
+        public void Eliminar(string sIdGerencia)
         {
-            sSql = "delete  from T_Posicion ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdPosicion = '" + sIdPosicion + "'  ";
+            sSql = "delete  from T_Gerencia ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdGerencia = '" + sIdGerencia + "'  ";
             ConexionDAO.fExecute(sSql);
         }
 

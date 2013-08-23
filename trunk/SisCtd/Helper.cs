@@ -56,16 +56,16 @@ namespace SisCtd
         public enum eTablas
         {
             Posiciones = 0,
-
-            Datos = 10,
-            Areas = 1,
-            TiposDoc = 2,
-            TiposDoc_Datos = 3,
-            Territorios = 4,
-            Oficinas = 5,
-            Estados = 6,
-
-            Empleados = 17,
+            Gerencias = 1,
+            Areas = 2,
+            Empleados= 3,
+            Territorios= 4,
+            Oficinas= 5,
+            Estados= 6,
+            Actividades= 7,
+            Rutas= 8,
+            Datos= 9,
+            TiposDocumento= 10
         }
 
         //funciones

@@ -36,10 +36,10 @@ namespace DLSisCtd
         #endregion
 
         #region Obtener Valores
-        public BE_T_Posicion Get_Posicion(string IdPosicion)
+        public BE_T_Posicion Get_Posicion(string sIdPosicion)
         {
             sSql = "select  * from T_Posicion ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdPosicion = '" + IdPosicion + "'";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdPosicion = '" + sIdPosicion + "'";
 
             return Make(ConexionDAO.fDatatable(sSql));
 
