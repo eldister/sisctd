@@ -90,6 +90,7 @@ namespace SisCtd
             switch (vNode)
             {
                 case "0101": mFormHijo.Text = " Registro de Posiciones"; break;
+                case "0102": mFormHijo.Text = " Registro de Gerencias"; break;
 
             }
             foreach (TabPage TB in tabPrincipal.TabPages)
@@ -131,7 +132,7 @@ namespace SisCtd
             switch (vNode)
             {
                 case "0101": mFormHijo = new Frm_T_Listados(Helper.eTablas.Posiciones); Abrir(); break;
-                //case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.SubProductos); Abrir(); break;
+                case "0102": mFormHijo = new Frm_T_Listados(Helper.eTablas.Gerencias); Abrir(); break;
                 //case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Territorios); Abrir(); break;
                 //case "0106": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
                 //case "0107": mFormHijo = new Frm_T_Listados(Helper.eTablas.Estados); Abrir(); break;

@@ -20,6 +20,8 @@ namespace SisCtd
         
         BL_T_Posicion oBL_T_Posicion = new BL_T_Posicion();
         BE_T_Posicion oBE_T_Posicion = new BE_T_Posicion();
+        BL_T_Gerencia oBL_T_Gerencia = new BL_T_Gerencia();
+        BE_T_Gerencia oBE_T_Gerencia = new BE_T_Gerencia();
 
         #endregion
 
@@ -65,6 +67,13 @@ namespace SisCtd
                                     cboEstado.SelectedIndex = oBE_T_Posicion.Estado ? 0 : 1;
                                 }
                                 break;
+                            case Helper.eTablas.Gerencias: oBE_T_Gerencia = oBL_T_Gerencia.Get_Gerencia(sIdtabla);
+                                if (oBE_T_Posicion != null)
+                                {
+                                    txtDescripcion.Text = oBE_T_Gerencia.Descripcion;
+                                    cboEstado.SelectedIndex = oBE_T_Gerencia.Estado ? 0 : 1;
+                                }
+                                break;
                         }
                         break;
                 }
@@ -100,6 +109,7 @@ namespace SisCtd
                     switch (eTabla)
                     {
                         case Helper.eTablas.Posiciones: bExiste = oBL_T_Posicion.Existe(txtCodigo.Text); break;
+                        case Helper.eTablas.Gerencias: bExiste = oBL_T_Gerencia.Existe(txtCodigo.Text); break;
                     }
                     if (bExiste)
                     {
@@ -121,6 +131,11 @@ namespace SisCtd
                         oBE_T_Posicion.Descripcion = txtDescripcion.Text.Trim();
                         oBE_T_Posicion.Estado = (cboEstado.SelectedIndex == 0);
                         break;
+                    case Helper.eTablas.Gerencias:
+                        oBE_T_Gerencia.IdGerencia = txtCodigo.Text.Trim();
+                        oBE_T_Gerencia.Descripcion = txtDescripcion.Text.Trim();
+                        oBE_T_Gerencia.Estado = (cboEstado.SelectedIndex == 0);
+                        break;
                 }
 
                 if (qOpcion == Helper.eOpcion.Nuevo)
@@ -128,6 +143,7 @@ namespace SisCtd
                     switch (eTabla)
                     {
                         case Helper.eTablas.Posiciones: oBL_T_Posicion.Insertar(oBE_T_Posicion); break;
+                        case Helper.eTablas.Gerencias: oBL_T_Gerencia.Insertar(oBE_T_Gerencia); break;
                     }
                 }
                 if (qOpcion == Helper.eOpcion.Modificar)
@@ -135,6 +151,7 @@ namespace SisCtd
                     switch (eTabla)
                     {
                         case Helper.eTablas.Posiciones: oBL_T_Posicion.Modificar(oBE_T_Posicion); break;
+                        case Helper.eTablas.Gerencias: oBL_T_Gerencia.Modificar(oBE_T_Gerencia); break;
                     }
                 }
                 sIdtabla = txtCodigo.Text; bGrabo = true; this.Close();
