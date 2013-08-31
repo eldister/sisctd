@@ -47,6 +47,15 @@
     <Compile Include="BE_Sis_Perfil.cs" />
     <Compile Include="BE_T_Posicion.cs" />
     <Compile Include="BE_T_Gerencia.cs" />
+    <Compile Include="BE_T_Actividad.cs" />
+    <Compile Include="BE_T_Area.cs" />
+    <Compile Include="BE_T_Dato.cs" />
+    <Compile Include="BE_T_Empleado.cs" />
+    <Compile Include="BE_T_Estado.cs" />
+    <Compile Include="BE_T_Oficina.cs" />
+    <Compile Include="BE_T_Ruta.cs" />
+    <Compile Include="BE_T_Territorio.cs" />
+    <Compile Include="BE_T_TipoDocumento.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
