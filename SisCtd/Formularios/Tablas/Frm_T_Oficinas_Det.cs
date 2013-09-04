@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
-namespace SisCtd
+namespace BESisCtd
 {
     public partial class Frm_T_Oficinas_Det : Form
     {

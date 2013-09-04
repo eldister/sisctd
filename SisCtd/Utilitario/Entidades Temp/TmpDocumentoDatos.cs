@@ -1,6 +1,6 @@
 using System;
 
-namespace SisCtd
+namespace BESisCtd
 {
 	public class TmpDocumentoDatos
 	{

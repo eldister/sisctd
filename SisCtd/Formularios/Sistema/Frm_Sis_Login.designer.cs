@@ -1,4 +1,4 @@
-﻿namespace SisCtd
+﻿namespace BESisCtd
 {
     partial class Frm_Sis_Login
     {
@@ -124,7 +124,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::SisCtd.Properties.Resources.logo_vsistems;
+            this.pictureBox1.Image = global::BESisCtd.Properties.Resources.logo_vsistems;
             this.pictureBox1.Location = new System.Drawing.Point(-6, -14);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(329, 69);

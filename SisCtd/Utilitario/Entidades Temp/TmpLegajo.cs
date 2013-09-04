@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SisCtd
+namespace BESisCtd
 {
     public class TmpLegajo
     {

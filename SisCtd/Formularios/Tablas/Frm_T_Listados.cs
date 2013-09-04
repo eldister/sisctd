@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BLSisCtd;
 using BESisCtd;
 
-namespace SisCtd
+namespace BESisCtd
 {
     public partial class Frm_T_Listados : Form
     {

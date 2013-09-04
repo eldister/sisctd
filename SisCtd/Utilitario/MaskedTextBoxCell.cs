@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SisCtd
+namespace BESisCtd
 {
     class MaskedTextBoxCell : DataGridViewTextBoxCell
     {
