@@ -1,4 +1,4 @@
-﻿namespace SisCtd
+﻿namespace BESisCtd
 {
     partial class Frm_Sis_Contraseña
     {

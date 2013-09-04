@@ -1,4 +1,4 @@
-﻿namespace SisCtd
+﻿namespace BESisCtd
 {
     partial class Frm_Sis_Formatos
     {
@@ -51,7 +51,7 @@
             // 
             // bImprimir
             // 
-            this.bImprimir.Image = global::SisCtd.Properties.Resources.Toolbar_Print;
+            this.bImprimir.Image = global::BESisCtd.Properties.Resources.Toolbar_Print;
             this.bImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bImprimir.Name = "bImprimir";
             this.bImprimir.Size = new System.Drawing.Size(65, 20);
@@ -66,7 +66,7 @@
             // 
             // bCerrar
             // 
-            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
+            this.bCerrar.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
             this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bCerrar.Name = "bCerrar";
             this.bCerrar.Size = new System.Drawing.Size(58, 20);

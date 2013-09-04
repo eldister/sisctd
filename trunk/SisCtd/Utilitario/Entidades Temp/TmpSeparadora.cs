@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
-namespace SisCtd
+namespace BESisCtd
 {
     public class TmpSeparadora
 	{

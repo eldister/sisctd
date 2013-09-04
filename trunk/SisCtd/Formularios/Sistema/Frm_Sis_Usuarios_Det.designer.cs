@@ -1,4 +1,4 @@
-﻿namespace SisCtd
+﻿namespace BESisCtd
 {
     partial class Frm_Sis_Usuarios_Det
     {
@@ -44,7 +44,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
+            this.btnCancelar.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
             this.btnCancelar.Location = new System.Drawing.Point(365, 161);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 28);
@@ -56,7 +56,7 @@
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
+            this.btnGrabar.Image = global::BESisCtd.Properties.Resources.Toolbar_Save;
             this.btnGrabar.Location = new System.Drawing.Point(282, 161);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(80, 28);

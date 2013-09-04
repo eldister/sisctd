@@ -12,7 +12,7 @@ using CrystalDecisions.Shared;
 using CrystalDecisions.Windows;
 using System.IO;
 
-namespace SisCtd
+namespace BESisCtd
 {
     public partial class Frm_Con_Registro : Form
     {

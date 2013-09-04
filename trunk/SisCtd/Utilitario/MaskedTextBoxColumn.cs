@@ -7,7 +7,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SisCtd
+namespace BESisCtd
 {
     public class MaskedTextBoxColumn : DataGridViewColumn
     {

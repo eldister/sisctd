@@ -1,4 +1,4 @@
-﻿namespace SisCtd
+﻿namespace BESisCtd
 {
     partial class Frm_Sis_Acceso
     {
@@ -173,7 +173,7 @@
             // btnGrabar
             // 
             this.btnGrabar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
+            this.btnGrabar.Image = global::BESisCtd.Properties.Resources.Toolbar_Save;
             this.btnGrabar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGrabar.Location = new System.Drawing.Point(14, 134);
             this.btnGrabar.Name = "btnGrabar";
@@ -269,7 +269,7 @@
             // 
             // bNuevo
             // 
-            this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
+            this.bNuevo.Image = global::BESisCtd.Properties.Resources.Toolbar_New;
             this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bNuevo.Name = "bNuevo";
             this.bNuevo.Size = new System.Drawing.Size(62, 20);
@@ -279,7 +279,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Image = global::SisCtd.Properties.Resources.control;
+            this.bModificar.Image = global::BESisCtd.Properties.Resources.control;
             this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(78, 20);
@@ -289,7 +289,7 @@
             // 
             // bEliminar
             // 
-            this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
+            this.bEliminar.Image = global::BESisCtd.Properties.Resources.Toolbar_Delete;
             this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(70, 20);
@@ -304,7 +304,7 @@
             // 
             // bExportar
             // 
-            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
+            this.bExportar.Image = global::BESisCtd.Properties.Resources.xls;
             this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bExportar.Name = "bExportar";
             this.bExportar.Size = new System.Drawing.Size(70, 20);
@@ -319,7 +319,7 @@
             // 
             // bCerrar
             // 
-            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
+            this.bCerrar.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
             this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bCerrar.Name = "bCerrar";
             this.bCerrar.Size = new System.Drawing.Size(49, 20);
@@ -426,7 +426,7 @@
             // btnAgregarCliente
             // 
             this.btnAgregarCliente.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCliente.Image = global::SisCtd.Properties.Resources.Toolbar_New;
+            this.btnAgregarCliente.Image = global::BESisCtd.Properties.Resources.Toolbar_New;
             this.btnAgregarCliente.Location = new System.Drawing.Point(1403, 46);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.Size = new System.Drawing.Size(26, 23);
@@ -437,7 +437,7 @@
             // btnQuitarCliente
             // 
             this.btnQuitarCliente.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitarCliente.Image = global::SisCtd.Properties.Resources.Toolbar_Erase;
+            this.btnQuitarCliente.Image = global::BESisCtd.Properties.Resources.Toolbar_Erase;
             this.btnQuitarCliente.Location = new System.Drawing.Point(1430, 46);
             this.btnQuitarCliente.Name = "btnQuitarCliente";
             this.btnQuitarCliente.Size = new System.Drawing.Size(26, 23);
@@ -448,7 +448,7 @@
             // btnExportarUsuarios
             // 
             this.btnExportarUsuarios.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarUsuarios.Image = global::SisCtd.Properties.Resources.xls;
+            this.btnExportarUsuarios.Image = global::BESisCtd.Properties.Resources.xls;
             this.btnExportarUsuarios.Location = new System.Drawing.Point(1140, 46);
             this.btnExportarUsuarios.Name = "btnExportarUsuarios";
             this.btnExportarUsuarios.Size = new System.Drawing.Size(26, 23);

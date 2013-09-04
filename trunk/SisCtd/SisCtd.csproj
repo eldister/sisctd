@@ -8,7 +8,7 @@
     <ProjectGuid>{0936EC57-40AE-441B-85C5-6ECAA2408873}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SisCtd</RootNamespace>
+    <RootNamespace>BESisCtd</RootNamespace>
     <AssemblyName>SisGpd10</AssemblyName>
     <ApplicationIcon>reportes.ico</ApplicationIcon>
     <StartupObject>

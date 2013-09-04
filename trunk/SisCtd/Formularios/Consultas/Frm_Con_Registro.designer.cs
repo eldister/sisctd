@@ -1,4 +1,4 @@
-﻿namespace SisCtd
+﻿namespace BESisCtd
 {
     partial class Frm_Con_Registro
     {
@@ -101,7 +101,7 @@
             // 
             // bExportar
             // 
-            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
+            this.bExportar.Image = global::BESisCtd.Properties.Resources.xls;
             this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bExportar.Name = "bExportar";
             this.bExportar.Size = new System.Drawing.Size(69, 20);
@@ -116,7 +116,7 @@
             // 
             // bSalir
             // 
-            this.bSalir.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
+            this.bSalir.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
             this.bSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bSalir.Name = "bSalir";
             this.bSalir.Size = new System.Drawing.Size(47, 20);
