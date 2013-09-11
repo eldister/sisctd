@@ -16,6 +16,7 @@ namespace BESisCtd
         Helper.eTablas eTabla;
         BL_T_Posicion oBL_T_Posicion = new BL_T_Posicion();
         BL_T_Gerencia oBL_T_Gerencia = new BL_T_Gerencia();
+        BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
 
         #endregion
 
@@ -64,6 +65,7 @@ namespace BESisCtd
                 {
                     case Helper.eTablas.Posiciones: Dt = oBL_T_Posicion.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0,1)); break;
                     case Helper.eTablas.Gerencias: Dt = oBL_T_Gerencia.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
+                    case Helper.eTablas.Rutas: Dt = oBL_T_Ruta.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                     
                 }
                 if (eListar == Helper.eListar.Grilla)
