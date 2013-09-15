@@ -18,6 +18,10 @@ namespace BESisCtd
         BL_T_Gerencia oBL_T_Gerencia = new BL_T_Gerencia();
         BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
 
+        BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
+        BL_T_Area oBL_T_Area = new BL_T_Area();
+        BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
+
         #endregion
 
         #region Iniciar Formulario
@@ -66,7 +70,10 @@ namespace BESisCtd
                     case Helper.eTablas.Posiciones: Dt = oBL_T_Posicion.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0,1)); break;
                     case Helper.eTablas.Gerencias: Dt = oBL_T_Gerencia.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                     case Helper.eTablas.Rutas: Dt = oBL_T_Ruta.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
-                    
+
+                    case Helper.eTablas.Empleados: Dt = oBL_T_Empleado.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
+                    case Helper.eTablas.Areas: Dt = oBL_T_Area.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
+                    case Helper.eTablas.Oficinas: Dt = oBL_T_Oficina.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                 }
                 if (eListar == Helper.eListar.Grilla)
                 {
@@ -117,7 +124,6 @@ namespace BESisCtd
                     break;
             }
         }
-        
         private void oCancelar()
         {
             Helper.Cerrar_Ventana(this, (TabControl)this.Parent.Parent);

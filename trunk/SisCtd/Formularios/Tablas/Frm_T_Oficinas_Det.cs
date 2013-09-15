@@ -71,11 +71,6 @@ namespace BESisCtd
                 txtDescrip.Focus(); return false;
             }
 
-            if (cboTerritorio.Text.Trim() == "")
-            {
-                MessageBox.Show("Seleccione un Territorio", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                cboTerritorio.Focus(); return false;
-            }
 
             if (txtUbigeo.Text != "")
             {
@@ -86,16 +81,6 @@ namespace BESisCtd
                 }
             }
 
-            if (cboRecojo.Text.Trim() == "")
-            {
-                MessageBox.Show("Seleccione el Campo de Recojo", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                cboRecojo.Focus(); return false;
-            }
-            if (cboCierre.Text.Trim() == "")
-            {
-                MessageBox.Show("Seleccione el Campo de Cierre", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                cboCierre.Focus(); return false;
-            }
 
             return true;
         }
