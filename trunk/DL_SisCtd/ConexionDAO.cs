@@ -11,7 +11,7 @@ namespace DLSisCtd
     {
 
         // ----- PRODUCCION -----------------------------------------------------------------------------------------
-        public static string sDBservidor = "RAFAEL\\SQL2008";
+        public static string sDBservidor = "MIGUEL-PC\\SQL2008";
         public static string sDBusuario = "sa";
         public static string sDBPassword = "123456";
         public static string sDBnombre = "bddoc";
