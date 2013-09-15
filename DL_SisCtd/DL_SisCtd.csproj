@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DL_T_TipoDocumento.cs" />
+    <Compile Include="DL_T_Oficina.cs" />
+    <Compile Include="DL_T_Area.cs" />
+    <Compile Include="DL_T_Empleado.cs" />
     <Compile Include="DL_T_Ruta.cs" />
     <Compile Include="DL_T_Gerencia.cs" />
     <Compile Include="DL_T_Posicion.cs" />
