@@ -91,7 +91,12 @@ namespace BESisCtd
             {
                 case "0101": mFormHijo.Text = " Registro de Posiciones"; break;
                 case "0102": mFormHijo.Text = " Registro de Gerencias"; break;
-                case "0109": mFormHijo.Text = " Registro de Rutas"; break;
+                case "0103": mFormHijo.Text = " Registro de Areas"; break;
+                case "0104": mFormHijo.Text = " Registro de Empleados"; break;
+                case "0105": mFormHijo.Text = " Registro de Oficinas"; break;
+
+                case "0108": mFormHijo.Text = " Registro de Rutas"; break;
+
 
             }
             foreach (TabPage TB in tabPrincipal.TabPages)
@@ -134,57 +139,16 @@ namespace BESisCtd
             {
                 case "0101": mFormHijo = new Frm_T_Listados(Helper.eTablas.Posiciones); Abrir(); break;
                 case "0102": mFormHijo = new Frm_T_Listados(Helper.eTablas.Gerencias); Abrir(); break;
-                case "0109": mFormHijo = new Frm_T_Listados(Helper.eTablas.Rutas); Abrir(); break;
-                //case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Territorios); Abrir(); break;
-                //case "0106": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
-                //case "0107": mFormHijo = new Frm_T_Listados(Helper.eTablas.Estados); Abrir(); break;
-                //case "0108": mFormHijo = new Frm_T_Listados(Helper.eTablas.Areas); Abrir(); break;
-                //case "0110": mFormHijo = new Frm_T_Listados(Helper.eTablas.Tarjetas); Abrir(); break;
-                //case "0111": mFormHijo = new Frm_T_Listados(Helper.eTablas.Ejecutivos); Abrir(); break;
 
+                case "0103": mFormHijo = new Frm_T_Listados(Helper.eTablas.Areas); Abrir(); break;
+                case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.Empleados); Abrir(); break;
+                case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
                 
-                //Pedidos
-                //case "0301": mFormHijo = new Frm_Reg_Pedidos_List(); Abrir(); break;
-                //case "0302": mFormHijo = new Frm_Rep_Pedidos(); Abrir_Normal(); break;
 
-                //Digitalizacion
-                //case "2101": mFormHijo = new Frm_Reg_Escaneos_List(); Abrir(); break;
-                //case "2102": mFormHijo = new Frm_Reg_Envios_List(); Abrir(); break;
-                //case "2103": mFormHijo = new Frm_Rep_Digitalizacion_Nextel(); Abrir_Normal(); break;
-                //case "2104": mFormHijo = new Frm_Reg_Depurar(); Abrir(); break;
-                //case "210501": mFormHijo = new Frm_Pro_Prorrateos_Asignar(); Abrir(); break;
-                //case "210502": mFormHijo = new Frm_Pro_Prorrateos_Consulta(); Abrir(); break;
+                case "0108": mFormHijo = new Frm_T_Listados(Helper.eTablas.Rutas); Abrir(); break;
 
-                //case "2501": mFormHijo = new Frm_Reg_Ingrec_Reing(); Abrir(); break;
-                //case "2502": mFormHijo = new Frm_Rep_Retiros(); Abrir_Normal(); break;
-
-                //case "3001": mFormHijo = new Frm_Rep_Detallado_Ingresos(); Abrir_Normal(); break;
-                //case "3002": mFormHijo = new Frm_Pro_Facturacion(); Abrir_Normal(); break;
-                //case "3003": mFormHijo = new Frm_Pro_Busqueda_Masiva(); Abrir(); break;
-
-                
-                //// SE IMPLEMENTA A SOLICITUD DE OPERACIONES PARA TODO EL GPD (3006 PARA INTERBANK Y RIPLEY)
-                //case "3006":
-                //    switch (Helper.eIDempresa)
-                //    {
-                //        case Helper.eEmpresas.INTERBANK:
-                //        case Helper.eEmpresas.RIPLEY:
-                //            mFormHijo = new Frm_Pro_Pedidos_Masivos(); Abrir(); break;
-                //    } break;
-
-                //// SE IMPLEMENTA A SOLICITUD DE OPERACIONES PARA TODO EL GPD (3506 PARA FALABELLA,NEXTEL,HSBC)
-                //case "3506": mFormHijo = new Frm_Pro_Pedidos_Masivos(); Abrir(); break;
-
-
-
-                //case "3007": mFormHijo = new Frm_Pro_Palm(); Abrir(); break;
-                //case "3008": mFormHijo = new Frm_Pro_Control_Recojos(); Abrir(); break;
-
-
-               
-                //Reportes
-                //case "0801": mFormHijo = new Frm_Rep_Registros(); Abrir_Normal(); break;
-
+                case "0110": mFormHijo = new Frm_T_TiposDocumento_List(); Abrir(); break;
+    
 
                 //Sistema
                 case "0901": mFormHijo = new Frm_Sis_Usuarios(); Abrir(); break;
@@ -263,10 +227,6 @@ namespace BESisCtd
         }
 
         #endregion
-
-
-
-
 
     }
 }
