@@ -183,6 +183,10 @@
     <Compile Include="Formularios\Tablas\Frm_T_Oficinas_Det.designer.cs">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TiposDocumento_List.cs" />
+    <Compile Include="Formularios\Tablas\Frm_T_TiposDocumento_List.designer.cs">
+      <DependentUpon>Frm_T_TiposDocumento_List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Oficinas_Det.resx">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TiposDocumento_List.resx">
+      <DependentUpon>Frm_T_TiposDocumento_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
