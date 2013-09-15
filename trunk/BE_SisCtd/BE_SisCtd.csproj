@@ -56,6 +56,9 @@
     <Compile Include="BE_T_Ruta.cs" />
     <Compile Include="BE_T_Territorio.cs" />
     <Compile Include="BE_T_TipoDocumento.cs" />
+    <Compile Include="BE_T_RutaActividad.cs" />
+    <Compile Include="BE_T_TipoDocumentoDato.cs" />
+    <Compile Include="BE_T_TipoDocumentoRuta.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
