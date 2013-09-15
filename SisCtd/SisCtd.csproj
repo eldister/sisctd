@@ -183,7 +183,9 @@
     <Compile Include="Formularios\Tablas\Frm_T_Oficinas_Det.designer.cs">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Tablas\Frm_T_TiposDocumento_List.cs" />
+    <Compile Include="Formularios\Tablas\Frm_T_TiposDocumento_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_TiposDocumento_List.designer.cs">
       <DependentUpon>Frm_T_TiposDocumento_List.cs</DependentUpon>
     </Compile>
