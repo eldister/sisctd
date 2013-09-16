@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
@@ -44,21 +46,29 @@
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.Dg1 = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.migDataGridView2 = new MigControls.MigDataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.bNuevo = new System.Windows.Forms.ToolStripButton();
             this.bModificar = new System.Windows.Forms.ToolStripButton();
             this.bEliminar = new System.Windows.Forms.ToolStripButton();
             this.bExportar = new System.Windows.Forms.ToolStripButton();
             this.bCerrar = new System.Windows.Forms.ToolStripButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.migDataGridView3 = new MigControls.MigDataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.migDataGridView1 = new MigControls.MigDataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.migDataGridView4 = new MigControls.MigDataGridView();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dg1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -72,7 +82,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(915, 32);
+            this.panel1.Size = new System.Drawing.Size(1099, 32);
             this.panel1.TabIndex = 2;
             // 
             // lblEstado
@@ -171,7 +181,7 @@
             this.BarraSis.Location = new System.Drawing.Point(0, 0);
             this.BarraSis.Name = "BarraSis";
             this.BarraSis.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.BarraSis.Size = new System.Drawing.Size(915, 23);
+            this.BarraSis.Size = new System.Drawing.Size(1099, 23);
             this.BarraSis.TabIndex = 3;
             // 
             // toolStripButton4
@@ -188,9 +198,9 @@
             // 
             this.Stb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LblMensaje});
-            this.Stb.Location = new System.Drawing.Point(0, 205);
+            this.Stb.Location = new System.Drawing.Point(0, 197);
             this.Stb.Name = "Stb";
-            this.Stb.Size = new System.Drawing.Size(915, 22);
+            this.Stb.Size = new System.Drawing.Size(1099, 22);
             this.Stb.TabIndex = 662;
             this.Stb.Text = "statusStrip1";
             // 
@@ -207,8 +217,8 @@
             this.Dg1.AllowUserToAddRows = false;
             this.Dg1.AllowUserToDeleteRows = false;
             this.Dg1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
-            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Ivory;
+            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Dg1.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.Dg1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -221,7 +231,7 @@
             this.Dg1.RowHeadersWidth = 25;
             this.Dg1.RowTemplate.Height = 18;
             this.Dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dg1.Size = new System.Drawing.Size(915, 150);
+            this.Dg1.Size = new System.Drawing.Size(1099, 142);
             this.Dg1.StandardTab = true;
             this.Dg1.TabIndex = 0;
             this.Dg1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dg1_CellDoubleClick);
@@ -229,65 +239,21 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.migDataGridView2);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.migDataGridView3);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.migDataGridView1);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.migDataGridView4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 227);
+            this.panel2.Location = new System.Drawing.Point(0, 219);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(915, 260);
+            this.panel2.Size = new System.Drawing.Size(1099, 276);
             this.panel2.TabIndex = 663;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 15);
-            this.label3.TabIndex = 666;
-            this.label3.Text = "Actividades";
-            // 
-            // migDataGridView2
-            // 
-            this.migDataGridView2.AllowUserToAddRows = false;
-            this.migDataGridView2.AllowUserToDeleteRows = false;
-            this.migDataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.migDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.migDataGridView2.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.migDataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.migDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.migDataGridView2.Location = new System.Drawing.Point(12, 24);
-            this.migDataGridView2.MultiSelect = false;
-            this.migDataGridView2.Name = "migDataGridView2";
-            this.migDataGridView2.PasarEnter = false;
-            this.migDataGridView2.ReadOnly = true;
-            this.migDataGridView2.RowHeadersWidth = 25;
-            this.migDataGridView2.RowTemplate.Height = 18;
-            this.migDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.migDataGridView2.Size = new System.Drawing.Size(376, 203);
-            this.migDataGridView2.StandardTab = true;
-            this.migDataGridView2.TabIndex = 667;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(127, 233);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 23);
-            this.button3.TabIndex = 673;
-            this.button3.Text = "Quitar Actividad";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(12, 233);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 23);
-            this.button4.TabIndex = 672;
-            this.button4.Text = "Agregar Actividad";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // bNuevo
             // 
@@ -339,12 +305,144 @@
             this.bCerrar.ToolTipText = "Salir (Esc)";
             this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(111, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 683;
+            this.button1.Text = "Quitar Ruta";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 238);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(93, 23);
+            this.button2.TabIndex = 682;
+            this.button2.Text = "Agregar Ruta";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(676, 238);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 681;
+            this.button5.Text = "Quitar Dato";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(573, 238);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(97, 23);
+            this.button6.TabIndex = 680;
+            this.button6.Text = "Agregar Dato";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(279, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 15);
+            this.label4.TabIndex = 678;
+            this.label4.Text = "Actividades de la Ruta";
+            // 
+            // migDataGridView3
+            // 
+            this.migDataGridView3.AllowUserToAddRows = false;
+            this.migDataGridView3.AllowUserToDeleteRows = false;
+            this.migDataGridView3.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Ivory;
+            this.migDataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.migDataGridView3.BackgroundColor = System.Drawing.Color.LightSlateGray;
+            this.migDataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.migDataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.migDataGridView3.Location = new System.Drawing.Point(279, 29);
+            this.migDataGridView3.MultiSelect = false;
+            this.migDataGridView3.Name = "migDataGridView3";
+            this.migDataGridView3.PasarEnter = false;
+            this.migDataGridView3.ReadOnly = true;
+            this.migDataGridView3.RowHeadersWidth = 25;
+            this.migDataGridView3.RowTemplate.Height = 18;
+            this.migDataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.migDataGridView3.Size = new System.Drawing.Size(209, 203);
+            this.migDataGridView3.StandardTab = true;
+            this.migDataGridView3.TabIndex = 679;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 15);
+            this.label1.TabIndex = 676;
+            this.label1.Text = "Rutas";
+            // 
+            // migDataGridView1
+            // 
+            this.migDataGridView1.AllowUserToAddRows = false;
+            this.migDataGridView1.AllowUserToDeleteRows = false;
+            this.migDataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Ivory;
+            this.migDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.migDataGridView1.BackgroundColor = System.Drawing.Color.LightSlateGray;
+            this.migDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.migDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.migDataGridView1.Location = new System.Drawing.Point(12, 29);
+            this.migDataGridView1.MultiSelect = false;
+            this.migDataGridView1.Name = "migDataGridView1";
+            this.migDataGridView1.PasarEnter = false;
+            this.migDataGridView1.ReadOnly = true;
+            this.migDataGridView1.RowHeadersWidth = 25;
+            this.migDataGridView1.RowTemplate.Height = 18;
+            this.migDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.migDataGridView1.Size = new System.Drawing.Size(257, 203);
+            this.migDataGridView1.StandardTab = true;
+            this.migDataGridView1.TabIndex = 677;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(573, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 15);
+            this.label5.TabIndex = 674;
+            this.label5.Text = "Datos";
+            // 
+            // migDataGridView4
+            // 
+            this.migDataGridView4.AllowUserToAddRows = false;
+            this.migDataGridView4.AllowUserToDeleteRows = false;
+            this.migDataGridView4.AllowUserToResizeRows = false;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Ivory;
+            this.migDataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.migDataGridView4.BackgroundColor = System.Drawing.Color.LightSlateGray;
+            this.migDataGridView4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.migDataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.migDataGridView4.Location = new System.Drawing.Point(573, 29);
+            this.migDataGridView4.MultiSelect = false;
+            this.migDataGridView4.Name = "migDataGridView4";
+            this.migDataGridView4.PasarEnter = false;
+            this.migDataGridView4.ReadOnly = true;
+            this.migDataGridView4.RowHeadersWidth = 25;
+            this.migDataGridView4.RowTemplate.Height = 18;
+            this.migDataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.migDataGridView4.Size = new System.Drawing.Size(284, 203);
+            this.migDataGridView4.StandardTab = true;
+            this.migDataGridView4.TabIndex = 675;
+            // 
             // Frm_T_TiposDocumento_List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(915, 487);
+            this.ClientSize = new System.Drawing.Size(1099, 495);
             this.Controls.Add(this.Dg1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BarraSis);
@@ -355,7 +453,7 @@
             this.Name = "Frm_T_TiposDocumento_List";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = " Registro de Rutas";
+            this.Text = "  Registro de Tipos de Documento";
             this.Load += new System.EventHandler(this.Frm_T_Listados_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_T_Listados_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_T_Listados_KeyPress);
@@ -368,7 +466,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dg1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,9 +495,15 @@
         private System.Windows.Forms.Label lblEstado;
         private MigControls.MigCombobox cboEstado;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
-        private MigControls.MigDataGridView migDataGridView2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label4;
+        private MigControls.MigDataGridView migDataGridView3;
+        private System.Windows.Forms.Label label1;
+        private MigControls.MigDataGridView migDataGridView1;
+        private System.Windows.Forms.Label label5;
+        private MigControls.MigDataGridView migDataGridView4;
     }
 }
