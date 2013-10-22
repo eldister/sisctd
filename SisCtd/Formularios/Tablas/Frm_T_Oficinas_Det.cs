@@ -10,148 +10,126 @@ namespace BESisCtd
 {
     public partial class Frm_T_Oficinas_Det : Form
     {
-        public Frm_T_Oficinas_Det(int Opc, string IdOficina)
+        #region Declaración Variables
+        public string sIdOficina;
+        public Boolean bGrabo = false;
+        Helper.eOpcion qOpcion;
+
+        BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
+        BE_T_Oficina oBE_T_Oficina = new BE_T_Oficina();
+
+        #endregion
+
+        #region Iniciar Formulario
+        public Frm_T_Oficinas_Det(Helper.eOpcion _qOpcion, string IdOficina)
         {
             InitializeComponent();
-            qOpc = Opc;            
+            qOpcion = _qOpcion;
             sIdOficina = IdOficina;
         }
-
-        public string sIdOficina = "";       
-        public Boolean bGrabo = false;        
-        int qOpc;
-                
-        //Cls_T_Oficinas OOficina = new Cls_T_Oficinas();
-        //Cls_T_Territorios OTerritorio = new Cls_T_Territorios();
-        BL_Sis_Sistema oBL_Sis_Sistema = new BL_Sis_Sistema();
-
-        private void Frm_T_Oficinas_Det_Activated(object sender, EventArgs e)
+        private void Frm_T_Oficinas_Det_Load(object sender, EventArgs e)
         {
-            if (qOpc == 2) { txtDescrip.Focus(); }
-            if (qOpc == 1) { BtnCancelar.Focus(); }
+            try
+            {
+                switch (qOpcion)
+                {
+                    case Helper.eOpcion.Nuevo:
+                        this.Text = " Nuevo";
+                        cboEstado.SelectedIndex = 0;
+                        break;
+                    case Helper.eOpcion.Modificar:
+                    case Helper.eOpcion.Consultar:
+                        txtCodigo.ReadOnly = true;
+                        if (qOpcion == Helper.eOpcion.Consultar)
+                        {
+                            this.Text = " Consultar";
+                            txtDescripcion.ReadOnly = true;
+                            txtUbigeo.ReadOnly = true;
+                            txtDireccion.ReadOnly = true;
+                            BtnGrabar.Visible = false;
+                        }
+                        else
+                        {
+                            this.Text = " Modificar";
+                        }
+                        txtCodigo.Text = sIdOficina.Trim();
+
+                        oBE_T_Oficina = oBL_T_Oficina.Get_Oficina (sIdOficina);
+                        if (oBE_T_Oficina != null)
+                        {
+                            txtDescripcion.Text = oBE_T_Oficina.Descripcion;
+                            txtUbigeo.Text = oBE_T_Oficina.Idubigeo ;
+                            txtDireccion.Text = oBE_T_Oficina.Direccion ;
+                            cboEstado.SelectedIndex = oBE_T_Oficina.Estado ? 0 : 1;
+                        }
+                        break;
+                }
+            }
+            catch (Exception Er)
+            { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        private void Frm_T_Oficina_Det_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Escape)) this.Close();
+        }
+        private void Frm_T_Oficina_Det_Activated(object sender, EventArgs e)
+        {
+            if (qOpcion == Helper.eOpcion.Modificar) { txtDescripcion.Focus(); }
+            if (qOpcion == Helper.eOpcion.Consultar) { BtnCancelar.Focus(); }
+        }
+
+        #endregion
+
+        #region Eventos Objetos
+        private void BtnGrabar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                oBE_T_Oficina.Idoficina = txtCodigo.Text.Trim();
+                oBE_T_Oficina.Descripcion = txtDescripcion.Text.Trim();
+                oBE_T_Oficina.Idubigeo  = txtUbigeo.Text.Trim();
+                oBE_T_Oficina.Direccion  = txtDireccion.Text.Trim();
+                oBE_T_Oficina.Estado = (cboEstado.SelectedIndex == 0);
+
+                if (oBE_T_Oficina.Idoficina == "")
+                {
+                    MessageBox.Show("Ingrese el Código", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtCodigo.Focus(); return;
+                }
+                if (qOpcion == Helper.eOpcion.Nuevo)
+                {
+                    oBL_T_Oficina.Existe(oBE_T_Oficina.Idoficina);
+                    if (oBL_T_Oficina.Existe(oBE_T_Oficina.Idoficina))
+                    {
+                        MessageBox.Show("El Código " + oBE_T_Oficina.Idoficina  + " ya existe en Tipos de Documento. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtCodigo.Focus(); return;
+                    }
+                }
+                if (oBE_T_Oficina.Descripcion == "")
+                {
+                    MessageBox.Show("Ingrese una Descripción", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtDescripcion.Focus(); return;
+                }
+
+                if (qOpcion == Helper.eOpcion.Nuevo)
+                {
+                    oBL_T_Oficina.Insertar(oBE_T_Oficina);
+                }
+                if (qOpcion == Helper.eOpcion.Modificar)
+                {
+                    oBL_T_Oficina.Modificar(oBE_T_Oficina);
+                }
+                sIdOficina = txtCodigo.Text; bGrabo = true; this.Close();
+
+            }
+            catch (Exception Er)
+            { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void BtnGrabar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Validacion() == true)
-                {
-                    //OOficina.Grabar(qOpc, txtCodigo.Text, txtDescrip.Text, cboTerritorio.SelectedValue.ToString(), txtUbigeo.Text, txtDirec.Text,
-                    //    cboRecojo.Text == "SI" ? true : false,
-                    //    cboCierre.Text == "SI" ? true : false);
-                    //sIdOficina = txtCodigo.Text; bGrabo = true; this.Close();
-                }
-            }
-            catch (Exception Er) 
-            { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
-        private Boolean Validacion()
-        {
-            if (txtCodigo.Text.Trim() == "")
-            {
-                MessageBox.Show("Ingrese el Código", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtCodigo.Focus(); return false;
-            }
-
-            //if (OOficina.Existe(txtCodigo.Text) == true & qOpc == 3)
-            //{
-            //    MessageBox.Show("El Código ya existe. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    txtCodigo.Focus(); return false;
-            //}
-
-            if (txtDescrip.Text.Trim() == "")
-            {
-                MessageBox.Show("Ingrese la Descripción", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtDescrip.Focus(); return false;
-            }
-
-
-            if (txtUbigeo.Text != "")
-            {
-                if (lblUbigeo.Text.Trim() == "")
-                {
-                    MessageBox.Show("Ingrese una Ubicación Válida", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtUbigeo.Focus(); return false;
-                }
-            }
-
-
-            return true;
-        }
-
-
-        private void Frm_T_Oficinas_Det_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Escape)) this.Close();
-        }
-
-        private void Frm_T_Oficinas_Det_Load(object sender, EventArgs e)
-        {
-            //Helper.LLenar_Combobox(OTerritorio.Listar("", 2), cboTerritorio, "des", "id");
-            switch (qOpc)
-            {
-                case 3:
-                    this.Text += " - Nuevo";
-                    break;
-                case 1:
-                case 2:
-                    txtCodigo.ReadOnly = true;
-                    if (qOpc == 1)
-                    {
-                        this.Text += " - Consulta";
-                        txtDescrip.ReadOnly = true;
-                        txtUbigeo.ReadOnly = true;
-                        txtDirec.ReadOnly = true;
-                        txtDescrip.ReadOnly = true;
-                        BtnGrabar.Visible = false;
-                    }
-                    else
-                    {
-                        this.Text += " - Modificar";
-                    }
-                    //DataTable Dt = new DataTable();
-                    //Dt = OOficina.Get_Registro(sIdOficina);
-                    //if (Dt.Rows.Count > 0)
-                    //{
-                    //    txtCodigo.Text = sIdOficina.Trim();
-                    //    txtDescrip.Text = Dt.Rows[0]["descripcion"].ToString().Trim();
-                    //    cboTerritorio.SelectedValue = Dt.Rows[0]["idterritorio"].ToString().Trim();
-                    //    txtUbigeo.Text = Dt.Rows[0]["idubigeo"].ToString().Trim();
-                    //    txtDirec.Text = Dt.Rows[0]["direccion"].ToString().Trim();
-                    //    cboRecojo.Text = Convert.ToBoolean(Dt.Rows[0]["recojo"].ToString()) == true ? "SI" : "NO";
-                    //    cboCierre.Text = Convert.ToBoolean(Dt.Rows[0]["cierre"].ToString()) == true ? "SI" : "NO";
-                    //}
-                    //Dt.Dispose();
-                    break;
-            }
-        }
-
-        private void txtUbigeo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                //Helper.eTablaBus = Helper.eTablaBus = Helper.eTablas.Ubigeo; Helper.Buscar(txtUbigeo);
-            }
-        }
-
-        private void txtUbigeo_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtUbigeo.Text.Trim() != "")
-                {
-                    lblUbigeo.Text = oBL_Sis_Sistema.Get_Descrip_Ubigeo(txtUbigeo.Text);
-                }
-                else { lblUbigeo.Text = ""; }
-            }
-            catch (Exception Er)
-            { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
+        #endregion
     }
 }

@@ -31,13 +31,13 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGrabar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDescrip = new MigControls.MigTextbox();
+            this.txtDescripcion = new MigControls.MigTextbox();
             this.txtCodigo = new MigControls.MigTextbox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUbigeo = new MigControls.MigTextbox();
             this.lblUbigeo = new System.Windows.Forms.Label();
-            this.txtDirec = new MigControls.MigTextbox();
+            this.txtDireccion = new MigControls.MigTextbox();
             this.label5 = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
             this.label14 = new System.Windows.Forms.Label();
@@ -76,21 +76,21 @@
             this.label7.TabIndex = 723;
             this.label7.Text = "Descripción *";
             // 
-            // txtDescrip
+            // txtDescripcion
             // 
-            this.txtDescrip.BackColor = System.Drawing.Color.White;
-            this.txtDescrip.Car_Años = 4;
-            this.txtDescrip.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtDescrip.ColorSalida = System.Drawing.Color.White;
-            this.txtDescrip.Decimales = 2;
-            this.txtDescrip.Guiones = false;
-            this.txtDescrip.Location = new System.Drawing.Point(108, 40);
-            this.txtDescrip.MaxLength = 50;
-            this.txtDescrip.Name = "txtDescrip";
-            this.txtDescrip.PasarEnter = true;
-            this.txtDescrip.Size = new System.Drawing.Size(382, 20);
-            this.txtDescrip.TabIndex = 1;
-            this.txtDescrip.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtDescripcion.BackColor = System.Drawing.Color.White;
+            this.txtDescripcion.Car_Años = 4;
+            this.txtDescripcion.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtDescripcion.ColorSalida = System.Drawing.Color.White;
+            this.txtDescripcion.Decimales = 2;
+            this.txtDescripcion.Guiones = false;
+            this.txtDescripcion.Location = new System.Drawing.Point(108, 40);
+            this.txtDescripcion.MaxLength = 50;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.PasarEnter = true;
+            this.txtDescripcion.Size = new System.Drawing.Size(382, 20);
+            this.txtDescripcion.TabIndex = 1;
+            this.txtDescripcion.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
             // txtCodigo
             // 
@@ -141,8 +141,6 @@
             this.txtUbigeo.Size = new System.Drawing.Size(62, 20);
             this.txtUbigeo.TabIndex = 3;
             this.txtUbigeo.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
-            this.txtUbigeo.TextChanged += new System.EventHandler(this.txtUbigeo_TextChanged);
-            this.txtUbigeo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUbigeo_KeyDown);
             // 
             // lblUbigeo
             // 
@@ -154,21 +152,21 @@
             this.lblUbigeo.TabIndex = 4;
             this.lblUbigeo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtDirec
+            // txtDireccion
             // 
-            this.txtDirec.BackColor = System.Drawing.Color.White;
-            this.txtDirec.Car_Años = 4;
-            this.txtDirec.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtDirec.ColorSalida = System.Drawing.Color.White;
-            this.txtDirec.Decimales = 2;
-            this.txtDirec.Guiones = false;
-            this.txtDirec.Location = new System.Drawing.Point(108, 96);
-            this.txtDirec.MaxLength = 200;
-            this.txtDirec.Name = "txtDirec";
-            this.txtDirec.PasarEnter = true;
-            this.txtDirec.Size = new System.Drawing.Size(382, 20);
-            this.txtDirec.TabIndex = 5;
-            this.txtDirec.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtDireccion.BackColor = System.Drawing.Color.White;
+            this.txtDireccion.Car_Años = 4;
+            this.txtDireccion.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtDireccion.ColorSalida = System.Drawing.Color.White;
+            this.txtDireccion.Decimales = 2;
+            this.txtDireccion.Guiones = false;
+            this.txtDireccion.Location = new System.Drawing.Point(108, 96);
+            this.txtDireccion.MaxLength = 200;
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.PasarEnter = true;
+            this.txtDireccion.Size = new System.Drawing.Size(382, 20);
+            this.txtDireccion.TabIndex = 5;
+            this.txtDireccion.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
             // label5
             // 
@@ -212,12 +210,12 @@
             this.Controls.Add(this.cboEstado);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtDirec);
+            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.lblUbigeo);
             this.Controls.Add(this.txtUbigeo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDescrip);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnCancelar);
@@ -231,9 +229,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Oficina";
-            this.Activated += new System.EventHandler(this.Frm_T_Oficinas_Det_Activated);
             this.Load += new System.EventHandler(this.Frm_T_Oficinas_Det_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_T_Oficinas_Det_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,13 +240,13 @@
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnGrabar;
         private System.Windows.Forms.Label label7;
-        private MigControls.MigTextbox txtDescrip;
+        private MigControls.MigTextbox txtDescripcion;
         private MigControls.MigTextbox txtCodigo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private MigControls.MigTextbox txtUbigeo;
         private System.Windows.Forms.Label lblUbigeo;
-        private MigControls.MigTextbox txtDirec;
+        private MigControls.MigTextbox txtDireccion;
         private System.Windows.Forms.Label label5;
         private MigControls.MigCombobox cboEstado;
         private System.Windows.Forms.Label label14;
