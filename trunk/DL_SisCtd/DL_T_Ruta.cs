@@ -28,7 +28,7 @@ namespace DLSisCtd
             sSql = "select 	IdRuta as Codigo, Descripcion ";
             sSql += "from 	T_Ruta ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "where  Estado=1 ";
+            sSql += "       Estado=1 ";
             sSql += "order by Descripcion";
             return ConexionDAO.fDatatable(sSql);
         }
@@ -43,6 +43,14 @@ namespace DLSisCtd
 
             return Make(ConexionDAO.fDatatable(sSql));
 
+        }
+        public string Get_Descripcion(string sIdRuta)
+        {
+            BE_T_Ruta oBE_T_Ruta = Get_Ruta(sIdRuta);
+            if (oBE_T_Ruta == null)
+                return "";
+            else
+                return oBE_T_Ruta.Descripcion;
         }
         public Boolean Existe(string sIdRuta)
         {

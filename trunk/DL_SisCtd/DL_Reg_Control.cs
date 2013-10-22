@@ -5,27 +5,15 @@ using System.Data;
 using BESisCtd;
 namespace DLSisCtd
 {
-    public class DL_T_TipoDocumento
+    public class DL_Reg_Control
     {
         string sSql;
 
         #region Listados
-        public DataTable Listar(string sDescripcion, string sEstado)
+        public DataTable Listar(string sNroDocumento, string sRazonSocial,string sEstado)
         {
-            sSql = "select 	a.IdTipoDocumento, a.Descripcion, ";
-            sSql += "       a.DescripcionLarga as [Descripcion Larga], ";
-            //sSql += "       case when Verificable=1 then 'Si' else '' end as Verif, ";
-            //sSql += "       case when Critico=1 then 'Si' else '' end as Critico, ";
-            //sSql += "       case when Digitalizable=1 then 'Si' else '' end as Digital, ";
-            sSql += "       case when Estado=1 then '' else 'I' end as Estado, ";
-            sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
-            sSql += "from 	T_TipoDocumento a ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       a.Descripcion like '%" + sDescripcion + "%'";
-            if (sEstado == "A") sSql += "and Estado=1 ";
-            if (sEstado == "I") sSql += "and Estado=0 ";
-            sSql += "order by a.Descripcion ";
-            return ConexionDAO.fDatatable(sSql);
+            if (sEstado == "Total") sEstado = "";
+            return ConexionDAO.fDatatable("List_Reg_Control", sNroDocumento, sRazonSocial, sEstado);
         }
 
         public DataTable Listar_Rutas(string sIdTipoDocumento)
@@ -52,10 +40,10 @@ namespace DLSisCtd
         }
         public DataTable Buscar()
         {
-            sSql = "select 	IdTipoDocumento as Codigo, Descripcion ";
+            sSql = "select 	T_TipoDocumento as Codigo, Descripcion ";
             sSql += "from 	T_TipoDocumento ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       Estado=1 ";
+            sSql += "where  Estado=1 ";
             sSql += "order by Descripcion";
             return ConexionDAO.fDatatable(sSql);
         }
@@ -63,23 +51,17 @@ namespace DLSisCtd
         #endregion
 
         #region Obtener Valores
-        public BE_T_TipoDocumento Get_TipoDocumento(string sIdTipoDocumento)
+        public BE_Reg_Control Get_Control(string sIdControl)
         {
-            sSql = "select  * from T_TipoDocumento ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdTipoDocumento = '" + sIdTipoDocumento + "'";
+            sSql = "select  * from Reg_Control ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdTipoDocumento = '" + sIdControl + "'";
+
             return Make(ConexionDAO.fDatatable(sSql));
-        }
-        public string Get_Descripcion(string sIdTipoDocumento)
-        {
-            BE_T_TipoDocumento oBE_T_TipoDocumento = Get_TipoDocumento(sIdTipoDocumento);
-            if (oBE_T_TipoDocumento == null)
-                return "";
-            else
-                return oBE_T_TipoDocumento.Descripcion;
+
         }
         public Boolean Existe(string sIdTipoDocumento)
         {
-            return (Get_TipoDocumento(sIdTipoDocumento)!= null ? true : false);
+            return (Get_Control(sIdTipoDocumento)!= null ? true : false);
         }
 
         public Boolean Existe_Ruta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
@@ -94,23 +76,27 @@ namespace DLSisCtd
         #endregion
 
         #region Operaciones
-        protected virtual BE_T_TipoDocumento Make(DataTable dt)
+        protected virtual BE_Reg_Control Make(DataTable dt)
         {
             if (dt.Rows.Count <= 0) return null;
 
-            BE_T_TipoDocumento oBE_T_TipoDocumento = new BE_T_TipoDocumento();
-            oBE_T_TipoDocumento.IdCliente = dt.Rows[0]["IdCliente"].ToString().Trim();
-            oBE_T_TipoDocumento.IdTipoDocumento = dt.Rows[0]["IdTipoDocumento"].ToString().Trim();
-            oBE_T_TipoDocumento.Descripcion = dt.Rows[0]["Descripcion"].ToString().Trim();
-            oBE_T_TipoDocumento.DescripcionLarga = dt.Rows[0]["DescripcionLarga"].ToString().Trim();
-            oBE_T_TipoDocumento.Verificable = (Boolean)dt.Rows[0]["Verificable"];
-            oBE_T_TipoDocumento.Critico = (Boolean)dt.Rows[0]["Critico"];
-            oBE_T_TipoDocumento.Digitalizable = (Boolean)dt.Rows[0]["Digitalizable"];
-            oBE_T_TipoDocumento.Estado = (Boolean)dt.Rows[0]["Estado"];
-            oBE_T_TipoDocumento.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
-            oBE_T_TipoDocumento.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
-            oBE_T_TipoDocumento.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
-            return oBE_T_TipoDocumento;
+            BE_Reg_Control oBE_Reg_Control = new BE_Reg_Control();
+            oBE_Reg_Control.IdCliente = dt.Rows[0]["IdCliente"].ToString().Trim();
+            oBE_Reg_Control.IdControl = (Int32)dt.Rows[0]["IdControl"];
+            oBE_Reg_Control.IdTipoDocumento = dt.Rows[0]["IdTipoDocumento"].ToString().Trim();
+            oBE_Reg_Control.IdMaestroCliente = dt.Rows[0]["IdMaestroCliente"].ToString().Trim();
+            oBE_Reg_Control.NroDocumento = dt.Rows[0]["NroDocumento"].ToString().Trim();
+            oBE_Reg_Control.FechaDocumento = (DateTime)dt.Rows[0]["FechaDocumento"];
+            oBE_Reg_Control.CodigoBarra = dt.Rows[0]["CodigoBarra"].ToString().Trim();
+            oBE_Reg_Control.Observacion = dt.Rows[0]["Observacion"].ToString().Trim();
+            oBE_Reg_Control.FechaInicio = (DateTime)dt.Rows[0]["FechaInicio"];
+            oBE_Reg_Control.FechaTermino = (DateTime)dt.Rows[0]["FechaTermino"];
+            oBE_Reg_Control.Estado = dt.Rows[0]["Estado"].ToString().Trim();
+            oBE_Reg_Control.IdRuta = dt.Rows[0]["IdRuta"].ToString().Trim();
+            oBE_Reg_Control.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
+            oBE_Reg_Control.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
+            oBE_Reg_Control.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
+            return oBE_Reg_Control;
         }
         public void Insertar(BE_T_TipoDocumento oBE_T_TipoDocumento)
         {
