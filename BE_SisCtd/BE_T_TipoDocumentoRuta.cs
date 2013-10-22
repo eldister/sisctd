@@ -16,12 +16,11 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the T_TipoDocumentoRuta class.
 		/// </summary>
-        public BE_T_TipoDocumentoRuta(string idCliente, string idTipoDocumento, string idRuta, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+        public BE_T_TipoDocumentoRuta(string idCliente, string idTipoDocumento, string idRuta, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.IdCliente = idCliente;
 			this.IdTipoDocumento = idTipoDocumento;
 			this.IdRuta = idRuta;
-			this.Estado = estado;
 			this.FechaRegistro = fechaRegistro;
 			this.HoraRegistro = horaRegistro;
 			this.UsuarioRegistro = usuarioRegistro;
@@ -47,11 +46,6 @@ namespace BESisCtd
 
 		/// <summary>
 		/// Gets or sets the Estado value.
-		/// </summary>
-		public bool Estado { get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaRegistro value.
 		/// </summary>
 		public DateTime FechaRegistro { get; set; }
 
