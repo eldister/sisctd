@@ -149,6 +149,8 @@ namespace BESisCtd
 
                 case "0110": mFormHijo = new Frm_T_TiposDocumento_List(); Abrir(); break;
     
+                //Registro
+                case "0201": mFormHijo = new Frm_Reg_Control_List(); Abrir(); break;
 
                 //Sistema
                 case "0901": mFormHijo = new Frm_Sis_Usuarios(); Abrir(); break;
