@@ -20,7 +20,14 @@ namespace BLSisCtd
         {
             return oDL_T_TipoDocumento.Buscar();
         }
-
+        public DataTable Listar_Rutas(string sIdTipoDocumento)
+        {
+            return oDL_T_TipoDocumento.Listar_Rutas(sIdTipoDocumento);
+        }
+        public DataTable Listar_RutaActividad(string sIdRuta)
+        {
+            return oDL_T_TipoDocumento.Listar_RutaActividad(sIdRuta);
+        }
         #endregion
 
         #region Obtener Valores
@@ -28,11 +35,18 @@ namespace BLSisCtd
         {
             return oDL_T_TipoDocumento.Get_TipoDocumento(sIdTipoDocumento);
         }
+        public string Get_Descripcion(string sIdTipoDocumento)
+        {
+            return oDL_T_TipoDocumento.Get_Descripcion(sIdTipoDocumento);
+        }
         public Boolean Existe(string sIdTipoDocumento)
         {
             return oDL_T_TipoDocumento.Existe(sIdTipoDocumento);
         }
-
+        public Boolean Existe_Ruta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
+        {
+            return oDL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta);
+        }
         #endregion
 
         #region Operaciones
@@ -49,6 +63,14 @@ namespace BLSisCtd
             oDL_T_TipoDocumento.Eliminar(sIdTipoDocumento);
         }
 
+        public void AgregarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
+        {
+            oDL_T_TipoDocumento.AgregarRuta(oBE_T_TipoDocumentoRuta);
+        }
+        public void QuitarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
+        {
+            oDL_T_TipoDocumento.QuitarRuta(oBE_T_TipoDocumentoRuta);
+        }
         #endregion
     }
 }

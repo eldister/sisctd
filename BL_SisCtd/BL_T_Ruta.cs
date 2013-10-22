@@ -28,6 +28,10 @@ namespace BLSisCtd
         {
             return oDL_T_Ruta.Get_Ruta(sIdRuta);
         }
+        public string Get_Descripcion(string sIdRuta)
+        {
+            return oDL_T_Ruta.Get_Descripcion(sIdRuta);
+        }
         public Boolean Existe(string sIdRuta)
         {
             return oDL_T_Ruta.Existe(sIdRuta);

@@ -51,6 +51,8 @@
     <Compile Include="BL_T_Area.cs" />
     <Compile Include="BL_T_Oficina.cs" />
     <Compile Include="BL_T_TipoDocumento.cs" />
+    <Compile Include="BL_Reg_Control.cs" />
+    <Compile Include="BL_T_MaestroCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
