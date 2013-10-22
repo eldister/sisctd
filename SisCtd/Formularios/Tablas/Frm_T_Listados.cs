@@ -103,15 +103,15 @@ namespace BESisCtd
         {
             switch (eTabla)
             {
-                //case Helper.eTablas.Oficinas :
-                //    Frm_T_Oficinas_Det fOfi = new Frm_T_Oficinas_Det(nOpc, Get_Id(false));
-                //    fOfi.ShowDialog();
-                //    if (fOfi.bGrabo == true)
-                //    {
-                //        Listar(0);
-                //        Helper.Buscar_Grilla(Dg1, fOfi.sIdOficina, 0);
-                //    } fOfi.Dispose();
-                //    break;
+                case Helper.eTablas.Oficinas:
+                    Frm_T_Oficinas_Det fOfi = new Frm_T_Oficinas_Det(qOpcion, Get_Id(false));
+                    fOfi.ShowDialog();
+                    if (fOfi.bGrabo == true)
+                    {
+                        Listar(0);
+                        Helper.Buscar_Grilla(Dg1, fOfi.sIdOficina, 0);
+                    } fOfi.Dispose();
+                    break;
                 default:
                     Frm_T_Detalle fDet = new Frm_T_Detalle(qOpcion, eTabla, Get_Id(false));
                     fDet.ShowDialog();
