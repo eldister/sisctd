@@ -145,7 +145,7 @@ namespace BESisCtd
                 case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
                 
 
-                case "0108": mFormHijo = new Frm_T_Listados(Helper.eTablas.Rutas); Abrir(); break;
+                case "0108": mFormHijo = new Frm_T_Rutas_List(); Abrir(); break;
 
                 case "0110": mFormHijo = new Frm_T_TiposDocumento_List(); Abrir(); break;
     
