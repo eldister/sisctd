@@ -13,7 +13,7 @@ namespace BESisCtd
     public partial class Frm_T_Rutas_List : Form
     {
         #region Declaración Variables
-        BL_T_TipoDocumento oBL_T_TipoDocumento = new BL_T_TipoDocumento();
+        BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
 
         #endregion
 
@@ -57,7 +57,7 @@ namespace BESisCtd
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                Dt = oBL_T_TipoDocumento.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0,1));
+                Dt = oBL_T_Ruta.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0,1));
                 
                 if (eListar == Helper.eListar.Grilla)
                 {
@@ -85,14 +85,14 @@ namespace BESisCtd
         }
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
-            //Frm_T_Detalle fDet = new Frm_T_Detalle(qOpcion, eTabla, Get_Id(false));
-            //fDet.ShowDialog();
-            //if (fDet.bGrabo == true)
-            //{
-            //    Listar(0);
-            //    Helper.Buscar_Grilla(Dg1, fDet.sIdtabla, 0);
-            //}
-            //fDet.Dispose();
+            Frm_T_Detalle fDet = new Frm_T_Detalle(qOpcion, Helper.eTablas.Rutas, Get_Id(false));
+            fDet.ShowDialog();
+            if (fDet.bGrabo == true)
+            {
+                Listar(0);
+                Helper.Buscar_Grilla(Dg1, fDet.sIdtabla, 0);
+            }
+            fDet.Dispose();
 
         }
         private void oCancelar()
@@ -117,7 +117,7 @@ namespace BESisCtd
             try
             {
                 if (MessageBox.Show("¿Está seguro que desea de Eliminar la Posicion : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                oBL_T_TipoDocumento.Eliminar(sId);
+                oBL_T_Ruta.Eliminar(sId);
                 
                 Listar(0);
             }
