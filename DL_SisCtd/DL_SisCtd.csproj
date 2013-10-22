@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DL_T_MaestroCliente.cs" />
+    <Compile Include="DL_Reg_Control.cs" />
     <Compile Include="DL_T_TipoDocumento.cs" />
     <Compile Include="DL_T_Oficina.cs" />
     <Compile Include="DL_T_Area.cs" />

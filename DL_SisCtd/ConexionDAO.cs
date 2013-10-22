@@ -12,12 +12,12 @@ namespace DLSisCtd
 
         // ----- PRODUCCION -----------------------------------------------------------------------------------------
 
-        public static string sDBservidor = "RAFAEL\\SQL2008";
-        public static string sDBPassword = "123456";
+        //public static string sDBservidor = "RAFAEL\\SQL2008";
+        //public static string sDBPassword = "123456";
 
 
-        //public static string sDBservidor = "IMP-CAL-LW7-014";
-        //public static string sDBPassword = "Imp1234$";
+        public static string sDBservidor = "IMP-CAL-LW7-014";
+        public static string sDBPassword = "Imp1234$";
 
 
         public static string sDBusuario = "sa";
