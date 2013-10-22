@@ -99,6 +99,18 @@
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.designer.cs">
       <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Control_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Control_List.designer.cs">
+      <DependentUpon>Frm_Reg_Control_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Control_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Control_Det.designer.cs">
+      <DependentUpon>Frm_Reg_Control_Det.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Sistema\Frm_About.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +177,12 @@
     <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.designer.cs">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.designer.cs">
+      <DependentUpon>Frm_T_TipoDocumento_Det.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_Detalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +201,12 @@
     <Compile Include="Formularios\Tablas\Frm_T_Oficinas_Det.designer.cs">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Rutas_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Rutas_List.designer.cs">
+      <DependentUpon>Frm_T_Rutas_List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_TiposDocumento_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +218,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\Consultas\Frm_Con_Registro.resx">
       <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registro\Frm_Reg_Control_List.resx">
+      <DependentUpon>Frm_Reg_Control_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registro\Frm_Reg_Control_Det.resx">
+      <DependentUpon>Frm_Reg_Control_Det.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_About.resx">
       <DependentUpon>Frm_About.cs</DependentUpon>
@@ -228,6 +258,9 @@
     <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.resx">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.resx">
+      <DependentUpon>Frm_T_TipoDocumento_Det.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Detalle.resx">
       <DependentUpon>Frm_T_Detalle.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Oficinas_Det.resx">
       <DependentUpon>Frm_T_Oficinas_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Rutas_List.resx">
+      <DependentUpon>Frm_T_Rutas_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_TiposDocumento_List.resx">
       <DependentUpon>Frm_T_TiposDocumento_List.cs</DependentUpon>
@@ -361,7 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Formularios\Procesos\" />
-    <Folder Include="Formularios\Registro\" />
     <Folder Include="Formularios\Reportes\" />
   </ItemGroup>
   <ItemGroup>
