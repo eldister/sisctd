@@ -112,6 +112,16 @@ namespace BESisCtd
                         Helper.Buscar_Grilla(Dg1, fOfi.sIdOficina, 0);
                     } fOfi.Dispose();
                     break;
+                case Helper.eTablas.Areas:
+                    Frm_T_Oficinas_Det fAre = new Frm_T_Oficinas_Det(qOpcion, Get_Id(false));
+                    fAre.ShowDialog();
+                    if (fAre.bGrabo == true)
+                    {
+                        Listar(0);
+                        Helper.Buscar_Grilla(Dg1, fAre.sIdOficina, 0);
+                    } fAre.Dispose();
+                    break;
+
                 default:
                     Frm_T_Detalle fDet = new Frm_T_Detalle(qOpcion, eTabla, Get_Id(false));
                     fDet.ShowDialog();
