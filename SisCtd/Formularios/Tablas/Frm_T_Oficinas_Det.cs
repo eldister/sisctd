@@ -17,6 +17,7 @@ namespace BESisCtd
 
         BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
         BE_T_Oficina oBE_T_Oficina = new BE_T_Oficina();
+        BL_T_Ubigeo   oBL_T_Ubigeo = new BL_T_Ubigeo();
 
         #endregion
 
@@ -130,49 +131,27 @@ namespace BESisCtd
             this.Close();
         }
 
-        private void txtAyudaF1(object sender, KeyEventArgs e)
+        private void PonerDescrip_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode != Keys.F1) return;
-            TextBox txt = (TextBox)sender;
+            TextBox txt = (MigControls.MigTextbox)sender;
             switch (txt.Name)
             {
-                //case "txtPai": Helper.qBus = Helper.eBuscar.Paises; break;
-                //case "txtUbi": Helper.qBus = Helper.eBuscar.Ubigeo; break;
-                //case "txtZon": Helper.qBus = Helper.eBuscar.Zventa; break;
-                //case "txtVen": Helper.qBus = Helper.eBuscar.Vended; break;
-                //case "txtGru": Helper.qBus = Helper.eBuscar.GrupoCli; break;
-                //case "txtSec": Helper.qBus = Helper.eBuscar.Sector; break;
-                //case "txtMonven": Helper.qBus = Helper.eBuscar.Moneda; break;
-                //case "txtConven": Helper.qBus = Helper.eBuscar.Cpago; break;
-                //case "txtPre": Helper.qBus = Helper.eBuscar.GrupoPre; break;
-                //case "txtDes": Helper.qBus = Helper.eBuscar.GrupoDesc; break;
-                //case "txtRub": Helper.qBus = Helper.eBuscar.Rubro; break;
-                //case "txtMoncom": Helper.qBus = Helper.eBuscar.Moneda; break;
-                //case "txtConcom": Helper.qBus = Helper.eBuscar.Cpago; break;
-            }
-            //Helper.Buscar(txt);
-        }
-        private void txtPonerDescrip(object sender, EventArgs e)
-        {
-            TextBox txt = (TextBox)sender;
-            switch (txt.Name)
-            {
-                //case "txtPai": txtDesPais.Text = oTablas.Get_Descrip_Pais(txt.Text); break;
-                //case "txtUbi": txtDesUbi.Text = oTablas.Get_Descrip_Ubigeo(txt.Text); break;
-                //case "txtZon": txtDeszon.Text = oTablas.Get_Descrip(Helper.eTablas.Zonaventas, txt.Text); break;
-                //case "txtVen": txtDesven.Text = oVendedores.Get_Nombre(txt.Text); break;
-                //case "txtGru": txtDesgru.Text = oTablas.Get_Descrip(Helper.eTablas.GrupoCliente, txt.Text); break;
-                //case "txtSec": txtDessec.Text = oTablas.Get_Descrip(Helper.eTablas.Sectores, txt.Text); break;
-                //case "txtMonven": txtDesMonven.Text = oTablas.Get_Descrip(Helper.eTablas.Monedas, txt.Text); break;
-                //case "txtConven": txtDesconven.Text = oCondiciones.Get_Descrip(txt.Text); break;
-                //case "txtPre": txtDespre.Text = oTablas.Get_Descrip(Helper.eTablas.GrupoPrecios, txt.Text); break;
-                //case "txtDes": txtDesdes.Text = oTablas.Get_Descrip(Helper.eTablas.GrupoDesc, txt.Text); break;
-                //case "txtRub": txtDesrub.Text = oTablas.Get_Descrip(Helper.eTablas.Rubros, txt.Text); break;
-                //case "txtMoncom": txtDesMoncom.Text = oTablas.Get_Descrip(Helper.eTablas.Monedas, txt.Text); break;
-                //case "txtConcom": txtDesconcom.Text = oCondiciones.Get_Descrip(txt.Text); break;
+                //case "txtUbigeo": lblUbigeo.Text = oBL_T_Ubigeo.Get_Descripcion(txtUbigeo.Text); break;
             }
 
         }
+        private void AyudaF1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                TextBox txt = (MigControls.MigTextbox)sender;
+                switch (txt.Name)
+                {
+                    case "txtUbigeo": txtUbigeo.Text = Helper.Buscar(oBL_T_Ubigeo.Buscar()); break;
+                }
+            }
+        }
+
 
 
         #endregion

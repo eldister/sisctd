@@ -140,7 +140,8 @@
             this.txtUbigeo.PasarEnter = true;
             this.txtUbigeo.Size = new System.Drawing.Size(62, 20);
             this.txtUbigeo.TabIndex = 3;
-            this.txtUbigeo.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
+            this.txtUbigeo.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtUbigeo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
             // 
             // lblUbigeo
             // 
