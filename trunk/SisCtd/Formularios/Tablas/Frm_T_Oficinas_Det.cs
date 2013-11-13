@@ -136,7 +136,7 @@ namespace BESisCtd
             TextBox txt = (MigControls.MigTextbox)sender;
             switch (txt.Name)
             {
-                //case "txtUbigeo": lblUbigeo.Text = oBL_T_Ubigeo.Get_Descripcion(txtUbigeo.Text); break;
+                case "txtUbigeo": lblUbigeo.Text = oBL_T_Ubigeo.Get_DesUbigeo(txtUbigeo.Text); break;
             }
 
         }

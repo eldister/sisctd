@@ -141,6 +141,7 @@
             this.txtUbigeo.Size = new System.Drawing.Size(62, 20);
             this.txtUbigeo.TabIndex = 3;
             this.txtUbigeo.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtUbigeo.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
             this.txtUbigeo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
             // 
             // lblUbigeo
