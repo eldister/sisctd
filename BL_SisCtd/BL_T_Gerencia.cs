@@ -28,6 +28,11 @@ namespace BLSisCtd
         {
             return oDL_T_Gerencia.Get_Gerencia(sIdGerencia);
         }
+        public string Get_Descripcion(string sIdGerencia)
+        {
+            return oDL_T_Gerencia.Get_Descripcion(sIdGerencia);
+        }
+
         public Boolean Existe(string sIdGerencia)
         {
             return oDL_T_Gerencia.Existe(sIdGerencia);
