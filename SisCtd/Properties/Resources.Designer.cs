@@ -67,6 +67,27 @@ namespace BESisCtd.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _16__Db_delete_ {
+            get {
+                object obj = ResourceManager.GetObject("16 (Db delete)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _16__Db_edit_ {
+            get {
+                object obj = ResourceManager.GetObject("16 (Db edit)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _16__Db_insert_ {
+            get {
+                object obj = ResourceManager.GetObject("16 (Db insert)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap _210 {
             get {
                 object obj = ResourceManager.GetObject("210", resourceCulture);
