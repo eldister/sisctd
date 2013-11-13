@@ -65,6 +65,7 @@ namespace DLSisCtd
             oBE_T_Empleado.Nombre = dt.Rows[0]["Nombre"].ToString().Trim();
             oBE_T_Empleado.IdArea = dt.Rows[0]["IdArea"].ToString().Trim();
             oBE_T_Empleado.IdPosicion = dt.Rows[0]["IdPosicion"].ToString().Trim();
+            oBE_T_Empleado.IdOficina = dt.Rows[0]["IdOficina"].ToString().Trim();
             oBE_T_Empleado.Estado = (Boolean)dt.Rows[0]["Estado"];
             oBE_T_Empleado.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
             oBE_T_Empleado.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
@@ -79,6 +80,7 @@ namespace DLSisCtd
             sSql += "'" + oBE_T_Empleado.IdEmpleado + "',";
             sSql += "'" + oBE_T_Empleado.IdArea + "', ";
             sSql += "'" + oBE_T_Empleado.IdPosicion + "', ";
+            sSql += "'" + oBE_T_Empleado.IdOficina + "', ";
             sSql += "'" + oBE_T_Empleado.Nombre + "', ";
             sSql += "'" + (oBE_T_Empleado.Estado ? "1" : "0") + "',";
             sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
@@ -90,6 +92,7 @@ namespace DLSisCtd
             sSql += "       Nombre='" + oBE_T_Empleado.Nombre + "', ";
             sSql += "       IdArea='" + oBE_T_Empleado.IdArea + "', ";
             sSql += "       IdPosicion='" + oBE_T_Empleado.IdPosicion + "', ";
+            sSql += "       IdOficina='" + oBE_T_Empleado.IdOficina + "', ";
             sSql += "       Estado='" + (oBE_T_Empleado.Estado ? "1" : "0") + "' ";
             sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdEmpleado='" + oBE_T_Empleado.IdEmpleado + "' ";
             ConexionDAO.fExecute(sSql);
