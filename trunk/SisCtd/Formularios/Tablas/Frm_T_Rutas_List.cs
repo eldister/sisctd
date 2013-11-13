@@ -14,6 +14,7 @@ namespace BESisCtd
     {
         #region Declaración Variables
         BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
+        BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
 
         #endregion
 
@@ -99,6 +100,27 @@ namespace BESisCtd
         {
             Helper.Cerrar_Ventana(this, (TabControl)this.Parent.Parent);
         }
+        private void Listar_RutaActividad()
+        {
+            DataTable Dt = new DataTable();
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                Get_IdRuta(false);
+                Dt = oBL_T_TipoDocumento.Listar_RutaActividad(sIdRuta);
+
+                dgActividades.DataSource = Dt; Helper.FormatoGrilla(dgActividades, false);
+                dgActividades.Columns["Orden"].Width = 40;
+                dgActividades.Columns["IdActividad"].Width = 70;
+                dgActividades.Columns["Descripcion"].Width = 250;
+                dgActividades.Columns["Estado"].Width = 45;
+
+                Dt.Dispose();
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
+        }
 
         #endregion
 
@@ -157,6 +179,44 @@ namespace BESisCtd
                 Abrir_Detalle(Helper.eOpcion.Consultar);
             }
         }
+        private void dgActividad_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Listar_RutaActividad();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (Get_IdTipoDocumento(true) == false) return;
+        Regresar:
+            string sIdRuta = Helper.Buscar(oBL_T_Ruta.Buscar());
+            if (sIdRuta == "") return;
+            BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta = new BE_T_TipoDocumentoRuta();
+            oBE_T_TipoDocumentoRuta.IdTipoDocumento = sIdTipoDocumento;
+            oBE_T_TipoDocumentoRuta.IdRuta = sIdRuta;
+            if (oBL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta))
+            {
+                MessageBox.Show("La Ruta " + sIdRuta + " ya ha sido asignado al Tipo de Documento " + sIdTipoDocumento + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                goto Regresar;
+            }
+
+            oBL_T_TipoDocumento.AgregarRuta(oBE_T_TipoDocumentoRuta);
+            Listar_Rutas();
+            Helper.Buscar_Grilla(dgRutas, sIdRuta, 0);
+        }
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            Get_IdRuta(true);
+            if (sIdRuta == "") return;
+            BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta = new BE_T_TipoDocumentoRuta();
+            oBE_T_TipoDocumentoRuta.IdTipoDocumento = sIdTipoDocumento;
+            oBE_T_TipoDocumentoRuta.IdRuta = sIdRuta;
+
+            if (MessageBox.Show("¿Está seguro que desea de Quitar la Ruta : " + sIdRuta + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            oBL_T_TipoDocumento.QuitarRuta(oBE_T_TipoDocumentoRuta);
+            Listar_Rutas();
+        }
+
+
 
         #endregion
 

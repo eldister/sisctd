@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
@@ -38,27 +38,28 @@
             this.txtCodigo = new MigControls.MigTextbox();
             this.label10 = new System.Windows.Forms.Label();
             this.BarraSis = new System.Windows.Forms.ToolStrip();
-            this.bNuevo = new System.Windows.Forms.ToolStripButton();
-            this.bModificar = new System.Windows.Forms.ToolStripButton();
-            this.bEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripSeparator();
-            this.bExportar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bCerrar = new System.Windows.Forms.ToolStripButton();
             this.Stb = new System.Windows.Forms.StatusStrip();
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.Dg1 = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.migDataGridView2 = new MigControls.MigDataGridView();
+            this.dgActividades = new MigControls.MigDataGridView();
+            this.bNuevo = new System.Windows.Forms.ToolStripButton();
+            this.bModificar = new System.Windows.Forms.ToolStripButton();
+            this.bEliminar = new System.Windows.Forms.ToolStripButton();
+            this.bExportar = new System.Windows.Forms.ToolStripButton();
+            this.bCerrar = new System.Windows.Forms.ToolStripButton();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dg1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActividades)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -174,6 +175,104 @@
             this.BarraSis.Size = new System.Drawing.Size(915, 23);
             this.BarraSis.TabIndex = 3;
             // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(6, 23);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
+            // Stb
+            // 
+            this.Stb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LblMensaje});
+            this.Stb.Location = new System.Drawing.Point(0, 205);
+            this.Stb.Name = "Stb";
+            this.Stb.Size = new System.Drawing.Size(915, 22);
+            this.Stb.TabIndex = 662;
+            this.Stb.Text = "statusStrip1";
+            // 
+            // LblMensaje
+            // 
+            this.LblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMensaje.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LblMensaje.Name = "LblMensaje";
+            this.LblMensaje.Size = new System.Drawing.Size(31, 17);
+            this.LblMensaje.Text = ".*.*.*.";
+            // 
+            // Dg1
+            // 
+            this.Dg1.AllowUserToAddRows = false;
+            this.Dg1.AllowUserToDeleteRows = false;
+            this.Dg1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
+            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Dg1.BackgroundColor = System.Drawing.Color.LightSlateGray;
+            this.Dg1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dg1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dg1.Location = new System.Drawing.Point(0, 55);
+            this.Dg1.MultiSelect = false;
+            this.Dg1.Name = "Dg1";
+            this.Dg1.PasarEnter = false;
+            this.Dg1.ReadOnly = true;
+            this.Dg1.RowHeadersWidth = 25;
+            this.Dg1.RowTemplate.Height = 18;
+            this.Dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Dg1.Size = new System.Drawing.Size(915, 150);
+            this.Dg1.StandardTab = true;
+            this.Dg1.TabIndex = 0;
+            this.Dg1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dg1_CellDoubleClick);
+            this.Dg1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dg1_KeyPress);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnChange);
+            this.panel2.Controls.Add(this.btnDelete);
+            this.panel2.Controls.Add(this.btnAdd);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.dgActividades);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 227);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(915, 260);
+            this.panel2.TabIndex = 663;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 15);
+            this.label3.TabIndex = 674;
+            this.label3.Text = "Actividades";
+            // 
+            // dgActividades
+            // 
+            this.dgActividades.AllowUserToAddRows = false;
+            this.dgActividades.AllowUserToDeleteRows = false;
+            this.dgActividades.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            this.dgActividades.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgActividades.BackgroundColor = System.Drawing.Color.LightSlateGray;
+            this.dgActividades.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgActividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgActividades.Location = new System.Drawing.Point(12, 26);
+            this.dgActividades.MultiSelect = false;
+            this.dgActividades.Name = "dgActividades";
+            this.dgActividades.PasarEnter = false;
+            this.dgActividades.ReadOnly = true;
+            this.dgActividades.RowHeadersWidth = 25;
+            this.dgActividades.RowTemplate.Height = 18;
+            this.dgActividades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgActividades.Size = new System.Drawing.Size(521, 203);
+            this.dgActividades.StandardTab = true;
+            this.dgActividades.TabIndex = 675;
+            // 
             // bNuevo
             // 
             this.bNuevo.Image = global::BESisCtd.Properties.Resources.Toolbar_New;
@@ -204,11 +303,6 @@
             this.bEliminar.ToolTipText = "Eliminar (F4)";
             this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
             // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(6, 23);
-            // 
             // bExportar
             // 
             this.bExportar.Image = global::BESisCtd.Properties.Resources.xls;
@@ -218,11 +312,6 @@
             this.bExportar.Text = "E&xportar";
             this.bExportar.ToolTipText = "Exportar (F7)";
             this.bExportar.Click += new System.EventHandler(this.bExportar_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
             // 
             // bCerrar
             // 
@@ -234,110 +323,38 @@
             this.bCerrar.ToolTipText = "Salir (Esc)";
             this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
             // 
-            // Stb
+            // btnChange
             // 
-            this.Stb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LblMensaje});
-            this.Stb.Location = new System.Drawing.Point(0, 205);
-            this.Stb.Name = "Stb";
-            this.Stb.Size = new System.Drawing.Size(915, 22);
-            this.Stb.TabIndex = 662;
-            this.Stb.Text = "statusStrip1";
+            this.btnChange.Image = global::BESisCtd.Properties.Resources._16__Db_edit_;
+            this.btnChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChange.Location = new System.Drawing.Point(91, 235);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(79, 23);
+            this.btnChange.TabIndex = 678;
+            this.btnChange.Text = "    Modificar";
+            this.btnChange.UseVisualStyleBackColor = true;
             // 
-            // LblMensaje
+            // btnDelete
             // 
-            this.LblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblMensaje.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LblMensaje.Name = "LblMensaje";
-            this.LblMensaje.Size = new System.Drawing.Size(31, 17);
-            this.LblMensaje.Text = ".*.*.*.";
+            this.btnDelete.Image = global::BESisCtd.Properties.Resources._16__Db_delete_;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(173, 235);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(77, 23);
+            this.btnDelete.TabIndex = 677;
+            this.btnDelete.Text = "Quitar";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // Dg1
+            // btnAdd
             // 
-            this.Dg1.AllowUserToAddRows = false;
-            this.Dg1.AllowUserToDeleteRows = false;
-            this.Dg1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
-            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.Dg1.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.Dg1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dg1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dg1.Location = new System.Drawing.Point(0, 55);
-            this.Dg1.MultiSelect = false;
-            this.Dg1.Name = "Dg1";
-            this.Dg1.PasarEnter = false;
-            this.Dg1.ReadOnly = true;
-            this.Dg1.RowHeadersWidth = 25;
-            this.Dg1.RowTemplate.Height = 18;
-            this.Dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dg1.Size = new System.Drawing.Size(915, 150);
-            this.Dg1.StandardTab = true;
-            this.Dg1.TabIndex = 0;
-            this.Dg1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dg1_CellDoubleClick);
-            this.Dg1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dg1_KeyPress);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.migDataGridView2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 227);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(915, 260);
-            this.panel2.TabIndex = 663;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(127, 235);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 23);
-            this.button3.TabIndex = 677;
-            this.button3.Text = "Quitar Actividad";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(12, 235);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 23);
-            this.button4.TabIndex = 676;
-            this.button4.Text = "Agregar Actividad";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 15);
-            this.label3.TabIndex = 674;
-            this.label3.Text = "Actividades";
-            // 
-            // migDataGridView2
-            // 
-            this.migDataGridView2.AllowUserToAddRows = false;
-            this.migDataGridView2.AllowUserToDeleteRows = false;
-            this.migDataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Ivory;
-            this.migDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.migDataGridView2.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.migDataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.migDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.migDataGridView2.Location = new System.Drawing.Point(12, 26);
-            this.migDataGridView2.MultiSelect = false;
-            this.migDataGridView2.Name = "migDataGridView2";
-            this.migDataGridView2.PasarEnter = false;
-            this.migDataGridView2.ReadOnly = true;
-            this.migDataGridView2.RowHeadersWidth = 25;
-            this.migDataGridView2.RowTemplate.Height = 18;
-            this.migDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.migDataGridView2.Size = new System.Drawing.Size(376, 203);
-            this.migDataGridView2.StandardTab = true;
-            this.migDataGridView2.TabIndex = 675;
+            this.btnAdd.Image = global::BESisCtd.Properties.Resources._16__Db_insert_;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(12, 234);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(79, 23);
+            this.btnAdd.TabIndex = 676;
+            this.btnAdd.Text = "  Agregar";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // Frm_T_Rutas_List
             // 
@@ -368,7 +385,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dg1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.migDataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActividades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,9 +412,10 @@
         private System.Windows.Forms.Label lblEstado;
         private MigControls.MigCombobox cboEstado;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label3;
-        private MigControls.MigDataGridView migDataGridView2;
+        private MigControls.MigDataGridView dgActividades;
+        private System.Windows.Forms.Button btnChange;
     }
 }
