@@ -28,6 +28,10 @@ namespace BLSisCtd
         {
             return oDL_T_Oficina.Get_Oficina(sIdoficina);
         }
+        public string Get_Descripcion(string sIdOficina)
+        {
+            return oDL_T_Oficina.Get_Descripcion(sIdOficina);
+        }
         public Boolean Existe(string sIdoficina)
         {
             return oDL_T_Oficina.Existe(sIdoficina);
