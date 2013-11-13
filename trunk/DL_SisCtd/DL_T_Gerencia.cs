@@ -44,6 +44,15 @@ namespace DLSisCtd
             return Make(ConexionDAO.fDatatable(sSql));
 
         }
+        public string Get_Descripcion(string sIdGerencia)
+        {
+            BE_T_Gerencia oBE_T_Gerencia = Get_Gerencia(sIdGerencia);
+            if (oBE_T_Gerencia == null)
+                return "";
+            else
+                return oBE_T_Gerencia.Descripcion;
+        }
+
         public Boolean Existe(string sIdGerencia)
         {
             return (Get_Gerencia(sIdGerencia) != null ? true : false);
