@@ -28,11 +28,11 @@ namespace DLSisCtd
         }
         public DataTable Buscar()
         {
-            sSql = "select 	T_Oficina as Codigo, Descripcion ";
-            sSql += "from 	T_Oficina ";
+            sSql = "select idOficina as Codigo, Descripcion ";
+            sSql += "from  T_Oficina ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "where  Estado=1 ";
-            sSql += "order by Nombre";
+            sSql += "      Estado=1 ";
+            sSql += "order by Descripcion";
             return ConexionDAO.fDatatable(sSql);
         }
 
@@ -45,7 +45,14 @@ namespace DLSisCtd
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdOficina = '" + sIdOficina + "'";
 
             return Make(ConexionDAO.fDatatable(sSql));
-
+        }
+        public string Get_Descripcion(string sIdOficina)
+        {
+            BE_T_Oficina oBE_T_Oficina = Get_Oficina(sIdOficina);
+            if (oBE_T_Oficina == null)
+                return "";
+            else
+                return oBE_T_Oficina.Descripcion;
         }
         public Boolean Existe(string sIdOficina)
         {
