@@ -24,6 +24,8 @@ namespace BESisCtd
         BE_T_Gerencia oBE_T_Gerencia = new BE_T_Gerencia();
         BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
         BE_T_Ruta oBE_T_Ruta = new BE_T_Ruta();
+        BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
+        BE_T_Actividad oBE_T_Actividad = new BE_T_Actividad();
 
         #endregion
 
@@ -83,6 +85,13 @@ namespace BESisCtd
                                     cboEstado.SelectedIndex = oBE_T_Ruta.Estado ? 0 : 1;
                                 }
                                 break;
+                            case Helper.eTablas.Actividades: oBE_T_Actividad = oBL_T_Actividad.Get_Actividad(sIdtabla);
+                                if (oBE_T_Actividad != null)
+                                {
+                                    txtDescripcion.Text = oBE_T_Actividad.Descripcion;
+                                    cboEstado.SelectedIndex = oBE_T_Actividad.Estado ? 0 : 1;
+                                }
+                                break;
 
                         }
                         break;
@@ -121,6 +130,7 @@ namespace BESisCtd
                         case Helper.eTablas.Posiciones: bExiste = oBL_T_Posicion.Existe(txtCodigo.Text); break;
                         case Helper.eTablas.Gerencias: bExiste = oBL_T_Gerencia.Existe(txtCodigo.Text); break;
                         case Helper.eTablas.Rutas: bExiste = oBL_T_Ruta.Existe(txtCodigo.Text); break;
+                        case Helper.eTablas.Actividades: bExiste = oBL_T_Actividad.Existe(txtCodigo.Text); break;
                     }
                     if (bExiste)
                     {
@@ -152,6 +162,11 @@ namespace BESisCtd
                         oBE_T_Ruta.Descripcion  = txtDescripcion.Text.Trim();
                         oBE_T_Ruta.Estado  = (cboEstado.SelectedIndex == 0);
                         break;
+                    case Helper.eTablas.Actividades:
+                        oBE_T_Actividad.IdActividad = txtCodigo.Text.Trim();
+                        oBE_T_Actividad.Descripcion = txtDescripcion.Text.Trim();
+                        oBE_T_Actividad.Estado = (cboEstado.SelectedIndex == 0);
+                        break;
 
                 }
 
@@ -162,6 +177,7 @@ namespace BESisCtd
                         case Helper.eTablas.Posiciones: oBL_T_Posicion.Insertar(oBE_T_Posicion); break;
                         case Helper.eTablas.Gerencias: oBL_T_Gerencia.Insertar(oBE_T_Gerencia); break;
                         case Helper.eTablas.Rutas: oBL_T_Ruta.Insertar(oBE_T_Ruta); break;
+                        case Helper.eTablas.Actividades: oBL_T_Actividad.Insertar(oBE_T_Actividad); break;
                     }
                 }
                 if (qOpcion == Helper.eOpcion.Modificar)
@@ -171,6 +187,7 @@ namespace BESisCtd
                         case Helper.eTablas.Posiciones: oBL_T_Posicion.Modificar(oBE_T_Posicion); break;
                         case Helper.eTablas.Gerencias: oBL_T_Gerencia.Modificar(oBE_T_Gerencia); break;
                         case Helper.eTablas.Rutas: oBL_T_Ruta.Modificar(oBE_T_Ruta); break;
+                        case Helper.eTablas.Actividades: oBL_T_Actividad.Modificar(oBE_T_Actividad); break;
                     }
                 }
                 sIdtabla = txtCodigo.Text; bGrabo = true; this.Close();
