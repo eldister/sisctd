@@ -28,6 +28,11 @@ namespace BLSisCtd
         {
             return oDL_T_Area.Get_Area(sIdArea);
         }
+        public string Get_Descripcion(string sIdArea)
+        {
+            return oDL_T_Area.Get_Descripcion(sIdArea);
+        }
+
         public Boolean Existe(string sIdArea)
         {
             return oDL_T_Area.Existe(sIdArea);
