@@ -28,6 +28,10 @@ namespace BLSisCtd
         {
             return oDL_T_Posicion.Get_Posicion(sIdPosicion);
         }
+        public string Get_Descripcion(string sIdPosicion)
+        {
+            return oDL_T_Posicion.Get_Descripcion(sIdPosicion);
+        }
         public Boolean Existe(string sIdPosicion)
         {
             return oDL_T_Posicion.Existe(sIdPosicion);
