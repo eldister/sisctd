@@ -48,9 +48,9 @@
             this.Lbltitulo.AutoSize = true;
             this.Lbltitulo.Location = new System.Drawing.Point(84, 11);
             this.Lbltitulo.Name = "Lbltitulo";
-            this.Lbltitulo.Size = new System.Drawing.Size(56, 13);
+            this.Lbltitulo.Size = new System.Drawing.Size(51, 13);
             this.Lbltitulo.TabIndex = 243;
-            this.Lbltitulo.Text = "SisGpd 10";
+            this.Lbltitulo.Text = "Sisctd 10";
             // 
             // btnAceptar
             // 
@@ -127,9 +127,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(84, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 13);
+            this.label1.Size = new System.Drawing.Size(134, 13);
             this.label1.TabIndex = 256;
-            this.label1.Text = "Copyrigth © 2012 Iron Mountain Perú";
+            this.label1.Text = "Copyrigth © 2013 VSystem";
             // 
             // panel2
             // 
