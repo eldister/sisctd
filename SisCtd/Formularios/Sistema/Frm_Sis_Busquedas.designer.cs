@@ -100,10 +100,10 @@
             this.Dg1.Name = "Dg1";
             this.Dg1.PasarEnter = false;
             this.Dg1.ReadOnly = true;
-            this.Dg1.RowHeadersWidth = 25;
+            this.Dg1.RowHeadersWidth = 40;
             this.Dg1.RowTemplate.Height = 18;
             this.Dg1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dg1.Size = new System.Drawing.Size(425, 338);
+            this.Dg1.Size = new System.Drawing.Size(433, 338);
             this.Dg1.StandardTab = true;
             this.Dg1.TabIndex = 2;
             this.Dg1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dg1_CellDoubleClick);
@@ -135,7 +135,7 @@
             // 
             this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelar.Location = new System.Drawing.Point(363, 374);
+            this.BtnCancelar.Location = new System.Drawing.Point(371, 374);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(66, 27);
             this.BtnCancelar.TabIndex = 4;
@@ -146,7 +146,7 @@
             // BtnAceptar
             // 
             this.BtnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAceptar.Location = new System.Drawing.Point(294, 374);
+            this.BtnAceptar.Location = new System.Drawing.Point(302, 374);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(66, 27);
             this.BtnAceptar.TabIndex = 3;
@@ -177,7 +177,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(441, 409);
+            this.ClientSize = new System.Drawing.Size(449, 409);
             this.Controls.Add(this.txtBus);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnAceptar);
@@ -194,10 +194,10 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Buscar Valor";
-            this.Load += new System.EventHandler(this.Frm_Sis_Busquedas_Load);
             this.Activated += new System.EventHandler(this.Frm_Sis_Busquedas_Activated);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Sis_Busquedas_KeyPress);
+            this.Load += new System.EventHandler(this.Frm_Sis_Busquedas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_Sis_Busquedas_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Sis_Busquedas_KeyPress);
             this.MenuBus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dg1)).EndInit();
             this.ResumeLayout(false);
