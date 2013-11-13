@@ -17,6 +17,7 @@ namespace BESisCtd
         BL_T_Posicion oBL_T_Posicion = new BL_T_Posicion();
         BL_T_Gerencia oBL_T_Gerencia = new BL_T_Gerencia();
         BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
+        BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
 
         BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
         BL_T_Area oBL_T_Area = new BL_T_Area();
@@ -70,6 +71,7 @@ namespace BESisCtd
                     case Helper.eTablas.Posiciones: Dt = oBL_T_Posicion.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0,1)); break;
                     case Helper.eTablas.Gerencias: Dt = oBL_T_Gerencia.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                     case Helper.eTablas.Rutas: Dt = oBL_T_Ruta.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
+                    case Helper.eTablas.Actividades: Dt = oBL_T_Actividad.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
 
                     case Helper.eTablas.Empleados: Dt = oBL_T_Empleado.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                     case Helper.eTablas.Areas: Dt = oBL_T_Area.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
@@ -113,13 +115,22 @@ namespace BESisCtd
                     } fOfi.Dispose();
                     break;
                 case Helper.eTablas.Areas:
-                    Frm_T_Oficinas_Det fAre = new Frm_T_Oficinas_Det(qOpcion, Get_Id(false));
+                    Frm_T_Areas_Det fAre = new Frm_T_Areas_Det(qOpcion, Get_Id(false));
                     fAre.ShowDialog();
                     if (fAre.bGrabo == true)
                     {
                         Listar(0);
-                        Helper.Buscar_Grilla(Dg1, fAre.sIdOficina, 0);
+                        Helper.Buscar_Grilla(Dg1, fAre.sIdArea, 0);
                     } fAre.Dispose();
+                    break;
+                case Helper.eTablas.Empleados:
+                    Frm_T_Empleados_Det fEmp = new Frm_T_Empleados_Det(qOpcion, Get_Id(false));
+                    fEmp.ShowDialog();
+                    if (fEmp.bGrabo == true)
+                    {
+                        Listar(0);
+                        Helper.Buscar_Grilla(Dg1, fEmp.sIdEmpleado, 0);
+                    } fEmp.Dispose();
                     break;
 
                 default:
@@ -177,6 +188,25 @@ namespace BESisCtd
                         if (MessageBox.Show("¿Está seguro que desea de Eliminar la Gerencia : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
                         oBL_T_Gerencia.Eliminar(sId);
                         break;
+
+                    case Helper.eTablas.Areas:
+                        
+                        if (MessageBox.Show("¿Está seguro que desea de Eliminar el Area : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                        oBL_T_Area.Eliminar(sId);
+                        break;
+
+                    case Helper.eTablas.Oficinas:
+
+                        if (MessageBox.Show("¿Está seguro que desea de Eliminar Oficina : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                        oBL_T_Oficina.Eliminar(sId);
+                        break;
+
+                    case Helper.eTablas.Actividades:
+
+                        if (MessageBox.Show("¿Está seguro que desea de Eliminar Actividad : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                        oBL_T_Actividad.Eliminar(sId);
+                        break;
+
 
                     //        case Helper.eTablas.Territorios:
                     //            if (oTerritorios.Existe_Oficinas(sId) == true)
