@@ -95,6 +95,7 @@ namespace BESisCtd
                 case "0104": mFormHijo.Text = " Registro de Empleados"; break;
                 case "0105": mFormHijo.Text = " Registro de Oficinas"; break;
 
+                case "0107": mFormHijo.Text = " Registro de Actividades"; break;
                 case "0108": mFormHijo.Text = " Registro de Rutas"; break;
 
 
@@ -143,8 +144,8 @@ namespace BESisCtd
                 case "0103": mFormHijo = new Frm_T_Listados(Helper.eTablas.Areas); Abrir(); break;
                 case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.Empleados); Abrir(); break;
                 case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
-                
 
+                case "0107": mFormHijo = new Frm_T_Listados(Helper.eTablas.Actividades); Abrir(); break;
                 case "0108": mFormHijo = new Frm_T_Rutas_List(); Abrir(); break;
 
                 case "0110": mFormHijo = new Frm_T_TiposDocumento_List(); Abrir(); break;
