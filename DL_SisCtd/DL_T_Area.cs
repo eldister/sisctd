@@ -27,11 +27,11 @@ namespace DLSisCtd
         }
         public DataTable Buscar()
         {
-            sSql = "select 	T_Area as Codigo, Descripcion ";
-            sSql += "from 	T_Area ";
+            sSql = "select  IdArea as Codigo, Descripcion ";
+            sSql += "from  T_Area ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "where  Estado=1 ";
-            sSql += "order by Nombre";
+            sSql += "       Estado=1 ";
+            sSql += "order by Descripcion";
             return ConexionDAO.fDatatable(sSql);
         }
 
@@ -46,6 +46,15 @@ namespace DLSisCtd
             return Make(ConexionDAO.fDatatable(sSql));
 
         }
+        public string Get_Descripcion(string sIdArea)
+        {
+            BE_T_Area oBE_T_Area = Get_Area(sIdArea);
+            if (oBE_T_Area == null)
+                return "";
+            else
+                return oBE_T_Area.Descripcion;
+        }
+
         public Boolean Existe(string sIdArea)
         {
             return (Get_Area(sIdArea)!= null ? true : false);
