@@ -16,11 +16,11 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the T_GerenciaBE class.
 		/// </summary>
-        public BE_T_Gerencia(string idCliente, string idGerencia, string descripcion, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+        public BE_T_Gerencia(string idCliente, string idGerencia, string Descripcion, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.IdCliente = idCliente;
 			this.IdGerencia = idGerencia;
-			this.Descripcion = descripcion;
+			this.Descripcion = Descripcion;
 			this.Estado = estado;
 			this.FechaRegistro = fechaRegistro;
 			this.HoraRegistro = horaRegistro;
