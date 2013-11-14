@@ -47,14 +47,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCodigoBarra = new MigControls.MigTextbox();
-            this.lblDesRuta = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtIdRuta = new MigControls.MigTextbox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblFechaInicio = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.lblFechaTermino = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.cboRuta = new MigControls.MigCombobox();
             this.SuspendLayout();
             // 
             // BtnCancelar
@@ -282,16 +281,6 @@
             this.txtCodigoBarra.TabIndex = 6;
             this.txtCodigoBarra.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
-            // lblDesRuta
-            // 
-            this.lblDesRuta.BackColor = System.Drawing.Color.LemonChiffon;
-            this.lblDesRuta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDesRuta.Location = new System.Drawing.Point(215, 150);
-            this.lblDesRuta.Name = "lblDesRuta";
-            this.lblDesRuta.Size = new System.Drawing.Size(322, 20);
-            this.lblDesRuta.TabIndex = 12;
-            this.lblDesRuta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -300,24 +289,6 @@
             this.label11.Size = new System.Drawing.Size(37, 13);
             this.label11.TabIndex = 22;
             this.label11.Text = "Ruta *";
-            // 
-            // txtIdRuta
-            // 
-            this.txtIdRuta.BackColor = System.Drawing.Color.White;
-            this.txtIdRuta.Car_Años = 4;
-            this.txtIdRuta.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtIdRuta.ColorSalida = System.Drawing.Color.White;
-            this.txtIdRuta.Decimales = 2;
-            this.txtIdRuta.Guiones = false;
-            this.txtIdRuta.Location = new System.Drawing.Point(120, 150);
-            this.txtIdRuta.MaxLength = 10;
-            this.txtIdRuta.Name = "txtIdRuta";
-            this.txtIdRuta.PasarEnter = true;
-            this.txtIdRuta.Size = new System.Drawing.Size(93, 20);
-            this.txtIdRuta.TabIndex = 5;
-            this.txtIdRuta.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
-            this.txtIdRuta.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
-            this.txtIdRuta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
             // 
             // lblEstado
             // 
@@ -367,17 +338,31 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "Fecha Termino";
             // 
+            // cboRuta
+            // 
+            this.cboRuta.BackColor = System.Drawing.Color.White;
+            this.cboRuta.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.cboRuta.ColorSalida = System.Drawing.Color.White;
+            this.cboRuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRuta.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboRuta.FormattingEnabled = true;
+            this.cboRuta.Location = new System.Drawing.Point(120, 149);
+            this.cboRuta.Name = "cboRuta";
+            this.cboRuta.PasarEnter = true;
+            this.cboRuta.Size = new System.Drawing.Size(417, 22);
+            this.cboRuta.TabIndex = 27;
+            this.cboRuta.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
+            // 
             // Frm_Reg_Control_Det
             // 
             this.ClientSize = new System.Drawing.Size(549, 398);
+            this.Controls.Add(this.cboRuta);
             this.Controls.Add(this.lblFechaTermino);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.lblFechaInicio);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.lblEstado);
-            this.Controls.Add(this.lblDesRuta);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtIdRuta);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCodigoBarra);
             this.Controls.Add(this.label8);
@@ -435,14 +420,13 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private MigControls.MigTextbox txtCodigoBarra;
-        private System.Windows.Forms.Label lblDesRuta;
         private System.Windows.Forms.Label label11;
-        private MigControls.MigTextbox txtIdRuta;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label lblFechaInicio;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblFechaTermino;
         private System.Windows.Forms.Label label17;
+        private MigControls.MigCombobox cboRuta;
 
     }
 }

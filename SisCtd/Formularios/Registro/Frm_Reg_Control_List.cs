@@ -15,7 +15,8 @@ namespace BESisCtd
         #region Declaración Variables
         BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
         //BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
-        string sIdControl, sIdRuta;
+        Int32 nIdControl;
+ 
         #endregion
 
         #region Iniciar Formulario
@@ -40,7 +41,7 @@ namespace BESisCtd
                 case Keys.F3: bNuevo.PerformClick(); break;
                 case Keys.F2: bModificar.PerformClick(); break;
                 case Keys.F4: bEliminar.PerformClick(); break;
-                case Keys.F5: Listar(0); Listar_Rutas(); break;
+                case Keys.F5: Listar(0); Listar_Detalle(); break;
                 case Keys.F7: bExportar.PerformClick(); break;
             }
         }
@@ -69,13 +70,13 @@ namespace BESisCtd
                     dgControl.Columns["IdMaestroCliente"].Visible = false;
                     dgControl.Columns["RazonSocial"].Width = 300;
                     dgControl.Columns["NroDocumento"].Width = 100;
-                    dgControl.Columns["FechaDocumento"].Width = 70;
+                    dgControl.Columns["FechaDocumento"].Width = 100;
                     dgControl.Columns["IdRuta"].Visible = false;
                     dgControl.Columns["Descripción Ruta"].Width = 200;
                     dgControl.Columns["Observacion"].Width = 200;
                     dgControl.Columns["FechaInicio"].Width = 80;
                     dgControl.Columns["FechaTermino"].Width = 80;
-                    dgControl.Columns["Estado"].Width = 50;
+                    dgControl.Columns["Estado"].Width = 80;
                 }
                 else
                 {
@@ -87,25 +88,37 @@ namespace BESisCtd
             { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
         }
-        private void Listar_Rutas()
+        private void Listar_Detalle()
         {
-            //DataTable Dt = new DataTable();
-            //try
-            //{
-            //    this.Cursor = Cursors.WaitCursor;
-            //    Get_IdTipoDocumento(false);
-            //    Dt = oBL_T_TipoDocumento.Listar_Rutas(sIdTipoDocumento);
+            DataTable Dt = new DataTable();
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                Get_IdControl(false);
+                Dt = oBL_Reg_Control.Listar_Detalle(nIdControl);
 
-            //    dgDetalle.DataSource = Dt; Helper.FormatoGrilla(dgDetalle, false);
-            //    dgDetalle.Columns["IdRuta"].Width = 60;
-            //    dgDetalle.Columns["Descripcion"].Width = 250;
-            //    dgDetalle.Columns["Estado"].Width = 45;
-            //    Listar_RutaActividad();
-            //    Dt.Dispose();
-            //}
-            //catch (Exception ex)
-            //{ MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            //finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
+                dgDetalle.DataSource = Dt; Helper.FormatoGrilla(dgDetalle, false);
+                dgDetalle.Columns["NroSecuencia"].Visible = false;
+                dgDetalle.Columns["Orden"].Width = 40;
+                dgDetalle.Columns["IdActividad"].Visible = false;
+                dgDetalle.Columns["Actividad"].Width = 100;
+                dgDetalle.Columns["IdOficinaResponsable"].Visible = false;
+                dgDetalle.Columns["Oficina"].Width = 150;
+                dgDetalle.Columns["IdEmpleado"].Visible = false;
+                dgDetalle.Columns["Empleado"].Width = 150;
+                dgDetalle.Columns["IdArea"].Visible = false;
+                dgDetalle.Columns["Area"].Width = 150;
+                dgDetalle.Columns["Recibido"].Width = 30;
+                dgDetalle.Columns["Visado"].Width = 30;
+                dgDetalle.Columns["Firmado"].Width = 30;
+                dgDetalle.Columns["Estado"].Width = 30;
+
+                Listar_RutaActividad();
+                Dt.Dispose();
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
         }
         private void Listar_RutaActividad()
         {
@@ -133,12 +146,12 @@ namespace BESisCtd
             if (dgControl.Rows.Count <= 0)
             {
                 if (bMsg == true) MessageBox.Show("Seleccione un Control", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                sIdControl = "";
+                nIdControl = 0;
                 return false;
             }
             else 
             {
-                sIdControl = dgControl.Rows[dgControl.CurrentCellAddress.Y].Cells[0].Value.ToString().Trim();
+                nIdControl = Convert.ToInt32(dgControl.Rows[dgControl.CurrentCellAddress.Y].Cells[0].Value);
                 return true; 
             }
         }
@@ -158,13 +171,13 @@ namespace BESisCtd
         //}
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
-            Frm_Reg_Control_Det fDet = new Frm_Reg_Control_Det(qOpcion, sIdControl);
+            Frm_Reg_Control_Det fDet = new Frm_Reg_Control_Det(qOpcion, nIdControl);
             fDet.ShowDialog();
             if (fDet.bGrabo == true)
             {
                 Listar(0);
-                Helper.Buscar_Grilla(dgControl, fDet.sIdControl, 0);
-                Listar_Rutas();
+                Helper.Buscar_Grilla(dgControl, fDet.nIdControl.ToString(), 0);
+                Listar_Detalle();
             }
             fDet.Dispose();
 
@@ -190,11 +203,11 @@ namespace BESisCtd
             if (Get_IdControl(true) == false) return;
             try
             {
-                if (MessageBox.Show("¿Está seguro que desea de Eliminar el Control : " + sIdControl + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                if (MessageBox.Show("¿Está seguro que desea de Eliminar el Control : " + nIdControl + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
                 //oBL_Reg_Control.Eliminar(sIdControl);
                 
                 Listar(0);
-                Listar_Rutas();
+                Listar_Detalle();
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -215,7 +228,7 @@ namespace BESisCtd
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
             Listar(0);
-            Listar_Rutas();
+            Listar_Detalle();
         }
 
         private void dgControl_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -230,11 +243,11 @@ namespace BESisCtd
                 Abrir_Detalle(Helper.eOpcion.Consultar);
             }
         }
-        private void dgTipoDocumento_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgControl_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Listar_Rutas();
+            Listar_Detalle();
         }
-        private void dgRutas_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgDetalle_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Listar_RutaActividad();
         }
