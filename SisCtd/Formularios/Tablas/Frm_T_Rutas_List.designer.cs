@@ -294,7 +294,7 @@
             // 
             // btnChange
             // 
-            this.btnChange.Image = global::BESisCtd.Properties.Resources._16__Db_edit_;
+            //this.btnChange.Image = global::BESisCtd.Properties.Resources._16__Db_edit_;
             this.btnChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChange.Location = new System.Drawing.Point(91, 235);
             this.btnChange.Name = "btnChange";
@@ -305,7 +305,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Image = global::BESisCtd.Properties.Resources._16__Db_delete_;
+            //this.btnDelete.Image = global::BESisCtd.Properties.Resources._16__Db_delete_;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelete.Location = new System.Drawing.Point(170, 235);
             this.btnDelete.Name = "btnDelete";
@@ -316,7 +316,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Image = global::BESisCtd.Properties.Resources._16__Db_insert_;
+            //this.btnAdd.Image = global::BESisCtd.Properties.Resources._16__Db_insert_;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.Location = new System.Drawing.Point(12, 234);
             this.btnAdd.Name = "btnAdd";

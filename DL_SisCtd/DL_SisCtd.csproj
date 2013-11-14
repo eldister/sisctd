@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DL_T_Actividad.cs" />
     <Compile Include="DL_T_MaestroCliente.cs" />
     <Compile Include="DL_Reg_Control.cs" />
+    <Compile Include="DL_T_RutaActividad.cs" />
     <Compile Include="DL_T_TipoDocumento.cs" />
     <Compile Include="DL_T_Oficina.cs" />
     <Compile Include="DL_T_Area.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="DL_Sis_Sistema.cs" />
     <Compile Include="DL_Sis_Usuario.cs" />
     <Compile Include="DL_Sis_Cliente.cs" />
+    <Compile Include="DL_T_Ubigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLHelper.cs" />
   </ItemGroup>
