@@ -6,8 +6,8 @@ namespace BESisCtd
     {
         #region Constructors
 
-        /// <summary>
-        /// Initializes a new instance of the T_Empleado class.
+                /// <summary>
+        /// Initializes a new instance of the T_Oficina class.
         /// </summary>
         public BE_T_Empleado()
         {
@@ -16,12 +16,13 @@ namespace BESisCtd
         /// <summary>
         /// Initializes a new instance of the T_Empleado class.
         /// </summary>
-        public BE_T_Empleado(string idCliente, string idEmpleado, string idArea, string idPosicion, string nombre, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+        public BE_T_Empleado(string idCliente, string idEmpleado, string idArea, string idPosicion, string idOficina, string nombre, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
         {
             this.IdCliente = idCliente;
             this.IdEmpleado = idEmpleado;
             this.IdArea = idArea;
             this.IdPosicion = idPosicion;
+            this.IdOficina = idOficina;
             this.Nombre = nombre;
             this.Estado = estado;
             this.FechaRegistro = fechaRegistro;
@@ -51,6 +52,11 @@ namespace BESisCtd
         /// Gets or sets the IdPosicion value.
         /// </summary>
         public string IdPosicion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IdOficina value.
+        /// </summary>
+        public string IdOficina { get; set; }
 
         /// <summary>
         /// Gets or sets the Nombre value.
