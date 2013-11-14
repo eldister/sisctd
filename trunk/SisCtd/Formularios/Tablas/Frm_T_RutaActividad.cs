@@ -11,24 +11,28 @@ namespace BESisCtd
     public partial class Frm_T_RutaActividad   : Form
     {
         #region Declaración Variables
-        public string sIdEmpleado;
+        public string sIdRuta;
+        public string sIdActividad;
         public Boolean bGrabo = false;
         Helper.eOpcion qOpcion;
 
+        BL_T_RutaActividad oBL_T_RutaActividad = new BL_T_RutaActividad();
+        BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
+        BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
+        BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
         BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
-        BE_T_Empleado oBE_T_Empleado = new BE_T_Empleado();
-        BL_T_Area oBL_T_Area = new BL_T_Area();
-        BL_T_Posicion oBL_T_Posicion = new BL_T_Posicion();
         BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
 
         #endregion
 
         #region Iniciar Formulario
-        public Frm_T_RutaActividad(Helper.eOpcion _qOpcion, string IdEmpleado)
+        public Frm_T_RutaActividad(Helper.eOpcion _qOpcion, string IdRuta, string IdActividad)
         {
             InitializeComponent();
             qOpcion = _qOpcion;
-            sIdEmpleado = IdEmpleado;
+            sIdRuta = IdRuta;
+            sIdActividad = IdActividad;
+            txtCodigo.Text = IdRuta; 
         }
         private void Frm_T_RutaActividad_Load(object sender, EventArgs e)
         {
@@ -38,7 +42,6 @@ namespace BESisCtd
                 {
                     case Helper.eOpcion.Nuevo:
                         this.Text = " Nuevo";
-                        cboEstado.SelectedIndex = 0;
                         break;
                     case Helper.eOpcion.Modificar:
                     case Helper.eOpcion.Consultar:
@@ -46,26 +49,24 @@ namespace BESisCtd
                         if (qOpcion == Helper.eOpcion.Consultar)
                         {
                             this.Text = " Consultar";
-                            txtNombres.ReadOnly = true;
-                            txtArea.ReadOnly = true;
-                            txtPosicion.ReadOnly = true;
+                            txtActividad.ReadOnly = true;
                             txtOficina.ReadOnly = true;
+                            txtEmpleado.ReadOnly = true;
                             BtnGrabar.Visible = false;
                         }
                         else
                         {
                             this.Text = " Modificar";
                         }
-                        txtCodigo.Text = sIdEmpleado.Trim();
+                        txtCodigo.Text = sIdRuta.Trim();
+                        txtActividad.Text = sIdActividad.Trim();
 
-                        oBE_T_Empleado = oBL_T_Empleado.Get_Empleado (sIdEmpleado);
-                        if (oBE_T_Empleado != null)
+                        oBE_T_RutaActividad = oBL_T_RutaActividad.Get_RutaActividad(sIdRuta, sIdActividad );
+                        if (oBE_T_RutaActividad != null)
                         {
-                            txtNombres.Text = oBE_T_Empleado.Nombre ;
-                            txtArea.Text = oBE_T_Empleado.IdArea;
-                            txtPosicion.Text = oBE_T_Empleado.IdPosicion;
-                            txtOficina.Text = oBE_T_Empleado.IdOficina;
-                            cboEstado.SelectedIndex = oBE_T_Empleado.Estado ? 0 : 1;
+                            txtActividad.Text = oBE_T_RutaActividad.IdActividad;
+                            txtEmpleado.Text = oBE_T_RutaActividad.IdEmpleado;
+                            txtOficina.Text = oBE_T_RutaActividad.IdOficinaResponsable ;
                         }
                         break;
                 }
@@ -79,7 +80,7 @@ namespace BESisCtd
         }
         private void Frm_T_RutaActividad_Activated(object sender, EventArgs e)
         {
-            if (qOpcion == Helper.eOpcion.Modificar) { txtNombres.Focus(); }
+            if (qOpcion == Helper.eOpcion.Modificar) { txtActividad.Focus(); }
             if (qOpcion == Helper.eOpcion.Consultar) { BtnCancelar.Focus(); }
         }
 
@@ -90,42 +91,35 @@ namespace BESisCtd
         {
             try
             {
-                oBE_T_Empleado.IdEmpleado = txtCodigo.Text.Trim();
-                oBE_T_Empleado.Nombre  = txtNombres.Text.Trim();
-                oBE_T_Empleado.IdArea = txtArea.Text.Trim();
-                oBE_T_Empleado.IdPosicion = txtPosicion.Text.Trim();
-                oBE_T_Empleado.IdOficina = txtOficina.Text.Trim();
-                oBE_T_Empleado.Estado = (cboEstado.SelectedIndex == 0);
+                oBE_T_RutaActividad.IdRuta = txtCodigo.Text.Trim();
+                oBE_T_RutaActividad.IdActividad = txtActividad.Text.Trim();
+                oBE_T_RutaActividad.IdEmpleado = txtEmpleado.Text.Trim();
+                oBE_T_RutaActividad.IdOficinaResponsable  = txtOficina.Text.Trim();
 
-                if (oBE_T_Empleado.IdEmpleado  == "")
+                if (oBE_T_RutaActividad.IdActividad == "")
                 {
                     MessageBox.Show("Ingrese el Código", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtCodigo.Focus(); return;
                 }
                 if (qOpcion == Helper.eOpcion.Nuevo)
                 {
-                    oBL_T_Empleado.Existe(oBE_T_Empleado.IdEmpleado);
-                    if (oBL_T_Empleado.Existe(oBE_T_Empleado.IdEmpleado))
+                    //oBL_T_RutaActividad.Existe(oBE_T_RutaActividad.IdRuta, oBE_T_RutaActividad.IdActividad);
+                    if (oBL_T_RutaActividad.Existe(oBE_T_RutaActividad.IdRuta, oBE_T_RutaActividad.IdActividad))
                     {
-                        MessageBox.Show("El Código " + oBE_T_Empleado.IdEmpleado + " El Empleado ya fue creado. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("El Código " + oBE_T_RutaActividad.IdRuta + " - " + oBE_T_RutaActividad.IdActividad + " ya fue creado. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtCodigo.Focus(); return;
                     }
-                }
-                if (oBE_T_Empleado.Nombre == "")
-                {
-                    MessageBox.Show("Ingrese una Descripción", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtNombres.Focus(); return;
                 }
 
                 if (qOpcion == Helper.eOpcion.Nuevo)
                 {
-                    oBL_T_Empleado.Insertar(oBE_T_Empleado);
+                    oBL_T_RutaActividad.Insertar(oBE_T_RutaActividad);
                 }
                 if (qOpcion == Helper.eOpcion.Modificar)
                 {
-                    oBL_T_Empleado.Modificar(oBE_T_Empleado);
+                    oBL_T_RutaActividad.Modificar(oBE_T_RutaActividad);
                 }
-                sIdEmpleado = txtCodigo.Text; bGrabo = true; this.Close();
+                sIdRuta = txtCodigo.Text; bGrabo = true; this.Close();
 
             }
             catch (Exception Er)
@@ -140,8 +134,9 @@ namespace BESisCtd
             TextBox txt = (MigControls.MigTextbox)sender;
             switch (txt.Name)
             {
-                case "txtArea": lblArea.Text = oBL_T_Area.Get_Descripcion(txtArea.Text); break;
-                case "txtPosicion": lblPosicion.Text = oBL_T_Posicion.Get_Descripcion(txtPosicion.Text); break;
+                case "txtRuta": lblRuta.Text = oBL_T_Ruta.Get_Descripcion(txtCodigo.Text); break;
+                case "txtActividad": lblActividad.Text = oBL_T_Actividad.Get_Descripcion(txtActividad.Text); break;
+                case "txtEmpleado": lblEmpleado.Text = oBL_T_Empleado.Get_Nombre(txtEmpleado.Text); break;
                 case "txtOficina": lblOficina.Text = oBL_T_Oficina.Get_Descripcion(txtOficina.Text); break;
             }
 
@@ -153,8 +148,8 @@ namespace BESisCtd
                 TextBox txt = (MigControls.MigTextbox)sender;
                 switch (txt.Name)
                 {
-                    case "txtArea": txtArea.Text = Helper.Buscar(oBL_T_Area.Buscar()); break;
-                    case "txtPosicion": txtPosicion.Text = Helper.Buscar(oBL_T_Posicion.Buscar()); break;
+                    case "txtActividad": txtActividad.Text = Helper.Buscar(oBL_T_Actividad.Buscar()); break;
+                    case "txtEmpleado": txtEmpleado.Text = Helper.Buscar(oBL_T_Empleado.Buscar()); break;
                     case "txtOficina": txtOficina.Text = Helper.Buscar(oBL_T_Oficina.Buscar()); break;
                 }
             }
@@ -167,5 +162,7 @@ namespace BESisCtd
         {
 
         }
+
+        
     }
 }
