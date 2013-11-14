@@ -14,8 +14,8 @@ namespace BESisCtd
 		private DateTime fechaDocumento;
 		private string codigoBarra;
 		private string observacion;
-		private DateTime fechaInicio;
-		private DateTime fechaTermino;
+		private DateTime? fechaInicio;
+		private DateTime? fechaTermino;
 		private string estado;
 		private string idRuta;
 		private DateTime fechaRegistro;
@@ -133,7 +133,7 @@ namespace BESisCtd
 		/// <summary>
 		/// Gets or sets the FechaIniciio value.
 		/// </summary>
-		public virtual DateTime FechaInicio
+		public virtual DateTime? FechaInicio
 		{
 			get { return fechaInicio; }
 			set { fechaInicio = value; }
@@ -142,7 +142,7 @@ namespace BESisCtd
 		/// <summary>
 		/// Gets or sets the FechaTermino value.
 		/// </summary>
-		public virtual DateTime FechaTermino
+		public virtual DateTime? FechaTermino
 		{
 			get { return fechaTermino; }
 			set { fechaTermino = value; }
