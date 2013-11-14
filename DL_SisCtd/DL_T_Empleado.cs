@@ -29,10 +29,10 @@ namespace DLSisCtd
         }
         public DataTable Buscar()
         {
-            sSql = "select 	T_Empleado as Codigo, Nombre ";
-            sSql += "from 	T_Empleado ";
+            sSql = "select IdEmpleado as Codigo, Nombre as Descripcion ";
+            sSql += "from  T_Empleado ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "where  Estado=1 ";
+            sSql += "    Estado=1 ";
             sSql += "order by Nombre";
             return ConexionDAO.fDatatable(sSql);
         }
@@ -48,6 +48,15 @@ namespace DLSisCtd
             return Make(ConexionDAO.fDatatable(sSql));
 
         }
+        public string Get_Nombre(string sIdEmpleado)
+        {
+            BE_T_Empleado oBE_T_Empleado = Get_Empleado(sIdEmpleado);
+            if (oBE_T_Empleado == null)
+                return "";
+            else
+                return oBE_T_Empleado.Nombre;
+        }
+
         public Boolean Existe(string sIdEmpleado)
         {
             return (Get_Empleado(sIdEmpleado)!= null ? true : false);
