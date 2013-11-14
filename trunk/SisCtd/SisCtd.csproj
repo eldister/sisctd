@@ -177,6 +177,24 @@
     <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.designer.cs">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Areas_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Areas_Det.designer.cs">
+      <DependentUpon>Frm_T_Areas_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Empleados_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Empleados_Det.designer.cs">
+      <DependentUpon>Frm_T_Empleados_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_RutaActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_RutaActividad.designer.cs">
+      <DependentUpon>Frm_T_RutaActividad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +275,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.resx">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Areas_Det.resx">
+      <DependentUpon>Frm_T_Areas_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Empleados_Det.resx">
+      <DependentUpon>Frm_T_Empleados_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_RutaActividad.resx">
+      <DependentUpon>Frm_T_RutaActividad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_TipoDocumento_Det.resx">
       <DependentUpon>Frm_T_TipoDocumento_Det.cs</DependentUpon>
