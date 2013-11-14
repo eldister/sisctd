@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using BESisCtd;
+using System.Data;
+using DLSisCtd;
+
+namespace BLSisCtd
+{
+    public class BL_T_RutaActividad
+    {
+        DL_T_RutaActividad oDL_T_RutaActividad = new DL_T_RutaActividad();
+        #region Listados
+        public DataTable Listar(string sIdRuta)
+        {
+            return oDL_T_RutaActividad.Listar(sIdRuta);
+        }
+        //public DataTable Buscar()
+        //{
+        //    return oDL_T_RutaActividad.Buscar();
+        //}
+
+        #endregion
+
+        #region Obtener Valores
+        public BE_T_RutaActividad Get_RutaActividad(string sIdRuta, string sIdActividad)
+        {
+            return oDL_T_RutaActividad.Get_RutaActividad(sIdRuta, sIdActividad );
+        }
+        public Boolean Existe(string sIdRuta, string sIdActividad)
+        {
+            return oDL_T_RutaActividad.Existe(sIdRuta,sIdActividad);
+        }
+
+        #endregion
+
+        #region Operaciones
+        public void Insertar(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            oDL_T_RutaActividad.Insertar(oBE_T_RutaActividad);
+        }
+        public void Modificar(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            oDL_T_RutaActividad.Modificar(oBE_T_RutaActividad);
+        }
+        public void Eliminar(string sIdRuta, string sIdActividad)
+        {
+            oDL_T_RutaActividad.Eliminar(sIdRuta,sIdActividad);
+        }
+
+        #endregion
+    }
+}
