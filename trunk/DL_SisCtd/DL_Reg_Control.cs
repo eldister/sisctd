@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using BESisCtd;
+using System.Data.SqlClient;
 namespace DLSisCtd
 {
     public class DL_Reg_Control
@@ -13,55 +14,29 @@ namespace DLSisCtd
         public DataTable Listar(string sNroDocumento, string sRazonSocial,string sEstado)
         {
             if (sEstado == "Total") sEstado = "";
-            return ConexionDAO.fDatatable("List_Reg_Control", sNroDocumento, sRazonSocial, sEstado);
+            return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sNroDocumento, sRazonSocial, sEstado);
         }
 
-        public DataTable Listar_Rutas(string sIdTipoDocumento)
+        public DataTable Listar_Detalle(Int32 nIdControl )
         {
-            sSql = "select 	a.IdRuta,b.Descripcion, ";
-            sSql += "       case when b.Estado = 1 then '' else 'I' end as Estado ";
-            sSql += "from	T_TipoDocumentoRuta a ";
-            sSql += "       left join T_Ruta b on a.IdCliente=b.IdCliente and a.IdRuta=b.IdRuta ";
-            sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       a.IdTipoDocumento = '" + sIdTipoDocumento + "'";
-            sSql += "order by b.Descripcion ";
-            return ConexionDAO.fDatatable(sSql);
+            return ConexionDAO.fDatatable("List_Reg_ControlDetalle", BE_Helper.oBE_Sis_Cliente.IdCliente, nIdControl);
         }
-        public DataTable Listar_RutaActividad(string sIdRuta)
-        {
-            sSql = "select 	a.Orden,a.IdActividad,b.Descripcion, ";
-            sSql += "       case when b.Estado = 1 then '' else 'I' end as Estado ";
-            sSql += "from	T_RutaActividad a ";
-            sSql += "       left join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
-            sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       a.IdRuta = '" + sIdRuta + "'";
-            sSql += "order by a.orden ";
-            return ConexionDAO.fDatatable(sSql);
-        }
-        public DataTable Buscar()
-        {
-            sSql = "select 	T_TipoDocumento as Codigo, Descripcion ";
-            sSql += "from 	T_TipoDocumento ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "where  Estado=1 ";
-            sSql += "order by Descripcion";
-            return ConexionDAO.fDatatable(sSql);
-        }
+
 
         #endregion
 
         #region Obtener Valores
-        public BE_Reg_Control Get_Control(string sIdControl)
+        public BE_Reg_Control Get_Control(Int32 nIdControl)
         {
             sSql = "select  * from Reg_Control ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdTipoDocumento = '" + sIdControl + "'";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + nIdControl.ToString() + "'";
 
             return Make(ConexionDAO.fDatatable(sSql));
 
         }
-        public Boolean Existe(string sIdTipoDocumento)
+        public Boolean Existe(Int32 nIdControl)
         {
-            return (Get_Control(sIdTipoDocumento)!= null ? true : false);
+            return (Get_Control(nIdControl) != null ? true : false);
         }
 
         public Boolean Existe_Ruta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
@@ -89,8 +64,8 @@ namespace DLSisCtd
             oBE_Reg_Control.FechaDocumento = (DateTime)dt.Rows[0]["FechaDocumento"];
             oBE_Reg_Control.CodigoBarra = dt.Rows[0]["CodigoBarra"].ToString().Trim();
             oBE_Reg_Control.Observacion = dt.Rows[0]["Observacion"].ToString().Trim();
-            oBE_Reg_Control.FechaInicio = (DateTime)dt.Rows[0]["FechaInicio"];
-            oBE_Reg_Control.FechaTermino = (DateTime)dt.Rows[0]["FechaTermino"];
+            if (dt.Rows[0]["FechaInicio"].ToString() != "") oBE_Reg_Control.FechaInicio = (DateTime)dt.Rows[0]["FechaInicio"];
+            if (dt.Rows[0]["FechaTermino"].ToString() != "") oBE_Reg_Control.FechaTermino = (DateTime)dt.Rows[0]["FechaTermino"];
             oBE_Reg_Control.Estado = dt.Rows[0]["Estado"].ToString().Trim();
             oBE_Reg_Control.IdRuta = dt.Rows[0]["IdRuta"].ToString().Trim();
             oBE_Reg_Control.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
@@ -98,30 +73,48 @@ namespace DLSisCtd
             oBE_Reg_Control.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
             return oBE_Reg_Control;
         }
-        public void Insertar(BE_T_TipoDocumento oBE_T_TipoDocumento)
+        public Int32 Insertar(BE_Reg_Control oBE_Reg_Control)
         {
-            sSql = "insert into T_TipoDocumento values ";
-            sSql += "(";
-            sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
-            sSql += "'" + oBE_T_TipoDocumento.IdTipoDocumento + "',";
-            sSql += "'" + oBE_T_TipoDocumento.Descripcion + "', ";
-            sSql += "'" + oBE_T_TipoDocumento.DescripcionLarga + "', ";
-            sSql += "'" + (oBE_T_TipoDocumento.Verificable ? "1" : "0") + "',";
-            sSql += "'" + (oBE_T_TipoDocumento.Critico ? "1" : "0") + "',";
-            sSql += "'" + (oBE_T_TipoDocumento.Digitalizable ? "1" : "0") + "',";
-            sSql += "'" + (oBE_T_TipoDocumento.Estado ? "1" : "0") + "',";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-            ConexionDAO.fExecute(sSql);
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    Int32 nIdControl= Convert.ToInt32(ConexionDAO.fEscalar("Insert_Reg_Control",
+                        BE_Helper.oBE_Sis_Cliente.IdCliente,
+                        oBE_Reg_Control.IdTipoDocumento,
+                        oBE_Reg_Control.IdMaestroCliente,
+                        oBE_Reg_Control.NroDocumento,
+                        oBE_Reg_Control.FechaDocumento,
+                        oBE_Reg_Control.CodigoBarra,
+                        oBE_Reg_Control.Observacion,
+                        oBE_Reg_Control.Estado,
+                        oBE_Reg_Control.IdRuta,
+                        BE_Helper.oBE_Sis_Usuario.IdUsuario));
+                    sTrans.Commit();
+                    return nIdControl;
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
         }
-        public void Modificar(BE_T_TipoDocumento oBE_T_TipoDocumento)
+        public void Modificar(BE_Reg_Control oBE_Reg_Control)
         {
-            sSql = "update  T_TipoDocumento set ";
-            sSql += "       Descripcion='" + oBE_T_TipoDocumento.Descripcion + "', ";
-            sSql += "       DescripcionLarga='" + oBE_T_TipoDocumento.DescripcionLarga + "', ";
-            sSql += "       Estado='" + (oBE_T_TipoDocumento.Estado ? "1" : "0") + "' ";
-            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdTipoDocumento='" + oBE_T_TipoDocumento.IdTipoDocumento + "' ";
-            ConexionDAO.fExecute(sSql);
+            ConexionDAO.fExecute("Update_Reg_Control",
+                BE_Helper.oBE_Sis_Cliente.IdCliente,
+                oBE_Reg_Control.IdControl,
+                oBE_Reg_Control.IdTipoDocumento,
+                oBE_Reg_Control.IdMaestroCliente,
+                oBE_Reg_Control.NroDocumento,
+                oBE_Reg_Control.FechaDocumento,
+                oBE_Reg_Control.CodigoBarra,
+                oBE_Reg_Control.Observacion,
+                oBE_Reg_Control.Estado,
+                oBE_Reg_Control.IdRuta,
+                BE_Helper.oBE_Sis_Usuario.IdUsuario);
         }
+
+
         public void Eliminar(string sIdTipoDocumento)
         {
             sSql = "delete  from T_TipoDocumentoRuta ";
@@ -132,25 +125,25 @@ namespace DLSisCtd
             ConexionDAO.fExecute(sSql);
         }
 
-        public void AgregarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
-        {
-            sSql = "insert into T_TipoDocumentoRuta values ";
-            sSql += "(";
-            sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
-            sSql += "'" + oBE_T_TipoDocumentoRuta.IdTipoDocumento + "',";
-            sSql += "'" + oBE_T_TipoDocumentoRuta.IdRuta + "', ";
-            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-            ConexionDAO.fExecute(sSql);
-        }
+        //public void AgregarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
+        //{
+        //    sSql = "insert into T_TipoDocumentoRuta values ";
+        //    sSql += "(";
+        //    sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
+        //    sSql += "'" + oBE_T_TipoDocumentoRuta.IdTipoDocumento + "',";
+        //    sSql += "'" + oBE_T_TipoDocumentoRuta.IdRuta + "', ";
+        //    sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
+        //    ConexionDAO.fExecute(sSql);
+        //}
 
-        public void QuitarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
-        {
-            sSql = "delete from T_TipoDocumentoRuta ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       IdTipoDocumento = '" + oBE_T_TipoDocumentoRuta.IdTipoDocumento + "' and ";
-            sSql += "       IdRuta = '" + oBE_T_TipoDocumentoRuta.IdRuta + "' "; 
-            ConexionDAO.fExecute(sSql);
-        }
+        //public void QuitarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
+        //{
+        //    sSql = "delete from T_TipoDocumentoRuta ";
+        //    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+        //    sSql += "       IdTipoDocumento = '" + oBE_T_TipoDocumentoRuta.IdTipoDocumento + "' and ";
+        //    sSql += "       IdRuta = '" + oBE_T_TipoDocumentoRuta.IdRuta + "' "; 
+        //    ConexionDAO.fExecute(sSql);
+        //}
         #endregion
 
     }
