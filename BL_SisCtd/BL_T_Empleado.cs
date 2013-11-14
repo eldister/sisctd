@@ -28,6 +28,10 @@ namespace BLSisCtd
         {
             return oDL_T_Empleado.Get_Empleado(sIdEmpleado);
         }
+        public string Get_Nombre(string sIdEmpleado)
+        {
+            return oDL_T_Empleado.Get_Nombre(sIdEmpleado);
+        }
         public Boolean Existe(string sIdEmpleado)
         {
             return oDL_T_Empleado.Existe(sIdEmpleado);
