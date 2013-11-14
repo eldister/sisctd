@@ -284,9 +284,9 @@
             this.dgControl.Size = new System.Drawing.Size(996, 142);
             this.dgControl.StandardTab = true;
             this.dgControl.TabIndex = 0;
-            this.dgControl.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTipoDocumento_CellClick);
+            this.dgControl.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgControl_CellClick);
             this.dgControl.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgControl_CellDoubleClick);
-            this.dgControl.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTipoDocumento_CellClick);
+            this.dgControl.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgControl_CellClick);
             this.dgControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgControl_KeyPress);
             // 
             // panel2
@@ -416,8 +416,8 @@
             this.dgDetalle.Size = new System.Drawing.Size(555, 203);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 0;
-            this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRutas_CellClick);
-            this.dgDetalle.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRutas_CellClick);
+            this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
+            this.dgDetalle.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
             // 
             // Frm_Reg_Control_List
             // 

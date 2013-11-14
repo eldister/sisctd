@@ -13,7 +13,7 @@ namespace BESisCtd
     public partial class Frm_Reg_Control_Det : Form
     {
         #region Declaración Variables
-        public string sIdControl;
+        public Int32 nIdControl;
         public Boolean bGrabo = false;
         Helper.eOpcion qOpcion;
 
@@ -21,17 +21,16 @@ namespace BESisCtd
         BE_Reg_Control oBE_Reg_Control = new BE_Reg_Control();
 
         BL_T_TipoDocumento oBL_T_TipoDocumento = new BL_T_TipoDocumento();
-        BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
         BL_T_MaestroCliente oBL_T_MaestroCliente = new BL_T_MaestroCliente();
 
         #endregion
 
         #region Iniciar Formulario
-        public Frm_Reg_Control_Det(Helper.eOpcion _qOpcion, string IdControl)
+        public Frm_Reg_Control_Det(Helper.eOpcion _qOpcion, Int32 IdControl)
         {
             InitializeComponent();
             qOpcion = _qOpcion;
-            sIdControl = IdControl;
+            nIdControl = IdControl;
         }
         private void Frm_Reg_Control_Det_Load(object sender, EventArgs e)
         {
@@ -57,9 +56,8 @@ namespace BESisCtd
                         {
                             this.Text = " Modificar";
                         }
-                        txtIdControl.Text = sIdControl.Trim();
 
-                        oBE_Reg_Control = oBL_Reg_Control.Get_Control(sIdControl);
+                        oBE_Reg_Control = oBL_Reg_Control.Get_Control(nIdControl);
                         if (oBE_Reg_Control != null)
                         {
                             txtIdControl.Text = oBE_Reg_Control.IdControl.ToString();
@@ -69,10 +67,10 @@ namespace BESisCtd
                             dtpFechaDocumento.Value= oBE_Reg_Control.FechaDocumento;
                             txtCodigoBarra.Text= oBE_Reg_Control.CodigoBarra;
                             txtObservacion.Text= oBE_Reg_Control.Observacion;
-                            lblFechaInicio.Text = oBE_Reg_Control.FechaInicio.ToString("dd/MM/yyyy");
-                            lblFechaTermino.Text = oBE_Reg_Control.FechaTermino.ToString("dd/MM/yyyy") ;
+                            if (oBE_Reg_Control.FechaInicio!=null) lblFechaInicio.Text = Convert.ToString(oBE_Reg_Control.FechaInicio);
+                            if (oBE_Reg_Control.FechaTermino != null) lblFechaTermino.Text = Convert.ToString(oBE_Reg_Control.FechaTermino);
                             lblEstado.Text= oBE_Reg_Control.Estado;
-                            txtIdRuta.Text= oBE_Reg_Control.IdRuta;
+                            cboRuta.SelectedValue = oBE_Reg_Control.IdRuta;
                         }
                         break;
                 }
@@ -99,8 +97,10 @@ namespace BESisCtd
             TextBox txt=(MigControls.MigTextbox)sender;
             switch (txt.Name)
             {
-                case "txtIdTipoDocumento": lblDesTipoDocumneto.Text = oBL_T_TipoDocumento.Get_Descripcion(txtIdTipoDocumento.Text); break;
-                case "txtIdRuta": lblDesRuta.Text = oBL_T_Ruta.Get_Descripcion(txtIdRuta.Text); break;
+                case "txtIdTipoDocumento": 
+                    lblDesTipoDocumneto.Text = oBL_T_TipoDocumento.Get_Descripcion(txtIdTipoDocumento.Text);
+                    Helper.LLenar_Combobox(oBL_T_TipoDocumento.Listar_Rutas(txtIdTipoDocumento.Text), cboRuta, "Descripcion", "IdRuta");
+                    break;
                 case "txtIdMaestroCliente": lblDesMaestroCliente.Text = oBL_T_MaestroCliente.Get_RazonSocial(txtIdMaestroCliente.Text); break;
             }
 
@@ -113,7 +113,6 @@ namespace BESisCtd
                 switch (txt.Name)
                 {
                     case "txtIdTipoDocumento": txtIdTipoDocumento.Text = Helper.Buscar(oBL_T_TipoDocumento.Buscar()); break;
-                    case "txtIdRuta": txtIdRuta.Text = Helper.Buscar(oBL_T_Ruta.Buscar()); break;
                     case "txtIdMaestroCliente": txtIdMaestroCliente.Text = Helper.Buscar(oBL_T_MaestroCliente.Buscar()); break;
                 }
             }
@@ -122,40 +121,54 @@ namespace BESisCtd
         {
             try
             {
-                //oBE_Reg_Control.IdTipoDocumento = txtIdControl.Text.Trim();
-                //oBE_Reg_Control.Descripcion = txtIdTipoDocumento.Text.Trim();
-                //oBE_Reg_Control.DescripcionLarga = txtObservacion.Text.Trim();
-                ////oBE_T_TipoDocumento.Estado = lblEstado.Text;
+                if (lblDesTipoDocumneto.Text == "")
+                {
+                    MessageBox.Show("Ingrese un Tipo de Documento válido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtIdTipoDocumento.Focus(); return;
+                }
 
-                //if (oBE_Reg_Control.IdTipoDocumento == "")
-                //{
-                //    MessageBox.Show("Ingrese el Código", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //    txtIdControl.Focus(); return;
-                //}
-                //if (qOpcion == Helper.eOpcion.Nuevo)
-                //{
-                //    oBL_Reg_Control.Existe(oBE_Reg_Control.IdTipoDocumento);
-                //    if (oBL_Reg_Control.Existe(oBE_Reg_Control.IdTipoDocumento))
-                //    {
-                //        MessageBox.Show("El Código " + oBE_Reg_Control.IdTipoDocumento + " ya existe en Tipos de Documento. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //        txtIdControl.Focus(); return;
-                //    }
-                //}
-                //if (oBE_Reg_Control.Descripcion == "")
-                //{
-                //    MessageBox.Show("Ingrese una Descripción", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //    txtIdTipoDocumento.Focus(); return;
-                //}
+                if (lblDesMaestroCliente.Text == "")
+                {
+                    MessageBox.Show("Ingrese un Cliente válido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtIdMaestroCliente.Focus(); return;
+                }
 
-                //if (qOpcion == Helper.eOpcion.Nuevo)
-                //{
-                //    oBL_Reg_Control.Insertar(oBE_Reg_Control);
-                //}
-                //if (qOpcion == Helper.eOpcion.Modificar)
-                //{
-                //    oBL_Reg_Control.Modificar(oBE_Reg_Control);
-                //}
-                //sIdControl = txtIdControl.Text; bGrabo = true; this.Close();
+                if (txtNumero.Text == "")
+                {
+                    MessageBox.Show("Ingrese un Número", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtNumero.Focus(); return;
+                }
+
+                if (cboRuta.Text == "")
+                {
+                    MessageBox.Show("Seleccione una Ruta", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    cboRuta.Focus(); return;
+                }
+                if (txtCodigoBarra.Text == "")
+                {
+                    MessageBox.Show("Ingrese un código de Barra", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtCodigoBarra.Focus(); return;
+                }
+
+                oBE_Reg_Control.IdControl = nIdControl;
+                oBE_Reg_Control.IdTipoDocumento = txtIdTipoDocumento.Text.Trim();
+                oBE_Reg_Control.IdMaestroCliente = txtIdMaestroCliente.Text.Trim();
+                oBE_Reg_Control.NroDocumento = txtNumero.Text.Trim();
+                oBE_Reg_Control.FechaDocumento = dtpFechaDocumento.Value;
+                oBE_Reg_Control.CodigoBarra = txtCodigoBarra.Text;
+                oBE_Reg_Control.Observacion = txtObservacion.Text;
+                oBE_Reg_Control.Estado = lblEstado.Text;
+                oBE_Reg_Control.IdRuta = cboRuta.SelectedValue.ToString();
+
+                if (qOpcion == Helper.eOpcion.Nuevo)
+                {
+                    nIdControl = oBL_Reg_Control.Insertar(oBE_Reg_Control);
+                }
+                if (qOpcion == Helper.eOpcion.Modificar)
+                {
+                    oBL_Reg_Control.Modificar(oBE_Reg_Control);
+                }
+                bGrabo = true; this.Close();
 
             }
             catch (Exception Er)
