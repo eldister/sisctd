@@ -17,12 +17,10 @@ namespace BLSisCtd
             return oDL_Reg_Control.Listar(sNroDocumento, sRazonSocial, sEstado);
         }
 
-
-
-        //public DataTable Listar_Rutas(string sIdTipoDocumento)
-        //{
-        //    return oDL_T_TipoDocumento.Listar_Rutas(sIdTipoDocumento);
-        //}
+        public DataTable Listar_Detalle(Int32 nIdControl)
+        {
+            return oDL_Reg_Control.Listar_Detalle(nIdControl);
+        }
         //public DataTable Listar_RutaActividad(string sIdRuta)
         //{
         //    return oDL_T_TipoDocumento.Listar_RutaActividad(sIdRuta);
@@ -30,14 +28,11 @@ namespace BLSisCtd
         #endregion
 
         #region Obtener Valores
-        public BE_Reg_Control Get_Control(string sIdControl)
+        public BE_Reg_Control Get_Control(Int32 nIdControl)
         {
-            return oDL_Reg_Control.Get_Control(sIdControl);
+            return oDL_Reg_Control.Get_Control(nIdControl);
         }
-        //public Boolean Existe(string sIdTipoDocumento)
-        //{
-        //    return oDL_T_TipoDocumento.Existe(sIdTipoDocumento);
-        //}
+
         //public Boolean Existe_Ruta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
         //{
         //    return oDL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta);
@@ -45,14 +40,14 @@ namespace BLSisCtd
         #endregion
 
         #region Operaciones
-        //public void Insertar(BE_T_TipoDocumento oBE_T_TipoDocumento)
-        //{
-        //    oDL_T_TipoDocumento.Insertar(oBE_T_TipoDocumento);
-        //}
-        //public void Modificar(BE_T_TipoDocumento oBE_T_TipoDocumento)
-        //{
-        //    oDL_T_TipoDocumento.Modificar(oBE_T_TipoDocumento);
-        //}
+        public Int32 Insertar(BE_Reg_Control oBE_Reg_Control)
+        {
+            return oDL_Reg_Control.Insertar(oBE_Reg_Control);
+        }
+        public void Modificar(BE_Reg_Control oBE_Reg_Control)
+        {
+            oDL_Reg_Control.Modificar(oBE_Reg_Control);
+        }
         //public void Eliminar(string sIdTipoDocumento)
         //{
         //    oDL_T_TipoDocumento.Eliminar(sIdTipoDocumento);
