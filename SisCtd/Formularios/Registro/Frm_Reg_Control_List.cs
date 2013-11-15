@@ -65,18 +65,19 @@ namespace BESisCtd
                 {
                     dgControl.DataSource = Dt; Helper.FormatoGrilla(dgControl, false);
                     LblMensaje.Text = " Registros Encontrados : " + dgControl.Rows.Count.ToString();
-                    dgControl.Columns["IdControl"].Width = 70;
+                    dgControl.Columns["IdControl"].Width = 50;
                     dgControl.Columns["IdTipoDocumento"].Width = 70;
                     dgControl.Columns["IdMaestroCliente"].Visible = false;
-                    dgControl.Columns["RazonSocial"].Width = 300;
+                    dgControl.Columns["RazonSocial"].Width = 200;
                     dgControl.Columns["NroDocumento"].Width = 100;
                     dgControl.Columns["FechaDocumento"].Width = 100;
                     dgControl.Columns["IdRuta"].Visible = false;
-                    dgControl.Columns["Descripción Ruta"].Width = 200;
-                    dgControl.Columns["Observacion"].Width = 200;
+                    dgControl.Columns["Descripción Ruta"].Width = 180;
+                    dgControl.Columns["Observacion"].Width = 150;
                     dgControl.Columns["FechaInicio"].Width = 80;
                     dgControl.Columns["FechaTermino"].Width = 80;
                     dgControl.Columns["Estado"].Width = 80;
+                    dgControl.Columns["Img"].Width = 30;
                 }
                 else
                 {
@@ -103,15 +104,15 @@ namespace BESisCtd
                 dgDetalle.Columns["IdActividad"].Visible = false;
                 dgDetalle.Columns["Actividad"].Width = 100;
                 dgDetalle.Columns["IdOficinaResponsable"].Visible = false;
-                dgDetalle.Columns["Oficina"].Width = 150;
+                dgDetalle.Columns["Oficina"].Width = 120;
                 dgDetalle.Columns["IdEmpleado"].Visible = false;
-                dgDetalle.Columns["Empleado"].Width = 150;
+                dgDetalle.Columns["Empleado"].Width = 120;
                 dgDetalle.Columns["IdArea"].Visible = false;
-                dgDetalle.Columns["Area"].Width = 150;
-                dgDetalle.Columns["Recibido"].Width = 30;
-                dgDetalle.Columns["Visado"].Width = 30;
-                dgDetalle.Columns["Firmado"].Width = 30;
-                dgDetalle.Columns["Estado"].Width = 30;
+                dgDetalle.Columns["Area"].Width = 120;
+                dgDetalle.Columns["Recibido"].Width = 50;
+                dgDetalle.Columns["Visado"].Width = 50;
+                dgDetalle.Columns["Firmado"].Width = 50;
+                dgDetalle.Columns["Estado"].Width = 80;
 
                 Listar_RutaActividad();
                 Dt.Dispose();
@@ -284,12 +285,6 @@ namespace BESisCtd
         }
 
         #endregion
-
-
-
-
-
-
 
     }
 }

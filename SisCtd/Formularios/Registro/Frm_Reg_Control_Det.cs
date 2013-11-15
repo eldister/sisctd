@@ -65,7 +65,6 @@ namespace BESisCtd
                             txtIdMaestroCliente.Text= oBE_Reg_Control.IdMaestroCliente;
                             txtNumero.Text= oBE_Reg_Control.NroDocumento ;
                             dtpFechaDocumento.Value= oBE_Reg_Control.FechaDocumento;
-                            txtCodigoBarra.Text= oBE_Reg_Control.CodigoBarra;
                             txtObservacion.Text= oBE_Reg_Control.Observacion;
                             if (oBE_Reg_Control.FechaInicio!=null) lblFechaInicio.Text = Convert.ToString(oBE_Reg_Control.FechaInicio);
                             if (oBE_Reg_Control.FechaTermino != null) lblFechaTermino.Text = Convert.ToString(oBE_Reg_Control.FechaTermino);
@@ -144,18 +143,12 @@ namespace BESisCtd
                     MessageBox.Show("Seleccione una Ruta", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     cboRuta.Focus(); return;
                 }
-                if (txtCodigoBarra.Text == "")
-                {
-                    MessageBox.Show("Ingrese un código de Barra", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtCodigoBarra.Focus(); return;
-                }
-
+            
                 oBE_Reg_Control.IdControl = nIdControl;
                 oBE_Reg_Control.IdTipoDocumento = txtIdTipoDocumento.Text.Trim();
                 oBE_Reg_Control.IdMaestroCliente = txtIdMaestroCliente.Text.Trim();
                 oBE_Reg_Control.NroDocumento = txtNumero.Text.Trim();
                 oBE_Reg_Control.FechaDocumento = dtpFechaDocumento.Value;
-                oBE_Reg_Control.CodigoBarra = txtCodigoBarra.Text;
                 oBE_Reg_Control.Observacion = txtObservacion.Text;
                 oBE_Reg_Control.Estado = lblEstado.Text;
                 oBE_Reg_Control.IdRuta = cboRuta.SelectedValue.ToString();

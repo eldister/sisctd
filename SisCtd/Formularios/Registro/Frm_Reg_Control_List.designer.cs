@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
@@ -55,16 +54,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnQuitarActividad = new System.Windows.Forms.Button();
             this.btnAgregarActividad = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dgAnexos = new MigControls.MigDataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
+            this.bVerImagen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bQuitarImagen = new System.Windows.Forms.ToolStripButton();
+            this.bAsignarImagen = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgControl)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAnexos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,9 +173,13 @@
             this.bNuevo,
             this.bModificar,
             this.bEliminar,
-            this.toolStripButton4,
+            this.toolStripSeparator1,
             this.bExportar,
             this.toolStripSeparator2,
+            this.bAsignarImagen,
+            this.bQuitarImagen,
+            this.bVerImagen,
+            this.toolStripButton4,
             this.bCerrar});
             this.BarraSis.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.BarraSis.Location = new System.Drawing.Point(0, 0);
@@ -248,7 +252,7 @@
             // 
             this.Stb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LblMensaje});
-            this.Stb.Location = new System.Drawing.Point(0, 197);
+            this.Stb.Location = new System.Drawing.Point(0, 253);
             this.Stb.Name = "Stb";
             this.Stb.Size = new System.Drawing.Size(996, 22);
             this.Stb.TabIndex = 662;
@@ -281,7 +285,7 @@
             this.dgControl.RowHeadersWidth = 25;
             this.dgControl.RowTemplate.Height = 18;
             this.dgControl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgControl.Size = new System.Drawing.Size(996, 142);
+            this.dgControl.Size = new System.Drawing.Size(996, 198);
             this.dgControl.StandardTab = true;
             this.dgControl.TabIndex = 0;
             this.dgControl.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgControl_CellClick);
@@ -296,19 +300,17 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnQuitarActividad);
             this.panel2.Controls.Add(this.btnAgregarActividad);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.dgAnexos);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dgDetalle);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 219);
+            this.panel2.Location = new System.Drawing.Point(0, 275);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(996, 276);
+            this.panel2.Size = new System.Drawing.Size(996, 220);
             this.panel2.TabIndex = 1;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(123, 238);
+            this.button3.Location = new System.Drawing.Point(123, 187);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(105, 23);
             this.button3.TabIndex = 8;
@@ -317,7 +319,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(526, 238);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(943, 58);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(41, 23);
             this.button2.TabIndex = 7;
@@ -326,7 +329,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(479, 238);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(943, 29);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 23);
             this.button1.TabIndex = 6;
@@ -335,7 +339,7 @@
             // 
             // btnQuitarActividad
             // 
-            this.btnQuitarActividad.Location = new System.Drawing.Point(234, 238);
+            this.btnQuitarActividad.Location = new System.Drawing.Point(234, 187);
             this.btnQuitarActividad.Name = "btnQuitarActividad";
             this.btnQuitarActividad.Size = new System.Drawing.Size(105, 23);
             this.btnQuitarActividad.TabIndex = 2;
@@ -345,45 +349,13 @@
             // 
             // btnAgregarActividad
             // 
-            this.btnAgregarActividad.Location = new System.Drawing.Point(12, 238);
+            this.btnAgregarActividad.Location = new System.Drawing.Point(12, 187);
             this.btnAgregarActividad.Name = "btnAgregarActividad";
             this.btnAgregarActividad.Size = new System.Drawing.Size(105, 23);
             this.btnAgregarActividad.TabIndex = 1;
             this.btnAgregarActividad.Text = "&Agregar Actividad";
             this.btnAgregarActividad.UseVisualStyleBackColor = true;
             this.btnAgregarActividad.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(589, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 15);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Anexos de la Actividad";
-            // 
-            // dgAnexos
-            // 
-            this.dgAnexos.AllowUserToAddRows = false;
-            this.dgAnexos.AllowUserToDeleteRows = false;
-            this.dgAnexos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.dgAnexos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgAnexos.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.dgAnexos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgAnexos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAnexos.Location = new System.Drawing.Point(592, 29);
-            this.dgAnexos.MultiSelect = false;
-            this.dgAnexos.Name = "dgAnexos";
-            this.dgAnexos.PasarEnter = false;
-            this.dgAnexos.ReadOnly = true;
-            this.dgAnexos.RowHeadersWidth = 25;
-            this.dgAnexos.RowTemplate.Height = 18;
-            this.dgAnexos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgAnexos.Size = new System.Drawing.Size(392, 203);
-            this.dgAnexos.StandardTab = true;
-            this.dgAnexos.TabIndex = 3;
             // 
             // label1
             // 
@@ -400,8 +372,10 @@
             this.dgDetalle.AllowUserToAddRows = false;
             this.dgDetalle.AllowUserToDeleteRows = false;
             this.dgDetalle.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
-            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetalle.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -413,11 +387,43 @@
             this.dgDetalle.RowHeadersWidth = 25;
             this.dgDetalle.RowTemplate.Height = 18;
             this.dgDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDetalle.Size = new System.Drawing.Size(555, 203);
+            this.dgDetalle.Size = new System.Drawing.Size(925, 152);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 0;
             this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
             this.dgDetalle.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
+            // 
+            // bVerImagen
+            // 
+            this.bVerImagen.Image = global::BESisCtd.Properties.Resources.iconoima;
+            this.bVerImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bVerImagen.Name = "bVerImagen";
+            this.bVerImagen.Size = new System.Drawing.Size(87, 20);
+            this.bVerImagen.Text = "&Ver Imagen";
+            this.bVerImagen.ToolTipText = "Eliminar (F4)";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
+            // 
+            // bQuitarImagen
+            // 
+            this.bQuitarImagen.Image = global::BESisCtd.Properties.Resources.Toolbar_Erase;
+            this.bQuitarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bQuitarImagen.Name = "bQuitarImagen";
+            this.bQuitarImagen.Size = new System.Drawing.Size(103, 20);
+            this.bQuitarImagen.Text = "&Quitar Imagen";
+            this.bQuitarImagen.ToolTipText = "Eliminar (F4)";
+            // 
+            // bAsignarImagen
+            // 
+            this.bAsignarImagen.Image = global::BESisCtd.Properties.Resources.descarga;
+            this.bAsignarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bAsignarImagen.Name = "bAsignarImagen";
+            this.bAsignarImagen.Size = new System.Drawing.Size(110, 20);
+            this.bAsignarImagen.Text = "&Asignar Imagen";
+            this.bAsignarImagen.ToolTipText = "Eliminar (F4)";
             // 
             // Frm_Reg_Control_List
             // 
@@ -448,7 +454,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgControl)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAnexos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -478,12 +483,14 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnQuitarActividad;
         private System.Windows.Forms.Button btnAgregarActividad;
-        private System.Windows.Forms.Label label4;
-        private MigControls.MigDataGridView dgAnexos;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private MigControls.MigDataGridView dgDetalle;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton bAsignarImagen;
+        private System.Windows.Forms.ToolStripButton bQuitarImagen;
+        private System.Windows.Forms.ToolStripButton bVerImagen;
     }
 }
