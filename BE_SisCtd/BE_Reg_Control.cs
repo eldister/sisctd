@@ -12,7 +12,6 @@ namespace BESisCtd
 		private string idMaestroCliente;
 		private string nroDocumento;
 		private DateTime fechaDocumento;
-		private string codigoBarra;
 		private string observacion;
 		private DateTime? fechaInicio;
 		private DateTime? fechaTermino;
@@ -36,7 +35,7 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the Reg_Control class.
 		/// </summary>
-        public BE_Reg_Control(string idCliente, int idControl, string idTipoDocumento, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string codigoBarra, string observacion, DateTime fechaInicio, DateTime fechaTermino, string estado, string idRuta, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+        public BE_Reg_Control(string idCliente, int idControl, string idTipoDocumento, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string observacion, DateTime fechaInicio, DateTime fechaTermino, string estado, string idRuta, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.idCliente = idCliente;
 			this.idControl = idControl;
@@ -44,7 +43,6 @@ namespace BESisCtd
 			this.idMaestroCliente = idMaestroCliente;
 			this.nroDocumento = nroDocumento;
 			this.fechaDocumento = fechaDocumento;
-			this.codigoBarra = codigoBarra;
 			this.observacion = observacion;
 			this.fechaInicio = fechaInicio;
 			this.fechaTermino = fechaTermino;
@@ -110,15 +108,6 @@ namespace BESisCtd
 		{
 			get { return fechaDocumento; }
 			set { fechaDocumento = value; }
-		}
-
-		/// <summary>
-		/// Gets or sets the CodigoBarra value.
-		/// </summary>
-		public virtual string CodigoBarra
-		{
-			get { return codigoBarra; }
-			set { codigoBarra = value; }
 		}
 
 		/// <summary>
