@@ -62,7 +62,6 @@ namespace DLSisCtd
             oBE_Reg_Control.IdMaestroCliente = dt.Rows[0]["IdMaestroCliente"].ToString().Trim();
             oBE_Reg_Control.NroDocumento = dt.Rows[0]["NroDocumento"].ToString().Trim();
             oBE_Reg_Control.FechaDocumento = (DateTime)dt.Rows[0]["FechaDocumento"];
-            oBE_Reg_Control.CodigoBarra = dt.Rows[0]["CodigoBarra"].ToString().Trim();
             oBE_Reg_Control.Observacion = dt.Rows[0]["Observacion"].ToString().Trim();
             if (dt.Rows[0]["FechaInicio"].ToString() != "") oBE_Reg_Control.FechaInicio = (DateTime)dt.Rows[0]["FechaInicio"];
             if (dt.Rows[0]["FechaTermino"].ToString() != "") oBE_Reg_Control.FechaTermino = (DateTime)dt.Rows[0]["FechaTermino"];
@@ -84,13 +83,12 @@ namespace DLSisCtd
                     Int32 nIdControl= Convert.ToInt32(ConexionDAO.fEscalar("Insert_Reg_Control",
                         BE_Helper.oBE_Sis_Cliente.IdCliente,
                         oBE_Reg_Control.IdTipoDocumento,
+                        oBE_Reg_Control.IdRuta,
                         oBE_Reg_Control.IdMaestroCliente,
                         oBE_Reg_Control.NroDocumento,
                         oBE_Reg_Control.FechaDocumento,
-                        oBE_Reg_Control.CodigoBarra,
                         oBE_Reg_Control.Observacion,
                         oBE_Reg_Control.Estado,
-                        oBE_Reg_Control.IdRuta,
                         BE_Helper.oBE_Sis_Usuario.IdUsuario));
                     sTrans.Commit();
                     return nIdControl;
@@ -107,7 +105,6 @@ namespace DLSisCtd
                 oBE_Reg_Control.IdMaestroCliente,
                 oBE_Reg_Control.NroDocumento,
                 oBE_Reg_Control.FechaDocumento,
-                oBE_Reg_Control.CodigoBarra,
                 oBE_Reg_Control.Observacion,
                 oBE_Reg_Control.Estado,
                 oBE_Reg_Control.IdRuta,
