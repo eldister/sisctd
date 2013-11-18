@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
@@ -41,25 +41,24 @@
             this.bNuevo = new System.Windows.Forms.ToolStripButton();
             this.bModificar = new System.Windows.Forms.ToolStripButton();
             this.bEliminar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bExportar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bAsignarImagen = new System.Windows.Forms.ToolStripButton();
+            this.bQuitarImagen = new System.Windows.Forms.ToolStripButton();
+            this.bVerImagen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripSeparator();
             this.bCerrar = new System.Windows.Forms.ToolStripButton();
             this.Stb = new System.Windows.Forms.StatusStrip();
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgControl = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnQuitarActividad = new System.Windows.Forms.Button();
             this.btnAgregarActividad = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
-            this.bVerImagen = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bQuitarImagen = new System.Windows.Forms.ToolStripButton();
-            this.bAsignarImagen = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
@@ -218,10 +217,10 @@
             this.bEliminar.ToolTipText = "Eliminar (F4)";
             this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
             // 
-            // toolStripButton4
+            // toolStripSeparator1
             // 
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(6, 23);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
             // 
             // bExportar
             // 
@@ -237,6 +236,41 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
+            // bAsignarImagen
+            // 
+            this.bAsignarImagen.Image = global::BESisCtd.Properties.Resources.descarga;
+            this.bAsignarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bAsignarImagen.Name = "bAsignarImagen";
+            this.bAsignarImagen.Size = new System.Drawing.Size(110, 20);
+            this.bAsignarImagen.Text = "&Asignar Imagen";
+            this.bAsignarImagen.ToolTipText = "Eliminar (F4)";
+            this.bAsignarImagen.Click += new System.EventHandler(this.bAsignarImagen_Click);
+            // 
+            // bQuitarImagen
+            // 
+            this.bQuitarImagen.Image = global::BESisCtd.Properties.Resources.Toolbar_Erase;
+            this.bQuitarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bQuitarImagen.Name = "bQuitarImagen";
+            this.bQuitarImagen.Size = new System.Drawing.Size(103, 20);
+            this.bQuitarImagen.Text = "&Quitar Imagen";
+            this.bQuitarImagen.ToolTipText = "Eliminar (F4)";
+            this.bQuitarImagen.Click += new System.EventHandler(this.bQuitarImagen_Click);
+            // 
+            // bVerImagen
+            // 
+            this.bVerImagen.Image = global::BESisCtd.Properties.Resources.iconoima;
+            this.bVerImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bVerImagen.Name = "bVerImagen";
+            this.bVerImagen.Size = new System.Drawing.Size(87, 20);
+            this.bVerImagen.Text = "&Ver Imagen";
+            this.bVerImagen.ToolTipText = "Eliminar (F4)";
+            this.bVerImagen.Click += new System.EventHandler(this.bVerImagen_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(6, 23);
             // 
             // bCerrar
             // 
@@ -271,8 +305,8 @@
             this.dgControl.AllowUserToAddRows = false;
             this.dgControl.AllowUserToDeleteRows = false;
             this.dgControl.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
-            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
+            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgControl.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -295,7 +329,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnQuitarActividad);
@@ -307,15 +340,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(996, 220);
             this.panel2.TabIndex = 1;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(123, 187);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "&Modificar Actividad";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -339,7 +363,7 @@
             // 
             // btnQuitarActividad
             // 
-            this.btnQuitarActividad.Location = new System.Drawing.Point(234, 187);
+            this.btnQuitarActividad.Location = new System.Drawing.Point(123, 187);
             this.btnQuitarActividad.Name = "btnQuitarActividad";
             this.btnQuitarActividad.Size = new System.Drawing.Size(105, 23);
             this.btnQuitarActividad.TabIndex = 2;
@@ -372,8 +396,8 @@
             this.dgDetalle.AllowUserToAddRows = false;
             this.dgDetalle.AllowUserToDeleteRows = false;
             this.dgDetalle.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Ivory;
+            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetalle.BackgroundColor = System.Drawing.Color.LightSlateGray;
@@ -392,38 +416,6 @@
             this.dgDetalle.TabIndex = 0;
             this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
             this.dgDetalle.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
-            // 
-            // bVerImagen
-            // 
-            this.bVerImagen.Image = global::BESisCtd.Properties.Resources.iconoima;
-            this.bVerImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bVerImagen.Name = "bVerImagen";
-            this.bVerImagen.Size = new System.Drawing.Size(87, 20);
-            this.bVerImagen.Text = "&Ver Imagen";
-            this.bVerImagen.ToolTipText = "Eliminar (F4)";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
-            // 
-            // bQuitarImagen
-            // 
-            this.bQuitarImagen.Image = global::BESisCtd.Properties.Resources.Toolbar_Erase;
-            this.bQuitarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bQuitarImagen.Name = "bQuitarImagen";
-            this.bQuitarImagen.Size = new System.Drawing.Size(103, 20);
-            this.bQuitarImagen.Text = "&Quitar Imagen";
-            this.bQuitarImagen.ToolTipText = "Eliminar (F4)";
-            // 
-            // bAsignarImagen
-            // 
-            this.bAsignarImagen.Image = global::BESisCtd.Properties.Resources.descarga;
-            this.bAsignarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bAsignarImagen.Name = "bAsignarImagen";
-            this.bAsignarImagen.Size = new System.Drawing.Size(110, 20);
-            this.bAsignarImagen.Text = "&Asignar Imagen";
-            this.bAsignarImagen.ToolTipText = "Eliminar (F4)";
             // 
             // Frm_Reg_Control_List
             // 
@@ -487,7 +479,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private MigControls.MigDataGridView dgDetalle;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton bAsignarImagen;
         private System.Windows.Forms.ToolStripButton bQuitarImagen;

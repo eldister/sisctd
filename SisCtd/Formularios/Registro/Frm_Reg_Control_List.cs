@@ -7,7 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
 using BESisCtd;
-
+using System.IO;
+using System.Diagnostics;
 namespace BESisCtd
 {
     public partial class Frm_Reg_Control_List : Form
@@ -78,6 +79,7 @@ namespace BESisCtd
                     dgControl.Columns["FechaTermino"].Width = 80;
                     dgControl.Columns["Estado"].Width = 80;
                     dgControl.Columns["Img"].Width = 30;
+                    dgControl.Columns["IdImagen"].Visible = false;
                 }
                 else
                 {
@@ -106,6 +108,7 @@ namespace BESisCtd
                 dgDetalle.Columns["IdOficinaResponsable"].Visible = false;
                 dgDetalle.Columns["Oficina"].Width = 120;
                 dgDetalle.Columns["IdEmpleado"].Visible = false;
+                
                 dgDetalle.Columns["Empleado"].Width = 120;
                 dgDetalle.Columns["IdArea"].Visible = false;
                 dgDetalle.Columns["Area"].Width = 120;
@@ -217,9 +220,144 @@ namespace BESisCtd
         {
             Listar(Helper.eListar.Excel);
         }
+
+        private void bAsignarImagen_Click(object sender, EventArgs e)
+        {
+            if (Get_IdControl(true) == false) return; 
+            BinaryReader br;
+            BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
+            BE_Reg_ControlImagenes oBE_Reg_ControlImagenes = new BE_Reg_ControlImagenes();
+            byte[] bytes;
+            try
+            {
+
+                if (oBL_Reg_Control.Existe_Imagen(nIdControl))
+                {
+                    MessageBox.Show("Ya se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dgControl.Focus(); return;
+                }
+
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = "Selecccionar Archivo";
+                dlg.Filter = "Archivo JPG,GIF;DOC,DOCX;PDF|*.jpg;*.gif;*.doc;*.docx;*.pdf";
+                DialogResult dlgRes = dlg.ShowDialog();
+                if (dlgRes != DialogResult.Cancel)
+                {
+
+                    //Direccion del archivo
+                    FileInfo File = new System.IO.FileInfo(dlg.FileName);
+                    int nKb = Convert.ToInt32(File.Length / 1024);
+
+                    string sExtension = System.IO.Path.GetExtension(dlg.FileName);
+                    string sNombre = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName);
+                    string sNombreRuta = dlg.FileName;
+
+                    // Declaramos fs para tener acceso al archivo residente en la maquina cliente.
+                    FileStream fs = new FileStream(sNombreRuta, FileMode.Open);
+                    // Declaramos un Leector Binario para accesar a los datos del archivo pasarlos a un arreglo de bytes
+                    br = new BinaryReader(fs);
+                    bytes = new byte[(int)fs.Length];
+
+                    br.Read(bytes, 0, bytes.Length);
+                    // base64 es la cadena en donde se guarda el arreglo de bytes ya convertido
+                    oBE_Reg_ControlImagenes.Nombre = sNombre;
+                    oBE_Reg_ControlImagenes.Archivo = bytes;
+                    oBE_Reg_ControlImagenes.PesoArchivo = nKb;
+                    oBE_Reg_ControlImagenes.ExtensionImagen = sExtension;
+                    oBL_Reg_Control.Insertar_Archivo(oBE_Reg_ControlImagenes, nIdControl);
+                    fs.Close();
+                    fs = null;
+                    Listar(0);
+                    Helper.Buscar_Grilla(dgControl, nIdControl.ToString(), 0);
+                    Listar_Detalle();
+                    MessageBox.Show("Se ha Asignado la Imagen " + sNombre + " en forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+               
+                br = null;
+                bytes = null;
+                oBL_Reg_Control = null;
+                oBE_Reg_ControlImagenes = null;
+            }
+        }
+        private void bVerImagen_Click(object sender, EventArgs e)
+        {
+            // Declaramos fs para tener crear un nuevo archivo temporal en la maquina cliente.
+            // y memStream para almacenar en memoria la cadena recibida.
+            BE_Reg_ControlImagenes oBE_Reg_ControlImagenes = new BE_Reg_ControlImagenes();
+
+            byte[] bytes;
+            try
+            {
+                if (!oBL_Reg_Control.Existe_Imagen(nIdControl))
+                {
+                    MessageBox.Show("No se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dgControl.Focus(); return;
+                }
+
+                oBE_Reg_ControlImagenes = oBL_Reg_Control.Get_Reg_ControlImagenes(BE_Helper.oBE_Sis_Cliente.IdCliente, "0000001");
+                bytes = oBE_Reg_ControlImagenes.Archivo;
+
+                string sNombre = oBE_Reg_ControlImagenes.Nombre + oBE_Reg_ControlImagenes.ExtensionImagen;
+                //- ArchivoPDF toma el valor de la columna binaria
+
+                File.WriteAllBytes(Application.StartupPath + @"\" + sNombre, bytes);
+
+                Process.Start(Application.StartupPath + @"\" + sNombre);
+
+
+                //return sImagenTemporal;
+            }
+            catch
+            {
+                MessageBox.Show("Ocurrió un error al leer la imagen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+            }
+            finally
+            {
+                oBE_Reg_ControlImagenes = null;
+                bytes = null;
+            }
+        }
+
         private void bCerrar_Click(object sender, EventArgs e)
         {
             oCancelar();
+        }
+        private void bQuitarImagen_Click(object sender, EventArgs e)
+        {
+            if (Get_IdControl(true) == false) return;
+            BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
+            try
+            {
+                if (!oBL_Reg_Control.Existe_Imagen(nIdControl))
+                {
+                    MessageBox.Show("No se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dgControl.Focus(); return;
+                }
+
+                if (MessageBox.Show("¿Está seguro que desea de Quitar la Imagen al Control : " + nIdControl.ToString() + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                oBL_Reg_Control.Quitar_Archivo(nIdControl);
+                Listar(0);
+                Helper.Buscar_Grilla(dgControl, nIdControl.ToString(), 0);
+                Listar_Detalle();
+
+                MessageBox.Show("Se ha Quitado la Imagen en forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Ocurrió un error al Quitar la imagen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+            }
+            finally
+            {
+                oBL_Reg_Control = null;
+            }
         }
 
         #endregion
@@ -285,6 +423,10 @@ namespace BESisCtd
         }
 
         #endregion
+
+
+
+
 
     }
 }

@@ -8,11 +8,11 @@ namespace BESisCtd
 
 		private string idCliente;
 		private string idimagen;
-		private byte[] imagen;
-		private int totalPaginas;
+		private string nombre;
+		private byte[] archivo;
 		private int pesoArchivo;
-		private bool estado;
 		private string extensionImagen;
+		private bool estado;
 		private DateTime fechaRegistro;
 		private string horaRegistro;
 		private string usuarioRegistro;
@@ -31,15 +31,15 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the Reg_ControlImagene class.
 		/// </summary>
-        public BE_Reg_ControlImagenes(string idCliente, string idimagen, byte[] imagen, int totalPaginas, int pesoArchivo, bool estado, string extensionImagen, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+		public BE_Reg_ControlImagenes(string idCliente, string idimagen, string nombre, byte[] archivo, int pesoArchivo, string extensionImagen, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.idCliente = idCliente;
 			this.idimagen = idimagen;
-			this.imagen = imagen;
-			this.totalPaginas = totalPaginas;
+			this.nombre = nombre;
+			this.archivo = archivo;
 			this.pesoArchivo = pesoArchivo;
-			this.estado = estado;
 			this.extensionImagen = extensionImagen;
+			this.estado = estado;
 			this.fechaRegistro = fechaRegistro;
 			this.horaRegistro = horaRegistro;
 			this.usuarioRegistro = usuarioRegistro;
@@ -67,21 +67,21 @@ namespace BESisCtd
 		}
 
 		/// <summary>
-		/// Gets or sets the Imagen value.
+		/// Gets or sets the Nombre value.
 		/// </summary>
-		public virtual byte[] Imagen
+		public virtual string Nombre
 		{
-			get { return imagen; }
-			set { imagen = value; }
+			get { return nombre; }
+			set { nombre = value; }
 		}
 
 		/// <summary>
-		/// Gets or sets the TotalPaginas value.
+		/// Gets or sets the Archivo value.
 		/// </summary>
-		public virtual int TotalPaginas
+		public virtual byte[] Archivo
 		{
-			get { return totalPaginas; }
-			set { totalPaginas = value; }
+			get { return archivo; }
+			set { archivo = value; }
 		}
 
 		/// <summary>
@@ -94,21 +94,21 @@ namespace BESisCtd
 		}
 
 		/// <summary>
-		/// Gets or sets the Estado value.
-		/// </summary>
-		public virtual bool Estado
-		{
-			get { return estado; }
-			set { estado = value; }
-		}
-
-		/// <summary>
 		/// Gets or sets the ExtensionImagen value.
 		/// </summary>
 		public virtual string ExtensionImagen
 		{
 			get { return extensionImagen; }
 			set { extensionImagen = value; }
+		}
+
+		/// <summary>
+		/// Gets or sets the Estado value.
+		/// </summary>
+		public virtual bool Estado
+		{
+			get { return estado; }
+			set { estado = value; }
 		}
 
 		/// <summary>

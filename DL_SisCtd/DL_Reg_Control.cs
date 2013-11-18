@@ -48,6 +48,36 @@ namespace DLSisCtd
 
             return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
         }
+        public Boolean Existe_Imagen(Int32 nIdControl)
+        {
+            sSql = "select  count(*) from Reg_Control ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdControl = '" + nIdControl.ToString() + "' and ";
+            sSql += "       IdImagen <> '' ";
+
+            return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
+        }
+        public BE_Reg_ControlImagenes Get_Reg_ControlImagenes(string sIdCliente, string sIdImagen)
+        {
+            BE_Reg_ControlImagenes oBE_Reg_ControlImagenes  = new BE_Reg_ControlImagenes();
+            sSql = "select * from Reg_ControlImagenes where IdCliente='" + sIdCliente + "' and IdImagen='" + sIdImagen + "' ";
+            SqlDataReader reader = ConexionDAO.fSqlDataReader(sSql);
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    oBE_Reg_ControlImagenes.IdCliente = reader.GetString(reader.GetOrdinal("IdCliente"));
+                    oBE_Reg_ControlImagenes.Idimagen = reader.GetString(reader.GetOrdinal("Idimagen"));
+                    oBE_Reg_ControlImagenes.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
+                    oBE_Reg_ControlImagenes.Archivo = (byte[])reader["Archivo"];
+                    oBE_Reg_ControlImagenes.PesoArchivo = reader.GetInt32(reader.GetOrdinal("PesoArchivo"));
+                    oBE_Reg_ControlImagenes.ExtensionImagen = reader.GetString(reader.GetOrdinal("ExtensionImagen"));
+                    oBE_Reg_ControlImagenes.Estado = reader.GetBoolean(reader.GetOrdinal("Estado"));
+                }
+            }
+            reader.Dispose(); reader = null;
+            return oBE_Reg_ControlImagenes;
+        }
         #endregion
 
         #region Operaciones
@@ -122,6 +152,53 @@ namespace DLSisCtd
             ConexionDAO.fExecute(sSql);
         }
 
+        public string Insertar_Archivo(BE_Reg_ControlImagenes oBE_Reg_ControlImagenes, int nIdControl)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    string sIdImagen = Convert.ToString(SqlHelper.ExecuteScalar(sTrans,"Insert_Reg_ControlImagenes",
+                        BE_Helper.oBE_Sis_Cliente.IdCliente,
+                        oBE_Reg_ControlImagenes.Nombre,
+                        oBE_Reg_ControlImagenes.Archivo,
+                        oBE_Reg_ControlImagenes.PesoArchivo,
+                        oBE_Reg_ControlImagenes.ExtensionImagen,
+                        BE_Helper.oBE_Sis_Usuario.IdUsuario,
+                        nIdControl));
+                    sTrans.Commit();
+                    return sIdImagen;
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+        }
+        public void Quitar_Archivo(int nIdControl)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    sSql = "select IdImagen from Reg_Control where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + nIdControl.ToString() + "'";
+                    string sIdImagen = Convert.ToString(ConexionDAO.fEscalar(sSql));
+
+                    sSql = "Update Reg_Control set IdImagen=null where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + nIdControl.ToString() + "'";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    sSql = "delete from Reg_ControlImagenes ";
+                    sSql += "where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdImagen='" + sIdImagen + "'";
+                    SqlHelper.ExecuteNonQuery(sTrans,CommandType.Text,sSql);
+
+
+
+                    sTrans.Commit();
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+        }
         //public void AgregarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
         //{
         //    sSql = "insert into T_TipoDocumentoRuta values ";

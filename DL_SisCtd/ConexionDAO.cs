@@ -128,6 +128,19 @@ namespace DLSisCtd
             catch (Exception ex) { throw ex; }
             finally { if (Dt != null) { Dt.Dispose(); Dt = null; } }
         }
+
+        public static SqlDataReader fSqlDataReader(string sSql)
+        {
+            SqlDataReader Dr;
+            ConfigServidor();
+            try
+            {
+                Dr = SqlHelper.ExecuteReader(sConexion, CommandType.Text, sSql);
+                return Dr;
+            }
+            catch (Exception ex) { throw ex; }
+
+        }
     }
 
 }
