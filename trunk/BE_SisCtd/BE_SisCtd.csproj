@@ -63,8 +63,8 @@
     <Compile Include="BE_Reg_Control.cs" />
     <Compile Include="BE_Reg_ControlDetalle.cs" />
     <Compile Include="BE_Reg_ControlDetalleAnexo.cs" />
-    <Compile Include="BE_Reg_ControlImagenes.cs" />
     <Compile Include="BE_T_Empleado.cs" />
+    <Compile Include="BE_Reg_ControlImagenes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

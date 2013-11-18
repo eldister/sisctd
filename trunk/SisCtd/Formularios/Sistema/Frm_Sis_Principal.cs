@@ -80,7 +80,7 @@ namespace BESisCtd
         {
             switch (BE_Helper.oBE_Sis_Cliente.IdCliente)
             {
-                //case "DEMO": picLogo.Image = BESisCtd.Properties.Resources.logo_vsistems; break;
+                case "DEMO": picLogo.Image = BESisCtd.Properties.Resources.logo_vsistems; break;
             }
         }
 

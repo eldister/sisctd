@@ -37,6 +37,15 @@ namespace BLSisCtd
         //{
         //    return oDL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta);
         //}
+
+        public Boolean Existe_Imagen(Int32 nIdControl)
+        {
+            return oDL_Reg_Control.Existe_Imagen(nIdControl);
+        }
+        public BE_Reg_ControlImagenes Get_Reg_ControlImagenes(string sIdCliente, string sIdImagen)
+        {
+            return oDL_Reg_Control.Get_Reg_ControlImagenes(sIdCliente,sIdImagen);
+        }   
         #endregion
 
         #region Operaciones
@@ -47,6 +56,14 @@ namespace BLSisCtd
         public void Modificar(BE_Reg_Control oBE_Reg_Control)
         {
             oDL_Reg_Control.Modificar(oBE_Reg_Control);
+        }
+        public string Insertar_Archivo(BE_Reg_ControlImagenes oBE_Reg_ControlImagenes, int nIdControl)
+        {
+            return oDL_Reg_Control.Insertar_Archivo(oBE_Reg_ControlImagenes, nIdControl);
+        }
+        public void Quitar_Archivo(int nIdControl)
+        {
+            oDL_Reg_Control.Quitar_Archivo(nIdControl);
         }
         //public void Eliminar(string sIdTipoDocumento)
         //{
