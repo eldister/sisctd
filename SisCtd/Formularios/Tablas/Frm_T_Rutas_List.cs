@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BLSisCtd;
 using BESisCtd;
 
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_T_Rutas_List : Form
     {

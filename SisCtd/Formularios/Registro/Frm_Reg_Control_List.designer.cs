@@ -1,4 +1,4 @@
-﻿namespace BESisCtd
+﻿namespace SisCtd
 {
     partial class Frm_Reg_Control_List
     {
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
@@ -59,6 +59,8 @@
             this.btnAgregarActividad = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
+            this.txtIdControl = new MigControls.MigTextbox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
@@ -69,6 +71,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtIdControl);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lblEstado);
             this.panel1.Controls.Add(this.cboEstado);
             this.panel1.Controls.Add(this.txtRazonSocial);
@@ -84,10 +88,10 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(570, 10);
+            this.lblEstado.Location = new System.Drawing.Point(810, 10);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(40, 13);
-            this.lblEstado.TabIndex = 4;
+            this.lblEstado.TabIndex = 7;
             this.lblEstado.Text = "Estado";
             // 
             // cboEstado
@@ -105,11 +109,11 @@
             "Cerrado",
             "Anulado",
             "Todos"});
-            this.cboEstado.Location = new System.Drawing.Point(616, 5);
+            this.cboEstado.Location = new System.Drawing.Point(856, 5);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.PasarEnter = true;
             this.cboEstado.Size = new System.Drawing.Size(92, 22);
-            this.cboEstado.TabIndex = 2;
+            this.cboEstado.TabIndex = 3;
             this.cboEstado.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
             this.cboEstado.SelectedIndexChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
@@ -121,23 +125,23 @@
             this.txtRazonSocial.ColorSalida = System.Drawing.Color.White;
             this.txtRazonSocial.Decimales = 2;
             this.txtRazonSocial.Guiones = false;
-            this.txtRazonSocial.Location = new System.Drawing.Point(234, 6);
+            this.txtRazonSocial.Location = new System.Drawing.Point(562, 6);
             this.txtRazonSocial.MaxLength = 50;
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.PasarEnter = true;
-            this.txtRazonSocial.Size = new System.Drawing.Size(272, 20);
-            this.txtRazonSocial.TabIndex = 1;
+            this.txtRazonSocial.Size = new System.Drawing.Size(208, 20);
+            this.txtRazonSocial.TabIndex = 2;
             this.txtRazonSocial.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             this.txtRazonSocial.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(192, 10);
+            this.label2.Location = new System.Drawing.Point(486, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Cliente";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Razón Social";
             // 
             // txtNroDocumento
             // 
@@ -147,12 +151,12 @@
             this.txtNroDocumento.ColorSalida = System.Drawing.Color.White;
             this.txtNroDocumento.Decimales = 2;
             this.txtNroDocumento.Guiones = false;
-            this.txtNroDocumento.Location = new System.Drawing.Point(63, 6);
+            this.txtNroDocumento.Location = new System.Drawing.Point(370, 6);
             this.txtNroDocumento.MaxLength = 10;
             this.txtNroDocumento.Name = "txtNroDocumento";
             this.txtNroDocumento.PasarEnter = true;
-            this.txtNroDocumento.Size = new System.Drawing.Size(80, 20);
-            this.txtNroDocumento.TabIndex = 0;
+            this.txtNroDocumento.Size = new System.Drawing.Size(90, 20);
+            this.txtNroDocumento.TabIndex = 1;
             this.txtNroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtNroDocumento.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             this.txtNroDocumento.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
@@ -160,11 +164,11 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 10);
+            this.label10.Location = new System.Drawing.Point(257, 10);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Numero";
+            this.label10.Size = new System.Drawing.Size(107, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Numero / Referencia";
             // 
             // BarraSis
             // 
@@ -189,7 +193,7 @@
             // 
             // bNuevo
             // 
-            this.bNuevo.Image = global::BESisCtd.Properties.Resources.Toolbar_New;
+            this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
             this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bNuevo.Name = "bNuevo";
             this.bNuevo.Size = new System.Drawing.Size(62, 20);
@@ -199,7 +203,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Image = global::BESisCtd.Properties.Resources.control;
+            this.bModificar.Image = global::SisCtd.Properties.Resources.control;
             this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(78, 20);
@@ -209,7 +213,7 @@
             // 
             // bEliminar
             // 
-            this.bEliminar.Image = global::BESisCtd.Properties.Resources.Toolbar_Delete;
+            this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
             this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(70, 20);
@@ -224,7 +228,7 @@
             // 
             // bExportar
             // 
-            this.bExportar.Image = global::BESisCtd.Properties.Resources.xls;
+            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
             this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bExportar.Name = "bExportar";
             this.bExportar.Size = new System.Drawing.Size(70, 20);
@@ -239,7 +243,7 @@
             // 
             // bAsignarImagen
             // 
-            this.bAsignarImagen.Image = global::BESisCtd.Properties.Resources.descarga;
+            this.bAsignarImagen.Image = global::SisCtd.Properties.Resources.descarga;
             this.bAsignarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bAsignarImagen.Name = "bAsignarImagen";
             this.bAsignarImagen.Size = new System.Drawing.Size(110, 20);
@@ -249,7 +253,7 @@
             // 
             // bQuitarImagen
             // 
-            this.bQuitarImagen.Image = global::BESisCtd.Properties.Resources.Toolbar_Erase;
+            this.bQuitarImagen.Image = global::SisCtd.Properties.Resources.Toolbar_Erase;
             this.bQuitarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bQuitarImagen.Name = "bQuitarImagen";
             this.bQuitarImagen.Size = new System.Drawing.Size(103, 20);
@@ -259,7 +263,7 @@
             // 
             // bVerImagen
             // 
-            this.bVerImagen.Image = global::BESisCtd.Properties.Resources.iconoima;
+            this.bVerImagen.Image = global::SisCtd.Properties.Resources.iconoima;
             this.bVerImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bVerImagen.Name = "bVerImagen";
             this.bVerImagen.Size = new System.Drawing.Size(87, 20);
@@ -274,7 +278,7 @@
             // 
             // bCerrar
             // 
-            this.bCerrar.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
+            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
             this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bCerrar.Name = "bCerrar";
             this.bCerrar.Size = new System.Drawing.Size(49, 20);
@@ -305,8 +309,8 @@
             this.dgControl.AllowUserToAddRows = false;
             this.dgControl.AllowUserToDeleteRows = false;
             this.dgControl.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
-            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
+            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgControl.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -396,8 +400,8 @@
             this.dgDetalle.AllowUserToAddRows = false;
             this.dgDetalle.AllowUserToDeleteRows = false;
             this.dgDetalle.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Ivory;
-            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetalle.BackgroundColor = System.Drawing.Color.LightSlateGray;
@@ -416,6 +420,32 @@
             this.dgDetalle.TabIndex = 0;
             this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
             this.dgDetalle.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
+            // 
+            // txtIdControl
+            // 
+            this.txtIdControl.BackColor = System.Drawing.Color.White;
+            this.txtIdControl.Car_Años = 4;
+            this.txtIdControl.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtIdControl.ColorSalida = System.Drawing.Color.White;
+            this.txtIdControl.Decimales = 2;
+            this.txtIdControl.Guiones = false;
+            this.txtIdControl.Location = new System.Drawing.Point(70, 7);
+            this.txtIdControl.MaxLength = 10;
+            this.txtIdControl.Name = "txtIdControl";
+            this.txtIdControl.PasarEnter = true;
+            this.txtIdControl.Size = new System.Drawing.Size(158, 20);
+            this.txtIdControl.TabIndex = 0;
+            this.txtIdControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIdControl.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Id. Control";
             // 
             // Frm_Reg_Control_List
             // 
@@ -483,5 +513,7 @@
         private System.Windows.Forms.ToolStripButton bAsignarImagen;
         private System.Windows.Forms.ToolStripButton bQuitarImagen;
         private System.Windows.Forms.ToolStripButton bVerImagen;
+        private MigControls.MigTextbox txtIdControl;
+        private System.Windows.Forms.Label label3;
     }
 }

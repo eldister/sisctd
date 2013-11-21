@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace BESisCtd
+namespace SisCtd
 {
     public class MaskedTextBoxEditingControl: MaskedTextBox, IDataGridViewEditingControl
     {

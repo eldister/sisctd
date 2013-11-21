@@ -17,7 +17,7 @@ using System.Web;
 using Microsoft.Win32;
 using BESisCtd;
 using BLSisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     public class Helper
     {

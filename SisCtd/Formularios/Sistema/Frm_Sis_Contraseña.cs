@@ -9,7 +9,7 @@ using System.Xml;
 using Microsoft.Win32;
 using BLSisCtd;
 using BESisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_Contraseña : Form
     {

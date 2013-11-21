@@ -1,4 +1,4 @@
-﻿namespace BESisCtd
+﻿namespace SisCtd
 {
     partial class Frm_Sis_Usuarios
     {
@@ -172,7 +172,7 @@
             // 
             // bNuevo
             // 
-            this.bNuevo.Image = global::BESisCtd.Properties.Resources.Toolbar_New;
+            this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
             this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bNuevo.Name = "bNuevo";
             this.bNuevo.Size = new System.Drawing.Size(62, 20);
@@ -182,7 +182,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Image = global::BESisCtd.Properties.Resources.control;
+            this.bModificar.Image = global::SisCtd.Properties.Resources.control;
             this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(78, 20);
@@ -192,7 +192,7 @@
             // 
             // bEliminar
             // 
-            this.bEliminar.Image = global::BESisCtd.Properties.Resources.Toolbar_Delete;
+            this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
             this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(70, 20);
@@ -207,7 +207,7 @@
             // 
             // bExportar
             // 
-            this.bExportar.Image = global::BESisCtd.Properties.Resources.xls;
+            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
             this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bExportar.Name = "bExportar";
             this.bExportar.Size = new System.Drawing.Size(70, 20);
@@ -222,7 +222,7 @@
             // 
             // bCerrar
             // 
-            this.bCerrar.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
+            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
             this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bCerrar.Name = "bCerrar";
             this.bCerrar.Size = new System.Drawing.Size(49, 20);
@@ -275,7 +275,7 @@
             // 
             // bResetear
             // 
-            this.bResetear.Image = global::BESisCtd.Properties.Resources._interface;
+            this.bResetear.Image = global::SisCtd.Properties.Resources._interface;
             this.bResetear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bResetear.Name = "bResetear";
             this.bResetear.Size = new System.Drawing.Size(134, 20);

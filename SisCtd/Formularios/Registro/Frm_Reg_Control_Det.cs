@@ -7,12 +7,18 @@ using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
 using BESisCtd;
-
-namespace BESisCtd
+using System.Runtime.InteropServices;
+using System.Drawing.Text;
+namespace SisCtd
 {
     public partial class Frm_Reg_Control_Det : Form
     {
         #region Declaración Variables
+
+        [DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
+        FontFamily ff;
+        Font font;
         public Int32 nIdControl;
         public Boolean bGrabo = false;
         Helper.eOpcion qOpcion;
@@ -36,6 +42,8 @@ namespace BESisCtd
         {
             try
             {
+                CargoPrivateFontCollection();
+                CargoEtiqueta(font);
                 switch (qOpcion)
                 {
                     case Helper.eOpcion.Nuevo:
@@ -55,6 +63,7 @@ namespace BESisCtd
                         else
                         {
                             this.Text = " Modificar";
+                            grpSeguimiento.Visible = true;
                         }
 
                         oBE_Reg_Control = oBL_Reg_Control.Get_Control(nIdControl);
@@ -88,6 +97,42 @@ namespace BESisCtd
             if (qOpcion == Helper.eOpcion.Consultar) { BtnCancelar.Focus(); }
         }
 
+        #endregion
+
+        #region Metodos
+        private void CargoPrivateFontCollection()
+        {
+            // CREO EL BYTE[] Y TOMO SU LONGITUD
+            byte[] fontArray = SisCtd.Properties.Resources.code128;
+            int dataLength = SisCtd.Properties.Resources.code128.Length;
+
+
+            // ASIGNO MEMORIA Y COPIO BYTE[] EN LA DIRECCION
+            IntPtr ptrData = Marshal.AllocCoTaskMem(dataLength);
+            Marshal.Copy(fontArray, 0, ptrData, dataLength);
+
+
+            uint cFonts = 0;
+            AddFontMemResourceEx(ptrData, (uint)fontArray.Length, IntPtr.Zero, ref cFonts);
+
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            //PASO LA FUENTE A LA PRIVATEFONTCOLLECTION
+            pfc.AddMemoryFont(ptrData, dataLength);
+
+            //LIBERO LA MEMORIA "UNSAFE"
+            Marshal.FreeCoTaskMem(ptrData);
+
+            ff = pfc.Families[0];
+            font = new Font(ff, 15f, FontStyle.Bold);
+        }
+        private void CargoEtiqueta(Font font)
+        {
+            float size = 11f;
+            FontStyle fontStyle = FontStyle.Regular;
+
+            this.lblCodigoBarra.Font = new Font(ff, 20, fontStyle);
+
+        }
         #endregion
 
         #region Eventos Objetos

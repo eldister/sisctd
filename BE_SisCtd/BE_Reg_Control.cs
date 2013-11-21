@@ -7,16 +7,19 @@ namespace BESisCtd
 		#region Fields
 
 		private string idCliente;
-		private int idControl;
+		private string idControl;
+		private DateTime fechaRecepcion;
+		private string idOficinaRecepcion;
 		private string idTipoDocumento;
+		private string idRuta;
 		private string idMaestroCliente;
 		private string nroDocumento;
 		private DateTime fechaDocumento;
 		private string observacion;
-		private DateTime? fechaInicio;
-		private DateTime? fechaTermino;
+		private DateTime fechaInicio;
+		private DateTime fechaTermino;
+		private string idImagen;
 		private string estado;
-		private string idRuta;
 		private DateTime fechaRegistro;
 		private string horaRegistro;
 		private string usuarioRegistro;
@@ -35,19 +38,22 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the Reg_Control class.
 		/// </summary>
-        public BE_Reg_Control(string idCliente, int idControl, string idTipoDocumento, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string observacion, DateTime fechaInicio, DateTime fechaTermino, string estado, string idRuta, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+		public BE_Reg_Control(string idCliente, string idControl, DateTime fechaRecepcion, string idOficinaRecepcion, string idTipoDocumento, string idRuta, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string observacion, DateTime fechaInicio, DateTime fechaTermino, string idImagen, string estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.idCliente = idCliente;
 			this.idControl = idControl;
+			this.fechaRecepcion = fechaRecepcion;
+			this.idOficinaRecepcion = idOficinaRecepcion;
 			this.idTipoDocumento = idTipoDocumento;
+			this.idRuta = idRuta;
 			this.idMaestroCliente = idMaestroCliente;
 			this.nroDocumento = nroDocumento;
 			this.fechaDocumento = fechaDocumento;
 			this.observacion = observacion;
 			this.fechaInicio = fechaInicio;
 			this.fechaTermino = fechaTermino;
+			this.idImagen = idImagen;
 			this.estado = estado;
-			this.idRuta = idRuta;
 			this.fechaRegistro = fechaRegistro;
 			this.horaRegistro = horaRegistro;
 			this.usuarioRegistro = usuarioRegistro;
@@ -68,10 +74,28 @@ namespace BESisCtd
 		/// <summary>
 		/// Gets or sets the IdControl value.
 		/// </summary>
-		public virtual int IdControl
+		public virtual string IdControl
 		{
 			get { return idControl; }
 			set { idControl = value; }
+		}
+
+		/// <summary>
+		/// Gets or sets the FechaRecepcion value.
+		/// </summary>
+		public virtual DateTime FechaRecepcion
+		{
+			get { return fechaRecepcion; }
+			set { fechaRecepcion = value; }
+		}
+
+		/// <summary>
+		/// Gets or sets the IdOficinaRecepcion value.
+		/// </summary>
+		public virtual string IdOficinaRecepcion
+		{
+			get { return idOficinaRecepcion; }
+			set { idOficinaRecepcion = value; }
 		}
 
 		/// <summary>
@@ -81,6 +105,15 @@ namespace BESisCtd
 		{
 			get { return idTipoDocumento; }
 			set { idTipoDocumento = value; }
+		}
+
+		/// <summary>
+		/// Gets or sets the IdRuta value.
+		/// </summary>
+		public virtual string IdRuta
+		{
+			get { return idRuta; }
+			set { idRuta = value; }
 		}
 
 		/// <summary>
@@ -120,9 +153,9 @@ namespace BESisCtd
 		}
 
 		/// <summary>
-		/// Gets or sets the FechaIniciio value.
+		/// Gets or sets the FechaInicio value.
 		/// </summary>
-		public virtual DateTime? FechaInicio
+		public virtual DateTime FechaInicio
 		{
 			get { return fechaInicio; }
 			set { fechaInicio = value; }
@@ -131,10 +164,19 @@ namespace BESisCtd
 		/// <summary>
 		/// Gets or sets the FechaTermino value.
 		/// </summary>
-		public virtual DateTime? FechaTermino
+		public virtual DateTime FechaTermino
 		{
 			get { return fechaTermino; }
 			set { fechaTermino = value; }
+		}
+
+		/// <summary>
+		/// Gets or sets the IdImagen value.
+		/// </summary>
+		public virtual string IdImagen
+		{
+			get { return idImagen; }
+			set { idImagen = value; }
 		}
 
 		/// <summary>
@@ -144,15 +186,6 @@ namespace BESisCtd
 		{
 			get { return estado; }
 			set { estado = value; }
-		}
-
-		/// <summary>
-		/// Gets or sets the IdRuta value.
-		/// </summary>
-		public virtual string IdRuta
-		{
-			get { return idRuta; }
-			set { idRuta = value; }
 		}
 
 		/// <summary>

@@ -32,7 +32,7 @@ namespace DLSisCtd
         public DataTable Listar_Menu(string sIdPerfil, string sMenu)
         {
 
-            if (BE_Helper.oBE_Sis_Usuario.IdPerfil == "00")
+            if (sIdPerfil == "00")
                 sSql = "select *,isnull(IdMenuPadre,'') as sIdMenuPadre from Sis_Menu where Estado=1 order by Orden";
             else
             {

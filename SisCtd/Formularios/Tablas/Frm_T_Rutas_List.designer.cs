@@ -1,4 +1,4 @@
-﻿namespace BESisCtd
+﻿namespace SisCtd
 {
     partial class Frm_T_Rutas_List
     {
@@ -177,7 +177,7 @@
             // 
             // bNuevo
             // 
-            this.bNuevo.Image = global::BESisCtd.Properties.Resources.Toolbar_New;
+            this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
             this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bNuevo.Name = "bNuevo";
             this.bNuevo.Size = new System.Drawing.Size(62, 20);
@@ -187,7 +187,7 @@
             // 
             // bModificar
             // 
-            this.bModificar.Image = global::BESisCtd.Properties.Resources.control;
+            this.bModificar.Image = global::SisCtd.Properties.Resources.control;
             this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bModificar.Name = "bModificar";
             this.bModificar.Size = new System.Drawing.Size(78, 20);
@@ -197,7 +197,7 @@
             // 
             // bEliminar
             // 
-            this.bEliminar.Image = global::BESisCtd.Properties.Resources.Toolbar_Delete;
+            this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
             this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bEliminar.Name = "bEliminar";
             this.bEliminar.Size = new System.Drawing.Size(70, 20);
@@ -212,7 +212,7 @@
             // 
             // bExportar
             // 
-            this.bExportar.Image = global::BESisCtd.Properties.Resources.xls;
+            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
             this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bExportar.Name = "bExportar";
             this.bExportar.Size = new System.Drawing.Size(70, 20);
@@ -227,7 +227,7 @@
             // 
             // bCerrar
             // 
-            this.bCerrar.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
+            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
             this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bCerrar.Name = "bCerrar";
             this.bCerrar.Size = new System.Drawing.Size(49, 20);
@@ -294,7 +294,7 @@
             // 
             // btnChange
             // 
-            //this.btnChange.Image = global::BESisCtd.Properties.Resources._16__Db_edit_;
+            //this.btnChange.Image = global::SisCtd.Properties.Resources._16__Db_edit_;
             this.btnChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChange.Location = new System.Drawing.Point(91, 235);
             this.btnChange.Name = "btnChange";
@@ -305,7 +305,7 @@
             // 
             // btnDelete
             // 
-            //this.btnDelete.Image = global::BESisCtd.Properties.Resources._16__Db_delete_;
+            //this.btnDelete.Image = global::SisCtd.Properties.Resources._16__Db_delete_;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelete.Location = new System.Drawing.Point(170, 235);
             this.btnDelete.Name = "btnDelete";
@@ -316,7 +316,7 @@
             // 
             // btnAdd
             // 
-            //this.btnAdd.Image = global::BESisCtd.Properties.Resources._16__Db_insert_;
+            //this.btnAdd.Image = global::SisCtd.Properties.Resources._16__Db_insert_;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.Location = new System.Drawing.Point(12, 234);
             this.btnAdd.Name = "btnAdd";

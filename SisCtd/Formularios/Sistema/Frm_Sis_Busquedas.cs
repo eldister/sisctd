@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_Busquedas : Form
     {

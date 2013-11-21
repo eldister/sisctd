@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BESisCtd.Properties {
+namespace SisCtd.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace BESisCtd.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BESisCtd.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SisCtd.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -120,6 +120,13 @@ namespace BESisCtd.Properties {
             get {
                 object obj = ResourceManager.GetObject("ATTACHED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static byte[] code128 {
+            get {
+                object obj = ResourceManager.GetObject("code128", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

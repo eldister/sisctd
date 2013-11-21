@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_Formatos : Form
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_Acceso : Form
     {
