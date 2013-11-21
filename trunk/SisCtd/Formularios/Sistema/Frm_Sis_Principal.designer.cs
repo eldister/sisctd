@@ -1,4 +1,4 @@
-namespace BESisCtd
+namespace SisCtd
 {
     partial class Frm_Sis_Principal
     {
@@ -148,7 +148,7 @@ namespace BESisCtd
             // 
             // bSalir
             // 
-            this.bSalir.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
+            this.bSalir.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
             this.bSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bSalir.Name = "bSalir";
             this.bSalir.ShortcutKeys = System.Windows.Forms.Keys.F12;

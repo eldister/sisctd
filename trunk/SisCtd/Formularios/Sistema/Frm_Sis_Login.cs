@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
 using BESisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_Login : Form
     {

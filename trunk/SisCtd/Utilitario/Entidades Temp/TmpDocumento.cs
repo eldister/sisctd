@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BESisCtd
+namespace SisCtd
 {
 	public class TmpDocumento
 	{

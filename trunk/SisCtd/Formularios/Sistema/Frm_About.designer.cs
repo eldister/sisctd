@@ -1,4 +1,4 @@
-﻿namespace BESisCtd
+﻿namespace SisCtd
 {
     partial class Frm_About
     {
@@ -64,7 +64,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::BESisCtd.Properties.Resources.reportes;
+            this.pictureBox1.Image = global::SisCtd.Properties.Resources.reportes;
             this.pictureBox1.Location = new System.Drawing.Point(13, 34);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 44);

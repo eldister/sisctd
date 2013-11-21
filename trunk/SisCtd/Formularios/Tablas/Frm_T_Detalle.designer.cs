@@ -1,4 +1,4 @@
-﻿namespace BESisCtd
+﻿namespace SisCtd
 {
     partial class Frm_T_Detalle
     {
@@ -40,7 +40,7 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Image = global::BESisCtd.Properties.Resources.Toolbar_Close;
+            this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
             this.BtnCancelar.Location = new System.Drawing.Point(365, 107);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
@@ -52,7 +52,7 @@
             // 
             // BtnGrabar
             // 
-            this.BtnGrabar.Image = global::BESisCtd.Properties.Resources.Toolbar_Save;
+            this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
             this.BtnGrabar.Location = new System.Drawing.Point(282, 107);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);

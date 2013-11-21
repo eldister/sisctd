@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using BLSisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_Usuarios : Form
     {

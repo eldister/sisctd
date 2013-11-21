@@ -11,10 +11,10 @@ namespace DLSisCtd
         string sSql;
 
         #region Listados
-        public DataTable Listar(string sNroDocumento, string sRazonSocial,string sEstado)
+        public DataTable Listar(string sIdControl, string sNroDocumento, string sRazonSocial,string sEstado)
         {
             if (sEstado == "Total") sEstado = "";
-            return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sNroDocumento, sRazonSocial, sEstado);
+            return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
         public DataTable Listar_Detalle(Int32 nIdControl )
@@ -102,6 +102,7 @@ namespace DLSisCtd
             oBE_Reg_Control.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
             return oBE_Reg_Control;
         }
+
         public Int32 Insertar(BE_Reg_Control oBE_Reg_Control)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
@@ -110,16 +111,39 @@ namespace DLSisCtd
                 SqlTransaction sTrans = sCn.BeginTransaction();
                 try
                 {
-                    Int32 nIdControl= Convert.ToInt32(ConexionDAO.fEscalar("Insert_Reg_Control",
-                        BE_Helper.oBE_Sis_Cliente.IdCliente,
-                        oBE_Reg_Control.IdTipoDocumento,
-                        oBE_Reg_Control.IdRuta,
-                        oBE_Reg_Control.IdMaestroCliente,
-                        oBE_Reg_Control.NroDocumento,
-                        oBE_Reg_Control.FechaDocumento,
-                        oBE_Reg_Control.Observacion,
-                        oBE_Reg_Control.Estado,
-                        BE_Helper.oBE_Sis_Usuario.IdUsuario));
+                    string sIdControl = ""; string sCorrelativo = "";
+
+                    sSql = "select  '000000'+convert(varchar(7),Correlativo+1) ";
+                    sSql += "from   T_Numeracion ";
+                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año='" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "'";
+                    sCorrelativo = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
+                    if (sCorrelativo == "") sCorrelativo = "0000001";
+                    
+                    sSql = "insert  into T_Numeracion values (";
+                    sSql += "       'DEMO','2013','AA','" + sCorrelativo + "') ";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    sIdControl = BE_Helper.oBE_Sis_Cliente.IdCliente + "_" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "_" + oBE_Reg_Control.IdOficinaRecepcion + "_" + sCorrelativo;
+                    sSql = "INSERT	INTO Reg_Control VALUES( ";
+                    sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "', ";
+                    sSql += "       '" + sIdControl + "', ";
+                    sSql += "       convert(varchar,getdate(),112), ";
+                    sSql += "       '" + oBE_Reg_Control.IdOficinaRecepcion + "',  ";
+                    sSql += "       '" + oBE_Reg_Control.IdTipoDocumento + "',  ";
+                    sSql += "       '" + oBE_Reg_Control.IdRuta + "', ";
+                    sSql += "       '" + oBE_Reg_Control.IdMaestroCliente + "', ";
+                    sSql += "       '" + oBE_Reg_Control.NroDocumento + "', ";
+                    sSql += "       '" + oBE_Reg_Control.FechaDocumento.ToString("yyyyMMdd") + "' ";
+                    sSql += "       '" + oBE_Reg_Control.Observacion + "', ";
+                    sSql += "       null, ";
+                    sSql += "       null, ";
+                    sSql += "       null, ";
+                    sSql += "       @Estado, ";
+                    sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),@UsuarioRegistro) ";
+
+
+
+                    
                     sTrans.Commit();
                     return nIdControl;
                 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using BESisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     static class Program
     {

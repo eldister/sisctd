@@ -10,7 +10,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.ReportSource;
 using CrystalDecisions.CrystalReports;
 using CrystalDecisions.Windows;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_ReportesView : Form
     {

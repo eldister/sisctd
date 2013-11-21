@@ -5,7 +5,7 @@ using System.Windows.Forms;
 /// 
 /// Clase para clasificar las columnas de un ListView
 /// 
-namespace BESisCtd
+namespace SisCtd
 {
     class ListViewColumnSort : IComparer
     {

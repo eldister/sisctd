@@ -9,7 +9,7 @@ using BLSisCtd;
 using BESisCtd;
 using System.IO;
 using System.Diagnostics;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Reg_Control_List : Form
     {
@@ -60,13 +60,16 @@ namespace BESisCtd
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                Dt = oBL_Reg_Control.Listar(txtNroDocumento.Text.Trim(), txtRazonSocial.Text.Trim(), cboEstado.Text);
+                Dt = oBL_Reg_Control.Listar(txtIdControl.Text, txtNroDocumento.Text.Trim(), txtRazonSocial.Text.Trim(), cboEstado.Text);
                 
                 if (eListar == Helper.eListar.Grilla)
                 {
                     dgControl.DataSource = Dt; Helper.FormatoGrilla(dgControl, false);
                     LblMensaje.Text = " Registros Encontrados : " + dgControl.Rows.Count.ToString();
                     dgControl.Columns["IdControl"].Width = 50;
+                    dgControl.Columns["Fecha Recepción"].Width = 90;
+                    dgControl.Columns["IdOficinaRecepcion"].Visible = false;
+                    dgControl.Columns["Oficina Recepción"].Width = 150;
                     dgControl.Columns["IdTipoDocumento"].Width = 70;
                     dgControl.Columns["IdMaestroCliente"].Visible = false;
                     dgControl.Columns["RazonSocial"].Width = 200;
@@ -105,16 +108,21 @@ namespace BESisCtd
                 dgDetalle.Columns["Orden"].Width = 40;
                 dgDetalle.Columns["IdActividad"].Visible = false;
                 dgDetalle.Columns["Actividad"].Width = 100;
-                dgDetalle.Columns["IdOficinaResponsable"].Visible = false;
-                dgDetalle.Columns["Oficina"].Width = 120;
-                dgDetalle.Columns["IdEmpleado"].Visible = false;
                 
-                dgDetalle.Columns["Empleado"].Width = 120;
-                dgDetalle.Columns["IdArea"].Visible = false;
-                dgDetalle.Columns["Area"].Width = 120;
-                dgDetalle.Columns["Recibido"].Width = 50;
-                dgDetalle.Columns["Visado"].Width = 50;
-                dgDetalle.Columns["Firmado"].Width = 50;
+                dgDetalle.Columns["IdOficinaRecepcion"].Visible = false;
+                dgDetalle.Columns["Oficina Recepción"].Width = 120;
+                dgDetalle.Columns["IdEmpleadoRecepcion"].Visible = false;
+                dgDetalle.Columns["Empleado Recepción"].Width = 120;
+                dgDetalle.Columns["IdAreaRecepcion"].Visible = false;
+                dgDetalle.Columns["Area Recepción"].Width = 120;
+                dgDetalle.Columns["Fecha Recepción"].Width = 120;
+                dgDetalle.Columns["IdOficinaDestinatario"].Visible = false;
+                dgDetalle.Columns["Oficina Destinatario"].Width = 120;
+                dgDetalle.Columns["IdEmpleadoDestinatario"].Visible = false;
+                dgDetalle.Columns["Empleado Destinatario"].Width = 120;
+                dgDetalle.Columns["IdAreaDestinatario"].Visible = false;
+                dgDetalle.Columns["Fecha Destinatario"].Width = 120;
+
                 dgDetalle.Columns["Estado"].Width = 80;
 
                 Listar_RutaActividad();

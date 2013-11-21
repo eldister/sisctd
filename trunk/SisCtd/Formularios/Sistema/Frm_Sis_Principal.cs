@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BLSisCtd;
 using BESisCtd;
-namespace BESisCtd
+namespace SisCtd
 {
     public partial class Frm_Sis_Principal : Form
     {
@@ -80,7 +80,7 @@ namespace BESisCtd
         {
             switch (BE_Helper.oBE_Sis_Cliente.IdCliente)
             {
-                case "DEMO": picLogo.Image = BESisCtd.Properties.Resources.logo_vsistems; break;
+                case "DEMO": picLogo.Image = SisCtd.Properties.Resources.logo_vsistems; break;
             }
         }
 

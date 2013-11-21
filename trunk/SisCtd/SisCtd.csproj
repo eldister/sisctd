@@ -8,7 +8,7 @@
     <ProjectGuid>{0936EC57-40AE-441B-85C5-6ECAA2408873}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BESisCtd</RootNamespace>
+    <RootNamespace>SisCtd</RootNamespace>
     <AssemblyName>SisGpd10</AssemblyName>
     <ApplicationIcon>reportes.ico</ApplicationIcon>
     <StartupObject>
@@ -337,6 +337,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\code128.ttf" />
     <None Include="Resources\control.gif" />
   </ItemGroup>
   <ItemGroup>

@@ -12,19 +12,16 @@ namespace BLSisCtd
     {
         DL_Reg_Control oDL_Reg_Control = new DL_Reg_Control();
         #region Listados
-        public DataTable Listar(string sNroDocumento, string sRazonSocial, string sEstado)
+        public DataTable Listar(string sIdControl, string sNroDocumento, string sRazonSocial, string sEstado)
         {
-            return oDL_Reg_Control.Listar(sNroDocumento, sRazonSocial, sEstado);
+            return oDL_Reg_Control.Listar(sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
         public DataTable Listar_Detalle(Int32 nIdControl)
         {
             return oDL_Reg_Control.Listar_Detalle(nIdControl);
         }
-        //public DataTable Listar_RutaActividad(string sIdRuta)
-        //{
-        //    return oDL_T_TipoDocumento.Listar_RutaActividad(sIdRuta);
-        //}
+
         #endregion
 
         #region Obtener Valores
