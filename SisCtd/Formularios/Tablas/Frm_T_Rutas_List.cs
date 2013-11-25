@@ -211,30 +211,35 @@ namespace SisCtd
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
+
             if (Get_IdRuta(true) == false) return;
+        Regresar:
 
-            Frm_T_RutaActividad fDet = new Frm_T_RutaActividad(Helper.eOpcion.Nuevo,  sIdRuta, sIdActividad);
-            fDet.ShowDialog();
-            if (fDet.bGrabo == true)
+            sIdActividad = Helper.Buscar(oBL_T_Actividad.Buscar());
+            if (sIdActividad == "") return;
+            BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
+            oBE_T_RutaActividad.IdActividad = sIdActividad;
+            oBE_T_RutaActividad.IdRuta = sIdRuta;
+            if (oBL_T_RutaActividad.Existe_Actividad(oBE_T_RutaActividad))
             {
-                Listar_RutaActividad();
-            } 
-            fDet.Dispose();
+                MessageBox.Show("La Actividad - " + sIActividad + " ya ha sido asignado a la Ruta " + sIdRuta + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                goto Regresar;
+            }
 
-            //sIdActividad = Helper.Buscar(oBL_T_Actividad.Buscar());
-            //if (sIdActividad == "") return;
-            //BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta = new BE_T_TipoDocumentoRuta();
-            //oBE_T_TipoDocumentoRuta.IdTipoDocumento = sIdTipoDocumento;
-            //oBE_T_TipoDocumentoRuta.IdRuta = sIdRuta;
-            //if (oBL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta))
+            oBL_T_RutaActividad.AgregarRuta(oBE_T_RutaActividad);
+            Listar_RutaActividad();
+            Helper.Buscar_Grilla(Dg1, sIdRuta, 0);
+
+
+
+            //Frm_T_RutaActividad fDet = new Frm_T_RutaActividad(Helper.eOpcion.Nuevo,  sIdRuta, sIdActividad);
+            //fDet.ShowDialog();
+            //if (fDet.bGrabo == true)
             //{
-            //    MessageBox.Show("La Ruta " + sIdRuta + " ya ha sido asignado al Tipo de Documento " + sIdTipoDocumento + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    goto Regresar;
-            //}
+            //    Listar_RutaActividad();
+            //} 
+            //fDet.Dispose();
 
-            //oBL_T_TipoDocumento.AgregarRuta(oBE_T_TipoDocumentoRuta);
-            //Listar_RutaActividad();
-            //Helper.Buscar_Grilla(Dg1, sIdRuta, 0);
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
