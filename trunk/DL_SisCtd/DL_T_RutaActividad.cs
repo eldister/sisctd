@@ -10,6 +10,7 @@ namespace DLSisCtd
         string sSql;
 
         #region Listados
+
         public DataTable Listar(string sIdRuta)
         {
             sSql = "select 	a.Orden, a.IdActividad, ";
@@ -51,6 +52,24 @@ namespace DLSisCtd
         {
             return (Get_RutaActividad(sIdRuta, sIdActividad)!= null ? true : false);
         }
+        public Boolean Existe_Actividad(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            sSql = "select  count(*) from T_RutaActividad ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "' and ";
+            sSql += "       IdActividad = '" + oBE_T_RutaActividad.IdActividad + "' ";
+
+            return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
+        }
+
+        //public string  Orden_Actividad(BE_T_RutaActividad oBE_T_RutaActividad)
+        //{
+        //    sSql = "select  convert(char(5),max(Orden)) as Orden from T_RutaActividad ";
+        //    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+        //    sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "'  ";
+        //    ConexionDAO.fExecute(sSql);
+        //}
+
         #endregion
 
         #region Operaciones
@@ -78,23 +97,13 @@ namespace DLSisCtd
             sSql += "'" + oBE_T_RutaActividad.IdRuta + "',";
             sSql += "'" + oBE_T_RutaActividad.IdActividad + "',";
             sSql += "'" + oBE_T_RutaActividad.Orden + "',";
-            sSql += "'" + oBE_T_RutaActividad.IdOficinaResponsable  + "', ";
-            sSql += "'" + oBE_T_RutaActividad.IdEmpleado + "', ";
             sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
         }
-        public void Modificar(BE_T_RutaActividad oBE_T_RutaActividad)
-        {
-            sSql = "update  T_RutaActividad set ";
-            sSql += "       IdArea='" + oBE_T_RutaActividad.IdOficinaResponsable  + "', ";
-            sSql += "       IdPosicion='" + oBE_T_RutaActividad.IdEmpleado + "', ";
-            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_RutaActividad.IdRuta + "'  and IdRuta='" + oBE_T_RutaActividad.IdActividad +"' ";
-            ConexionDAO.fExecute(sSql);
-        }
-        public void Eliminar(string sIdRuta, string sIdActividad)
+        public void Eliminar(BE_T_RutaActividad oBE_T_RutaActividad)
         {
             sSql = "delete  from T_RutaActividad ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta = '" + sIdRuta + "'  and IdActividad = '" + sIdActividad + "'  ";
+            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_RutaActividad.IdRuta + "'  and IdActividad='" + oBE_T_RutaActividad.IdActividad + "' ";
             ConexionDAO.fExecute(sSql);
         }
 
