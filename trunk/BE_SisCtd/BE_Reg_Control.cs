@@ -16,8 +16,8 @@ namespace BESisCtd
 		private string nroDocumento;
 		private DateTime fechaDocumento;
 		private string observacion;
-		private DateTime fechaInicio;
-		private DateTime fechaTermino;
+		private DateTime? fechaInicio;
+		private DateTime? fechaTermino;
 		private string idImagen;
 		private string estado;
 		private DateTime fechaRegistro;
@@ -38,7 +38,7 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the Reg_Control class.
 		/// </summary>
-		public BE_Reg_Control(string idCliente, string idControl, DateTime fechaRecepcion, string idOficinaRecepcion, string idTipoDocumento, string idRuta, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string observacion, DateTime fechaInicio, DateTime fechaTermino, string idImagen, string estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+		public BE_Reg_Control(string idCliente, string idControl, DateTime fechaRecepcion, string idOficinaRecepcion, string idTipoDocumento, string idRuta, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string observacion, DateTime? fechaInicio, DateTime? fechaTermino, string idImagen, string estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.idCliente = idCliente;
 			this.idControl = idControl;
@@ -155,7 +155,7 @@ namespace BESisCtd
 		/// <summary>
 		/// Gets or sets the FechaInicio value.
 		/// </summary>
-		public virtual DateTime FechaInicio
+		public virtual DateTime? FechaInicio
 		{
 			get { return fechaInicio; }
 			set { fechaInicio = value; }
@@ -164,7 +164,7 @@ namespace BESisCtd
 		/// <summary>
 		/// Gets or sets the FechaTermino value.
 		/// </summary>
-		public virtual DateTime FechaTermino
+		public virtual DateTime? FechaTermino
 		{
 			get { return fechaTermino; }
 			set { fechaTermino = value; }

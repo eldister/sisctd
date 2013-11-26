@@ -17,15 +17,15 @@ namespace BLSisCtd
             return oDL_Reg_Control.Listar(sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
-        public DataTable Listar_Detalle(Int32 nIdControl)
+        public DataTable Listar_Detalle(string sIdControl)
         {
-            return oDL_Reg_Control.Listar_Detalle(nIdControl);
+            return oDL_Reg_Control.Listar_Detalle(sIdControl);
         }
 
         #endregion
 
         #region Obtener Valores
-        public BE_Reg_Control Get_Control(Int32 nIdControl)
+        public BE_Reg_Control Get_Control(string nIdControl)
         {
             return oDL_Reg_Control.Get_Control(nIdControl);
         }
@@ -35,9 +35,9 @@ namespace BLSisCtd
         //    return oDL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta);
         //}
 
-        public Boolean Existe_Imagen(Int32 nIdControl)
+        public Boolean Existe_Imagen(string sIdControl)
         {
-            return oDL_Reg_Control.Existe_Imagen(nIdControl);
+            return oDL_Reg_Control.Existe_Imagen(sIdControl);
         }
         public BE_Reg_ControlImagenes Get_Reg_ControlImagenes(string sIdCliente, string sIdImagen)
         {
@@ -46,7 +46,7 @@ namespace BLSisCtd
         #endregion
 
         #region Operaciones
-        public Int32 Insertar(BE_Reg_Control oBE_Reg_Control)
+        public string Insertar(BE_Reg_Control oBE_Reg_Control)
         {
             return oDL_Reg_Control.Insertar(oBE_Reg_Control);
         }
@@ -54,27 +54,21 @@ namespace BLSisCtd
         {
             oDL_Reg_Control.Modificar(oBE_Reg_Control);
         }
-        public string Insertar_Archivo(BE_Reg_ControlImagenes oBE_Reg_ControlImagenes, int nIdControl)
+        public void Eliminar(string sIdControl)
         {
-            return oDL_Reg_Control.Insertar_Archivo(oBE_Reg_ControlImagenes, nIdControl);
+            oDL_Reg_Control.Eliminar(sIdControl);
         }
-        public void Quitar_Archivo(int nIdControl)
-        {
-            oDL_Reg_Control.Quitar_Archivo(nIdControl);
-        }
-        //public void Eliminar(string sIdTipoDocumento)
-        //{
-        //    oDL_T_TipoDocumento.Eliminar(sIdTipoDocumento);
-        //}
 
-        //public void AgregarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
-        //{
-        //    oDL_T_TipoDocumento.AgregarRuta(oBE_T_TipoDocumentoRuta);
-        //}
-        //public void QuitarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
-        //{
-        //    oDL_T_TipoDocumento.QuitarRuta(oBE_T_TipoDocumentoRuta);
-        //}
+        public string Insertar_Archivo(BE_Reg_ControlImagenes oBE_Reg_ControlImagenes, string sIdControl)
+        {
+            return oDL_Reg_Control.Insertar_Archivo(oBE_Reg_ControlImagenes, sIdControl);
+        }
+        public void Quitar_Archivo(string sIdControl)
+        {
+            oDL_Reg_Control.Quitar_Archivo(sIdControl);
+        }
+
+
         #endregion
     }
 }

@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtIdControl = new MigControls.MigTextbox();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
             this.txtRazonSocial = new MigControls.MigTextbox();
@@ -53,14 +55,10 @@
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgControl = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnQuitarActividad = new System.Windows.Forms.Button();
             this.btnAgregarActividad = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
-            this.txtIdControl = new MigControls.MigTextbox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
@@ -84,6 +82,33 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(996, 32);
             this.panel1.TabIndex = 2;
+            // 
+            // txtIdControl
+            // 
+            this.txtIdControl.BackColor = System.Drawing.Color.White;
+            this.txtIdControl.Car_Años = 4;
+            this.txtIdControl.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtIdControl.ColorSalida = System.Drawing.Color.White;
+            this.txtIdControl.Decimales = 2;
+            this.txtIdControl.Guiones = false;
+            this.txtIdControl.Location = new System.Drawing.Point(70, 7);
+            this.txtIdControl.MaxLength = 10;
+            this.txtIdControl.Name = "txtIdControl";
+            this.txtIdControl.PasarEnter = true;
+            this.txtIdControl.Size = new System.Drawing.Size(158, 20);
+            this.txtIdControl.TabIndex = 0;
+            this.txtIdControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIdControl.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtIdControl.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Id. Control";
             // 
             // lblEstado
             // 
@@ -115,7 +140,7 @@
             this.cboEstado.Size = new System.Drawing.Size(92, 22);
             this.cboEstado.TabIndex = 3;
             this.cboEstado.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
-            this.cboEstado.SelectedIndexChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
+            this.cboEstado.SelectionChangeCommitted += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // txtRazonSocial
             // 
@@ -333,8 +358,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnQuitarActividad);
             this.panel2.Controls.Add(this.btnAgregarActividad);
             this.panel2.Controls.Add(this.label1);
@@ -344,26 +367,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(996, 220);
             this.panel2.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(943, 58);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(41, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "&Bajar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(943, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "&Subir";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // btnQuitarActividad
             // 
@@ -415,37 +418,11 @@
             this.dgDetalle.RowHeadersWidth = 25;
             this.dgDetalle.RowTemplate.Height = 18;
             this.dgDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDetalle.Size = new System.Drawing.Size(925, 152);
+            this.dgDetalle.Size = new System.Drawing.Size(981, 152);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 0;
             this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
             this.dgDetalle.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
-            // 
-            // txtIdControl
-            // 
-            this.txtIdControl.BackColor = System.Drawing.Color.White;
-            this.txtIdControl.Car_Años = 4;
-            this.txtIdControl.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtIdControl.ColorSalida = System.Drawing.Color.White;
-            this.txtIdControl.Decimales = 2;
-            this.txtIdControl.Guiones = false;
-            this.txtIdControl.Location = new System.Drawing.Point(70, 7);
-            this.txtIdControl.MaxLength = 10;
-            this.txtIdControl.Name = "txtIdControl";
-            this.txtIdControl.PasarEnter = true;
-            this.txtIdControl.Size = new System.Drawing.Size(158, 20);
-            this.txtIdControl.TabIndex = 0;
-            this.txtIdControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtIdControl.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Id. Control";
             // 
             // Frm_Reg_Control_List
             // 
@@ -505,8 +482,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnQuitarActividad;
         private System.Windows.Forms.Button btnAgregarActividad;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private MigControls.MigDataGridView dgDetalle;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

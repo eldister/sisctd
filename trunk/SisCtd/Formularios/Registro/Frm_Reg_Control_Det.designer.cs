@@ -35,7 +35,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtObservacion = new MigControls.MigTextbox();
-            this.lblDesTipoDocumneto = new System.Windows.Forms.Label();
+            this.lblDesTipoDocumento = new System.Windows.Forms.Label();
             this.lblDesMaestroCliente = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIdMaestroCliente = new MigControls.MigTextbox();
@@ -53,12 +53,13 @@
             this.lblCodigoBarra = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGrabar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblFechaRecepcion = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblCodigoBarraTit = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblIdOficinaRecepcion = new System.Windows.Forms.Label();
             this.grpSeguimiento = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblIdOficinaRecepcionDes = new System.Windows.Forms.Label();
             this.grpSeguimiento.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,15 +151,15 @@
             this.txtObservacion.TabIndex = 6;
             this.txtObservacion.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
-            // lblDesTipoDocumneto
+            // lblDesTipoDocumento
             // 
-            this.lblDesTipoDocumneto.BackColor = System.Drawing.Color.LemonChiffon;
-            this.lblDesTipoDocumneto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDesTipoDocumneto.Location = new System.Drawing.Point(215, 71);
-            this.lblDesTipoDocumneto.Name = "lblDesTipoDocumneto";
-            this.lblDesTipoDocumneto.Size = new System.Drawing.Size(322, 20);
-            this.lblDesTipoDocumneto.TabIndex = 10;
-            this.lblDesTipoDocumneto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDesTipoDocumento.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblDesTipoDocumento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDesTipoDocumento.Location = new System.Drawing.Point(215, 71);
+            this.lblDesTipoDocumento.Name = "lblDesTipoDocumento";
+            this.lblDesTipoDocumento.Size = new System.Drawing.Size(322, 20);
+            this.lblDesTipoDocumento.TabIndex = 10;
+            this.lblDesTipoDocumento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDesMaestroCliente
             // 
@@ -317,10 +318,10 @@
             this.lblCodigoBarra.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCodigoBarra.Location = new System.Drawing.Point(8, 390);
             this.lblCodigoBarra.Name = "lblCodigoBarra";
-            this.lblCodigoBarra.Size = new System.Drawing.Size(206, 40);
+            this.lblCodigoBarra.Size = new System.Drawing.Size(143, 52);
             this.lblCodigoBarra.TabIndex = 27;
-            this.lblCodigoBarra.Text = "2013_A_0000001";
             this.lblCodigoBarra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCodigoBarra.Visible = false;
             // 
             // BtnCancelar
             // 
@@ -346,20 +347,20 @@
             this.BtnGrabar.UseVisualStyleBackColor = true;
             this.BtnGrabar.Click += new System.EventHandler(this.BtnGrabar_Click);
             // 
-            // label3
+            // lblFechaRecepcion
             // 
-            this.label3.BackColor = System.Drawing.Color.LemonChiffon;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(120, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
-            this.label3.TabIndex = 28;
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFechaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblFechaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFechaRecepcion.Location = new System.Drawing.Point(466, 15);
+            this.lblFechaRecepcion.Name = "lblFechaRecepcion";
+            this.lblFechaRecepcion.Size = new System.Drawing.Size(71, 20);
+            this.lblFechaRecepcion.TabIndex = 28;
+            this.lblFechaRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 47);
+            this.label4.Location = new System.Drawing.Point(353, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 13);
             this.label4.TabIndex = 29;
@@ -373,25 +374,18 @@
             this.lblCodigoBarraTit.Size = new System.Drawing.Size(83, 13);
             this.lblCodigoBarraTit.TabIndex = 30;
             this.lblCodigoBarraTit.Text = "Código de Barra";
+            this.lblCodigoBarraTit.Visible = false;
             // 
-            // label10
+            // lblIdOficinaRecepcion
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(217, 47);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 13);
-            this.label10.TabIndex = 32;
-            this.label10.Text = "Oficina Recepción";
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.LemonChiffon;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.Location = new System.Drawing.Point(325, 43);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(212, 20);
-            this.label12.TabIndex = 31;
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIdOficinaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblIdOficinaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIdOficinaRecepcion.Location = new System.Drawing.Point(121, 43);
+            this.lblIdOficinaRecepcion.Name = "lblIdOficinaRecepcion";
+            this.lblIdOficinaRecepcion.Size = new System.Drawing.Size(91, 20);
+            this.lblIdOficinaRecepcion.TabIndex = 31;
+            this.lblIdOficinaRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIdOficinaRecepcion.TextChanged += new System.EventHandler(this.lblIdOficinaRecepcion_TextChanged);
             // 
             // grpSeguimiento
             // 
@@ -407,16 +401,37 @@
             this.grpSeguimiento.TabIndex = 33;
             this.grpSeguimiento.TabStop = false;
             this.grpSeguimiento.Text = "Seguimiento";
+            this.grpSeguimiento.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 47);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Oficina Recepción";
+            // 
+            // lblIdOficinaRecepcionDes
+            // 
+            this.lblIdOficinaRecepcionDes.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblIdOficinaRecepcionDes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIdOficinaRecepcionDes.Location = new System.Drawing.Point(215, 43);
+            this.lblIdOficinaRecepcionDes.Name = "lblIdOficinaRecepcionDes";
+            this.lblIdOficinaRecepcionDes.Size = new System.Drawing.Size(322, 20);
+            this.lblIdOficinaRecepcionDes.TabIndex = 34;
+            this.lblIdOficinaRecepcionDes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Frm_Reg_Control_Det
             // 
             this.ClientSize = new System.Drawing.Size(551, 456);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblIdOficinaRecepcionDes);
             this.Controls.Add(this.grpSeguimiento);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblIdOficinaRecepcion);
             this.Controls.Add(this.lblCodigoBarraTit);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblFechaRecepcion);
             this.Controls.Add(this.lblCodigoBarra);
             this.Controls.Add(this.cboRuta);
             this.Controls.Add(this.label11);
@@ -427,7 +442,7 @@
             this.Controls.Add(this.lblDesMaestroCliente);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtIdMaestroCliente);
-            this.Controls.Add(this.lblDesTipoDocumneto);
+            this.Controls.Add(this.lblDesTipoDocumento);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtObservacion);
             this.Controls.Add(this.label7);
@@ -466,7 +481,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label2;
         private MigControls.MigTextbox txtObservacion;
-        private System.Windows.Forms.Label lblDesTipoDocumneto;
+        private System.Windows.Forms.Label lblDesTipoDocumento;
         private System.Windows.Forms.Label lblDesMaestroCliente;
         private System.Windows.Forms.Label label5;
         private MigControls.MigTextbox txtIdMaestroCliente;
@@ -482,12 +497,13 @@
         private System.Windows.Forms.Label label17;
         private MigControls.MigCombobox cboRuta;
         private System.Windows.Forms.Label lblCodigoBarra;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblFechaRecepcion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblCodigoBarraTit;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblIdOficinaRecepcion;
         private System.Windows.Forms.GroupBox grpSeguimiento;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblIdOficinaRecepcionDes;
 
     }
 }

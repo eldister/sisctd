@@ -145,12 +145,9 @@
   <data name="Toolbar.Open" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Toolbar.Open.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< .mine
-=======
   <data name="16 (Db insert)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\16 (Db insert).ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
->>>>>>> .r93
   <data name="Toolbar.Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Toolbar.Edit.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -169,12 +166,9 @@
   <data name="Toolbar.Print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Toolbar.Print.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< .mine
-=======
   <data name="reportes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\reportes.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
->>>>>>> .r93
   <data name="logopdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logopdf.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
