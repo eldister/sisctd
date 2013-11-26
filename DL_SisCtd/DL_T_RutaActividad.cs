@@ -10,23 +10,30 @@ namespace DLSisCtd
         string sSql;
 
         #region Listados
-
         public DataTable Listar(string sIdRuta)
         {
             sSql = "select 	a.Orden, a.IdActividad, ";
             sSql += "       b.Descripcion as Actividad, ";
-            sSql += "       c.Nombre as Empleado, ";
-            sSql += "       d.Descripcion as Oficina, ";
             sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
             sSql += "from 	T_RutaActividad a ";
             sSql += "       inner join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
-            sSql += "       inner join T_Empleado c on a.IdCliente=c.IdCliente and a.IdEmpleado=c.IdEmpleado ";
-            sSql += "       inner join T_Oficina d on a.IdCliente=d.IdCliente and a.IdOficinaResponsable=d.IdOficina ";
             sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
             sSql += "       a.IdRuta = '" + sIdRuta + "' ";
             sSql += "order by a.orden,a.IdActividad ";
             return ConexionDAO.fDatatable(sSql);
         }
+        public DataTable Listar_Actividad(string sIdRuta)
+        {
+            sSql = "select 	a.Orden, a.IdActividad, ";
+            sSql += "       b.Descripcion as Actividad, DuracionEnDias ";
+            sSql += "from 	T_RutaActividad a ";
+            sSql += "       inner join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
+            sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       a.IdRuta = '" + sIdRuta + "' ";
+            sSql += "order by a.orden,a.IdActividad ";
+            return ConexionDAO.fDatatable(sSql);
+        }
+
         ////public DataTable Buscar()
         ////{
         ////    sSql = "select 	T_Ruta as Codigo, Nombre ";
@@ -52,25 +59,18 @@ namespace DLSisCtd
         {
             return (Get_RutaActividad(sIdRuta, sIdActividad)!= null ? true : false);
         }
+        #endregion
+
         public Boolean Existe_Actividad(BE_T_RutaActividad oBE_T_RutaActividad)
         {
             sSql = "select  count(*) from T_RutaActividad ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
             sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "' and ";
-            sSql += "       IdActividad = '" + oBE_T_RutaActividad.IdActividad + "' ";
+            sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdActividad  + "' ";
 
             return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
         }
 
-        //public string  Orden_Actividad(BE_T_RutaActividad oBE_T_RutaActividad)
-        //{
-        //    sSql = "select  convert(char(5),max(Orden)) as Orden from T_RutaActividad ";
-        //    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-        //    sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "'  ";
-        //    ConexionDAO.fExecute(sSql);
-        //}
-
-        #endregion
 
         #region Operaciones
         protected virtual BE_T_RutaActividad Make(DataTable dt)
@@ -82,8 +82,6 @@ namespace DLSisCtd
             oBE_T_RutaActividad.IdRuta = dt.Rows[0]["IdRuta"].ToString().Trim();
             oBE_T_RutaActividad.IdActividad = dt.Rows[0]["IdActividad"].ToString().Trim();
             oBE_T_RutaActividad.Orden = (int)dt.Rows[0]["Orden"];
-            oBE_T_RutaActividad.IdOficinaResponsable = dt.Rows[0]["IdOficinaResponsable"].ToString().Trim();
-            oBE_T_RutaActividad.IdEmpleado = dt.Rows[0]["IdEmpleado"].ToString().Trim();
             oBE_T_RutaActividad.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
             oBE_T_RutaActividad.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
             oBE_T_RutaActividad.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
@@ -97,6 +95,7 @@ namespace DLSisCtd
             sSql += "'" + oBE_T_RutaActividad.IdRuta + "',";
             sSql += "'" + oBE_T_RutaActividad.IdActividad + "',";
             sSql += "'" + oBE_T_RutaActividad.Orden + "',";
+            sSql += "'" + oBE_T_RutaActividad.DuracionenDia + "',";
             sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
         }

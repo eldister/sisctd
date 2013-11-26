@@ -89,7 +89,7 @@ namespace DLSisCtd
             sSql = "update  T_Ruta set ";
             sSql += "       Descripcion='" + oBE_T_Ruta.Descripcion + "', ";
             sSql += "       Estado='" + (oBE_T_Ruta.Estado ? "1" : "0") + "' ";
-            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdPosicion='" + oBE_T_Ruta.IdRuta + "' ";
+            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_Ruta.IdRuta + "' ";
             ConexionDAO.fExecute(sSql);
         }
         public void Eliminar(string sIdRuta)

@@ -98,6 +98,7 @@ namespace SisCtd
                 case "0107": mFormHijo.Text = " Registro de Actividades"; break;
                 case "0108": mFormHijo.Text = " Registro de Rutas"; break;
 
+                case "0201": mFormHijo.Text = " Control de Documentos"; break;
 
             }
             foreach (TabPage TB in tabPrincipal.TabPages)

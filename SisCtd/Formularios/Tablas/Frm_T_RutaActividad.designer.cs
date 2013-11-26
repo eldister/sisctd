@@ -34,20 +34,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtActividad = new MigControls.MigTextbox();
-            this.lblActividad = new System.Windows.Forms.Label();
-            this.lblEmpleado = new System.Windows.Forms.Label();
-            this.txtEmpleado = new MigControls.MigTextbox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblOficina = new System.Windows.Forms.Label();
-            this.txtOficina = new MigControls.MigTextbox();
+            this.txtDuracionendias = new MigControls.MigTextbox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblRuta = new System.Windows.Forms.Label();
+            this.lblRuta = new MigControls.MigTextbox();
+            this.lblActividad = new MigControls.MigTextbox();
             this.SuspendLayout();
             // 
             // BtnCancelar
             // 
             this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.BtnCancelar.Location = new System.Drawing.Point(544, 129);
+            this.BtnCancelar.Location = new System.Drawing.Point(455, 113);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
             this.BtnCancelar.TabIndex = 9;
@@ -59,7 +55,7 @@
             // BtnGrabar
             // 
             this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.BtnGrabar.Location = new System.Drawing.Point(463, 129);
+            this.BtnGrabar.Location = new System.Drawing.Point(374, 113);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);
             this.BtnGrabar.TabIndex = 8;
@@ -77,7 +73,7 @@
             this.txtCodigo.Decimales = 2;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Guiones = false;
-            this.txtCodigo.Location = new System.Drawing.Point(149, 9);
+            this.txtCodigo.Location = new System.Drawing.Point(116, 9);
             this.txtCodigo.MaxLength = 12;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.PasarEnter = true;
@@ -98,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 37);
+            this.label3.Location = new System.Drawing.Point(14, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 736;
@@ -112,7 +108,7 @@
             this.txtActividad.ColorSalida = System.Drawing.Color.White;
             this.txtActividad.Decimales = 2;
             this.txtActividad.Guiones = false;
-            this.txtActividad.Location = new System.Drawing.Point(149, 33);
+            this.txtActividad.Location = new System.Drawing.Point(116, 54);
             this.txtActividad.MaxLength = 10;
             this.txtActividad.Name = "txtActividad";
             this.txtActividad.PasarEnter = true;
@@ -122,111 +118,76 @@
             this.txtActividad.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
             this.txtActividad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
             // 
-            // lblActividad
+            // txtDuracionendias
             // 
-            this.lblActividad.BackColor = System.Drawing.SystemColors.Info;
-            this.lblActividad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblActividad.Location = new System.Drawing.Point(217, 33);
-            this.lblActividad.Name = "lblActividad";
-            this.lblActividad.Size = new System.Drawing.Size(373, 20);
-            this.lblActividad.TabIndex = 4;
-            this.lblActividad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblEmpleado
-            // 
-            this.lblEmpleado.BackColor = System.Drawing.SystemColors.Info;
-            this.lblEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmpleado.Location = new System.Drawing.Point(217, 70);
-            this.lblEmpleado.Name = "lblEmpleado";
-            this.lblEmpleado.Size = new System.Drawing.Size(373, 20);
-            this.lblEmpleado.TabIndex = 746;
-            this.lblEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtEmpleado
-            // 
-            this.txtEmpleado.BackColor = System.Drawing.Color.White;
-            this.txtEmpleado.Car_Años = 4;
-            this.txtEmpleado.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtEmpleado.ColorSalida = System.Drawing.Color.White;
-            this.txtEmpleado.Decimales = 2;
-            this.txtEmpleado.Guiones = false;
-            this.txtEmpleado.Location = new System.Drawing.Point(149, 70);
-            this.txtEmpleado.MaxLength = 10;
-            this.txtEmpleado.Name = "txtEmpleado";
-            this.txtEmpleado.PasarEnter = true;
-            this.txtEmpleado.Size = new System.Drawing.Size(62, 20);
-            this.txtEmpleado.TabIndex = 745;
-            this.txtEmpleado.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
-            this.txtEmpleado.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
-            this.txtEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 747;
-            this.label4.Text = "Empleado";
-            // 
-            // lblOficina
-            // 
-            this.lblOficina.BackColor = System.Drawing.SystemColors.Info;
-            this.lblOficina.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblOficina.Location = new System.Drawing.Point(217, 95);
-            this.lblOficina.Name = "lblOficina";
-            this.lblOficina.Size = new System.Drawing.Size(373, 20);
-            this.lblOficina.TabIndex = 749;
-            this.lblOficina.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtOficina
-            // 
-            this.txtOficina.BackColor = System.Drawing.Color.White;
-            this.txtOficina.Car_Años = 4;
-            this.txtOficina.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtOficina.ColorSalida = System.Drawing.Color.White;
-            this.txtOficina.Decimales = 2;
-            this.txtOficina.Guiones = false;
-            this.txtOficina.Location = new System.Drawing.Point(149, 95);
-            this.txtOficina.MaxLength = 10;
-            this.txtOficina.Name = "txtOficina";
-            this.txtOficina.PasarEnter = true;
-            this.txtOficina.Size = new System.Drawing.Size(62, 20);
-            this.txtOficina.TabIndex = 748;
-            this.txtOficina.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
-            this.txtOficina.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
-            this.txtOficina.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
+            this.txtDuracionendias.BackColor = System.Drawing.Color.White;
+            this.txtDuracionendias.Car_Años = 4;
+            this.txtDuracionendias.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtDuracionendias.ColorSalida = System.Drawing.Color.White;
+            this.txtDuracionendias.Decimales = 2;
+            this.txtDuracionendias.Guiones = false;
+            this.txtDuracionendias.Location = new System.Drawing.Point(116, 95);
+            this.txtDuracionendias.MaxLength = 10;
+            this.txtDuracionendias.Name = "txtDuracionendias";
+            this.txtDuracionendias.PasarEnter = true;
+            this.txtDuracionendias.Size = new System.Drawing.Size(62, 20);
+            this.txtDuracionendias.TabIndex = 748;
+            this.txtDuracionendias.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
+            this.txtDuracionendias.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
+            this.txtDuracionendias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(14, 99);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 750;
-            this.label5.Text = "Oficina";
+            this.label5.Text = "Durancion en Dias";
             // 
             // lblRuta
             // 
-            this.lblRuta.BackColor = System.Drawing.SystemColors.Info;
-            this.lblRuta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblRuta.Location = new System.Drawing.Point(217, 9);
+            this.lblRuta.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblRuta.Car_Años = 4;
+            this.lblRuta.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.lblRuta.ColorSalida = System.Drawing.Color.LemonChiffon;
+            this.lblRuta.Decimales = 2;
+            this.lblRuta.Enabled = false;
+            this.lblRuta.Guiones = false;
+            this.lblRuta.Location = new System.Drawing.Point(183, 9);
+            this.lblRuta.MaxLength = 200;
+            this.lblRuta.Multiline = true;
             this.lblRuta.Name = "lblRuta";
-            this.lblRuta.Size = new System.Drawing.Size(373, 20);
+            this.lblRuta.PasarEnter = true;
+            this.lblRuta.Size = new System.Drawing.Size(356, 39);
             this.lblRuta.TabIndex = 751;
-            this.lblRuta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRuta.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            // 
+            // lblActividad
+            // 
+            this.lblActividad.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblActividad.Car_Años = 4;
+            this.lblActividad.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.lblActividad.ColorSalida = System.Drawing.Color.LemonChiffon;
+            this.lblActividad.Decimales = 2;
+            this.lblActividad.Enabled = false;
+            this.lblActividad.Guiones = false;
+            this.lblActividad.Location = new System.Drawing.Point(183, 54);
+            this.lblActividad.MaxLength = 200;
+            this.lblActividad.Multiline = true;
+            this.lblActividad.Name = "lblActividad";
+            this.lblActividad.PasarEnter = true;
+            this.lblActividad.Size = new System.Drawing.Size(356, 39);
+            this.lblActividad.TabIndex = 752;
+            this.lblActividad.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
             // Frm_T_RutaActividad
             // 
-            this.ClientSize = new System.Drawing.Size(636, 168);
-            this.Controls.Add(this.lblRuta);
-            this.Controls.Add(this.lblOficina);
-            this.Controls.Add(this.txtOficina);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblEmpleado);
-            this.Controls.Add(this.txtEmpleado);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(546, 146);
             this.Controls.Add(this.lblActividad);
+            this.Controls.Add(this.lblRuta);
+            this.Controls.Add(this.txtDuracionendias);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtActividad);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCodigo);
@@ -242,7 +203,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ruta_Actividad";
-            this.Load += new System.EventHandler(this.Frm_T_RutaActividad_Load_1);
+            this.Load += new System.EventHandler(this.Frm_T_RutaActividad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,14 +217,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private MigControls.MigTextbox txtActividad;
-        private System.Windows.Forms.Label lblActividad;
-        private System.Windows.Forms.Label lblEmpleado;
-        private MigControls.MigTextbox txtEmpleado;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblOficina;
-        private MigControls.MigTextbox txtOficina;
+        private MigControls.MigTextbox txtDuracionendias;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblRuta;
+        private MigControls.MigTextbox lblRuta;
+        private MigControls.MigTextbox lblActividad;
 
     }
 }

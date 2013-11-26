@@ -40,15 +40,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCorreo = new MigControls.MigTextbox();
+            this.lblEmpleado = new System.Windows.Forms.Label();
+            this.txtEmpleado = new MigControls.MigTextbox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
             this.btnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.btnCancelar.Location = new System.Drawing.Point(365, 161);
+            this.btnCancelar.Location = new System.Drawing.Point(447, 181);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 28);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "&Cerrar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -57,10 +60,10 @@
             // btnGrabar
             // 
             this.btnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.btnGrabar.Location = new System.Drawing.Point(282, 161);
+            this.btnGrabar.Location = new System.Drawing.Point(368, 181);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(80, 28);
-            this.btnGrabar.TabIndex = 5;
+            this.btnGrabar.TabIndex = 6;
             this.btnGrabar.Text = "&Grabar";
             this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGrabar.UseVisualStyleBackColor = true;
@@ -109,11 +112,11 @@
             this.cboEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboEstado.Location = new System.Drawing.Point(122, 122);
+            this.cboEstado.Location = new System.Drawing.Point(122, 154);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.PasarEnter = true;
             this.cboEstado.Size = new System.Drawing.Size(89, 22);
-            this.cboEstado.TabIndex = 4;
+            this.cboEstado.TabIndex = 5;
             this.cboEstado.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
             // 
             // cboPerfil
@@ -137,7 +140,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 127);
+            this.label11.Location = new System.Drawing.Point(11, 159);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 13);
             this.label11.TabIndex = 735;
@@ -195,9 +198,49 @@
             this.txtCorreo.TabIndex = 2;
             this.txtCorreo.Tipo = MigControls.MigTextbox.TipoVal.Texto;
             // 
+            // lblEmpleado
+            // 
+            this.lblEmpleado.BackColor = System.Drawing.SystemColors.Info;
+            this.lblEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEmpleado.Location = new System.Drawing.Point(217, 124);
+            this.lblEmpleado.Name = "lblEmpleado";
+            this.lblEmpleado.Size = new System.Drawing.Size(308, 20);
+            this.lblEmpleado.TabIndex = 749;
+            this.lblEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtEmpleado
+            // 
+            this.txtEmpleado.BackColor = System.Drawing.Color.White;
+            this.txtEmpleado.Car_Años = 4;
+            this.txtEmpleado.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtEmpleado.ColorSalida = System.Drawing.Color.White;
+            this.txtEmpleado.Decimales = 2;
+            this.txtEmpleado.Guiones = false;
+            this.txtEmpleado.Location = new System.Drawing.Point(123, 124);
+            this.txtEmpleado.MaxLength = 10;
+            this.txtEmpleado.Name = "txtEmpleado";
+            this.txtEmpleado.PasarEnter = true;
+            this.txtEmpleado.Size = new System.Drawing.Size(85, 20);
+            this.txtEmpleado.TabIndex = 4;
+            this.txtEmpleado.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
+            this.txtEmpleado.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
+            this.txtEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 128);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 750;
+            this.label3.Text = "Empleado";
+            // 
             // Frm_Sis_Usuarios_Det
             // 
-            this.ClientSize = new System.Drawing.Size(457, 207);
+            this.ClientSize = new System.Drawing.Size(532, 215);
+            this.Controls.Add(this.lblEmpleado);
+            this.Controls.Add(this.txtEmpleado);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label8);
@@ -241,6 +284,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private MigControls.MigTextbox txtCorreo;
+        private System.Windows.Forms.Label lblEmpleado;
+        private MigControls.MigTextbox txtEmpleado;
+        private System.Windows.Forms.Label label3;
 
     }
 }

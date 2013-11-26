@@ -16,6 +16,11 @@ namespace BLSisCtd
         {
             return oDL_T_RutaActividad.Listar(sIdRuta);
         }
+        public DataTable Listar_Actividad(string sIdRuta)
+        {
+            return oDL_T_RutaActividad.Listar_Actividad(sIdRuta);
+        }
+
         //public DataTable Buscar()
         //{
         //    return oDL_T_RutaActividad.Buscar();
@@ -32,6 +37,10 @@ namespace BLSisCtd
         {
             return oDL_T_RutaActividad.Existe(sIdRuta,sIdActividad);
         }
+        public Boolean Existe_Actividad(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            return oDL_T_RutaActividad.Existe_Actividad(oBE_T_RutaActividad);
+        }
 
         #endregion
 
@@ -40,15 +49,11 @@ namespace BLSisCtd
         {
             oDL_T_RutaActividad.Insertar(oBE_T_RutaActividad);
         }
-        public void Modificar(BE_T_RutaActividad oBE_T_RutaActividad)
+        public void Eliminar(BE_T_RutaActividad oBE_T_RutaActividad)
         {
-            oDL_T_RutaActividad.Modificar(oBE_T_RutaActividad);
+            oDL_T_RutaActividad.Eliminar(oBE_T_RutaActividad);
         }
-        public void Eliminar(string sIdRuta, string sIdActividad)
-        {
-            oDL_T_RutaActividad.Eliminar(sIdRuta,sIdActividad);
-        }
-
+   
         #endregion
     }
 }

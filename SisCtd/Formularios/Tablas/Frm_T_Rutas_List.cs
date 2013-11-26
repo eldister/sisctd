@@ -101,6 +101,21 @@ namespace SisCtd
             }
         }
 
+        private bool Get_IdActividad(bool bMsg)
+        {
+            if (dgActividades.Rows.Count <= 0)
+            {
+                if (bMsg == true) MessageBox.Show("Seleccione una Actividad", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                sIdActividad = "";
+                return false;
+            }
+            else
+            {
+                sIdActividad = dgActividades.Rows[Dg1.CurrentCellAddress.Y].Cells[1].Value.ToString().Trim();
+                return true;
+            }
+        }
+
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
             Frm_T_Detalle fDet = new Frm_T_Detalle(qOpcion, Helper.eTablas.Rutas, Get_Id(false));
@@ -124,14 +139,12 @@ namespace SisCtd
             {
                 this.Cursor = Cursors.WaitCursor;
                 Get_IdRuta(false);
-                Dt = oBL_T_RutaActividad.Listar(sIdRuta);
+                Dt = oBL_T_RutaActividad.Listar_Actividad(sIdRuta);
 
                 dgActividades.DataSource = Dt; Helper.FormatoGrilla(dgActividades, false);
                 dgActividades.Columns["Orden"].Width = 40;
-                dgActividades.Columns["IdActividad"].Width = 70;
-                dgActividades.Columns["Actividad"].Width = 200;
-                dgActividades.Columns["Empleado"].Width = 200;
-                dgActividades.Columns["Oficina"].Width = 180;
+                dgActividades.Columns["IdActividad"].Width = 100;
+                dgActividades.Columns["Actividad"].Width = 300;
 
                 Dt.Dispose();
             }
@@ -211,53 +224,53 @@ namespace SisCtd
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-
             if (Get_IdRuta(true) == false) return;
-        Regresar:
 
-            sIdActividad = Helper.Buscar(oBL_T_Actividad.Buscar());
-            if (sIdActividad == "") return;
-            BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
-            oBE_T_RutaActividad.IdActividad = sIdActividad;
-            oBE_T_RutaActividad.IdRuta = sIdRuta;
-            if (oBL_T_RutaActividad.Existe_Actividad(oBE_T_RutaActividad))
+            Frm_T_RutaActividad fDet = new Frm_T_RutaActividad(Helper.eOpcion.Nuevo, sIdRuta, sIdActividad);
+            fDet.ShowDialog();
+            if (fDet.bGrabo == true)
             {
-                MessageBox.Show("La Actividad - " + sIActividad + " ya ha sido asignado a la Ruta " + sIdRuta + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                goto Regresar;
+                Listar_RutaActividad();
             }
+            fDet.Dispose();
 
-            oBL_T_RutaActividad.AgregarRuta(oBE_T_RutaActividad);
-            Listar_RutaActividad();
-            Helper.Buscar_Grilla(Dg1, sIdRuta, 0);
+        //Regresar:
+        //    sIdActividad = Helper.Buscar(oBL_T_Actividad.Buscar());
+        //    if (sIdActividad == "") return;
+        //    BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
+        //    oBE_T_RutaActividad.IdRuta = sIdRuta;
+        //    oBE_T_RutaActividad.IdActividad = sIdActividad;
+        //    if (oBL_T_RutaActividad.Existe_Actividad(oBE_T_RutaActividad))
+        //    {
+        //        MessageBox.Show("La Actividad " + sIdActividad + " ya ha sido asignado a la Ruta " + sIdRuta + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //        goto Regresar;
+        //    }
 
+        //    oBL_T_RutaActividad.Insertar(oBE_T_RutaActividad);
+        //    Listar_RutaActividad();
+        //    Helper.Buscar_Grilla(Dg1, sIdRuta, 0);
 
-
-            //Frm_T_RutaActividad fDet = new Frm_T_RutaActividad(Helper.eOpcion.Nuevo,  sIdRuta, sIdActividad);
-            //fDet.ShowDialog();
-            //if (fDet.bGrabo == true)
-            //{
-            //    Listar_RutaActividad();
-            //} 
-            //fDet.Dispose();
 
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Get_IdRuta(true);
             if (sIdRuta == "") return;
+            Get_IdActividad(true);
+            if (sIdActividad == "") return;
+ 
             BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
             oBE_T_RutaActividad.IdRuta = sIdRuta;
             oBE_T_RutaActividad.IdActividad = sIdActividad;
 
-            if (MessageBox.Show("¿Está seguro que desea de Quitar la RutaActividad : " + sIdRuta + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-            oBL_T_RutaActividad.Eliminar(sIdRuta,sIdActividad);
+            if (MessageBox.Show("¿Está seguro que desea de Quitar la RutaActividad : " + sIdActividad + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            oBL_T_RutaActividad.Eliminar(oBE_T_RutaActividad);
             Listar_RutaActividad();
         }
 
 
 
         #endregion
-
-
+                
     }
 }

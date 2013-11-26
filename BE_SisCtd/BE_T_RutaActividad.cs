@@ -16,15 +16,14 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the T_RutaActividad class.
 		/// </summary>
-        public BE_T_RutaActividad(string idCliente, string idRuta, string idActividad, int orden, string idOficinaResponsable, string idEmpleado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+        public BE_T_RutaActividad(string idCliente, string idRuta, string idActividad, int orden, int DuracionenDia, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.IdCliente = idCliente;
 			this.IdRuta = idRuta;
 			this.IdActividad = idActividad;
 			this.Orden = orden;
-			this.IdOficinaResponsable = idOficinaResponsable;
-            this.IdEmpleado = idEmpleado;
-			this.FechaRegistro = fechaRegistro;
+            this.DuracionenDia = DuracionenDia ;
+            this.FechaRegistro = fechaRegistro;
 			this.HoraRegistro = horaRegistro;
 			this.UsuarioRegistro = usuarioRegistro;
 		}
@@ -50,18 +49,13 @@ namespace BESisCtd
 		/// <summary>
 		/// Gets or sets the Orden value.
 		/// </summary>
+        /// 
 		public int Orden { get; set; }
-
-		/// <summary>
-		/// Gets or sets the IdOficinaResponsable value.
-		/// </summary>
-		public string IdOficinaResponsable { get; set; }
-
         /// <summary>
-        /// Gets or sets the IdEmpleado value.
+        /// Gets or sets the Orden value.
         /// </summary>
-        public string IdEmpleado { get; set; }
-        
+        public int DuracionenDia { get; set; }
+
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>
