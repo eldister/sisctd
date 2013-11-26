@@ -19,7 +19,7 @@ namespace SisCtd
         BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
         BE_Sis_Usuario oBE_Sis_Usuario = new BE_Sis_Usuario();
         BL_Sis_Perfil oBL_Sis_Perfil = new BL_Sis_Perfil();
-
+        BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
         #endregion
 
         #region Iniciar Formulario
@@ -115,6 +115,7 @@ namespace SisCtd
 
                 oBE_Sis_Usuario.IdUsuario = txtIdUsuario.Text.Trim();
                 oBE_Sis_Usuario.Nombre = txtNombre.Text.Trim();
+                oBE_Sis_Usuario.IdEmpleado = txtEmpleado.Text.Trim();
                 oBE_Sis_Usuario.IdPerfil = cboPerfil.SelectedValue.ToString();
                 oBE_Sis_Usuario.Correo = txtCorreo.Text.Trim();
                 oBE_Sis_Usuario.Contraseña = Helper.EncryptText(txtIdUsuario.Text.Trim()).Trim();
@@ -133,6 +134,27 @@ namespace SisCtd
         {
             this.Close();
         }
+        private void PonerDescrip_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = (MigControls.MigTextbox)sender;
+            switch (txt.Name)
+            {
+                case "txtEmpleado": lblEmpleado.Text = oBL_T_Empleado.Get_Nombre(txtEmpleado.Text); break;
+            }
+
+        }
+        private void AyudaF1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                TextBox txt = (MigControls.MigTextbox)sender;
+                switch (txt.Name)
+                {
+                    case "txtEmpleado": txtEmpleado.Text = Helper.Buscar(oBL_T_Empleado.Buscar()); break;
+                }
+            }
+        }
+
 
         #endregion
     }

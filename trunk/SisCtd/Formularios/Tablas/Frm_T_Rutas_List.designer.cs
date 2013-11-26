@@ -176,27 +176,30 @@
             // 
             // bNuevo
             // 
+            this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
             this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bNuevo.Name = "bNuevo";
-            this.bNuevo.Size = new System.Drawing.Size(46, 19);
+            this.bNuevo.Size = new System.Drawing.Size(62, 20);
             this.bNuevo.Text = "&Nuevo";
             this.bNuevo.ToolTipText = "Nuevo (F3)";
             this.bNuevo.Click += new System.EventHandler(this.bNuevo_Click);
             // 
             // bModificar
             // 
+            this.bModificar.Image = global::SisCtd.Properties.Resources.control;
             this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(62, 19);
+            this.bModificar.Size = new System.Drawing.Size(78, 20);
             this.bModificar.Text = "&Modificar";
             this.bModificar.ToolTipText = "Modificar (F2)";
             this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
             // 
             // bEliminar
             // 
+            this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
             this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(54, 19);
+            this.bEliminar.Size = new System.Drawing.Size(70, 20);
             this.bEliminar.Text = "&Eliminar";
             this.bEliminar.ToolTipText = "Eliminar (F4)";
             this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
@@ -208,9 +211,10 @@
             // 
             // bExportar
             // 
+            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
             this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bExportar.Name = "bExportar";
-            this.bExportar.Size = new System.Drawing.Size(54, 19);
+            this.bExportar.Size = new System.Drawing.Size(70, 20);
             this.bExportar.Text = "E&xportar";
             this.bExportar.ToolTipText = "Exportar (F7)";
             this.bExportar.Click += new System.EventHandler(this.bExportar_Click);
@@ -222,9 +226,10 @@
             // 
             // bCerrar
             // 
+            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
             this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bCerrar.Name = "bCerrar";
-            this.bCerrar.Size = new System.Drawing.Size(33, 19);
+            this.bCerrar.Size = new System.Drawing.Size(49, 20);
             this.bCerrar.Text = "&Salir";
             this.bCerrar.ToolTipText = "Salir (Esc)";
             this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
@@ -288,12 +293,13 @@
             // btnDelete
             // 
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(97, 234);
+            this.btnDelete.Location = new System.Drawing.Point(91, 235);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(77, 23);
             this.btnDelete.TabIndex = 677;
             this.btnDelete.Text = "Quitar";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -334,7 +340,7 @@
             this.dgActividades.RowHeadersWidth = 25;
             this.dgActividades.RowTemplate.Height = 18;
             this.dgActividades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActividades.Size = new System.Drawing.Size(362, 203);
+            this.dgActividades.Size = new System.Drawing.Size(567, 203);
             this.dgActividades.StandardTab = true;
             this.dgActividades.TabIndex = 675;
             // 

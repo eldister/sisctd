@@ -21,8 +21,6 @@ namespace SisCtd
         BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
         BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
         BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
-        BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
-        BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
 
         #endregion
 
@@ -33,7 +31,8 @@ namespace SisCtd
             qOpcion = _qOpcion;
             sIdRuta = IdRuta;
             sIdActividad = IdActividad;
-            txtCodigo.Text = IdRuta; 
+            txtCodigo.Text = IdRuta;
+            lblRuta.Text = oBL_T_Ruta.Get_Descripcion(txtCodigo.Text);
         }
         private void Frm_T_RutaActividad_Load(object sender, EventArgs e)
         {
@@ -51,8 +50,7 @@ namespace SisCtd
                         {
                             this.Text = " Consultar";
                             txtActividad.ReadOnly = true;
-                            txtOficina.ReadOnly = true;
-                            txtEmpleado.ReadOnly = true;
+                            txtDuracionendias.ReadOnly = true;
                             BtnGrabar.Visible = false;
                         }
                         else
@@ -66,8 +64,6 @@ namespace SisCtd
                         if (oBE_T_RutaActividad != null)
                         {
                             txtActividad.Text = oBE_T_RutaActividad.IdActividad;
-                            txtEmpleado.Text = oBE_T_RutaActividad.IdEmpleado;
-                            txtOficina.Text = oBE_T_RutaActividad.IdOficinaResponsable ;
                         }
                         break;
                 }
@@ -94,8 +90,7 @@ namespace SisCtd
             {
                 oBE_T_RutaActividad.IdRuta = txtCodigo.Text.Trim();
                 oBE_T_RutaActividad.IdActividad = txtActividad.Text.Trim();
-                oBE_T_RutaActividad.IdEmpleado = txtEmpleado.Text.Trim();
-                oBE_T_RutaActividad.IdOficinaResponsable  = txtOficina.Text.Trim();
+                oBE_T_RutaActividad.DuracionenDia = Convert.ToInt32(txtDuracionendias.Text.Trim()); 
 
                 if (oBE_T_RutaActividad.IdActividad == "")
                 {
@@ -116,10 +111,6 @@ namespace SisCtd
                 {
                     oBL_T_RutaActividad.Insertar(oBE_T_RutaActividad);
                 }
-                if (qOpcion == Helper.eOpcion.Modificar)
-                {
-                    oBL_T_RutaActividad.Modificar(oBE_T_RutaActividad);
-                }
                 sIdRuta = txtCodigo.Text; bGrabo = true; this.Close();
 
             }
@@ -137,8 +128,6 @@ namespace SisCtd
             {
                 case "txtRuta": lblRuta.Text = oBL_T_Ruta.Get_Descripcion(txtCodigo.Text); break;
                 case "txtActividad": lblActividad.Text = oBL_T_Actividad.Get_Descripcion(txtActividad.Text); break;
-                case "txtEmpleado": lblEmpleado.Text = oBL_T_Empleado.Get_Nombre(txtEmpleado.Text); break;
-                case "txtOficina": lblOficina.Text = oBL_T_Oficina.Get_Descripcion(txtOficina.Text); break;
             }
 
         }
@@ -150,19 +139,12 @@ namespace SisCtd
                 switch (txt.Name)
                 {
                     case "txtActividad": txtActividad.Text = Helper.Buscar(oBL_T_Actividad.Buscar()); break;
-                    case "txtEmpleado": txtEmpleado.Text = Helper.Buscar(oBL_T_Empleado.Buscar()); break;
-                    case "txtOficina": txtOficina.Text = Helper.Buscar(oBL_T_Oficina.Buscar()); break;
                 }
             }
         }
 
 
         #endregion
-
-        private void Frm_T_RutaActividad_Load_1(object sender, EventArgs e)
-        {
-
-        }
 
         
     }

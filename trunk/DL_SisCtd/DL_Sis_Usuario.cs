@@ -13,7 +13,7 @@ namespace DLSisCtd
         #region Listados
         public DataTable Listar(string sNombre, string sEstado)
         {
-            sSql = "select 	a.IdUsuario, a.Nombre,b.Descripcion as Perfil,Correo,";
+            sSql = "select 	a.IdUsuario, a.Nombre,a.IdEmpleado, b.Descripcion as Perfil,Correo,";
             sSql += "       case when Estado=1 then '' else 'I' end as Estado, ";
             sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
             sSql += "from 	sis_usuario a ";
@@ -81,6 +81,7 @@ namespace DLSisCtd
 
             oBE_Sis_Usuario.IdUsuario = dt.Rows[0]["IdUsuario"].ToString().Trim();
             oBE_Sis_Usuario.Nombre = dt.Rows[0]["Nombre"].ToString().Trim();
+            oBE_Sis_Usuario.IdEmpleado = dt.Rows[0]["IdEmpleado"].ToString().Trim();
             oBE_Sis_Usuario.IdPerfil = dt.Rows[0]["IdPerfil"].ToString().Trim();
             oBE_Sis_Usuario.Correo = dt.Rows[0]["Correo"].ToString().Trim();
             oBE_Sis_Usuario.Contraseña = dt.Rows[0]["Contraseña"].ToString().Trim();
@@ -97,6 +98,7 @@ namespace DLSisCtd
             sSql += "(";
             sSql += "'" + oBE_Sis_Usuario.IdUsuario + "',";
             sSql += "'" + oBE_Sis_Usuario.Nombre + "', ";
+            sSql += "'" + oBE_Sis_Usuario.IdEmpleado + "', ";
             sSql += "'" + oBE_Sis_Usuario.IdPerfil + "', ";
             sSql += "'" + oBE_Sis_Usuario.Correo + "', ";
             sSql += "'" + oBE_Sis_Usuario.Contraseña + "', ";
@@ -108,6 +110,7 @@ namespace DLSisCtd
         {
             sSql = "update  Sis_Usuario set ";
             sSql += "       Nombre='" + oBE_Sis_Usuario.Nombre + "', ";
+            sSql += "       IdEmpleado='" + oBE_Sis_Usuario.IdEmpleado + "', ";
             sSql += "       IdPerfil='" + oBE_Sis_Usuario.IdPerfil + "', ";
             sSql += "       Correo='" + oBE_Sis_Usuario.Correo + "', ";
             sSql += "       Estado='" + (oBE_Sis_Usuario.Estado ? "1" : "0") + "' ";

@@ -16,11 +16,12 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the Sis_UsuarioBE class.
 		/// </summary>
-        public BE_Sis_Usuario(string idUsuario, string nombre, string idPerfil, string correo, string contraseña, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+        public BE_Sis_Usuario(string idUsuario, string nombre, string idEmpleado, string idPerfil, string correo, string contraseña, bool estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.IdUsuario = idUsuario;
 			this.Nombre = nombre;
 			this.IdPerfil = idPerfil;
+            this.IdEmpleado = idEmpleado;
 			this.Correo = correo;
 			this.Contraseña = contraseña;
 			this.Estado = estado;
@@ -42,7 +43,12 @@ namespace BESisCtd
 		/// </summary>
 		public string Nombre { get; set; }
 
-		/// <summary>
+        /// <summary>
+        /// Gets or sets the IdEmpleado value.
+        /// </summary>
+        public string IdEmpleado { get; set; }
+
+        /// <summary>
 		/// Gets or sets the IdPerfil value.
 		/// </summary>
 		public string IdPerfil { get; set; }
