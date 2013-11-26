@@ -66,7 +66,7 @@ namespace DLSisCtd
             sSql = "select  count(*) from T_RutaActividad ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
             sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "' and ";
-            sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdActividad  + "' ";
+            sSql += "       IdActividad = '" + oBE_T_RutaActividad.IdActividad  + "' ";
 
             return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
         }
