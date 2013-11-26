@@ -79,6 +79,8 @@ namespace SisCtd
                     dtNew.ImportRow(dr);
                 }
                 Dg1.DataSource = dtNew;
+                Dg1.Columns[0].Width = 100;
+                Dg1.Columns[1].Width = 260;
                 dtNew.Dispose(); dtNew = null;
             }
             catch (Exception Er)

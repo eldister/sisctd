@@ -17,26 +17,26 @@ namespace DLSisCtd
             return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
-        public DataTable Listar_Detalle(Int32 nIdControl )
+        public DataTable Listar_Detalle(string sIdControl)
         {
-            return ConexionDAO.fDatatable("List_Reg_ControlDetalle", BE_Helper.oBE_Sis_Cliente.IdCliente, nIdControl);
+            return ConexionDAO.fDatatable("List_Reg_ControlDetalle", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl);
         }
 
 
         #endregion
 
         #region Obtener Valores
-        public BE_Reg_Control Get_Control(Int32 nIdControl)
+        public BE_Reg_Control Get_Control(string sIdControl)
         {
             sSql = "select  * from Reg_Control ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + nIdControl.ToString() + "'";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'";
 
             return Make(ConexionDAO.fDatatable(sSql));
 
         }
-        public Boolean Existe(Int32 nIdControl)
+        public Boolean Existe(string sIdControl)
         {
-            return (Get_Control(nIdControl) != null ? true : false);
+            return (Get_Control(sIdControl) != null ? true : false);
         }
 
         public Boolean Existe_Ruta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
@@ -48,11 +48,11 @@ namespace DLSisCtd
 
             return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
         }
-        public Boolean Existe_Imagen(Int32 nIdControl)
+        public Boolean Existe_Imagen(string sIdControl)
         {
             sSql = "select  count(*) from Reg_Control ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       IdControl = '" + nIdControl.ToString() + "' and ";
+            sSql += "       IdControl = '" + sIdControl.ToString() + "' and ";
             sSql += "       IdImagen <> '' ";
 
             return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
@@ -87,7 +87,9 @@ namespace DLSisCtd
 
             BE_Reg_Control oBE_Reg_Control = new BE_Reg_Control();
             oBE_Reg_Control.IdCliente = dt.Rows[0]["IdCliente"].ToString().Trim();
-            oBE_Reg_Control.IdControl = (Int32)dt.Rows[0]["IdControl"];
+            oBE_Reg_Control.IdControl = dt.Rows[0]["IdControl"].ToString().Trim();
+            oBE_Reg_Control.FechaRecepcion = (DateTime)dt.Rows[0]["FechaRecepcion"];
+            oBE_Reg_Control.IdOficinaRecepcion = dt.Rows[0]["IdOficinaRecepcion"].ToString().Trim();
             oBE_Reg_Control.IdTipoDocumento = dt.Rows[0]["IdTipoDocumento"].ToString().Trim();
             oBE_Reg_Control.IdMaestroCliente = dt.Rows[0]["IdMaestroCliente"].ToString().Trim();
             oBE_Reg_Control.NroDocumento = dt.Rows[0]["NroDocumento"].ToString().Trim();
@@ -103,7 +105,7 @@ namespace DLSisCtd
             return oBE_Reg_Control;
         }
 
-        public Int32 Insertar(BE_Reg_Control oBE_Reg_Control)
+        public string Insertar(BE_Reg_Control oBE_Reg_Control)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
             {
@@ -118,12 +120,12 @@ namespace DLSisCtd
                     sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año='" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "'";
                     sCorrelativo = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
                     if (sCorrelativo == "") sCorrelativo = "0000001";
-                    
+
                     sSql = "insert  into T_Numeracion values (";
-                    sSql += "       'DEMO','2013','AA','" + sCorrelativo + "') ";
+                    sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "','" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "','" + oBE_Reg_Control.IdOficinaRecepcion + "','" + sCorrelativo + "') ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
-                    sIdControl = BE_Helper.oBE_Sis_Cliente.IdCliente + "_" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "_" + oBE_Reg_Control.IdOficinaRecepcion + "_" + sCorrelativo;
+                    sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "_" + oBE_Reg_Control.IdOficinaRecepcion.Trim() + "_" + sCorrelativo;
                     sSql = "INSERT	INTO Reg_Control VALUES( ";
                     sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "', ";
                     sSql += "       '" + sIdControl + "', ";
@@ -133,19 +135,29 @@ namespace DLSisCtd
                     sSql += "       '" + oBE_Reg_Control.IdRuta + "', ";
                     sSql += "       '" + oBE_Reg_Control.IdMaestroCliente + "', ";
                     sSql += "       '" + oBE_Reg_Control.NroDocumento + "', ";
-                    sSql += "       '" + oBE_Reg_Control.FechaDocumento.ToString("yyyyMMdd") + "' ";
+                    sSql += "       '" + oBE_Reg_Control.FechaDocumento.ToString("yyyyMMdd") + "', ";
                     sSql += "       '" + oBE_Reg_Control.Observacion + "', ";
                     sSql += "       null, ";
                     sSql += "       null, ";
                     sSql += "       null, ";
-                    sSql += "       @Estado, ";
-                    sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),@UsuarioRegistro) ";
+                    sSql += "       'Pendiente', ";
+                    sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
-
-
+                    sSql = "insert into Reg_ControlDetalle ";
+                    sSql += "select	a.IdCliente,'" + sIdControl + "',right(0+convert(varchar(2),Orden),2),Orden, ";
+                    sSql += "       IdActividad, ";
+                    sSql += "       null,null,null,null, ";
+                    sSql += "       null,null,null,null, ";
+                    sSql += "       '',a.DuracionEnDias,'Pendiente', ";
+                    sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "' ";
+                    sSql += "from	T_RutaActividad a  ";
+                    sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdRuta='" + oBE_Reg_Control.IdRuta + "' ";
+                    
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
                     
                     sTrans.Commit();
-                    return nIdControl;
+                    return sIdControl;
                 }
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
@@ -166,17 +178,17 @@ namespace DLSisCtd
         }
 
 
-        public void Eliminar(string sIdTipoDocumento)
+        public void Eliminar(string sIdControl)
         {
-            sSql = "delete  from T_TipoDocumentoRuta ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdTipoDocumento = '" + sIdTipoDocumento + "'  ";
+            sSql = "delete  from Reg_ControlDetalle  ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'  ";
             ConexionDAO.fExecute(sSql);
-            sSql = "delete  from T_TipoDocumento ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdTipoDocumento = '" + sIdTipoDocumento + "'  ";
+            sSql = "delete  from Reg_Control  ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'  ";
             ConexionDAO.fExecute(sSql);
         }
 
-        public string Insertar_Archivo(BE_Reg_ControlImagenes oBE_Reg_ControlImagenes, int nIdControl)
+        public string Insertar_Archivo(BE_Reg_ControlImagenes oBE_Reg_ControlImagenes, string sIdControl)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
             {
@@ -191,14 +203,14 @@ namespace DLSisCtd
                         oBE_Reg_ControlImagenes.PesoArchivo,
                         oBE_Reg_ControlImagenes.ExtensionImagen,
                         BE_Helper.oBE_Sis_Usuario.IdUsuario,
-                        nIdControl));
+                        sIdControl));
                     sTrans.Commit();
                     return sIdImagen;
                 }
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
         }
-        public void Quitar_Archivo(int nIdControl)
+        public void Quitar_Archivo(string sIdControl)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
             {
@@ -206,10 +218,10 @@ namespace DLSisCtd
                 SqlTransaction sTrans = sCn.BeginTransaction();
                 try
                 {
-                    sSql = "select IdImagen from Reg_Control where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + nIdControl.ToString() + "'";
+                    sSql = "select IdImagen from Reg_Control where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl.ToString() + "'";
                     string sIdImagen = Convert.ToString(ConexionDAO.fEscalar(sSql));
 
-                    sSql = "Update Reg_Control set IdImagen=null where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + nIdControl.ToString() + "'";
+                    sSql = "Update Reg_Control set IdImagen=null where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl.ToString() + "'";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
                     sSql = "delete from Reg_ControlImagenes ";
@@ -223,25 +235,7 @@ namespace DLSisCtd
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
         }
-        //public void AgregarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
-        //{
-        //    sSql = "insert into T_TipoDocumentoRuta values ";
-        //    sSql += "(";
-        //    sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
-        //    sSql += "'" + oBE_T_TipoDocumentoRuta.IdTipoDocumento + "',";
-        //    sSql += "'" + oBE_T_TipoDocumentoRuta.IdRuta + "', ";
-        //    sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-        //    ConexionDAO.fExecute(sSql);
-        //}
-
-        //public void QuitarRuta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
-        //{
-        //    sSql = "delete from T_TipoDocumentoRuta ";
-        //    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-        //    sSql += "       IdTipoDocumento = '" + oBE_T_TipoDocumentoRuta.IdTipoDocumento + "' and ";
-        //    sSql += "       IdRuta = '" + oBE_T_TipoDocumentoRuta.IdRuta + "' "; 
-        //    ConexionDAO.fExecute(sSql);
-        //}
+     
         #endregion
 
     }

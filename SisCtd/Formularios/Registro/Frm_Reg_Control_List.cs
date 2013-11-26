@@ -15,8 +15,7 @@ namespace SisCtd
     {
         #region Declaración Variables
         BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
-        //BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
-        Int32 nIdControl;
+        string sIdControl;
  
         #endregion
 
@@ -33,6 +32,7 @@ namespace SisCtd
         private void Frm_Reg_Control_List_Load(object sender, EventArgs e)
         {
             cboEstado.SelectedIndex = 0;
+            Listar(Helper.eListar.Grilla); Listar_Detalle();
         }
         private void Frm_Reg_Control_List_KeyDown(object sender, KeyEventArgs e)
         {
@@ -42,7 +42,7 @@ namespace SisCtd
                 case Keys.F3: bNuevo.PerformClick(); break;
                 case Keys.F2: bModificar.PerformClick(); break;
                 case Keys.F4: bEliminar.PerformClick(); break;
-                case Keys.F5: Listar(0); Listar_Detalle(); break;
+                case Keys.F5: Listar(Helper.eListar.Grilla); Listar_Detalle(); break;
                 case Keys.F7: bExportar.PerformClick(); break;
             }
         }
@@ -66,11 +66,11 @@ namespace SisCtd
                 {
                     dgControl.DataSource = Dt; Helper.FormatoGrilla(dgControl, false);
                     LblMensaje.Text = " Registros Encontrados : " + dgControl.Rows.Count.ToString();
-                    dgControl.Columns["IdControl"].Width = 50;
+                    dgControl.Columns["IdControl"].Width = 130;
                     dgControl.Columns["Fecha Recepción"].Width = 90;
                     dgControl.Columns["IdOficinaRecepcion"].Visible = false;
                     dgControl.Columns["Oficina Recepción"].Width = 150;
-                    dgControl.Columns["IdTipoDocumento"].Width = 70;
+                    dgControl.Columns["IdTipoDocumento"].Width = 100;
                     dgControl.Columns["IdMaestroCliente"].Visible = false;
                     dgControl.Columns["RazonSocial"].Width = 200;
                     dgControl.Columns["NroDocumento"].Width = 100;
@@ -101,13 +101,13 @@ namespace SisCtd
             {
                 this.Cursor = Cursors.WaitCursor;
                 Get_IdControl(false);
-                Dt = oBL_Reg_Control.Listar_Detalle(nIdControl);
+                Dt = oBL_Reg_Control.Listar_Detalle(sIdControl);
 
                 dgDetalle.DataSource = Dt; Helper.FormatoGrilla(dgDetalle, false);
                 dgDetalle.Columns["NroSecuencia"].Visible = false;
                 dgDetalle.Columns["Orden"].Width = 40;
                 dgDetalle.Columns["IdActividad"].Visible = false;
-                dgDetalle.Columns["Actividad"].Width = 100;
+                dgDetalle.Columns["Actividad"].Width = 180;
                 
                 dgDetalle.Columns["IdOficinaRecepcion"].Visible = false;
                 dgDetalle.Columns["Oficina Recepción"].Width = 120;
@@ -158,12 +158,12 @@ namespace SisCtd
             if (dgControl.Rows.Count <= 0)
             {
                 if (bMsg == true) MessageBox.Show("Seleccione un Control", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                nIdControl = 0;
+                sIdControl = "";
                 return false;
             }
             else 
             {
-                nIdControl = Convert.ToInt32(dgControl.Rows[dgControl.CurrentCellAddress.Y].Cells[0].Value);
+                sIdControl = dgControl.Rows[dgControl.CurrentCellAddress.Y].Cells[0].Value.ToString();
                 return true; 
             }
         }
@@ -183,12 +183,12 @@ namespace SisCtd
         //}
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
-            Frm_Reg_Control_Det fDet = new Frm_Reg_Control_Det(qOpcion, nIdControl);
+            Frm_Reg_Control_Det fDet = new Frm_Reg_Control_Det(qOpcion, sIdControl);
             fDet.ShowDialog();
             if (fDet.bGrabo == true)
             {
-                Listar(0);
-                Helper.Buscar_Grilla(dgControl, fDet.nIdControl.ToString(), 0);
+                Listar(Helper.eListar.Grilla);
+                Helper.Buscar_Grilla(dgControl, fDet.sIdControl, 0);
                 Listar_Detalle();
             }
             fDet.Dispose();
@@ -215,10 +215,12 @@ namespace SisCtd
             if (Get_IdControl(true) == false) return;
             try
             {
-                if (MessageBox.Show("¿Está seguro que desea de Eliminar el Control : " + nIdControl + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                //oBL_Reg_Control.Eliminar(sIdControl);
-                
-                Listar(0);
+                if (MessageBox.Show("¿Está seguro que desea de Eliminar el Control : " + sIdControl + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                oBL_Reg_Control.Eliminar(sIdControl);
+
+                MessageBox.Show("Se ha Eliminado el Control " + sIdControl + " en forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Listar(Helper.eListar.Grilla);
                 Listar_Detalle();
             }
             catch (Exception ex)
@@ -239,7 +241,7 @@ namespace SisCtd
             try
             {
 
-                if (oBL_Reg_Control.Existe_Imagen(nIdControl))
+                if (oBL_Reg_Control.Existe_Imagen(sIdControl))
                 {
                     MessageBox.Show("Ya se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     dgControl.Focus(); return;
@@ -272,11 +274,11 @@ namespace SisCtd
                     oBE_Reg_ControlImagenes.Archivo = bytes;
                     oBE_Reg_ControlImagenes.PesoArchivo = nKb;
                     oBE_Reg_ControlImagenes.ExtensionImagen = sExtension;
-                    oBL_Reg_Control.Insertar_Archivo(oBE_Reg_ControlImagenes, nIdControl);
+                    oBL_Reg_Control.Insertar_Archivo(oBE_Reg_ControlImagenes, sIdControl);
                     fs.Close();
                     fs = null;
-                    Listar(0);
-                    Helper.Buscar_Grilla(dgControl, nIdControl.ToString(), 0);
+                    Listar(Helper.eListar.Grilla);
+                    Helper.Buscar_Grilla(dgControl, sIdControl, 0);
                     Listar_Detalle();
                     MessageBox.Show("Se ha Asignado la Imagen " + sNombre + " en forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -304,7 +306,7 @@ namespace SisCtd
             byte[] bytes;
             try
             {
-                if (!oBL_Reg_Control.Existe_Imagen(nIdControl))
+                if (!oBL_Reg_Control.Existe_Imagen(sIdControl))
                 {
                     MessageBox.Show("No se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     dgControl.Focus(); return;
@@ -344,16 +346,16 @@ namespace SisCtd
             BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
             try
             {
-                if (!oBL_Reg_Control.Existe_Imagen(nIdControl))
+                if (!oBL_Reg_Control.Existe_Imagen(sIdControl))
                 {
                     MessageBox.Show("No se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     dgControl.Focus(); return;
                 }
 
-                if (MessageBox.Show("¿Está seguro que desea de Quitar la Imagen al Control : " + nIdControl.ToString() + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-                oBL_Reg_Control.Quitar_Archivo(nIdControl);
-                Listar(0);
-                Helper.Buscar_Grilla(dgControl, nIdControl.ToString(), 0);
+                if (MessageBox.Show("¿Está seguro que desea de Quitar la Imagen al Control : " + sIdControl + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                oBL_Reg_Control.Quitar_Archivo(sIdControl);
+                Listar(Helper.eListar.Grilla);
+                Helper.Buscar_Grilla(dgControl, sIdControl, 0);
                 Listar_Detalle();
 
                 MessageBox.Show("Se ha Quitado la Imagen en forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -374,7 +376,7 @@ namespace SisCtd
 
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
-            Listar(0);
+            Listar(Helper.eListar.Grilla);
             Listar_Detalle();
         }
 

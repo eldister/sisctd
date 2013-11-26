@@ -61,6 +61,15 @@ namespace DLSisCtd
             int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from sis_usuario where idperfil ='" + sIdperfil + "' "));
             return (nCant > 0 ? true : false);
         }
+        public string Get_IdOficina(string sIdUsuario)
+        {
+            sSql = "select	b.IdOficina ";
+            sSql += "from   Sis_Usuario a  ";
+            sSql += "       inner join T_Empleado b on a.IdEmpleado=b.IdEmpleado ";
+            sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdUsuario='" + sIdUsuario + "' ";
+
+            return Convert.ToString(ConexionDAO.fEscalar(sSql));
+        }
         #endregion
 
         #region Operaciones

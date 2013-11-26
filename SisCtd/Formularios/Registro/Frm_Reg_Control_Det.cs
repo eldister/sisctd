@@ -19,7 +19,7 @@ namespace SisCtd
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
         FontFamily ff;
         Font font;
-        public Int32 nIdControl;
+        public string sIdControl;
         public Boolean bGrabo = false;
         Helper.eOpcion qOpcion;
 
@@ -28,15 +28,17 @@ namespace SisCtd
 
         BL_T_TipoDocumento oBL_T_TipoDocumento = new BL_T_TipoDocumento();
         BL_T_MaestroCliente oBL_T_MaestroCliente = new BL_T_MaestroCliente();
+        BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
+        BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
 
         #endregion
 
         #region Iniciar Formulario
-        public Frm_Reg_Control_Det(Helper.eOpcion _qOpcion, Int32 IdControl)
+        public Frm_Reg_Control_Det(Helper.eOpcion _qOpcion, string _IdControl)
         {
             InitializeComponent();
             qOpcion = _qOpcion;
-            nIdControl = IdControl;
+            sIdControl = _IdControl;
         }
         private void Frm_Reg_Control_Det_Load(object sender, EventArgs e)
         {
@@ -48,11 +50,13 @@ namespace SisCtd
                 {
                     case Helper.eOpcion.Nuevo:
                         this.Text = " Nuevo";
-                        txtIdControl.Text = "???";
-                        lblEstado.Text = "Pendiente";
+                        txtIdControl.Text = "????_???_???????";
+                        lblFechaRecepcion.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        lblIdOficinaRecepcion.Text = oBL_Sis_Usuario.Get_IdOficina(BE_Helper.oBE_Sis_Usuario.IdUsuario);
                         break;
                     case Helper.eOpcion.Modificar:
                     case Helper.eOpcion.Consultar:
+                        lblCodigoBarra.Text = sIdControl;
                         txtIdControl.ReadOnly = true;
                         if (qOpcion == Helper.eOpcion.Consultar)
                         {
@@ -64,12 +68,16 @@ namespace SisCtd
                         {
                             this.Text = " Modificar";
                             grpSeguimiento.Visible = true;
+                            lblCodigoBarra.Visible = true;
+                            lblCodigoBarraTit.Visible = true;
                         }
 
-                        oBE_Reg_Control = oBL_Reg_Control.Get_Control(nIdControl);
+                        oBE_Reg_Control = oBL_Reg_Control.Get_Control(sIdControl);
                         if (oBE_Reg_Control != null)
                         {
                             txtIdControl.Text = oBE_Reg_Control.IdControl.ToString();
+                            lblFechaRecepcion.Text = oBE_Reg_Control.FechaRecepcion.ToString("dd/MM/yyyy");
+                            lblIdOficinaRecepcion.Text = oBE_Reg_Control.IdOficinaRecepcion;
                             txtIdTipoDocumento.Text = oBE_Reg_Control.IdTipoDocumento;
                             txtIdMaestroCliente.Text= oBE_Reg_Control.IdMaestroCliente;
                             txtNumero.Text= oBE_Reg_Control.NroDocumento ;
@@ -127,9 +135,7 @@ namespace SisCtd
         }
         private void CargoEtiqueta(Font font)
         {
-            float size = 11f;
             FontStyle fontStyle = FontStyle.Regular;
-
             this.lblCodigoBarra.Font = new Font(ff, 20, fontStyle);
 
         }
@@ -142,7 +148,7 @@ namespace SisCtd
             switch (txt.Name)
             {
                 case "txtIdTipoDocumento": 
-                    lblDesTipoDocumneto.Text = oBL_T_TipoDocumento.Get_Descripcion(txtIdTipoDocumento.Text);
+                    lblDesTipoDocumento.Text = oBL_T_TipoDocumento.Get_Descripcion(txtIdTipoDocumento.Text);
                     Helper.LLenar_Combobox(oBL_T_TipoDocumento.Listar_Rutas(txtIdTipoDocumento.Text), cboRuta, "Descripcion", "IdRuta");
                     break;
                 case "txtIdMaestroCliente": lblDesMaestroCliente.Text = oBL_T_MaestroCliente.Get_RazonSocial(txtIdMaestroCliente.Text); break;
@@ -165,7 +171,7 @@ namespace SisCtd
         {
             try
             {
-                if (lblDesTipoDocumneto.Text == "")
+                if (lblDesTipoDocumento.Text == "")
                 {
                     MessageBox.Show("Ingrese un Tipo de Documento válido", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtIdTipoDocumento.Focus(); return;
@@ -189,7 +195,9 @@ namespace SisCtd
                     cboRuta.Focus(); return;
                 }
             
-                oBE_Reg_Control.IdControl = nIdControl;
+                oBE_Reg_Control.IdControl = sIdControl;
+                oBE_Reg_Control.FechaRecepcion = Helper.CFecha(lblFechaRecepcion.Text);
+                oBE_Reg_Control.IdOficinaRecepcion = lblIdOficinaRecepcion.Text;
                 oBE_Reg_Control.IdTipoDocumento = txtIdTipoDocumento.Text.Trim();
                 oBE_Reg_Control.IdMaestroCliente = txtIdMaestroCliente.Text.Trim();
                 oBE_Reg_Control.NroDocumento = txtNumero.Text.Trim();
@@ -200,7 +208,7 @@ namespace SisCtd
 
                 if (qOpcion == Helper.eOpcion.Nuevo)
                 {
-                    nIdControl = oBL_Reg_Control.Insertar(oBE_Reg_Control);
+                    sIdControl = oBL_Reg_Control.Insertar(oBE_Reg_Control);
                 }
                 if (qOpcion == Helper.eOpcion.Modificar)
                 {
@@ -218,6 +226,12 @@ namespace SisCtd
         }
 
         #endregion
+
+        private void lblIdOficinaRecepcion_TextChanged(object sender, EventArgs e)
+        {
+            lblIdOficinaRecepcionDes.Text = oBL_T_Oficina.Get_Descripcion(lblIdOficinaRecepcion.Text);
+        }
+
 
 
 
