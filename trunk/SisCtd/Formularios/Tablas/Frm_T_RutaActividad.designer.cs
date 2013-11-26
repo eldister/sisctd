@@ -36,14 +36,14 @@
             this.txtActividad = new MigControls.MigTextbox();
             this.txtDuracionendias = new MigControls.MigTextbox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblRuta = new MigControls.MigTextbox();
-            this.lblActividad = new MigControls.MigTextbox();
+            this.lblRuta = new System.Windows.Forms.Label();
+            this.lblActividad = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnCancelar
             // 
             this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.BtnCancelar.Location = new System.Drawing.Point(455, 113);
+            this.BtnCancelar.Location = new System.Drawing.Point(458, 75);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
             this.BtnCancelar.TabIndex = 9;
@@ -55,7 +55,7 @@
             // BtnGrabar
             // 
             this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.BtnGrabar.Location = new System.Drawing.Point(374, 113);
+            this.BtnGrabar.Location = new System.Drawing.Point(377, 75);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);
             this.BtnGrabar.TabIndex = 8;
@@ -94,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 58);
+            this.label3.Location = new System.Drawing.Point(14, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 736;
@@ -108,7 +108,7 @@
             this.txtActividad.ColorSalida = System.Drawing.Color.White;
             this.txtActividad.Decimales = 2;
             this.txtActividad.Guiones = false;
-            this.txtActividad.Location = new System.Drawing.Point(116, 54);
+            this.txtActividad.Location = new System.Drawing.Point(116, 36);
             this.txtActividad.MaxLength = 10;
             this.txtActividad.Name = "txtActividad";
             this.txtActividad.PasarEnter = true;
@@ -126,7 +126,7 @@
             this.txtDuracionendias.ColorSalida = System.Drawing.Color.White;
             this.txtDuracionendias.Decimales = 2;
             this.txtDuracionendias.Guiones = false;
-            this.txtDuracionendias.Location = new System.Drawing.Point(116, 95);
+            this.txtDuracionendias.Location = new System.Drawing.Point(116, 61);
             this.txtDuracionendias.MaxLength = 10;
             this.txtDuracionendias.Name = "txtDuracionendias";
             this.txtDuracionendias.PasarEnter = true;
@@ -139,7 +139,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 99);
+            this.label5.Location = new System.Drawing.Point(14, 65);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 750;
@@ -147,43 +147,27 @@
             // 
             // lblRuta
             // 
-            this.lblRuta.BackColor = System.Drawing.Color.LemonChiffon;
-            this.lblRuta.Car_Años = 4;
-            this.lblRuta.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.lblRuta.ColorSalida = System.Drawing.Color.LemonChiffon;
-            this.lblRuta.Decimales = 2;
-            this.lblRuta.Enabled = false;
-            this.lblRuta.Guiones = false;
-            this.lblRuta.Location = new System.Drawing.Point(183, 9);
-            this.lblRuta.MaxLength = 200;
-            this.lblRuta.Multiline = true;
+            this.lblRuta.BackColor = System.Drawing.SystemColors.Info;
+            this.lblRuta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblRuta.Location = new System.Drawing.Point(183, 8);
             this.lblRuta.Name = "lblRuta";
-            this.lblRuta.PasarEnter = true;
-            this.lblRuta.Size = new System.Drawing.Size(356, 39);
-            this.lblRuta.TabIndex = 751;
-            this.lblRuta.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.lblRuta.Size = new System.Drawing.Size(373, 20);
+            this.lblRuta.TabIndex = 753;
+            this.lblRuta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblActividad
             // 
-            this.lblActividad.BackColor = System.Drawing.Color.LemonChiffon;
-            this.lblActividad.Car_Años = 4;
-            this.lblActividad.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.lblActividad.ColorSalida = System.Drawing.Color.LemonChiffon;
-            this.lblActividad.Decimales = 2;
-            this.lblActividad.Enabled = false;
-            this.lblActividad.Guiones = false;
-            this.lblActividad.Location = new System.Drawing.Point(183, 54);
-            this.lblActividad.MaxLength = 200;
-            this.lblActividad.Multiline = true;
+            this.lblActividad.BackColor = System.Drawing.SystemColors.Info;
+            this.lblActividad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblActividad.Location = new System.Drawing.Point(184, 36);
             this.lblActividad.Name = "lblActividad";
-            this.lblActividad.PasarEnter = true;
-            this.lblActividad.Size = new System.Drawing.Size(356, 39);
-            this.lblActividad.TabIndex = 752;
-            this.lblActividad.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.lblActividad.Size = new System.Drawing.Size(373, 20);
+            this.lblActividad.TabIndex = 754;
+            this.lblActividad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Frm_T_RutaActividad
             // 
-            this.ClientSize = new System.Drawing.Size(546, 146);
+            this.ClientSize = new System.Drawing.Size(562, 108);
             this.Controls.Add(this.lblActividad);
             this.Controls.Add(this.lblRuta);
             this.Controls.Add(this.txtDuracionendias);
@@ -219,8 +203,8 @@
         private MigControls.MigTextbox txtActividad;
         private MigControls.MigTextbox txtDuracionendias;
         private System.Windows.Forms.Label label5;
-        private MigControls.MigTextbox lblRuta;
-        private MigControls.MigTextbox lblActividad;
+        private System.Windows.Forms.Label lblRuta;
+        private System.Windows.Forms.Label lblActividad;
 
     }
 }
