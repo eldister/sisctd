@@ -146,7 +146,7 @@ namespace SisCtd
                 case "0104": mFormHijo = new Frm_T_Listados(Helper.eTablas.Empleados); Abrir(); break;
                 case "0105": mFormHijo = new Frm_T_Listados(Helper.eTablas.Oficinas); Abrir(); break;
 
-                case "0107": mFormHijo = new Frm_T_Listados(Helper.eTablas.Actividades); Abrir(); break;
+                case "0107": mFormHijo = new Frm_T_Actividades_List(); Abrir(); break;
                 case "0108": mFormHijo = new Frm_T_Rutas_List(); Abrir(); break;
 
                 case "0110": mFormHijo = new Frm_T_TiposDocumento_List(); Abrir(); break;
