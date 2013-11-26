@@ -88,6 +88,27 @@ namespace SisCtd.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _16__Db_insert_1 {
+            get {
+                object obj = ResourceManager.GetObject("16 (Db insert)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _16__Fill_down_ {
+            get {
+                object obj = ResourceManager.GetObject("16 (Fill down)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _16__Fill_up_ {
+            get {
+                object obj = ResourceManager.GetObject("16 (Fill up)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap _210 {
             get {
                 object obj = ResourceManager.GetObject("210", resourceCulture);
