@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BE_Helper.cs" />
     <Compile Include="BE_Sis_Cliente.cs" />
+    <Compile Include="BE_T_EmpleadoActividad.cs" />
     <Compile Include="BE_T_MaestroCliente.cs" />
     <Compile Include="BE_T_Ubigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

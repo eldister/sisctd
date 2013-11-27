@@ -119,11 +119,21 @@ namespace DLSisCtd
                     sSql += "from   T_Numeracion ";
                     sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año='" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "'";
                     sCorrelativo = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
-                    if (sCorrelativo == "") sCorrelativo = "0000001";
-
-                    sSql = "insert  into T_Numeracion values (";
-                    sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "','" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "','" + oBE_Reg_Control.IdOficinaRecepcion + "','" + sCorrelativo + "') ";
-                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    if (sCorrelativo == "")
+                    {
+                        sCorrelativo = "0000001";
+                        sSql = "insert  into T_Numeracion values (";
+                        sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "','" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "','" + oBE_Reg_Control.IdOficinaRecepcion + "','" + sCorrelativo + "') ";
+                        SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    }
+                    else
+                    {
+                        sSql = "update  T_Numeracion set ";
+                        sSql += "       correlativo = '" + sCorrelativo + "' ";
+                        sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año = '" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "' ";
+                        SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    }
+                    
 
                     sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "_" + oBE_Reg_Control.IdOficinaRecepcion.Trim() + "_" + sCorrelativo;
                     sSql = "INSERT	INTO Reg_Control VALUES( ";

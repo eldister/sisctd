@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DL_T_Actividad.cs" />
+    <Compile Include="DL_T_EmpleadoActividad.cs" />
     <Compile Include="DL_T_MaestroCliente.cs" />
     <Compile Include="DL_Reg_Control.cs" />
     <Compile Include="DL_T_RutaActividad.cs" />

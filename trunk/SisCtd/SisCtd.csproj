@@ -177,6 +177,12 @@
     <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.designer.cs">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Actividades_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_Actividades_List.designer.cs">
+      <DependentUpon>Frm_T_Actividades_List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_Areas_Det.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.resx">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_Actividades_List.resx">
+      <DependentUpon>Frm_T_Actividades_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Areas_Det.resx">
       <DependentUpon>Frm_T_Areas_Det.cs</DependentUpon>
