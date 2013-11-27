@@ -58,6 +58,7 @@ namespace SisCtd
                     case Helper.eOpcion.Consultar:
                         lblCodigoBarra.Text = sIdControl;
                         txtIdControl.ReadOnly = true;
+                        cboRuta.Enabled = false;
                         if (qOpcion == Helper.eOpcion.Consultar)
                         {
                             this.Text = " Consultar";

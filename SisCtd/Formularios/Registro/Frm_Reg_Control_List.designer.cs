@@ -55,6 +55,8 @@
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgControl = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSubir = new System.Windows.Forms.Button();
+            this.btnBajar = new System.Windows.Forms.Button();
             this.btnQuitarActividad = new System.Windows.Forms.Button();
             this.btnAgregarActividad = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -358,6 +360,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSubir);
+            this.panel2.Controls.Add(this.btnBajar);
             this.panel2.Controls.Add(this.btnQuitarActividad);
             this.panel2.Controls.Add(this.btnAgregarActividad);
             this.panel2.Controls.Add(this.label1);
@@ -367,6 +371,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(996, 220);
             this.panel2.TabIndex = 1;
+            // 
+            // btnSubir
+            // 
+            this.btnSubir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSubir.Image = global::SisCtd.Properties.Resources.up;
+            this.btnSubir.Location = new System.Drawing.Point(967, 29);
+            this.btnSubir.Name = "btnSubir";
+            this.btnSubir.Size = new System.Drawing.Size(26, 23);
+            this.btnSubir.TabIndex = 6;
+            this.btnSubir.UseVisualStyleBackColor = true;
+            // 
+            // btnBajar
+            // 
+            this.btnBajar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBajar.Image = global::SisCtd.Properties.Resources.down;
+            this.btnBajar.Location = new System.Drawing.Point(967, 58);
+            this.btnBajar.Name = "btnBajar";
+            this.btnBajar.Size = new System.Drawing.Size(26, 23);
+            this.btnBajar.TabIndex = 5;
+            this.btnBajar.UseVisualStyleBackColor = true;
             // 
             // btnQuitarActividad
             // 
@@ -418,7 +442,7 @@
             this.dgDetalle.RowHeadersWidth = 25;
             this.dgDetalle.RowTemplate.Height = 18;
             this.dgDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDetalle.Size = new System.Drawing.Size(981, 152);
+            this.dgDetalle.Size = new System.Drawing.Size(954, 152);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 0;
             this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
@@ -490,5 +514,7 @@
         private System.Windows.Forms.ToolStripButton bVerImagen;
         private MigControls.MigTextbox txtIdControl;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnBajar;
+        private System.Windows.Forms.Button btnSubir;
     }
 }

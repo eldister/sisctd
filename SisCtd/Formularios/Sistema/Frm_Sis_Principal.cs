@@ -78,10 +78,10 @@ namespace SisCtd
 
         private void CambiarLogo()
         {
-            switch (BE_Helper.oBE_Sis_Cliente.IdCliente)
-            {
-                case "DEMO": picLogo.Image = SisCtd.Properties.Resources.logo_vsistems; break;
-            }
+            //switch (BE_Helper.oBE_Sis_Cliente.IdCliente)
+            //{
+            //    case "DEMO": picLogo.Image = SisCtd.Properties.Resources.logo_vsistems; break;
+            //}
         }
 
         private void Abrir()
