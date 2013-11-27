@@ -153,7 +153,25 @@ namespace DLSisCtd
                     sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "' ";
                     sSql += "from	T_RutaActividad a  ";
                     sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdRuta='" + oBE_Reg_Control.IdRuta + "' ";
-                    
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    sSql = "select  IdEmpleado ";
+                    sSql += "from   Sis_Usuario ";
+                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdUsuario='" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "'";
+                    string sIdEmpleado = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
+
+                    sSql = "select  IdArea ";
+                    sSql += "from   T_Empleado ";
+                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdEmpleado='" + sIdEmpleado + "'";
+                    string sIdArea = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
+
+                    sSql = "Update  Reg_ControlDetalle set ";
+                    sSql += "       IdOficinaRecepcion='" + oBE_Reg_Control.IdOficinaRecepcion + "', ";
+                    sSql += "       IdEmpleadoRecepcion='" + sIdEmpleado + "', ";
+                    sSql += "       IdAreaRecepcion='" + sIdArea + "', ";
+                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
+                    sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl + "' and NroSecuencia=1 ";
+
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
                     
                     sTrans.Commit();
@@ -164,17 +182,28 @@ namespace DLSisCtd
         }
         public void Modificar(BE_Reg_Control oBE_Reg_Control)
         {
-            ConexionDAO.fExecute("Update_Reg_Control",
-                BE_Helper.oBE_Sis_Cliente.IdCliente,
-                oBE_Reg_Control.IdControl,
-                oBE_Reg_Control.IdTipoDocumento,
-                oBE_Reg_Control.IdMaestroCliente,
-                oBE_Reg_Control.NroDocumento,
-                oBE_Reg_Control.FechaDocumento,
-                oBE_Reg_Control.Observacion,
-                oBE_Reg_Control.Estado,
-                oBE_Reg_Control.IdRuta,
-                BE_Helper.oBE_Sis_Usuario.IdUsuario);
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    sSql = "update	Reg_Control set ";
+                    sSql += "       IdTipoDocumento= '" + oBE_Reg_Control.IdTipoDocumento + "',  ";
+                    sSql += "       IdMaestroCliente= '" + oBE_Reg_Control.IdMaestroCliente + "', ";
+                    sSql += "       NroDocumento= '" + oBE_Reg_Control.NroDocumento + "', ";
+                    sSql += "       FechaDocumento= '" + oBE_Reg_Control.FechaDocumento.ToString("yyyy/MM/dd") + "', ";
+                    sSql += "       Observacion= '" + oBE_Reg_Control.Observacion + "' ";
+                    //sSql += "       IdRuta= @IdRuta ";
+                    sSql += "where	IdCliente=@IdCliente and IdControl=@IdControl ";
+
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    sTrans.Commit();
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+
+
         }
 
 
