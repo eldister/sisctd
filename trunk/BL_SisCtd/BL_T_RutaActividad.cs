@@ -41,6 +41,10 @@ namespace BLSisCtd
         {
             return oDL_T_RutaActividad.Existe_Actividad(oBE_T_RutaActividad);
         }
+        public int Max_Orden(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            return oDL_T_RutaActividad.Max_Orden(oBE_T_RutaActividad);
+        }
 
         #endregion
 
@@ -52,6 +56,14 @@ namespace BLSisCtd
         public void Eliminar(BE_T_RutaActividad oBE_T_RutaActividad)
         {
             oDL_T_RutaActividad.Eliminar(oBE_T_RutaActividad);
+        }
+        public void Subir(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            oDL_T_RutaActividad.Subir(oBE_T_RutaActividad);
+        }
+        public void Bajar(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            oDL_T_RutaActividad.Bajar(oBE_T_RutaActividad);
         }
    
         #endregion
