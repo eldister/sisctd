@@ -38,23 +38,23 @@
             this.txtCodigo = new MigControls.MigTextbox();
             this.label10 = new System.Windows.Forms.Label();
             this.BarraSis = new System.Windows.Forms.ToolStrip();
+            this.bNuevo = new System.Windows.Forms.ToolStripButton();
+            this.bModificar = new System.Windows.Forms.ToolStripButton();
+            this.bEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripSeparator();
+            this.bExportar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bCerrar = new System.Windows.Forms.ToolStripButton();
             this.Stb = new System.Windows.Forms.StatusStrip();
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.Dg1 = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dgActividades = new MigControls.MigDataGridView();
-            this.bNuevo = new System.Windows.Forms.ToolStripButton();
-            this.bModificar = new System.Windows.Forms.ToolStripButton();
-            this.bEliminar = new System.Windows.Forms.ToolStripButton();
-            this.bExportar = new System.Windows.Forms.ToolStripButton();
-            this.bCerrar = new System.Windows.Forms.ToolStripButton();
             this.btnBajar = new System.Windows.Forms.Button();
             this.btnSubir = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgActividades = new MigControls.MigDataGridView();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
@@ -176,15 +176,65 @@
             this.BarraSis.Size = new System.Drawing.Size(915, 23);
             this.BarraSis.TabIndex = 3;
             // 
+            // bNuevo
+            // 
+            this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
+            this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bNuevo.Name = "bNuevo";
+            this.bNuevo.Size = new System.Drawing.Size(62, 20);
+            this.bNuevo.Text = "&Nuevo";
+            this.bNuevo.ToolTipText = "Nuevo (F3)";
+            this.bNuevo.Click += new System.EventHandler(this.bNuevo_Click);
+            // 
+            // bModificar
+            // 
+            this.bModificar.Image = global::SisCtd.Properties.Resources.control;
+            this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bModificar.Name = "bModificar";
+            this.bModificar.Size = new System.Drawing.Size(78, 20);
+            this.bModificar.Text = "&Modificar";
+            this.bModificar.ToolTipText = "Modificar (F2)";
+            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
+            // 
+            // bEliminar
+            // 
+            this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
+            this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(70, 20);
+            this.bEliminar.Text = "&Eliminar";
+            this.bEliminar.ToolTipText = "Eliminar (F4)";
+            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
+            // 
             // toolStripButton4
             // 
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(6, 23);
             // 
+            // bExportar
+            // 
+            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
+            this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bExportar.Name = "bExportar";
+            this.bExportar.Size = new System.Drawing.Size(70, 20);
+            this.bExportar.Text = "E&xportar";
+            this.bExportar.ToolTipText = "Exportar (F7)";
+            this.bExportar.Click += new System.EventHandler(this.bExportar_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
+            // bCerrar
+            // 
+            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
+            this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bCerrar.Name = "bCerrar";
+            this.bCerrar.Size = new System.Drawing.Size(49, 20);
+            this.bCerrar.Text = "&Salir";
+            this.bCerrar.ToolTipText = "Salir (Esc)";
+            this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
             // 
             // Stb
             // 
@@ -244,6 +294,28 @@
             this.panel2.Size = new System.Drawing.Size(915, 260);
             this.panel2.TabIndex = 663;
             // 
+            // btnBajar
+            // 
+            this.btnBajar.Image = global::SisCtd.Properties.Resources._16__Fill_down_;
+            this.btnBajar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBajar.Location = new System.Drawing.Point(584, 118);
+            this.btnBajar.Name = "btnBajar";
+            this.btnBajar.Size = new System.Drawing.Size(24, 35);
+            this.btnBajar.TabIndex = 679;
+            this.btnBajar.UseVisualStyleBackColor = true;
+            this.btnBajar.Click += new System.EventHandler(this.btnBajar_Click);
+            // 
+            // btnSubir
+            // 
+            this.btnSubir.Image = global::SisCtd.Properties.Resources._16__Fill_up_;
+            this.btnSubir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubir.Location = new System.Drawing.Point(584, 80);
+            this.btnSubir.Name = "btnSubir";
+            this.btnSubir.Size = new System.Drawing.Size(24, 37);
+            this.btnSubir.TabIndex = 678;
+            this.btnSubir.UseVisualStyleBackColor = true;
+            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
+            // 
             // btnDelete
             // 
             this.btnDelete.Image = global::SisCtd.Properties.Resources._16__Db_delete_;
@@ -255,6 +327,18 @@
             this.btnDelete.Text = "Quitar";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::SisCtd.Properties.Resources._16__Db_insert_1;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(12, 234);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(79, 23);
+            this.btnAdd.TabIndex = 676;
+            this.btnAdd.Text = "  Agregar";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label3
             // 
@@ -287,88 +371,6 @@
             this.dgActividades.Size = new System.Drawing.Size(567, 203);
             this.dgActividades.StandardTab = true;
             this.dgActividades.TabIndex = 675;
-            // 
-            // bNuevo
-            // 
-            this.bNuevo.Image = global::SisCtd.Properties.Resources.Toolbar_New;
-            this.bNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bNuevo.Name = "bNuevo";
-            this.bNuevo.Size = new System.Drawing.Size(62, 20);
-            this.bNuevo.Text = "&Nuevo";
-            this.bNuevo.ToolTipText = "Nuevo (F3)";
-            this.bNuevo.Click += new System.EventHandler(this.bNuevo_Click);
-            // 
-            // bModificar
-            // 
-            this.bModificar.Image = global::SisCtd.Properties.Resources.control;
-            this.bModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bModificar.Name = "bModificar";
-            this.bModificar.Size = new System.Drawing.Size(78, 20);
-            this.bModificar.Text = "&Modificar";
-            this.bModificar.ToolTipText = "Modificar (F2)";
-            this.bModificar.Click += new System.EventHandler(this.bModificar_Click);
-            // 
-            // bEliminar
-            // 
-            this.bEliminar.Image = global::SisCtd.Properties.Resources.Toolbar_Delete;
-            this.bEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(70, 20);
-            this.bEliminar.Text = "&Eliminar";
-            this.bEliminar.ToolTipText = "Eliminar (F4)";
-            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
-            // 
-            // bExportar
-            // 
-            this.bExportar.Image = global::SisCtd.Properties.Resources.xls;
-            this.bExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bExportar.Name = "bExportar";
-            this.bExportar.Size = new System.Drawing.Size(70, 20);
-            this.bExportar.Text = "E&xportar";
-            this.bExportar.ToolTipText = "Exportar (F7)";
-            this.bExportar.Click += new System.EventHandler(this.bExportar_Click);
-            // 
-            // bCerrar
-            // 
-            this.bCerrar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.bCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bCerrar.Name = "bCerrar";
-            this.bCerrar.Size = new System.Drawing.Size(49, 20);
-            this.bCerrar.Text = "&Salir";
-            this.bCerrar.ToolTipText = "Salir (Esc)";
-            this.bCerrar.Click += new System.EventHandler(this.bCerrar_Click);
-            // 
-            // btnBajar
-            // 
-            this.btnBajar.Image = global::SisCtd.Properties.Resources._16__Fill_down_;
-            this.btnBajar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBajar.Location = new System.Drawing.Point(584, 118);
-            this.btnBajar.Name = "btnBajar";
-            this.btnBajar.Size = new System.Drawing.Size(24, 35);
-            this.btnBajar.TabIndex = 679;
-            this.btnBajar.UseVisualStyleBackColor = true;
-            // 
-            // btnSubir
-            // 
-            this.btnSubir.Image = global::SisCtd.Properties.Resources._16__Fill_up_;
-            this.btnSubir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubir.Location = new System.Drawing.Point(584, 80);
-            this.btnSubir.Name = "btnSubir";
-            this.btnSubir.Size = new System.Drawing.Size(24, 37);
-            this.btnSubir.TabIndex = 678;
-            this.btnSubir.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Image = global::SisCtd.Properties.Resources._16__Db_insert_1;
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(12, 234);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(79, 23);
-            this.btnAdd.TabIndex = 676;
-            this.btnAdd.Text = "  Agregar";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Frm_T_Rutas_List
             // 
