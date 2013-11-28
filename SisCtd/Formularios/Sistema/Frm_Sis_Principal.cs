@@ -98,6 +98,8 @@ namespace SisCtd
                 case "0107": mFormHijo.Text = " Registro de Actividades"; break;
                 case "0108": mFormHijo.Text = " Registro de Rutas"; break;
 
+                case "0111": mFormHijo.Text = " Registro de Clientes"; break;
+
                 case "0201": mFormHijo.Text = " Control de Documentos"; break;
 
             }
@@ -150,6 +152,7 @@ namespace SisCtd
                 case "0108": mFormHijo = new Frm_T_Rutas_List(); Abrir(); break;
 
                 case "0110": mFormHijo = new Frm_T_TiposDocumento_List(); Abrir(); break;
+                case "0111": mFormHijo = new Frm_T_Listados(Helper.eTablas.MaestroClientes); Abrir(); break;
     
                 //Registro
                 case "0201": mFormHijo = new Frm_Reg_Control_List(); Abrir(); break;
