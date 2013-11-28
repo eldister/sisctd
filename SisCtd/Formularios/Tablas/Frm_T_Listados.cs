@@ -22,6 +22,7 @@ namespace SisCtd
         BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
         BL_T_Area oBL_T_Area = new BL_T_Area();
         BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
+        BL_T_MaestroCliente oBL_T_MaestroCliente = new BL_T_MaestroCliente();
 
         #endregion
 
@@ -76,6 +77,7 @@ namespace SisCtd
                     case Helper.eTablas.Empleados: Dt = oBL_T_Empleado.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                     case Helper.eTablas.Areas: Dt = oBL_T_Area.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                     case Helper.eTablas.Oficinas: Dt = oBL_T_Oficina.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
+                    case Helper.eTablas.MaestroClientes: Dt = oBL_T_MaestroCliente.Listar(txtDescripcion.Text, cboEstado.Text.Substring(0, 1)); break;
                 }
                 if (eListar == Helper.eListar.Grilla)
                 {
@@ -131,6 +133,15 @@ namespace SisCtd
                         Listar(0);
                         Helper.Buscar_Grilla(Dg1, fEmp.sIdEmpleado, 0);
                     } fEmp.Dispose();
+                    break;
+                case Helper.eTablas.MaestroClientes:
+                    Frm_T_MaestroClientes_Det fCli = new Frm_T_MaestroClientes_Det(qOpcion, Get_Id(false));
+                    fCli.ShowDialog();
+                    if (fCli.bGrabo == true)
+                    {
+                        Listar(0);
+                        Helper.Buscar_Grilla(Dg1, fCli.sIdMaestroCliente, 0);
+                    } fCli.Dispose();
                     break;
 
                 default:
