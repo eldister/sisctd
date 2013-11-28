@@ -12,14 +12,13 @@ namespace DLSisCtd
         #region Listados
         public DataTable Listar(string sDescripcion, string sEstado)
         {
-            sSql = "select 	a.IdMaestroCliente, a.TipoPersona, ";
-            sSql += "       TipoDoi,NumeroDoi, ";
-            sSql += "       case when Estado=1 then '' else 'I' end as Estado, ";
+            sSql = "select  a.IdMaestroCliente, a.TipoPersona, ";
+            sSql += "       a.TipoDoi,a.NumeroDoi,rtrim(a.RazonSocial) as RazonSocial,rtrim(a.Direccion) as Direccion, a.Telefono1,  ";
             sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
-            sSql += "from 	T_MaestroCliente a ";
-            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "from   T_MaestroCliente a ";
+            sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
             sSql += "       a.RazonSocial like '%" + sDescripcion + "%' ";
-            sSql += "order by a.Descripcion ";
+            sSql += "order by a.RazonSocial ";
             return ConexionDAO.fDatatable(sSql);
         }
         public DataTable Buscar()
