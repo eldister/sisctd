@@ -111,7 +111,7 @@ namespace SisCtd
             }
             else
             {
-                sIdActividad = dgActividades.Rows[Dg1.CurrentCellAddress.Y].Cells[1].Value.ToString().Trim();
+                sIdActividad = dgActividades.Rows[dgActividades.CurrentCellAddress.Y].Cells[1].Value.ToString().Trim();
                 return true;
             }
         }
@@ -268,9 +268,40 @@ namespace SisCtd
             Listar_RutaActividad();
         }
 
+        private void btnSubir_Click(object sender, EventArgs e)
+        {
+            Get_IdRuta(true);
+            if (sIdRuta == "") return;
+            Get_IdActividad(true);
+            if (sIdActividad == "") return;
+
+            BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
+            oBE_T_RutaActividad.IdRuta = sIdRuta;
+            oBE_T_RutaActividad.IdActividad = sIdActividad;
+
+            oBL_T_RutaActividad.Subir(oBE_T_RutaActividad);
+            Listar_RutaActividad();
+        }
+        private void btnBajar_Click(object sender, EventArgs e)
+        {
+            Get_IdRuta(true);
+            if (sIdRuta == "") return;
+            Get_IdActividad(true);
+            if (sIdActividad == "") return;
+
+            BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
+            oBE_T_RutaActividad.IdRuta = sIdRuta;
+            oBE_T_RutaActividad.IdActividad = sIdActividad;
+
+            oBL_T_RutaActividad.Bajar(oBE_T_RutaActividad);
+            Listar_RutaActividad();
+
+        }
 
 
         #endregion
+
+
                 
     }
 }
