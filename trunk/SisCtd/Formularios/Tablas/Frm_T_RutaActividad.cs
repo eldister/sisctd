@@ -109,6 +109,8 @@ namespace SisCtd
 
                 if (qOpcion == Helper.eOpcion.Nuevo)
                 {
+                    int nOrden = oBL_T_RutaActividad.Max_Orden(oBE_T_RutaActividad);
+                    oBE_T_RutaActividad.Orden = nOrden;
                     oBL_T_RutaActividad.Insertar(oBE_T_RutaActividad);
                 }
                 sIdRuta = txtCodigo.Text; bGrabo = true; this.Close();
