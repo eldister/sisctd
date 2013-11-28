@@ -65,7 +65,8 @@ namespace SisCtd
             Actividades= 7,
             Rutas= 8,
             Datos= 9,
-            TiposDocumento= 10
+            TiposDocumento= 10,
+            MaestroClientes= 11
         }
 
         //funciones
