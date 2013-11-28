@@ -71,6 +71,14 @@ namespace DLSisCtd
             return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
         }
 
+        public int  Max_Orden(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            sSql = "select  max(orden)+1 from T_RutaActividad ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "'";
+
+            return Convert.ToInt16(ConexionDAO.fEscalar(sSql)) ;
+        }
 
         #region Operaciones
         protected virtual BE_T_RutaActividad Make(DataTable dt)
@@ -105,6 +113,61 @@ namespace DLSisCtd
             sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_RutaActividad.IdRuta + "'  and IdActividad='" + oBE_T_RutaActividad.IdActividad + "' ";
             ConexionDAO.fExecute(sSql);
         }
+        public void Subir(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            sSql = "select orden from T_RutaActividad ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "' and ";
+            sSql += "       IdActividad = '" + oBE_T_RutaActividad.IdActividad + "' ";
+            int nOrden = (Convert.ToInt16(ConexionDAO.fEscalar(sSql)));
+            if (nOrden != 1)
+            {
+                sSql = "select IdActividad from T_RutaActividad ";
+                sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+                sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "' and ";
+                sSql += "       orden = " + Convert.ToString(nOrden - 1) + " ";
+                string sActivi2 = (Convert.ToString(ConexionDAO.fEscalar(sSql)));
+
+                sSql = "update T_RutaActividad set orden ='" + Convert.ToString(nOrden - 1) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_RutaActividad.IdRuta + "'  and IdActividad='" + oBE_T_RutaActividad.IdActividad + "' ";
+                ConexionDAO.fExecute(sSql);
+
+                sSql = "update T_RutaActividad set orden ='" + Convert.ToString(nOrden) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_RutaActividad.IdRuta + "'  and IdActividad='" + sActivi2 + "' ";
+                ConexionDAO.fExecute(sSql);
+            }
+        }
+        public void Bajar(BE_T_RutaActividad oBE_T_RutaActividad)
+        {
+            sSql = "select max(orden) from T_RutaActividad ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "'";
+            int nCant = (Convert.ToInt16(ConexionDAO.fEscalar(sSql)));
+
+            sSql = "select orden from T_RutaActividad ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "' and ";
+            sSql += "       IdActividad = '" + oBE_T_RutaActividad.IdActividad + "' ";
+            int nOrden = (Convert.ToInt16(ConexionDAO.fEscalar(sSql)));
+            if (nOrden != nCant)
+            {
+                sSql = "select IdActividad from T_RutaActividad ";
+                sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+                sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "' and ";
+                sSql += "       orden = "  + Convert.ToString(nOrden + 1)  + " ";
+                string sActivi2 = (Convert.ToString(ConexionDAO.fEscalar(sSql)));
+                 
+                sSql = "update T_RutaActividad set orden ='" + Convert.ToString(nOrden + 1) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_RutaActividad.IdRuta + "'  and IdActividad='" + oBE_T_RutaActividad.IdActividad + "' ";
+                ConexionDAO.fExecute(sSql);
+
+                sSql = "update T_RutaActividad set orden ='" + Convert.ToString(nOrden) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdRuta='" + oBE_T_RutaActividad.IdRuta + "'  and IdActividad='" + sActivi2  + "' ";
+                ConexionDAO.fExecute(sSql);
+            }
+
+        }
+
 
         #endregion
 
