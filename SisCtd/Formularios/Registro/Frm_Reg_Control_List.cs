@@ -431,8 +431,18 @@ namespace SisCtd
             //oBL_T_TipoDocumento.QuitarRuta(oBE_T_TipoDocumentoRuta);
             //Listar_Rutas();
         }
+        private void btnSubir_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnBajar_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
+
+
 
 
 

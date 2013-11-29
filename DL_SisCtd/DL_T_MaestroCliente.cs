@@ -12,7 +12,7 @@ namespace DLSisCtd
         #region Listados
         public DataTable Listar(string sDescripcion, string sEstado)
         {
-            sSql = "select  a.IdMaestroCliente, a.TipoPersona, ";
+            sSql = "select  a.IdMaestroCliente, case when a.TipoPersona='N' then 'Natural' else 'Juridica' end as TipoPersona, ";
             sSql += "       a.TipoDoi,a.NumeroDoi,rtrim(a.RazonSocial) as RazonSocial,rtrim(a.Direccion) as Direccion, a.Telefono1,  ";
             sSql += "       a.FechaRegistro,a.HoraRegistro,a.UsuarioRegistro ";
             sSql += "from   T_MaestroCliente a ";
@@ -63,7 +63,16 @@ namespace DLSisCtd
             BE_T_MaestroCliente oBE_T_MaestroCliente = new BE_T_MaestroCliente();
             oBE_T_MaestroCliente.IdCliente = dt.Rows[0]["IdCliente"].ToString().Trim();
             oBE_T_MaestroCliente.IdMaestroCliente = dt.Rows[0]["IdMaestroCliente"].ToString().Trim();
+            oBE_T_MaestroCliente.TipoPersona = dt.Rows[0]["TipoPersona"].ToString().Trim();
+            oBE_T_MaestroCliente.TipoDoi = dt.Rows[0]["TipoDoi"].ToString().Trim();
+            oBE_T_MaestroCliente.NumeroDoi = dt.Rows[0]["NumeroDoi"].ToString().Trim();
             oBE_T_MaestroCliente.RazonSocial = dt.Rows[0]["RazonSocial"].ToString().Trim();
+            oBE_T_MaestroCliente.Direccion = dt.Rows[0]["Direccion"].ToString().Trim();
+            oBE_T_MaestroCliente.Contacto = dt.Rows[0]["Contacto"].ToString().Trim();
+            oBE_T_MaestroCliente.Telefono1 = dt.Rows[0]["Telefono1"].ToString().Trim();
+            oBE_T_MaestroCliente.Telefono2 = dt.Rows[0]["Telefono2"].ToString().Trim();
+            oBE_T_MaestroCliente.Fax = dt.Rows[0]["Fax"].ToString().Trim();
+            oBE_T_MaestroCliente.Email = dt.Rows[0]["Email"].ToString().Trim();
             oBE_T_MaestroCliente.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
             oBE_T_MaestroCliente.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();
             oBE_T_MaestroCliente.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
@@ -71,22 +80,39 @@ namespace DLSisCtd
         }
         public void Insertar(BE_T_MaestroCliente oBE_T_MaestroCliente)
         {
-            //sSql = "insert into T_MaestroCliente values ";
-            //sSql += "(";
-            //sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
-            //sSql += "'" + oBE_T_MaestroCliente.IdRuta + "',";
-            //sSql += "'" + oBE_T_MaestroCliente.Descripcion + "', ";
-            //sSql += "'" + (oBE_T_MaestroCliente.Estado ? "1" : "0") + "',";
-            //sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-            //ConexionDAO.fExecute(sSql);
+            sSql = "insert into T_MaestroCliente values ";
+            sSql += "(";
+            sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
+            sSql += "'" + oBE_T_MaestroCliente.IdMaestroCliente + "',";
+            sSql += "'" + oBE_T_MaestroCliente.TipoPersona.Substring(0,1) + "',";
+            sSql += "'" + oBE_T_MaestroCliente.TipoDoi + "',";
+            sSql += "'" + oBE_T_MaestroCliente.NumeroDoi + "',";
+            sSql += "'" + oBE_T_MaestroCliente.RazonSocial + "',";
+            sSql += "'" + oBE_T_MaestroCliente.Direccion + "',";
+            sSql += "'" + oBE_T_MaestroCliente.Contacto + "',";
+            sSql += "'" + oBE_T_MaestroCliente.Telefono1 + "',";
+            sSql += "'" + oBE_T_MaestroCliente.Telefono2 + "',";
+            sSql += "'" + oBE_T_MaestroCliente.Fax + "', ";
+            sSql += "'" + oBE_T_MaestroCliente.Email + "', ";
+            sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
+            ConexionDAO.fExecute(sSql);
         }
         public void Modificar(BE_T_MaestroCliente oBE_T_MaestroCliente)
         {
-            //sSql = "update  T_MaestroCliente set ";
-            //sSql += "       Descripcion='" + oBE_T_MaestroCliente.Descripcion + "', ";
-            //sSql += "       Estado='" + (oBE_T_MaestroCliente.Estado ? "1" : "0") + "' ";
-            //sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdPosicion='" + oBE_T_MaestroCliente.IdRuta + "' ";
-            //ConexionDAO.fExecute(sSql);
+            sSql = "update  T_MaestroCliente set ";
+            sSql += "       TipoPersona='" + oBE_T_MaestroCliente.TipoPersona.Substring(0,1) + "', ";
+            sSql += "       TipoDoi='" + oBE_T_MaestroCliente.TipoDoi + "', ";
+            sSql += "       NumeroDoi='" + oBE_T_MaestroCliente.NumeroDoi + "', ";
+            sSql += "       IdMaestroCliente='" + oBE_T_MaestroCliente.IdMaestroCliente + "', ";
+            sSql += "       RazonSocial='" + oBE_T_MaestroCliente.RazonSocial + "', ";
+            sSql += "       Direccion='" + oBE_T_MaestroCliente.Direccion + "', ";
+            sSql += "       Contacto='" + oBE_T_MaestroCliente.Contacto + "', ";
+            sSql += "       Telefono1='" + oBE_T_MaestroCliente.Telefono1 + "', ";
+            sSql += "       Telefono2='" + oBE_T_MaestroCliente.Telefono2 + "', ";
+            sSql += "       Fax='" + oBE_T_MaestroCliente.Fax + "', ";
+            sSql += "       Email='" + oBE_T_MaestroCliente.Email + "' ";
+            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdMaestroCliente='" + oBE_T_MaestroCliente.IdMaestroCliente + "' ";
+            ConexionDAO.fExecute(sSql);
         }
         public void Eliminar(string sIdRuta)
         {
