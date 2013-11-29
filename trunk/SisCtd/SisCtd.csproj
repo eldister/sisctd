@@ -195,6 +195,12 @@
     <Compile Include="Formularios\Tablas\Frm_T_Empleados_Det.designer.cs">
       <DependentUpon>Frm_T_Empleados_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_MaestroClientes_Det.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Frm_T_MaestroClientes_Det.designer.cs">
+      <DependentUpon>Frm_T_MaestroClientes_Det.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_RutaActividad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Empleados_Det.resx">
       <DependentUpon>Frm_T_Empleados_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Frm_T_MaestroClientes_Det.resx">
+      <DependentUpon>Frm_T_MaestroClientes_Det.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_RutaActividad.resx">
       <DependentUpon>Frm_T_RutaActividad.cs</DependentUpon>

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtIdControl = new MigControls.MigTextbox();
             this.label3 = new System.Windows.Forms.Label();
@@ -336,8 +336,8 @@
             this.dgControl.AllowUserToAddRows = false;
             this.dgControl.AllowUserToDeleteRows = false;
             this.dgControl.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
-            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
+            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgControl.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -375,40 +375,48 @@
             // btnSubir
             // 
             this.btnSubir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubir.Image = global::SisCtd.Properties.Resources.up;
+            this.btnSubir.Image = global::SisCtd.Properties.Resources._16__Fill_up_;
             this.btnSubir.Location = new System.Drawing.Point(967, 29);
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.Size = new System.Drawing.Size(26, 23);
             this.btnSubir.TabIndex = 6;
             this.btnSubir.UseVisualStyleBackColor = true;
+            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
             // 
             // btnBajar
             // 
             this.btnBajar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBajar.Image = global::SisCtd.Properties.Resources.down;
+            this.btnBajar.Image = global::SisCtd.Properties.Resources._16__Fill_down_;
             this.btnBajar.Location = new System.Drawing.Point(967, 58);
             this.btnBajar.Name = "btnBajar";
             this.btnBajar.Size = new System.Drawing.Size(26, 23);
             this.btnBajar.TabIndex = 5;
             this.btnBajar.UseVisualStyleBackColor = true;
+            this.btnBajar.Click += new System.EventHandler(this.btnBajar_Click);
             // 
             // btnQuitarActividad
             // 
-            this.btnQuitarActividad.Location = new System.Drawing.Point(123, 187);
+            this.btnQuitarActividad.Image = global::SisCtd.Properties.Resources._16__Db_delete_;
+            this.btnQuitarActividad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQuitarActividad.Location = new System.Drawing.Point(134, 187);
             this.btnQuitarActividad.Name = "btnQuitarActividad";
-            this.btnQuitarActividad.Size = new System.Drawing.Size(105, 23);
+            this.btnQuitarActividad.Size = new System.Drawing.Size(110, 23);
             this.btnQuitarActividad.TabIndex = 2;
             this.btnQuitarActividad.Text = "&Quitar Actividad";
+            this.btnQuitarActividad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnQuitarActividad.UseVisualStyleBackColor = true;
             this.btnQuitarActividad.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // btnAgregarActividad
             // 
+            this.btnAgregarActividad.Image = global::SisCtd.Properties.Resources._16__Db_insert_;
+            this.btnAgregarActividad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregarActividad.Location = new System.Drawing.Point(12, 187);
             this.btnAgregarActividad.Name = "btnAgregarActividad";
-            this.btnAgregarActividad.Size = new System.Drawing.Size(105, 23);
+            this.btnAgregarActividad.Size = new System.Drawing.Size(116, 23);
             this.btnAgregarActividad.TabIndex = 1;
             this.btnAgregarActividad.Text = "&Agregar Actividad";
+            this.btnAgregarActividad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregarActividad.UseVisualStyleBackColor = true;
             this.btnAgregarActividad.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -427,8 +435,8 @@
             this.dgDetalle.AllowUserToAddRows = false;
             this.dgDetalle.AllowUserToDeleteRows = false;
             this.dgDetalle.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Ivory;
+            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetalle.BackgroundColor = System.Drawing.Color.LightSlateGray;

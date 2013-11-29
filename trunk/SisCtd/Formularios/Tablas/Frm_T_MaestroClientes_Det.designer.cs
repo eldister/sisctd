@@ -57,10 +57,10 @@
             // BtnCancelar
             // 
             this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.BtnCancelar.Location = new System.Drawing.Point(487, 299);
+            this.BtnCancelar.Location = new System.Drawing.Point(478, 297);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
-            this.BtnCancelar.TabIndex = 13;
+            this.BtnCancelar.TabIndex = 12;
             this.BtnCancelar.Text = "&Cerrar";
             this.BtnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCancelar.UseVisualStyleBackColor = true;
@@ -69,10 +69,10 @@
             // BtnGrabar
             // 
             this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.BtnGrabar.Location = new System.Drawing.Point(408, 299);
+            this.BtnGrabar.Location = new System.Drawing.Point(392, 297);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);
-            this.BtnGrabar.TabIndex = 12;
+            this.BtnGrabar.TabIndex = 11;
             this.BtnGrabar.Text = "&Grabar";
             this.BtnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnGrabar.UseVisualStyleBackColor = true;
@@ -215,9 +215,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(14, 99);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 750;
-            this.label4.Text = "Num.Documento";
+            this.label4.Text = "Dni / Ruc";
             // 
             // txtNumeroDoi
             // 
@@ -288,7 +288,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(280, 221);
+            this.label9.Location = new System.Drawing.Point(280, 220);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 13);
             this.label9.TabIndex = 756;
@@ -302,7 +302,7 @@
             this.txtTelefono2.ColorSalida = System.Drawing.Color.White;
             this.txtTelefono2.Decimales = 2;
             this.txtTelefono2.Guiones = false;
-            this.txtTelefono2.Location = new System.Drawing.Point(374, 217);
+            this.txtTelefono2.Location = new System.Drawing.Point(344, 216);
             this.txtTelefono2.MaxLength = 20;
             this.txtTelefono2.Name = "txtTelefono2";
             this.txtTelefono2.PasarEnter = true;
@@ -362,7 +362,7 @@
             // 
             // Frm_T_MaestroClientes_Det
             // 
-            this.ClientSize = new System.Drawing.Size(575, 330);
+            this.ClientSize = new System.Drawing.Size(575, 337);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label10);

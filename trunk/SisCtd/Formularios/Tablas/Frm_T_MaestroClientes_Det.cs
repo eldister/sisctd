@@ -65,7 +65,7 @@ namespace SisCtd
                         if (oBE_T_MaestroCliente != null)
                         {
                             cboTipoDoi.Text = oBE_T_MaestroCliente.TipoDoi;
-                            cboTipoPersona.Text  = oBE_T_MaestroCliente.TipoPersona;
+                            cboTipoPersona.SelectedIndex = oBE_T_MaestroCliente.TipoPersona == "N" ? 0 : 1;
                             txtNumeroDoi.Text = oBE_T_MaestroCliente.NumeroDoi;
                             txtRazonSocial.Text = oBE_T_MaestroCliente.RazonSocial;
                             txtDireccion.Text = oBE_T_MaestroCliente.Direccion;
