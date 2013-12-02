@@ -378,34 +378,30 @@ namespace SisCtd
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            //if (Get_IdTipoDocumento(true) == false) return;
-            //Regresar:
-            //string sIdRuta = Helper.Buscar(oBL_T_Ruta.Buscar());
-            //if (sIdRuta == "") return;
-            //BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta = new BE_T_TipoDocumentoRuta();
-            //oBE_T_TipoDocumentoRuta.IdTipoDocumento = sIdTipoDocumento;
-            //oBE_T_TipoDocumentoRuta.IdRuta = sIdRuta;
-            //if (oBL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta))
-            //{
-            //    MessageBox.Show("La Ruta " + sIdRuta + " ya ha sido asignado al Tipo de Documento " + sIdTipoDocumento + ". Verificar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    goto Regresar;
-            //}
+            if (Get_IdControl(true) == false) return;
 
-            //oBL_T_TipoDocumento.AgregarRuta(oBE_T_TipoDocumentoRuta);
-            //Listar_Rutas();
-            //Helper.Buscar_Grilla(dgDetalle, sIdRuta, 0);
+            Frm_Reg_Control_Actividad fDet = new Frm_Reg_Control_Actividad(sIdControl);
+            fDet.ShowDialog();
+            if (fDet.bGrabo == true)
+            {
+                Listar_Detalle();
+            }
+            fDet.Dispose();
+
         }
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            //Get_IdRuta(true);
-            //if (sIdRuta == "") return;
-            //BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta = new BE_T_TipoDocumentoRuta();
-            //oBE_T_TipoDocumentoRuta.IdTipoDocumento = sIdTipoDocumento;
-            //oBE_T_TipoDocumentoRuta.IdRuta = sIdRuta;
+            Get_NroSecuencia(true);
+            if (sNroSecuencia == "") return;
 
-            //if (MessageBox.Show("¿Está seguro que desea de Quitar la Ruta : " + sIdRuta + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-            //oBL_T_TipoDocumento.QuitarRuta(oBE_T_TipoDocumentoRuta);
-            //Listar_Rutas();
+            BE_Reg_ControlDetalle oBE_Reg_ControlDetalle = new BE_Reg_ControlDetalle();
+            oBE_Reg_ControlDetalle.IdControl = sIdControl;
+            oBE_Reg_ControlDetalle.NroSecuencia = sNroSecuencia;
+
+
+            if (MessageBox.Show("¿Está seguro que desea de Quitar la Secuencia : " + sNroSecuencia + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+            oBL_Reg_Control.Quitar_Actividad(oBE_Reg_ControlDetalle);
+            Listar_Detalle();
         }
         private void btnSubir_Click(object sender, EventArgs e)
         {

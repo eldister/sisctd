@@ -78,6 +78,31 @@ namespace DLSisCtd
             reader.Dispose(); reader = null;
             return oBE_Reg_ControlImagenes;
         }
+        public Boolean Existe_Actividad(string sIdControl,string sIdActividad)
+        {
+            sSql = "select  count(*) from Reg_ControlDetalle ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdControl = '" + sIdControl + "' and ";
+            sSql += "       IdActividad = '" + sIdActividad + "' ";
+
+            return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
+        }
+        public string Max_NroSecuencia(string sIdControl)
+        {
+            sSql = "select  right('0'+convert(varchar(2),max(convert(int,NroSecuencia))+1),2) from Reg_ControlDetalle ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdControl = '" + sIdControl + "'";
+
+            return Convert.ToString(ConexionDAO.fEscalar(sSql));
+        }
+        public int Max_Orden(string sIdControl)
+        {
+            sSql = "select  max(orden)+1 from Reg_ControlDetalle ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdControl = '" + sIdControl + "'";
+
+            return Convert.ToInt16(ConexionDAO.fEscalar(sSql));
+        }
         #endregion
 
         #region Operaciones
@@ -413,6 +438,50 @@ namespace DLSisCtd
                 ConexionDAO.fExecute(sSql);
             }
 
+        }
+
+
+        public void Agregar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    sSql = "insert into Reg_ControlDetalle values(";
+                    sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' ,'" + oBE_Reg_ControlDetalle.IdControl + "','" + oBE_Reg_ControlDetalle.NroSecuencia + "', " + oBE_Reg_ControlDetalle.Orden.ToString() + ", ";
+                    sSql += "       '" + oBE_Reg_ControlDetalle.IdActividad + "', ";
+                    sSql += "       null,null,null,null, ";
+                    sSql += "       null,null,null,null, ";
+                    sSql += "       ''," + oBE_Reg_ControlDetalle.DuracionEnDias + ",'Pendiente', ";
+                    sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
+                   
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    sTrans.Commit();
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+        }
+
+        public void Quitar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    sSql = "delete  from Reg_ControlDetalle ";
+                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+                    sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "' and ";
+                    sSql += "       NroSecuencia = '" + oBE_Reg_ControlDetalle.NroSecuencia + "' ";
+
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    sTrans.Commit();
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
         }
 
         #endregion

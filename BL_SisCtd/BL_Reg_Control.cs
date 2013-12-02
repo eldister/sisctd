@@ -42,7 +42,19 @@ namespace BLSisCtd
         public BE_Reg_ControlImagenes Get_Reg_ControlImagenes(string sIdCliente, string sIdImagen)
         {
             return oDL_Reg_Control.Get_Reg_ControlImagenes(sIdCliente,sIdImagen);
-        }   
+        }
+        public Boolean Existe_Actividad(string sIdControl, string sIdActividad)
+        {
+            return oDL_Reg_Control.Existe_Actividad(sIdControl, sIdActividad);
+        }
+        public string Max_NroSecuencia(string sIdControl)
+        {
+            return oDL_Reg_Control.Max_NroSecuencia(sIdControl);
+        }
+        public int Max_Orden(string sIdControl)
+        {
+            return oDL_Reg_Control.Max_Orden(sIdControl);
+        }
         #endregion
 
         #region Operaciones
@@ -75,6 +87,14 @@ namespace BLSisCtd
         public void Bajar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
             oDL_Reg_Control.Bajar(oBE_Reg_ControlDetalle);
+        }
+        public void Agregar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            oDL_Reg_Control.Agregar_Actividad(oBE_Reg_ControlDetalle);
+        }
+        public void Quitar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            oDL_Reg_Control.Quitar_Actividad(oBE_Reg_ControlDetalle);
         }
         #endregion
     }
