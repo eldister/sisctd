@@ -68,7 +68,14 @@ namespace BLSisCtd
             oDL_Reg_Control.Quitar_Archivo(sIdControl);
         }
 
-
+        public void Subir(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            oDL_Reg_Control.Subir(oBE_Reg_ControlDetalle);
+        }
+        public void Bajar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            oDL_Reg_Control.Bajar(oBE_Reg_ControlDetalle);
+        }
         #endregion
     }
 }

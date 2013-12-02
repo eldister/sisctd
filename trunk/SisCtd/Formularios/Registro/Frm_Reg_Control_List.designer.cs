@@ -453,8 +453,6 @@
             this.dgDetalle.Size = new System.Drawing.Size(954, 152);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 0;
-            this.dgDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
-            this.dgDetalle.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDetalle_CellClick);
             // 
             // Frm_Reg_Control_List
             // 
