@@ -359,7 +359,62 @@ namespace DLSisCtd
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
         }
-     
+        public void Subir(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            sSql = "select orden from Reg_ControlDetalle ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "' and ";
+            sSql += "       NroSecuencia = '" + oBE_Reg_ControlDetalle.NroSecuencia + "' ";
+            int nOrden = (Convert.ToInt16(ConexionDAO.fEscalar(sSql)));
+            if (nOrden != 1)
+            {
+                sSql = "select  NroSecuencia from Reg_ControlDetalle ";
+                sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+                sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "' and ";
+                sSql += "       orden = " + Convert.ToString(nOrden - 1) + " ";
+                string sNroSecuencia = (Convert.ToString(ConexionDAO.fEscalar(sSql)));
+
+                sSql = "update  Reg_ControlDetalle set orden ='" + Convert.ToString(nOrden - 1) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "'  and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia + "' ";
+                ConexionDAO.fExecute(sSql);
+
+                sSql = "update  Reg_ControlDetalle set orden ='" + Convert.ToString(nOrden) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "'  and NroSecuencia='" + sNroSecuencia + "' ";
+                ConexionDAO.fExecute(sSql);
+            }
+        }
+
+        public void Bajar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            sSql = "select  max(orden) from Reg_ControlDetalle ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "'";
+            int nCantidad = (Convert.ToInt16(ConexionDAO.fEscalar(sSql)));
+
+            sSql = "select  orden from Reg_ControlDetalle ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "' and ";
+            sSql += "       NroSecuencia = '" + oBE_Reg_ControlDetalle.NroSecuencia + "' ";
+            int nOrden = (Convert.ToInt16(ConexionDAO.fEscalar(sSql)));
+            if (nOrden != nCantidad)
+            {
+                sSql = "select  NroSecuencia from Reg_ControlDetalle ";
+                sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+                sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "' and ";
+                sSql += "       Orden = " + Convert.ToString(nOrden + 1) + " ";
+                string sNroSecuencia = (Convert.ToString(ConexionDAO.fEscalar(sSql)));
+
+                sSql = "update Reg_ControlDetalle set orden ='" + Convert.ToString(nOrden + 1) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "'  and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia + "' ";
+                ConexionDAO.fExecute(sSql);
+
+                sSql = "update Reg_ControlDetalle set orden ='" + Convert.ToString(nOrden) + "' ";
+                sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "'  and NroSecuencia='" + sNroSecuencia + "' ";
+                ConexionDAO.fExecute(sSql);
+            }
+
+        }
+
         #endregion
 
     }

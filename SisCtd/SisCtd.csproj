@@ -177,6 +177,12 @@
     <Compile Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.designer.cs">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Tablas\Copia de Frm_T_RutaActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tablas\Copia de Frm_T_RutaActividad.designer.cs">
+      <DependentUpon>Copia de Frm_T_RutaActividad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tablas\Frm_T_Actividades_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Usuarios_Det.resx">
       <DependentUpon>Frm_Sis_Usuarios_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tablas\Copia de Frm_T_RutaActividad.resx">
+      <DependentUpon>Copia de Frm_T_RutaActividad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tablas\Frm_T_Actividades_List.resx">
       <DependentUpon>Frm_T_Actividades_List.cs</DependentUpon>

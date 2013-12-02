@@ -15,7 +15,7 @@ namespace SisCtd
     {
         #region Declaración Variables
         BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
-        string sIdControl;
+        string sIdControl, sNroSecuencia;
  
         #endregion
 
@@ -125,34 +125,13 @@ namespace SisCtd
 
                 dgDetalle.Columns["Estado"].Width = 80;
 
-                Listar_RutaActividad();
                 Dt.Dispose();
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
         }
-        private void Listar_RutaActividad()
-        {
-        //    DataTable Dt = new DataTable();
-        //    try
-        //    {
-        //        this.Cursor = Cursors.WaitCursor;
-        //        Get_IdRuta(false);
-        //        Dt = oBL_T_TipoDocumento.Listar_RutaActividad(sIdRuta);
-
-        //        dgAnexos.DataSource = Dt; Helper.FormatoGrilla(dgAnexos, false);
-        //        dgAnexos.Columns["Orden"].Width = 40;
-        //        dgAnexos.Columns["IdActividad"].Width = 70;
-        //        dgAnexos.Columns["Descripcion"].Width = 250;
-        //        dgAnexos.Columns["Estado"].Width = 45;
-
-        //        Dt.Dispose();
-        //    }
-        //    catch (Exception ex)
-        //    { MessageBox.Show(ex.Message, " Error : " + ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        //    finally { if (Dt != null) { Dt = null; } this.Cursor = Cursors.Default; }
-        }
+  
         private bool Get_IdControl(bool bMsg)
         {
             if (dgControl.Rows.Count <= 0)
@@ -167,20 +146,20 @@ namespace SisCtd
                 return true; 
             }
         }
-        //private bool Get_IdRuta(bool bMsg)
-        //{
-        //    if (dgDetalle.Rows.Count <= 0)
-        //    {
-        //        if (bMsg == true) MessageBox.Show("Seleccione una Ruta", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //        sIdRuta = "";
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        sIdRuta = dgDetalle.Rows[dgDetalle.CurrentCellAddress.Y].Cells[0].Value.ToString().Trim();
-        //        return true;
-        //    }
-        //}
+        private bool Get_NroSecuencia(bool bMsg)
+        {
+            if (dgDetalle.Rows.Count <= 0)
+            {
+                if (bMsg == true) MessageBox.Show("Seleccione una Secuencia", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                sNroSecuencia = "";
+                return false;
+            }
+            else
+            {
+                sNroSecuencia = dgDetalle.Rows[dgDetalle.CurrentCellAddress.Y].Cells[0].Value.ToString().Trim();
+                return true;
+            }
+        }
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
             Frm_Reg_Control_Det fDet = new Frm_Reg_Control_Det(qOpcion, sIdControl);
@@ -396,10 +375,7 @@ namespace SisCtd
         {
             Listar_Detalle();
         }
-        private void dgDetalle_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Listar_RutaActividad();
-        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             //if (Get_IdTipoDocumento(true) == false) return;
@@ -433,12 +409,34 @@ namespace SisCtd
         }
         private void btnSubir_Click(object sender, EventArgs e)
         {
+            Get_IdControl(true);
+            if (sIdControl == "") return;
+            Get_NroSecuencia(true);
+            if (sNroSecuencia == "") return;
 
+            BE_Reg_ControlDetalle oBE_Reg_ControlDetalle = new BE_Reg_ControlDetalle();
+            oBE_Reg_ControlDetalle.IdControl = sIdControl;
+            oBE_Reg_ControlDetalle.NroSecuencia = sNroSecuencia;
+
+            oBL_Reg_Control.Subir(oBE_Reg_ControlDetalle);
+            Listar_Detalle();
+            Helper.Buscar_Grilla(dgDetalle, sNroSecuencia, 0);
         }
 
         private void btnBajar_Click(object sender, EventArgs e)
         {
+            Get_IdControl(true);
+            if (sIdControl == "") return;
+            Get_NroSecuencia(true);
+            if (sNroSecuencia == "") return;
 
+            BE_Reg_ControlDetalle oBE_Reg_ControlDetalle = new BE_Reg_ControlDetalle();
+            oBE_Reg_ControlDetalle.IdControl = sIdControl;
+            oBE_Reg_ControlDetalle.NroSecuencia = sNroSecuencia;
+
+            oBL_Reg_Control.Bajar(oBE_Reg_ControlDetalle);
+            Listar_Detalle();
+            Helper.Buscar_Grilla(dgDetalle, sNroSecuencia, 0);
         }
         #endregion
 
