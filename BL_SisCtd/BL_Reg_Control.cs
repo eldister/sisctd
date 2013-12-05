@@ -35,9 +35,9 @@ namespace BLSisCtd
         //    return oDL_T_TipoDocumento.Existe_Ruta(oBE_T_TipoDocumentoRuta);
         //}
 
-        public Boolean Existe_Imagen(string sIdControl)
+        public string Get_Imagen(string sIdControl)
         {
-            return oDL_Reg_Control.Existe_Imagen(sIdControl);
+            return oDL_Reg_Control.Get_Imagen(sIdControl);
         }
         public BE_Reg_ControlImagenes Get_Reg_ControlImagenes(string sIdCliente, string sIdImagen)
         {
