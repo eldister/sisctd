@@ -48,14 +48,13 @@ namespace DLSisCtd
 
             return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
         }
-        public Boolean Existe_Imagen(string sIdControl)
+        public string Get_Imagen(string sIdControl)
         {
-            sSql = "select  count(*) from Reg_Control ";
+            sSql = "select  IdImagen from Reg_Control ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       IdControl = '" + sIdControl.ToString() + "' and ";
-            sSql += "       IdImagen <> '' ";
+            sSql += "       IdControl = '" + sIdControl.ToString() + "'  ";
 
-            return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
+            return Convert.ToString(ConexionDAO.fEscalar(sSql));
         }
         public BE_Reg_ControlImagenes Get_Reg_ControlImagenes(string sIdCliente, string sIdImagen)
         {

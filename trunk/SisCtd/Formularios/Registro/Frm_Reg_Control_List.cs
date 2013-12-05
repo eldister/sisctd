@@ -220,7 +220,7 @@ namespace SisCtd
             try
             {
 
-                if (oBL_Reg_Control.Existe_Imagen(sIdControl))
+                if (oBL_Reg_Control.Get_Imagen(sIdControl) != "")
                 {
                     MessageBox.Show("Ya se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     dgControl.Focus(); return;
@@ -280,18 +280,20 @@ namespace SisCtd
         {
             // Declaramos fs para tener crear un nuevo archivo temporal en la maquina cliente.
             // y memStream para almacenar en memoria la cadena recibida.
+            if (Get_IdControl(true) == false) return; 
             BE_Reg_ControlImagenes oBE_Reg_ControlImagenes = new BE_Reg_ControlImagenes();
 
             byte[] bytes;
             try
             {
-                if (!oBL_Reg_Control.Existe_Imagen(sIdControl))
+                string sIdImagen = oBL_Reg_Control.Get_Imagen(sIdControl);
+                if (sIdImagen == "")
                 {
                     MessageBox.Show("No se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     dgControl.Focus(); return;
                 }
 
-                oBE_Reg_ControlImagenes = oBL_Reg_Control.Get_Reg_ControlImagenes(BE_Helper.oBE_Sis_Cliente.IdCliente, "0000001");
+                oBE_Reg_ControlImagenes = oBL_Reg_Control.Get_Reg_ControlImagenes(BE_Helper.oBE_Sis_Cliente.IdCliente, sIdImagen);
                 bytes = oBE_Reg_ControlImagenes.Archivo;
 
                 string sNombre = oBE_Reg_ControlImagenes.Nombre + oBE_Reg_ControlImagenes.ExtensionImagen;
@@ -325,7 +327,7 @@ namespace SisCtd
             BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
             try
             {
-                if (!oBL_Reg_Control.Existe_Imagen(sIdControl))
+                if (oBL_Reg_Control.Get_Imagen(sIdControl) == "")
                 {
                     MessageBox.Show("No se ha asignado la imagen al Control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     dgControl.Focus(); return;
