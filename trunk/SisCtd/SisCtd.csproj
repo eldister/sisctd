@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SisCtd</RootNamespace>
-    <AssemblyName>SisGpd10</AssemblyName>
+    <AssemblyName>SisCtd</AssemblyName>
     <ApplicationIcon>reportes.ico</ApplicationIcon>
     <StartupObject>
     </StartupObject>
@@ -28,9 +28,9 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>\\10.50.92.130\Instaladores\SisGpd10\</PublishUrl>
+    <PublishUrl>C:\Instalador\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -38,11 +38,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <ProductName>SisGpd10</ProductName>
-    <PublisherName>Iron Mountain S.A</PublisherName>
+    <ProductName>SisCtd</ProductName>
+    <PublisherName>Control de Tramite Documentario</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>12</ApplicationRevision>
-    <ApplicationVersion>10.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -85,6 +85,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
@@ -99,6 +100,12 @@
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.designer.cs">
       <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Seguimiento_Envio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Seguimiento_Envio.designer.cs">
+      <DependentUpon>Frm_Reg_Seguimiento_Envio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Registro\Frm_Reg_Control_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +117,12 @@
     </Compile>
     <Compile Include="Formularios\Registro\Frm_Reg_Control_Det.designer.cs">
       <DependentUpon>Frm_Reg_Control_Det.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Seguimiento_Recepcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_Seguimiento_Recepcion.designer.cs">
+      <DependentUpon>Frm_Reg_Seguimiento_Recepcion.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Sistema\Frm_About.cs">
       <SubType>Form</SubType>
@@ -255,11 +268,17 @@
     <EmbeddedResource Include="Formularios\Consultas\Frm_Con_Registro.resx">
       <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registro\Frm_Reg_Seguimiento_Envio.resx">
+      <DependentUpon>Frm_Reg_Seguimiento_Envio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro\Frm_Reg_Control_List.resx">
       <DependentUpon>Frm_Reg_Control_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro\Frm_Reg_Control_Det.resx">
       <DependentUpon>Frm_Reg_Control_Det.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registro\Frm_Reg_Seguimiento_Recepcion.resx">
+      <DependentUpon>Frm_Reg_Seguimiento_Recepcion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_About.resx">
       <DependentUpon>Frm_About.cs</DependentUpon>
