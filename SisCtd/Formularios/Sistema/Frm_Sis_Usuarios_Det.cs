@@ -46,6 +46,7 @@ namespace SisCtd
                         this.Text = " Consulta";
                         txtNombre.ReadOnly = true;
                         txtCorreo.ReadOnly = true;
+                        txtEmpleado.ReadOnly = true;
                         cboPerfil.Enabled = false;
                         cboEstado.Enabled = false;
                         btnGrabar.Visible = false;
@@ -64,6 +65,7 @@ namespace SisCtd
                             txtIdUsuario.Text = oBE_Sis_Usuario.IdUsuario;
                             txtNombre.Text = oBE_Sis_Usuario.Nombre;
                             txtCorreo.Text = oBE_Sis_Usuario.Correo;
+                            txtEmpleado.Text = oBE_Sis_Usuario.IdEmpleado;
                             cboPerfil.SelectedValue = oBE_Sis_Usuario.IdPerfil;
                             cboEstado.SelectedIndex = oBE_Sis_Usuario.Estado ? 0 : 1;
                         }
