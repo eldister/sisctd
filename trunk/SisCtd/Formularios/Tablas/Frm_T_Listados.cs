@@ -218,6 +218,11 @@ namespace SisCtd
                         oBL_T_Actividad.Eliminar(sId);
                         break;
 
+                    case Helper.eTablas.Empleados :
+
+                        if (MessageBox.Show("¿Está seguro que desea de Eliminar Empleado : " + sId + " ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                        oBL_T_Empleado.Eliminar(sId);
+                        break;
 
                     //        case Helper.eTablas.Territorios:
                     //            if (oTerritorios.Existe_Oficinas(sId) == true)
