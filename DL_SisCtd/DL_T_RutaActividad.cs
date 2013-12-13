@@ -73,7 +73,7 @@ namespace DLSisCtd
 
         public int  Max_Orden(BE_T_RutaActividad oBE_T_RutaActividad)
         {
-            sSql = "select  max(orden)+1 from T_RutaActividad ";
+            sSql = "select  isnull(max(orden)+1,1) from T_RutaActividad ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
             sSql += "       IdRuta = '" + oBE_T_RutaActividad.IdRuta + "'";
 
