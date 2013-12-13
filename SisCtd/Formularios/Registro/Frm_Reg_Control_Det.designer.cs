@@ -216,10 +216,10 @@
             this.txtNumero.Decimales = 2;
             this.txtNumero.Guiones = false;
             this.txtNumero.Location = new System.Drawing.Point(120, 127);
-            this.txtNumero.MaxLength = 10;
+            this.txtNumero.MaxLength = 30;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.PasarEnter = true;
-            this.txtNumero.Size = new System.Drawing.Size(169, 20);
+            this.txtNumero.Size = new System.Drawing.Size(192, 20);
             this.txtNumero.TabIndex = 3;
             this.txtNumero.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
