@@ -139,8 +139,16 @@ namespace SisCtd
             lblFechaDocumento.Text = "";
             txtObservacionGeneral.Text = "";
 
+            lblIdActividad.Text = "";
+            lblDesActividad.Text = "";
+            lblIdEmpleado.Text = "";
+            lblDesEmpleado.Text = "";
             lblFechaRecepcion.Text = "";
             lblIdOficinaRecepcion.Text = "";
+            lblDesOficinaRecepcion.Text = "";
+            lblIdAreaRecepcion.Text = "";
+            lblDesAreaRecepcion.Text = "";
+            txtObservacion.Text = "";
 
             BtnGrabar.Visible = true;
         }
@@ -149,8 +157,31 @@ namespace SisCtd
         {
             try
             {
-                
+                if (lblDesTipoDocumento.Text == "")
+                {
+                    MessageBox.Show("El registro de control no existe. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtIdControl.Focus(); return;
+                }
+                if (lblDesActividad.Text == "")
+                {
+                    MessageBox.Show("El registro de control no tiene actividades pendientes de Recepción. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtIdControl.Focus(); return;
+                }
+                if (lblDesEmpleado.Text == "")
+                {
+                    MessageBox.Show("Ud no tiene acceso a Recepcionar este documento. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtIdControl.Focus(); return;
+                }
 
+                oBE_Reg_ControlDetalle.IdControl = txtIdControl.Text;
+                oBE_Reg_ControlDetalle.IdOficinaRecepcion = lblIdOficinaRecepcion.Text;
+                oBE_Reg_ControlDetalle.IdEmpleadoRecepcion = lblIdEmpleado.Text;
+                oBE_Reg_ControlDetalle.IdAreaRecepcion = lblIdAreaRecepcion.Text;
+                oBE_Reg_ControlDetalle.Observacion = txtObservacion.Text;
+                oBL_Reg_Control.Recepcionar(oBE_Reg_ControlDetalle);
+                MessageBox.Show("Se ha Recepcionado el Control " + txtIdControl.Text + " en la actividad " + lblDesActividad.Text + " forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtIdControl.Text = "";
+                txtIdControl.Focus();
             }
             catch (Exception Er)
             { MessageBox.Show(this, Er.Message, "Error : " + Er.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
