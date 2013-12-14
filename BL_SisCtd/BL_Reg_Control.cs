@@ -29,6 +29,10 @@ namespace BLSisCtd
         {
             return oDL_Reg_Control.Get_Control(nIdControl);
         }
+        public BE_Reg_ControlDetalle Get_ControlDetalleRecepcion(string sIdControl)
+        {
+            return oDL_Reg_Control.Get_ControlDetalleRecepcion(sIdControl);
+        }
 
         //public Boolean Existe_Ruta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
         //{
@@ -54,6 +58,10 @@ namespace BLSisCtd
         public int Max_Orden(string sIdControl)
         {
             return oDL_Reg_Control.Max_Orden(sIdControl);
+        }
+        public string ActividadPendiente(string sIdControl)
+        {
+            return oDL_Reg_Control.ActividadPendiente(sIdControl);
         }
         #endregion
 
@@ -95,6 +103,11 @@ namespace BLSisCtd
         public void Quitar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
             oDL_Reg_Control.Quitar_Actividad(oBE_Reg_ControlDetalle);
+        }
+
+        public Boolean Empleado_Valido_Recepcion(string sIdEmpleado, string sIdActividad)
+        {
+            return oDL_Reg_Control.Empleado_Valido_Recepcion(sIdEmpleado, sIdActividad);
         }
         #endregion
     }

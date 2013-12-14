@@ -15,17 +15,18 @@ namespace SisCtd
     {
         #region Declaración Variables
 
-        public string sIdControl;
-        public Boolean bGrabo = false;
-        Helper.eOpcion qOpcion;
-
         BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
         BE_Reg_Control oBE_Reg_Control = new BE_Reg_Control();
+        BE_Reg_ControlDetalle oBE_Reg_ControlDetalle = new BE_Reg_ControlDetalle();
+        BE_T_Empleado oBE_T_Empleado = new BE_T_Empleado();
 
         BL_T_TipoDocumento oBL_T_TipoDocumento = new BL_T_TipoDocumento();
         BL_T_MaestroCliente oBL_T_MaestroCliente = new BL_T_MaestroCliente();
-        BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
+        BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
         BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
+        BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
+        BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
+        BL_T_Area oBL_T_Area = new BL_T_Area();
 
         #endregion
 
@@ -63,13 +64,57 @@ namespace SisCtd
                     oBE_Reg_Control = oBL_Reg_Control.Get_Control(txtIdControl.Text);
                     if (oBE_Reg_Control != null)
                     {
-                        lblFechaRecepcion.Text = oBE_Reg_Control.FechaRecepcion.ToString("dd/MM/yyyy");
-                        lblIdOficinaRecepcion.Text = oBE_Reg_Control.IdOficinaRecepcion;
+
                         lblIdTipoDocumento.Text = oBE_Reg_Control.IdTipoDocumento;
+                        lblDesTipoDocumento.Text = oBL_T_TipoDocumento.Get_Descripcion(lblIdTipoDocumento.Text);
                         lblIdMaestroCliente.Text = oBE_Reg_Control.IdMaestroCliente;
+                        lblDesMaestroCliente.Text = oBL_T_MaestroCliente.Get_RazonSocial(lblIdMaestroCliente.Text);
                         lblNroDocumento.Text = oBE_Reg_Control.NroDocumento;
                         lblFechaDocumento.Text = oBE_Reg_Control.FechaDocumento.ToString("dd/MM/yyyy");
-                        txtDetalle.Text = oBE_Reg_Control.Observacion;
+                        txtObservacionGeneral.Text = oBE_Reg_Control.Observacion;
+
+
+                        string sActividadPendiente = oBL_Reg_Control.ActividadPendiente(txtIdControl.Text);
+                        if (sActividadPendiente != "")
+                        {
+                            MessageBox.Show("Existe una Actividad Pendiente de Envío : " + sActividadPendiente + " . Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            BtnGrabar.Visible = false; txtIdControl.Focus(); return;
+                        }
+
+                        oBE_Reg_ControlDetalle = oBL_Reg_Control.Get_ControlDetalleRecepcion(txtIdControl.Text);
+
+                        if (oBE_Reg_ControlDetalle != null)
+                        {
+                            lblIdActividad.Text = oBE_Reg_ControlDetalle.IdActividad;
+                            lblDesActividad.Text = oBL_T_Actividad.Get_Descripcion(lblIdActividad.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya no hay mas acividades para este control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            BtnGrabar.Visible = false; txtIdControl.Focus(); return;
+                        }
+
+                        //Validando Actividad con empleado
+                        string sIdEmpleado = oBL_Sis_Usuario.Get_IdEmpleado(BE_Helper.oBE_Sis_Usuario.IdUsuario);
+                        if (oBL_Reg_Control.Empleado_Valido_Recepcion(sIdEmpleado, lblIdActividad.Text) == false)
+                        {
+                            MessageBox.Show("Ud. no está autorizado para recepcionar este documento en esta actividad. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            BtnGrabar.Visible = false; txtIdControl.Focus(); return;
+                        }
+
+                        oBE_T_Empleado = oBL_T_Empleado.Get_Empleado(sIdEmpleado);
+                        
+                        //Buscando Datos de Recepcion con respecto al Empleado
+
+                        lblFechaRecepcion.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        lblIdEmpleado.Text = sIdEmpleado;
+                        lblDesEmpleado.Text = oBE_T_Empleado.Nombre;
+                        lblIdOficinaRecepcion.Text = oBE_T_Empleado.IdOficina;
+                        lblDesOficinaRecepcion.Text = oBL_T_Oficina.Get_Descripcion(lblIdOficinaRecepcion.Text);
+                        lblIdAreaRecepcion.Text = oBE_T_Empleado.IdArea;
+                        lblDesAreaRecepcion.Text = oBL_T_Area.Get_Descripcion(lblIdAreaRecepcion.Text);
+
+
                         txtObservacion.Focus();
                     }
                     else
@@ -85,13 +130,19 @@ namespace SisCtd
         }
         private void txtIdControl_TextChanged(object sender, EventArgs e)
         {
-            lblFechaRecepcion.Text = "";
-            lblIdOficinaRecepcion.Text = "";
+            
             lblIdTipoDocumento.Text = "";
+            lblDesTipoDocumento.Text = "";
             lblIdMaestroCliente.Text = "";
+            lblDesMaestroCliente.Text = "";
             lblNroDocumento.Text = "";
             lblFechaDocumento.Text = "";
-            txtDetalle.Text = "";
+            txtObservacionGeneral.Text = "";
+
+            lblFechaRecepcion.Text = "";
+            lblIdOficinaRecepcion.Text = "";
+
+            BtnGrabar.Visible = true;
         }
 
         private void BtnGrabar_Click(object sender, EventArgs e)

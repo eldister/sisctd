@@ -48,12 +48,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtObservacion = new MigControls.MigTextbox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDetalle = new MigControls.MigTextbox();
+            this.txtObservacionGeneral = new MigControls.MigTextbox();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblIdOficinaRecepcionDes = new System.Windows.Forms.Label();
+            this.lblDesOficinaRecepcion = new System.Windows.Forms.Label();
             this.lblIdOficinaRecepcion = new System.Windows.Forms.Label();
             this.lblFechaRecepcion = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblDesEmpleado = new System.Windows.Forms.Label();
+            this.lblIdEmpleado = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblDesAreaRecepcion = new System.Windows.Forms.Label();
+            this.lblIdAreaRecepcion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -78,7 +84,7 @@
             // 
             this.lblDesTipoDocumento.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblDesTipoDocumento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDesTipoDocumento.Location = new System.Drawing.Point(215, 41);
+            this.lblDesTipoDocumento.Location = new System.Drawing.Point(222, 41);
             this.lblDesTipoDocumento.Name = "lblDesTipoDocumento";
             this.lblDesTipoDocumento.Size = new System.Drawing.Size(322, 20);
             this.lblDesTipoDocumento.TabIndex = 10;
@@ -88,7 +94,7 @@
             // 
             this.lblDesMaestroCliente.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblDesMaestroCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDesMaestroCliente.Location = new System.Drawing.Point(215, 67);
+            this.lblDesMaestroCliente.Location = new System.Drawing.Point(222, 67);
             this.lblDesMaestroCliente.Name = "lblDesMaestroCliente";
             this.lblDesMaestroCliente.Size = new System.Drawing.Size(322, 20);
             this.lblDesMaestroCliente.TabIndex = 11;
@@ -115,7 +121,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(349, 97);
+            this.label8.Location = new System.Drawing.Point(356, 97);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 13);
             this.label8.TabIndex = 21;
@@ -124,7 +130,7 @@
             // BtnCancelar
             // 
             this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.BtnCancelar.Location = new System.Drawing.Point(457, 328);
+            this.BtnCancelar.Location = new System.Drawing.Point(464, 390);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
             this.BtnCancelar.TabIndex = 3;
@@ -136,7 +142,7 @@
             // BtnGrabar
             // 
             this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.BtnGrabar.Location = new System.Drawing.Point(374, 328);
+            this.BtnGrabar.Location = new System.Drawing.Point(381, 390);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);
             this.BtnGrabar.TabIndex = 2;
@@ -153,7 +159,7 @@
             this.txtIdControl.ColorSalida = System.Drawing.Color.White;
             this.txtIdControl.Decimales = 2;
             this.txtIdControl.Guiones = false;
-            this.txtIdControl.Location = new System.Drawing.Point(121, 15);
+            this.txtIdControl.Location = new System.Drawing.Point(128, 15);
             this.txtIdControl.MaxLength = 25;
             this.txtIdControl.Name = "txtIdControl";
             this.txtIdControl.PasarEnter = false;
@@ -167,7 +173,7 @@
             // 
             this.lblIdTipoDocumento.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblIdTipoDocumento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblIdTipoDocumento.Location = new System.Drawing.Point(121, 41);
+            this.lblIdTipoDocumento.Location = new System.Drawing.Point(128, 41);
             this.lblIdTipoDocumento.Name = "lblIdTipoDocumento";
             this.lblIdTipoDocumento.Size = new System.Drawing.Size(91, 20);
             this.lblIdTipoDocumento.TabIndex = 1;
@@ -177,7 +183,7 @@
             // 
             this.lblIdMaestroCliente.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblIdMaestroCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblIdMaestroCliente.Location = new System.Drawing.Point(121, 67);
+            this.lblIdMaestroCliente.Location = new System.Drawing.Point(128, 67);
             this.lblIdMaestroCliente.Name = "lblIdMaestroCliente";
             this.lblIdMaestroCliente.Size = new System.Drawing.Size(91, 20);
             this.lblIdMaestroCliente.TabIndex = 2;
@@ -187,7 +193,7 @@
             // 
             this.lblIdActividad.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblIdActividad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblIdActividad.Location = new System.Drawing.Point(121, 119);
+            this.lblIdActividad.Location = new System.Drawing.Point(128, 181);
             this.lblIdActividad.Name = "lblIdActividad";
             this.lblIdActividad.Size = new System.Drawing.Size(91, 20);
             this.lblIdActividad.TabIndex = 4;
@@ -197,7 +203,7 @@
             // 
             this.lblDesActividad.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblDesActividad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDesActividad.Location = new System.Drawing.Point(215, 119);
+            this.lblDesActividad.Location = new System.Drawing.Point(222, 181);
             this.lblDesActividad.Name = "lblDesActividad";
             this.lblDesActividad.Size = new System.Drawing.Size(322, 20);
             this.lblDesActividad.TabIndex = 38;
@@ -206,7 +212,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 123);
+            this.label14.Location = new System.Drawing.Point(8, 185);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 13);
             this.label14.TabIndex = 39;
@@ -216,7 +222,7 @@
             // 
             this.lblNroDocumento.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblNroDocumento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblNroDocumento.Location = new System.Drawing.Point(121, 93);
+            this.lblNroDocumento.Location = new System.Drawing.Point(128, 93);
             this.lblNroDocumento.Name = "lblNroDocumento";
             this.lblNroDocumento.Size = new System.Drawing.Size(191, 20);
             this.lblNroDocumento.TabIndex = 3;
@@ -226,7 +232,7 @@
             // 
             this.lblFechaDocumento.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblFechaDocumento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblFechaDocumento.Location = new System.Drawing.Point(454, 93);
+            this.lblFechaDocumento.Location = new System.Drawing.Point(461, 93);
             this.lblFechaDocumento.Name = "lblFechaDocumento";
             this.lblFechaDocumento.Size = new System.Drawing.Size(83, 20);
             this.lblFechaDocumento.TabIndex = 39;
@@ -235,11 +241,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 254);
+            this.label2.Location = new System.Drawing.Point(8, 318);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.Size = new System.Drawing.Size(114, 13);
             this.label2.TabIndex = 41;
-            this.label2.Text = "Observacion";
+            this.label2.Text = "Observacion Actividad";
             // 
             // txtObservacion
             // 
@@ -249,7 +255,7 @@
             this.txtObservacion.ColorSalida = System.Drawing.Color.White;
             this.txtObservacion.Decimales = 2;
             this.txtObservacion.Guiones = false;
-            this.txtObservacion.Location = new System.Drawing.Point(121, 254);
+            this.txtObservacion.Location = new System.Drawing.Point(128, 316);
             this.txtObservacion.MaxLength = 200;
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
@@ -261,54 +267,54 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 146);
+            this.label3.Location = new System.Drawing.Point(8, 121);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(107, 13);
             this.label3.TabIndex = 42;
-            this.label3.Text = "Detalle";
+            this.label3.Text = "Observación General";
             // 
-            // txtDetalle
+            // txtObservacionGeneral
             // 
-            this.txtDetalle.BackColor = System.Drawing.SystemColors.Control;
-            this.txtDetalle.Car_Años = 4;
-            this.txtDetalle.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.txtDetalle.ColorSalida = System.Drawing.Color.White;
-            this.txtDetalle.Decimales = 2;
-            this.txtDetalle.Guiones = false;
-            this.txtDetalle.Location = new System.Drawing.Point(121, 146);
-            this.txtDetalle.MaxLength = 200;
-            this.txtDetalle.Multiline = true;
-            this.txtDetalle.Name = "txtDetalle";
-            this.txtDetalle.PasarEnter = true;
-            this.txtDetalle.ReadOnly = true;
-            this.txtDetalle.Size = new System.Drawing.Size(416, 42);
-            this.txtDetalle.TabIndex = 4;
-            this.txtDetalle.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
+            this.txtObservacionGeneral.BackColor = System.Drawing.SystemColors.Control;
+            this.txtObservacionGeneral.Car_Años = 4;
+            this.txtObservacionGeneral.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtObservacionGeneral.ColorSalida = System.Drawing.Color.White;
+            this.txtObservacionGeneral.Decimales = 2;
+            this.txtObservacionGeneral.Guiones = false;
+            this.txtObservacionGeneral.Location = new System.Drawing.Point(128, 121);
+            this.txtObservacionGeneral.MaxLength = 200;
+            this.txtObservacionGeneral.Multiline = true;
+            this.txtObservacionGeneral.Name = "txtObservacionGeneral";
+            this.txtObservacionGeneral.PasarEnter = true;
+            this.txtObservacionGeneral.ReadOnly = true;
+            this.txtObservacionGeneral.Size = new System.Drawing.Size(416, 42);
+            this.txtObservacionGeneral.TabIndex = 4;
+            this.txtObservacionGeneral.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 227);
+            this.label4.Location = new System.Drawing.Point(8, 265);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 13);
             this.label4.TabIndex = 47;
             this.label4.Text = "Oficina Recepción";
             // 
-            // lblIdOficinaRecepcionDes
+            // lblDesOficinaRecepcion
             // 
-            this.lblIdOficinaRecepcionDes.BackColor = System.Drawing.Color.LemonChiffon;
-            this.lblIdOficinaRecepcionDes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblIdOficinaRecepcionDes.Location = new System.Drawing.Point(215, 223);
-            this.lblIdOficinaRecepcionDes.Name = "lblIdOficinaRecepcionDes";
-            this.lblIdOficinaRecepcionDes.Size = new System.Drawing.Size(322, 20);
-            this.lblIdOficinaRecepcionDes.TabIndex = 46;
-            this.lblIdOficinaRecepcionDes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDesOficinaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblDesOficinaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDesOficinaRecepcion.Location = new System.Drawing.Point(222, 261);
+            this.lblDesOficinaRecepcion.Name = "lblDesOficinaRecepcion";
+            this.lblDesOficinaRecepcion.Size = new System.Drawing.Size(322, 20);
+            this.lblDesOficinaRecepcion.TabIndex = 46;
+            this.lblDesOficinaRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblIdOficinaRecepcion
             // 
             this.lblIdOficinaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblIdOficinaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblIdOficinaRecepcion.Location = new System.Drawing.Point(121, 223);
+            this.lblIdOficinaRecepcion.Location = new System.Drawing.Point(128, 261);
             this.lblIdOficinaRecepcion.Name = "lblIdOficinaRecepcion";
             this.lblIdOficinaRecepcion.Size = new System.Drawing.Size(91, 20);
             this.lblIdOficinaRecepcion.TabIndex = 44;
@@ -318,7 +324,7 @@
             // 
             this.lblFechaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblFechaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblFechaRecepcion.Location = new System.Drawing.Point(121, 196);
+            this.lblFechaRecepcion.Location = new System.Drawing.Point(128, 208);
             this.lblFechaRecepcion.Name = "lblFechaRecepcion";
             this.lblFechaRecepcion.Size = new System.Drawing.Size(91, 20);
             this.lblFechaRecepcion.TabIndex = 43;
@@ -327,21 +333,85 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 200);
+            this.label15.Location = new System.Drawing.Point(8, 212);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(92, 13);
             this.label15.TabIndex = 45;
             this.label15.Text = "Fecha Recepcion";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 238);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 13);
+            this.label9.TabIndex = 50;
+            this.label9.Text = "Empleado Recepción";
+            // 
+            // lblDesEmpleado
+            // 
+            this.lblDesEmpleado.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblDesEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDesEmpleado.Location = new System.Drawing.Point(222, 234);
+            this.lblDesEmpleado.Name = "lblDesEmpleado";
+            this.lblDesEmpleado.Size = new System.Drawing.Size(322, 20);
+            this.lblDesEmpleado.TabIndex = 49;
+            this.lblDesEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblIdEmpleado
+            // 
+            this.lblIdEmpleado.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblIdEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIdEmpleado.Location = new System.Drawing.Point(128, 234);
+            this.lblIdEmpleado.Name = "lblIdEmpleado";
+            this.lblIdEmpleado.Size = new System.Drawing.Size(91, 20);
+            this.lblIdEmpleado.TabIndex = 48;
+            this.lblIdEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 292);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(84, 13);
+            this.label12.TabIndex = 53;
+            this.label12.Text = "Area Recepción";
+            // 
+            // lblDesAreaRecepcion
+            // 
+            this.lblDesAreaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblDesAreaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblDesAreaRecepcion.Location = new System.Drawing.Point(222, 288);
+            this.lblDesAreaRecepcion.Name = "lblDesAreaRecepcion";
+            this.lblDesAreaRecepcion.Size = new System.Drawing.Size(322, 20);
+            this.lblDesAreaRecepcion.TabIndex = 52;
+            this.lblDesAreaRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblIdAreaRecepcion
+            // 
+            this.lblIdAreaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblIdAreaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIdAreaRecepcion.Location = new System.Drawing.Point(128, 288);
+            this.lblIdAreaRecepcion.Name = "lblIdAreaRecepcion";
+            this.lblIdAreaRecepcion.Size = new System.Drawing.Size(91, 20);
+            this.lblIdAreaRecepcion.TabIndex = 51;
+            this.lblIdAreaRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Frm_Reg_Seguimiento_Recepcion
             // 
-            this.ClientSize = new System.Drawing.Size(552, 365);
+            this.ClientSize = new System.Drawing.Size(558, 430);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblDesAreaRecepcion);
+            this.Controls.Add(this.lblIdAreaRecepcion);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblDesEmpleado);
+            this.Controls.Add(this.lblIdEmpleado);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lblIdOficinaRecepcionDes);
+            this.Controls.Add(this.lblDesOficinaRecepcion);
             this.Controls.Add(this.lblIdOficinaRecepcion);
             this.Controls.Add(this.lblFechaRecepcion);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.txtDetalle);
+            this.Controls.Add(this.txtObservacionGeneral);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtObservacion);
@@ -400,12 +470,18 @@
         private System.Windows.Forms.Label label2;
         private MigControls.MigTextbox txtObservacion;
         private System.Windows.Forms.Label label3;
-        private MigControls.MigTextbox txtDetalle;
+        private MigControls.MigTextbox txtObservacionGeneral;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblIdOficinaRecepcionDes;
+        private System.Windows.Forms.Label lblDesOficinaRecepcion;
         private System.Windows.Forms.Label lblIdOficinaRecepcion;
         private System.Windows.Forms.Label lblFechaRecepcion;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblDesEmpleado;
+        private System.Windows.Forms.Label lblIdEmpleado;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblDesAreaRecepcion;
+        private System.Windows.Forms.Label lblIdAreaRecepcion;
 
     }
 }
