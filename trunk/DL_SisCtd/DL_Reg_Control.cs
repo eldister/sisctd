@@ -34,9 +34,45 @@ namespace DLSisCtd
             return Make(ConexionDAO.fDatatable(sSql));
 
         }
+        public BE_Reg_ControlDetalle Get_ControlDetalleRecepcion(string sIdControl)
+        {
+            sSql = "select	* ";
+            sSql += "from	Reg_ControlDetalle a ";
+            sSql += "       left join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
+            sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl + "' and ISNULL(FechaDestinatario,'')='' ";
+            sSql += "order by Orden ";
+
+            BE_Reg_ControlDetalle _ControlDetalle = new BE_Reg_ControlDetalle();
+            SqlDataReader reader = ConexionDAO.fSqlDataReader(sSql);
+            if (reader.HasRows)
+            {
+                reader.Read();
+                _ControlDetalle.IdControl = reader.GetString(reader.GetOrdinal("IdControl"));
+                _ControlDetalle.IdActividad = reader.GetString(reader.GetOrdinal("IdActividad"));
+                _ControlDetalle.NroSecuencia = reader.GetString(reader.GetOrdinal("NroSecuencia"));
+                _ControlDetalle.Orden = reader.GetInt32(reader.GetOrdinal("Orden"));
+            }
+            else
+            {
+                _ControlDetalle = null;
+            }
+            reader.Dispose(); reader = null;
+            return _ControlDetalle;
+
+        }
         public Boolean Existe(string sIdControl)
         {
             return (Get_Control(sIdControl) != null ? true : false);
+        }
+
+        public Boolean Empleado_Valido_Recepcion(string sIdEmpleado, string sIdActividad)
+        {
+            sSql = "select  count(*) from T_EmpleadoActividad ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            sSql += "       IdEmpleado = '" + sIdEmpleado + "' and ";
+            sSql += "       IdActividad = '" + sIdActividad + "' ";
+
+            return (Convert.ToInt16(ConexionDAO.fEscalar(sSql)) > 0 ? true : false);
         }
 
         public Boolean Existe_Ruta(BE_T_TipoDocumentoRuta oBE_T_TipoDocumentoRuta)
@@ -101,6 +137,16 @@ namespace DLSisCtd
             sSql += "       IdControl = '" + sIdControl + "'";
 
             return Convert.ToInt16(ConexionDAO.fEscalar(sSql));
+        }
+
+        public string ActividadPendiente(string sIdControl)
+        {
+            sSql = "select	b.Descripcion ";
+            sSql += "from	Reg_ControlDetalle a ";
+            sSql += "		left join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
+            sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl + "' and isnull(FechaRecepcion,'')<>'' and ISNULL(FechaDestinatario,'')='' ";
+
+            return Convert.ToString(ConexionDAO.fEscalar(sSql));
         }
         #endregion
 

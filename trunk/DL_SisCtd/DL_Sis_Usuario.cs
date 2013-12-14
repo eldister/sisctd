@@ -70,6 +70,14 @@ namespace DLSisCtd
 
             return Convert.ToString(ConexionDAO.fEscalar(sSql));
         }
+        public string Get_IdEmpleado(string sIdUsuario)
+        {
+            sSql = "select	IdEmpleado ";
+            sSql += "from   Sis_Usuario ";
+            sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdUsuario='" + sIdUsuario + "' ";
+
+            return Convert.ToString(ConexionDAO.fEscalar(sSql));
+        }
         #endregion
 
         #region Operaciones
