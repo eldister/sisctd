@@ -104,6 +104,7 @@ namespace DLSisCtd
         {
             sSql = "insert into Sis_Usuario values ";
             sSql += "(";
+            sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
             sSql += "'" + oBE_Sis_Usuario.IdUsuario + "',";
             sSql += "'" + oBE_Sis_Usuario.Nombre + "', ";
             sSql += "'" + oBE_Sis_Usuario.IdEmpleado + "', ";

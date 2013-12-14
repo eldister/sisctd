@@ -89,8 +89,8 @@ namespace DLSisCtd
             sSql = "insert into T_EmpleadoActividad values ";
             sSql += "(";
             sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
-            sSql += "'" + oBE_T_EmpleadoActividad.IdActividad + "',";
             sSql += "'" + oBE_T_EmpleadoActividad.IdEmpleado + "',";
+            sSql += "'" + oBE_T_EmpleadoActividad.IdActividad + "',";
             sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
         }
