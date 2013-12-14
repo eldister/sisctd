@@ -63,6 +63,10 @@ namespace BLSisCtd
         {
             return oDL_Reg_Control.ActividadPendiente(sIdControl);
         }
+        public Boolean Empleado_Valido_Recepcion(string sIdEmpleado, string sIdActividad)
+        {
+            return oDL_Reg_Control.Empleado_Valido_Recepcion(sIdEmpleado, sIdActividad);
+        }
         #endregion
 
         #region Operaciones
@@ -96,6 +100,7 @@ namespace BLSisCtd
         {
             oDL_Reg_Control.Bajar(oBE_Reg_ControlDetalle);
         }
+
         public void Agregar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
             oDL_Reg_Control.Agregar_Actividad(oBE_Reg_ControlDetalle);
@@ -105,10 +110,16 @@ namespace BLSisCtd
             oDL_Reg_Control.Quitar_Actividad(oBE_Reg_ControlDetalle);
         }
 
-        public Boolean Empleado_Valido_Recepcion(string sIdEmpleado, string sIdActividad)
+        public void Recepcionar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
-            return oDL_Reg_Control.Empleado_Valido_Recepcion(sIdEmpleado, sIdActividad);
+            oDL_Reg_Control.Recepcionar(oBE_Reg_ControlDetalle);
         }
+        public void Enviar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            oDL_Reg_Control.Enviar(oBE_Reg_ControlDetalle);
+        }
+
+
         #endregion
     }
 }

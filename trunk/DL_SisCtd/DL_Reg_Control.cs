@@ -174,7 +174,6 @@ namespace DLSisCtd
             oBE_Reg_Control.UsuarioRegistro = dt.Rows[0]["UsuarioRegistro"].ToString().Trim();
             return oBE_Reg_Control;
         }
-
         public string Insertar(BE_Reg_Control oBE_Reg_Control)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
@@ -285,91 +284,6 @@ namespace DLSisCtd
 
 
         }
-        public string Subir(BE_Reg_Control oBE_Reg_Control)
-        {
-            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
-            {
-                sCn.Open();
-                SqlTransaction sTrans = sCn.BeginTransaction();
-                try
-                {
-                    string sIdControl = ""; string sCorrelativo = "";
-
-                    sSql = "select  '000000'+convert(varchar(7),Correlativo+1) ";
-                    sSql += "from   T_Numeracion ";
-                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año='" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "'";
-                    sCorrelativo = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
-                    if (sCorrelativo == "")
-                    {
-                        sCorrelativo = "0000001";
-                        sSql = "insert  into T_Numeracion values (";
-                        sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "','" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "','" + oBE_Reg_Control.IdOficinaRecepcion + "','" + sCorrelativo + "') ";
-                        SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
-                    }
-                    else
-                    {
-                        sSql = "update  T_Numeracion set ";
-                        sSql += "       correlativo = '" + sCorrelativo + "' ";
-                        sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año = '" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "' ";
-                        SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
-                    }
-
-
-                    sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "_" + oBE_Reg_Control.IdOficinaRecepcion.Trim() + "_" + sCorrelativo;
-                    sSql = "INSERT	INTO Reg_Control VALUES( ";
-                    sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "', ";
-                    sSql += "       '" + sIdControl + "', ";
-                    sSql += "       convert(varchar,getdate(),112), ";
-                    sSql += "       '" + oBE_Reg_Control.IdOficinaRecepcion + "',  ";
-                    sSql += "       '" + oBE_Reg_Control.IdTipoDocumento + "',  ";
-                    sSql += "       '" + oBE_Reg_Control.IdRuta + "', ";
-                    sSql += "       '" + oBE_Reg_Control.IdMaestroCliente + "', ";
-                    sSql += "       '" + oBE_Reg_Control.NroDocumento + "', ";
-                    sSql += "       '" + oBE_Reg_Control.FechaDocumento.ToString("yyyyMMdd") + "', ";
-                    sSql += "       '" + oBE_Reg_Control.Observacion + "', ";
-                    sSql += "       null, ";
-                    sSql += "       null, ";
-                    sSql += "       null, ";
-                    sSql += "       'Pendiente', ";
-                    sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
-                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
-
-                    sSql = "insert into Reg_ControlDetalle ";
-                    sSql += "select	a.IdCliente,'" + sIdControl + "',right(0+convert(varchar(2),Orden),2),Orden, ";
-                    sSql += "       IdActividad, ";
-                    sSql += "       null,null,null,null, ";
-                    sSql += "       null,null,null,null, ";
-                    sSql += "       '',a.DuracionEnDias,'Pendiente', ";
-                    sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "' ";
-                    sSql += "from	T_RutaActividad a  ";
-                    sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdRuta='" + oBE_Reg_Control.IdRuta + "' ";
-                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
-
-                    sSql = "select  IdEmpleado ";
-                    sSql += "from   Sis_Usuario ";
-                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdUsuario='" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "'";
-                    string sIdEmpleado = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
-
-                    sSql = "select  IdArea ";
-                    sSql += "from   T_Empleado ";
-                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdEmpleado='" + sIdEmpleado + "'";
-                    string sIdArea = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
-
-                    sSql = "Update  Reg_ControlDetalle set ";
-                    sSql += "       IdOficinaRecepcion='" + oBE_Reg_Control.IdOficinaRecepcion + "', ";
-                    sSql += "       IdEmpleadoRecepcion='" + sIdEmpleado + "', ";
-                    sSql += "       IdAreaRecepcion='" + sIdArea + "', ";
-                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
-                    sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl + "' and NroSecuencia=1 ";
-
-                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
-
-                    sTrans.Commit();
-                    return sIdControl;
-                }
-                catch (Exception ex) { sTrans.Rollback(); throw ex; }
-            }
-        }
         public void Eliminar(string sIdControl)
         {
             sSql = "delete  from Reg_ControlDetalle  ";
@@ -379,8 +293,6 @@ namespace DLSisCtd
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'  ";
             ConexionDAO.fExecute(sSql);
         }
-
-
 
         public string Insertar_Archivo(BE_Reg_ControlImagenes oBE_Reg_ControlImagenes, string sIdControl)
         {
@@ -429,6 +341,7 @@ namespace DLSisCtd
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
         }
+
         public void Subir(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
             sSql = "select orden from Reg_ControlDetalle ";
@@ -453,7 +366,6 @@ namespace DLSisCtd
                 ConexionDAO.fExecute(sSql);
             }
         }
-
         public void Bajar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
             sSql = "select  max(orden) from Reg_ControlDetalle ";
@@ -485,7 +397,6 @@ namespace DLSisCtd
 
         }
 
-
         public void Agregar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
@@ -508,7 +419,6 @@ namespace DLSisCtd
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
         }
-
         public void Quitar_Actividad(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
@@ -527,6 +437,52 @@ namespace DLSisCtd
                 }
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
+        }
+
+        public void Recepcionar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    sSql = "Update  Reg_ControlDetalle set ";
+                    sSql += "       IdOficinaRecepcion='" + oBE_Reg_ControlDetalle.IdOficinaRecepcion + "', ";
+                    sSql += "       IdEmpleadoRecepcion='" + oBE_Reg_ControlDetalle.IdEmpleadoRecepcion + "', ";
+                    sSql += "       IdAreaRecepcion='" + oBE_Reg_ControlDetalle.IdAreaRecepcion + "', ";
+                    sSql += "       Observacion='" + oBE_Reg_ControlDetalle.Observacion + "', ";
+                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
+                    sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() +"' ";
+
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    sTrans.Commit();
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+
+        }
+        public void Enviar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    sSql = "Update  Reg_ControlDetalle set ";
+                    sSql += "       IdOficinaDestinatario='" + oBE_Reg_ControlDetalle.IdOficinaDestinatario + "', ";
+                    sSql += "       IdEmpleadoDestinatario='" + oBE_Reg_ControlDetalle.IdEmpleadoDestinatario + "', ";
+                    sSql += "       IdAreaDestinatario='" + oBE_Reg_ControlDetalle.IdAreaDestinatario + "', ";
+                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
+                    sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() + "' ";
+
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    sTrans.Commit();
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+
         }
 
         #endregion
