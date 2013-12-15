@@ -54,7 +54,14 @@ namespace DLSisCtd
             else
                 return oBE_T_Area.Descripcion;
         }
-
+        public string Get_IdEmpleadoResponsable(string sIdArea)
+        {
+            BE_T_Area oBE_T_Area = Get_Area(sIdArea);
+            if (oBE_T_Area == null)
+                return "";
+            else
+                return oBE_T_Area.IdEmpleadoResponsable;
+        }
         public Boolean Existe(string sIdArea)
         {
             return (Get_Area(sIdArea)!= null ? true : false);
@@ -71,6 +78,7 @@ namespace DLSisCtd
             oBE_T_Area.IdArea = dt.Rows[0]["IdArea"].ToString().Trim();
             oBE_T_Area.Descripcion = dt.Rows[0]["Descripcion"].ToString().Trim();
             oBE_T_Area.IdGerencia = dt.Rows[0]["IdGerencia"].ToString().Trim();
+            oBE_T_Area.IdEmpleadoResponsable = dt.Rows[0]["IdEmpleadoResponsable"].ToString().Trim();
             oBE_T_Area.Estado = (Boolean)dt.Rows[0]["Estado"];
             oBE_T_Area.FechaRegistro = (DateTime)dt.Rows[0]["FechaRegistro"];
             oBE_T_Area.HoraRegistro = dt.Rows[0]["HoraRegistro"].ToString().Trim();

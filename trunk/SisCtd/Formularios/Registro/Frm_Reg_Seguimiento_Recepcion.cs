@@ -42,7 +42,16 @@ namespace SisCtd
         }
         private void Frm_Reg_Seguimiento_Recepcion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Escape)) this.Close();
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                if (lblIdTipoDocumento.Text != "")
+                {
+                    txtIdControl.Text = "";
+                    txtIdControl.Focus();
+                }
+                else
+                    this.Close();
+            }
         }
 
 
@@ -90,7 +99,7 @@ namespace SisCtd
                         }
                         else
                         {
-                            MessageBox.Show("Ya no hay mas acividades para este control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Ya no hay mas actividades para este control. Verificar", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             BtnGrabar.Visible = false; txtIdControl.Focus(); return;
                         }
 
@@ -179,7 +188,7 @@ namespace SisCtd
                 oBE_Reg_ControlDetalle.IdAreaRecepcion = lblIdAreaRecepcion.Text;
                 oBE_Reg_ControlDetalle.Observacion = txtObservacion.Text;
                 oBL_Reg_Control.Recepcionar(oBE_Reg_ControlDetalle);
-                MessageBox.Show("Se ha Recepcionado el Control " + txtIdControl.Text + " en la actividad " + lblDesActividad.Text + " forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se ha Recepcionado el Control " + txtIdControl.Text + " en la actividad " + lblDesActividad.Text + " en forma exitosa", "Mensaje al Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtIdControl.Text = "";
                 txtIdControl.Focus();
             }
@@ -192,17 +201,6 @@ namespace SisCtd
         }
 
         #endregion
-
-
-
-
-
-
-
-
-   
-
-
 
 
     }
