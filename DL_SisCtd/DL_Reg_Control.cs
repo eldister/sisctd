@@ -50,6 +50,10 @@ namespace DLSisCtd
                 _ControlDetalle.IdControl = reader.GetString(reader.GetOrdinal("IdControl"));
                 _ControlDetalle.IdActividad = reader.GetString(reader.GetOrdinal("IdActividad"));
                 _ControlDetalle.NroSecuencia = reader.GetString(reader.GetOrdinal("NroSecuencia"));
+                if (!reader.IsDBNull(reader.GetOrdinal("FechaRecepcion")))
+                    _ControlDetalle.FechaRecepcion = reader.GetDateTime(reader.GetOrdinal("FechaRecepcion"));
+                _ControlDetalle.IdOficinaRecepcion = reader.GetString(reader.GetOrdinal("IdOficinaRecepcion"));
+                _ControlDetalle.Observacion = reader.GetString(reader.GetOrdinal("Observacion"));
                 _ControlDetalle.Orden = reader.GetInt32(reader.GetOrdinal("Orden"));
             }
             else
@@ -474,7 +478,7 @@ namespace DLSisCtd
                     sSql += "       IdOficinaDestinatario='" + oBE_Reg_ControlDetalle.IdOficinaDestinatario + "', ";
                     sSql += "       IdEmpleadoDestinatario='" + oBE_Reg_ControlDetalle.IdEmpleadoDestinatario + "', ";
                     sSql += "       IdAreaDestinatario='" + oBE_Reg_ControlDetalle.IdAreaDestinatario + "', ";
-                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
+                    sSql += "       FechaDestinatario=convert(varchar,getdate(),112) ";
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() + "' ";
 
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);

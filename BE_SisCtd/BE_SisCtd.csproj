@@ -50,7 +50,6 @@
     <Compile Include="BE_T_Posicion.cs" />
     <Compile Include="BE_T_Gerencia.cs" />
     <Compile Include="BE_T_Actividad.cs" />
-    <Compile Include="BE_T_Area.cs" />
     <Compile Include="BE_T_Dato.cs" />
     <Compile Include="BE_T_Estado.cs" />
     <Compile Include="BE_T_Oficina.cs" />
@@ -66,6 +65,7 @@
     <Compile Include="BE_Reg_Control.cs" />
     <Compile Include="BE_Reg_ControlDetalle.cs" />
     <Compile Include="BE_T_MaestroCliente.cs" />
+    <Compile Include="BE_T_Area.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

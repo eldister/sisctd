@@ -32,7 +32,10 @@ namespace BLSisCtd
         {
             return oDL_T_Area.Get_Descripcion(sIdArea);
         }
-
+        public string Get_IdEmpleadoResponsable(string sIdArea)
+        {
+            return oDL_T_Area.Get_IdEmpleadoResponsable(sIdArea);
+        }
         public Boolean Existe(string sIdArea)
         {
             return oDL_T_Area.Existe(sIdArea);
