@@ -19,6 +19,7 @@ namespace SisCtd
         BL_T_Area oBL_T_Area = new BL_T_Area();
         BE_T_Area oBE_T_Area = new BE_T_Area();
         BL_T_Gerencia   oBL_T_Gerencia = new BL_T_Gerencia();
+        BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
 
         #endregion
 
@@ -47,6 +48,7 @@ namespace SisCtd
                             this.Text = " Consultar";
                             txtDescripcion.ReadOnly = true;
                             txtGerencia.ReadOnly = true;
+                            txtEmpleado.ReadOnly = true;
                             BtnGrabar.Visible = false;
                         }
                         else
@@ -60,6 +62,7 @@ namespace SisCtd
                         {
                             txtDescripcion.Text = oBE_T_Area.Descripcion;
                             txtGerencia.Text = oBE_T_Area.IdGerencia ;
+                            txtEmpleado.Text = oBE_T_Area.IdEmpleadoResponsable;
                             cboEstado.SelectedIndex = oBE_T_Area.Estado ? 0 : 1;
                         }
                         break;
@@ -88,6 +91,7 @@ namespace SisCtd
                 oBE_T_Area.IdArea = txtCodigo.Text.Trim();
                 oBE_T_Area.Descripcion = txtDescripcion.Text.Trim();
                 oBE_T_Area.IdGerencia = txtGerencia.Text.Trim();
+                oBE_T_Area.IdEmpleadoResponsable = txtEmpleado.Text.Trim();
                 oBE_T_Area.Estado = (cboEstado.SelectedIndex == 0);
 
                 if (oBE_T_Area.IdArea == "")
@@ -135,6 +139,7 @@ namespace SisCtd
             switch (txt.Name)
             {
                 case "txtGerencia": lblGerencia.Text = oBL_T_Gerencia.Get_Descripcion(txtGerencia.Text); break;
+                case "txtEmpleado": lblEmpleado.Text = oBL_T_Empleado.Get_Nombre(txtEmpleado.Text); break;
             }
 
         }
@@ -146,6 +151,7 @@ namespace SisCtd
                 switch (txt.Name)
                 {
                     case "txtGerencia": txtGerencia.Text = Helper.Buscar(oBL_T_Gerencia.Buscar()); break;
+                    case "txtEmpleado": txtEmpleado.Text = Helper.Buscar(oBL_T_Empleado.Buscar()); break;
                 }
             }
         }

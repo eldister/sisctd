@@ -39,12 +39,15 @@
             this.lblGerencia = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
             this.label14 = new System.Windows.Forms.Label();
+            this.lblEmpleado = new System.Windows.Forms.Label();
+            this.txtEmpleado = new MigControls.MigTextbox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnCancelar
             // 
             this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.BtnCancelar.Location = new System.Drawing.Point(472, 113);
+            this.BtnCancelar.Location = new System.Drawing.Point(497, 128);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
             this.BtnCancelar.TabIndex = 9;
@@ -56,7 +59,7 @@
             // BtnGrabar
             // 
             this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.BtnGrabar.Location = new System.Drawing.Point(391, 113);
+            this.BtnGrabar.Location = new System.Drawing.Point(418, 128);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);
             this.BtnGrabar.TabIndex = 8;
@@ -86,7 +89,7 @@
             this.txtDescripcion.MaxLength = 50;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasarEnter = true;
-            this.txtDescripcion.Size = new System.Drawing.Size(444, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(471, 20);
             this.txtDescripcion.TabIndex = 1;
             this.txtDescripcion.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
@@ -118,7 +121,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 72);
+            this.label3.Location = new System.Drawing.Point(14, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 736;
@@ -132,7 +135,7 @@
             this.txtGerencia.ColorSalida = System.Drawing.Color.White;
             this.txtGerencia.Decimales = 2;
             this.txtGerencia.Guiones = false;
-            this.txtGerencia.Location = new System.Drawing.Point(108, 68);
+            this.txtGerencia.Location = new System.Drawing.Point(108, 65);
             this.txtGerencia.MaxLength = 10;
             this.txtGerencia.Name = "txtGerencia";
             this.txtGerencia.PasarEnter = true;
@@ -146,7 +149,7 @@
             // 
             this.lblGerencia.BackColor = System.Drawing.SystemColors.Info;
             this.lblGerencia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblGerencia.Location = new System.Drawing.Point(172, 68);
+            this.lblGerencia.Location = new System.Drawing.Point(200, 65);
             this.lblGerencia.Name = "lblGerencia";
             this.lblGerencia.Size = new System.Drawing.Size(380, 20);
             this.lblGerencia.TabIndex = 4;
@@ -163,25 +166,65 @@
             this.cboEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboEstado.Location = new System.Drawing.Point(108, 94);
+            this.cboEstado.Location = new System.Drawing.Point(108, 114);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.PasarEnter = true;
             this.cboEstado.Size = new System.Drawing.Size(93, 22);
-            this.cboEstado.TabIndex = 743;
+            this.cboEstado.TabIndex = 5;
             this.cboEstado.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 99);
+            this.label14.Location = new System.Drawing.Point(14, 119);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 13);
             this.label14.TabIndex = 744;
             this.label14.Text = "Estado *";
             // 
+            // lblEmpleado
+            // 
+            this.lblEmpleado.BackColor = System.Drawing.SystemColors.Info;
+            this.lblEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEmpleado.Location = new System.Drawing.Point(201, 90);
+            this.lblEmpleado.Name = "lblEmpleado";
+            this.lblEmpleado.Size = new System.Drawing.Size(377, 20);
+            this.lblEmpleado.TabIndex = 752;
+            this.lblEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtEmpleado
+            // 
+            this.txtEmpleado.BackColor = System.Drawing.Color.White;
+            this.txtEmpleado.Car_Años = 4;
+            this.txtEmpleado.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.txtEmpleado.ColorSalida = System.Drawing.Color.White;
+            this.txtEmpleado.Decimales = 2;
+            this.txtEmpleado.Guiones = false;
+            this.txtEmpleado.Location = new System.Drawing.Point(109, 90);
+            this.txtEmpleado.MaxLength = 10;
+            this.txtEmpleado.Name = "txtEmpleado";
+            this.txtEmpleado.PasarEnter = true;
+            this.txtEmpleado.Size = new System.Drawing.Size(85, 20);
+            this.txtEmpleado.TabIndex = 4;
+            this.txtEmpleado.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
+            this.txtEmpleado.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
+            this.txtEmpleado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 753;
+            this.label2.Text = "Empleado";
+            // 
             // Frm_T_Areas_Det
             // 
-            this.ClientSize = new System.Drawing.Size(559, 153);
+            this.ClientSize = new System.Drawing.Size(586, 163);
+            this.Controls.Add(this.lblEmpleado);
+            this.Controls.Add(this.txtEmpleado);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cboEstado);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lblGerencia);
@@ -222,6 +265,9 @@
         private System.Windows.Forms.Label lblGerencia;
         private MigControls.MigCombobox cboEstado;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblEmpleado;
+        private MigControls.MigTextbox txtEmpleado;
+        private System.Windows.Forms.Label label2;
 
     }
 }
