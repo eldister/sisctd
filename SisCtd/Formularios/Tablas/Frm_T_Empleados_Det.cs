@@ -19,6 +19,7 @@ namespace SisCtd
         BL_T_Empleado oBL_T_Empleado = new BL_T_Empleado();
         BE_T_Empleado oBE_T_Empleado = new BE_T_Empleado();
         BL_T_Area oBL_T_Area = new BL_T_Area();
+        BE_T_Area oBE_T_Area = new BE_T_Area();
         BL_T_Posicion oBL_T_Posicion = new BL_T_Posicion();
         BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
 
@@ -51,6 +52,7 @@ namespace SisCtd
                             txtArea.ReadOnly = true;
                             txtPosicion.ReadOnly = true;
                             txtOficina.ReadOnly = true;
+                            ChkResponsable.Enabled = false;
                             BtnGrabar.Visible = false;
                         }
                         else
@@ -67,6 +69,11 @@ namespace SisCtd
                             txtPosicion.Text = oBE_T_Empleado.IdPosicion;
                             txtOficina.Text = oBE_T_Empleado.IdOficina;
                             cboEstado.SelectedIndex = oBE_T_Empleado.Estado ? 0 : 1;
+                            oBE_T_Area = oBL_T_Area.Get_Area(txtArea.Text);
+                            if (oBE_T_Area.IdEmpleadoResponsable == sIdEmpleado)
+                            {
+                                ChkResponsable.Checked = true; 
+                            }
                         }
                         break;
                 }
@@ -97,6 +104,8 @@ namespace SisCtd
                 oBE_T_Empleado.IdPosicion = txtPosicion.Text.Trim();
                 oBE_T_Empleado.IdOficina = txtOficina.Text.Trim();
                 oBE_T_Empleado.Estado = (cboEstado.SelectedIndex == 0);
+                oBE_T_Area.IdEmpleadoResponsable = txtCodigo.Text.Trim();
+                oBE_T_Area.IdArea = txtArea.Text.Trim();
 
                 if (oBE_T_Empleado.IdEmpleado  == "")
                 {
@@ -126,6 +135,11 @@ namespace SisCtd
                 {
                     oBL_T_Empleado.Modificar(oBE_T_Empleado);
                 }
+                if ( ChkResponsable.Checked  == true )
+                {
+                    oBL_T_Area.Modificar_IdEmpleadoResponsable(oBE_T_Area);    
+                }
+
                 sIdEmpleado = txtCodigo.Text; bGrabo = true; this.Close();
 
             }
