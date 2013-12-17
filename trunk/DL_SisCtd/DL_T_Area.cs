@@ -93,6 +93,7 @@ namespace DLSisCtd
             sSql += "'" + oBE_T_Area.IdArea + "',";
             sSql += "'" + oBE_T_Area.IdGerencia + "', ";
             sSql += "'" + oBE_T_Area.Descripcion + "', ";
+            sSql += "'" + oBE_T_Area.IdEmpleadoResponsable + "', ";
             sSql += "'" + (oBE_T_Area.Estado ? "1" : "0") + "',";
             sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
@@ -102,6 +103,7 @@ namespace DLSisCtd
             sSql = "update  T_Area set ";
             sSql += "       Descripcion='" + oBE_T_Area.Descripcion + "', ";
             sSql += "       IdGerencia='" + oBE_T_Area.IdGerencia + "', ";
+            sSql += "       IdEmpleadoResponsable='" + oBE_T_Area.IdEmpleadoResponsable + "', ";
             sSql += "       Estado='" + (oBE_T_Area.Estado ? "1" : "0") + "' ";
             sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdArea='" + oBE_T_Area.IdArea + "' ";
             ConexionDAO.fExecute(sSql);
@@ -110,6 +112,13 @@ namespace DLSisCtd
         {
             sSql = "delete  from T_Area ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdArea = '" + sIdArea + "'  ";
+            ConexionDAO.fExecute(sSql);
+        }
+        public void Modificar_IdEmpleadoResponsable(BE_T_Area oBE_T_Area)
+        {
+            sSql = "update  T_Area set ";
+            sSql += "       IdEmpleadoResponsable='" + oBE_T_Area.IdEmpleadoResponsable  + "' ";
+            sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdArea='" + oBE_T_Area.IdArea + "' ";
             ConexionDAO.fExecute(sSql);
         }
 
