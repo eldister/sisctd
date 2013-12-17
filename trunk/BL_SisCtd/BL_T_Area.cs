@@ -52,6 +52,10 @@ namespace BLSisCtd
         {
             oDL_T_Area.Modificar(oBE_T_Area);
         }
+        public void Modificar_IdEmpleadoResponsable(BE_T_Area oBE_T_Area)
+        {
+            oDL_T_Area.Modificar_IdEmpleadoResponsable(oBE_T_Area);
+        }
         public void Eliminar(string sIdArea)
         {
             oDL_T_Area.Eliminar(sIdArea);
