@@ -53,13 +53,11 @@ namespace DLSisCtd
                 if (!reader.IsDBNull(reader.GetOrdinal("FechaRecepcion")))
                 {
                     _ControlDetalle.FechaRecepcion = reader.GetDateTime(reader.GetOrdinal("FechaRecepcion"));
-<<<<<<< .mine
+
                     _ControlDetalle.IdOficinaRecepcion = reader.GetString(reader.GetOrdinal("IdOficinaRecepcion"));
                 }
-=======
                 if (!reader.IsDBNull(reader.GetOrdinal("IdOficinaRecepcion")))
                     _ControlDetalle.IdOficinaRecepcion = reader.GetString(reader.GetOrdinal("IdOficinaRecepcion"));
->>>>>>> .r144
                 _ControlDetalle.Observacion = reader.GetString(reader.GetOrdinal("Observacion"));
                 _ControlDetalle.Orden = reader.GetInt32(reader.GetOrdinal("Orden"));
             }
