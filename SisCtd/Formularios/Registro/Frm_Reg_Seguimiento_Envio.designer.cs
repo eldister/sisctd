@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.lblDesOficinaRecepcion = new System.Windows.Forms.Label();
             this.lblIdOficinaRecepcion = new System.Windows.Forms.Label();
@@ -62,9 +62,6 @@
             this.txtIdOficinaDestinatario = new MigControls.MigTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
-            this.IdImagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Formato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnQuitarArchivo = new System.Windows.Forms.Button();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.txtIdArea = new MigControls.MigTextbox();
@@ -73,6 +70,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.lblDesEmpleado = new System.Windows.Forms.Label();
             this.lblIdEmpleado = new System.Windows.Forms.Label();
+            this.bVerImagen = new System.Windows.Forms.Button();
+            this.Archivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Formato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -332,7 +333,7 @@
             // BtnCancelar
             // 
             this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.BtnCancelar.Location = new System.Drawing.Point(471, 508);
+            this.BtnCancelar.Location = new System.Drawing.Point(471, 529);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
             this.BtnCancelar.TabIndex = 5;
@@ -344,7 +345,7 @@
             // BtnGrabar
             // 
             this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.BtnGrabar.Location = new System.Drawing.Point(388, 508);
+            this.BtnGrabar.Location = new System.Drawing.Point(388, 529);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);
             this.BtnGrabar.TabIndex = 4;
@@ -417,22 +418,21 @@
             this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 80;
             this.label11.Text = "Archivos Adjuntos";
-            this.label11.Visible = false;
             // 
             // dgDetalle
             // 
             this.dgDetalle.AllowUserToAddRows = false;
             this.dgDetalle.AllowUserToDeleteRows = false;
             this.dgDetalle.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
+            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgDetalle.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdImagen,
-            this.Nombre,
-            this.Formato});
+            this.Archivo,
+            this.Formato,
+            this.nombre});
             this.dgDetalle.Location = new System.Drawing.Point(14, 424);
             this.dgDetalle.MultiSelect = false;
             this.dgDetalle.Name = "dgDetalle";
@@ -441,57 +441,35 @@
             this.dgDetalle.RowHeadersWidth = 25;
             this.dgDetalle.RowTemplate.Height = 18;
             this.dgDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDetalle.Size = new System.Drawing.Size(415, 74);
+            this.dgDetalle.Size = new System.Drawing.Size(518, 94);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 8;
-            this.dgDetalle.Visible = false;
-            // 
-            // IdImagen
-            // 
-            this.IdImagen.HeaderText = "IdImagen";
-            this.IdImagen.Name = "IdImagen";
-            this.IdImagen.ReadOnly = true;
-            this.IdImagen.Visible = false;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre del Archivo";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 300;
-            // 
-            // Formato
-            // 
-            this.Formato.HeaderText = "Formato";
-            this.Formato.Name = "Formato";
-            this.Formato.ReadOnly = true;
-            this.Formato.Width = 60;
             // 
             // btnQuitarArchivo
             // 
             this.btnQuitarArchivo.Image = global::SisCtd.Properties.Resources._16__Db_delete_;
             this.btnQuitarArchivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitarArchivo.Location = new System.Drawing.Point(136, 503);
+            this.btnQuitarArchivo.Location = new System.Drawing.Point(136, 526);
             this.btnQuitarArchivo.Name = "btnQuitarArchivo";
             this.btnQuitarArchivo.Size = new System.Drawing.Size(110, 23);
             this.btnQuitarArchivo.TabIndex = 7;
             this.btnQuitarArchivo.Text = "&Quitar Archivo";
             this.btnQuitarArchivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnQuitarArchivo.UseVisualStyleBackColor = true;
-            this.btnQuitarArchivo.Visible = false;
+            this.btnQuitarArchivo.Click += new System.EventHandler(this.btnQuitarArchivo_Click);
             // 
             // btnAgregarImagen
             // 
             this.btnAgregarImagen.Image = global::SisCtd.Properties.Resources._16__Db_insert_;
             this.btnAgregarImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarImagen.Location = new System.Drawing.Point(14, 503);
+            this.btnAgregarImagen.Location = new System.Drawing.Point(14, 526);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(116, 23);
             this.btnAgregarImagen.TabIndex = 6;
             this.btnAgregarImagen.Text = "&Agregar Archivo";
             this.btnAgregarImagen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
-            this.btnAgregarImagen.Visible = false;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
             // txtIdArea
             // 
@@ -559,9 +537,44 @@
             this.lblIdEmpleado.TabIndex = 86;
             this.lblIdEmpleado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // bVerImagen
+            // 
+            this.bVerImagen.Image = global::SisCtd.Properties.Resources.iconoima;
+            this.bVerImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bVerImagen.Location = new System.Drawing.Point(252, 526);
+            this.bVerImagen.Name = "bVerImagen";
+            this.bVerImagen.Size = new System.Drawing.Size(89, 23);
+            this.bVerImagen.TabIndex = 89;
+            this.bVerImagen.Text = "&Ver Archivo";
+            this.bVerImagen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bVerImagen.UseVisualStyleBackColor = true;
+            this.bVerImagen.Click += new System.EventHandler(this.bVerImagen_Click);
+            // 
+            // Archivo
+            // 
+            this.Archivo.HeaderText = "Nombre del Archivo";
+            this.Archivo.Name = "Archivo";
+            this.Archivo.ReadOnly = true;
+            this.Archivo.Width = 400;
+            // 
+            // Formato
+            // 
+            this.Formato.HeaderText = "Formato";
+            this.Formato.Name = "Formato";
+            this.Formato.ReadOnly = true;
+            this.Formato.Width = 60;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Visible = false;
+            // 
             // Frm_Reg_Seguimiento_Envio
             // 
-            this.ClientSize = new System.Drawing.Size(560, 547);
+            this.ClientSize = new System.Drawing.Size(560, 569);
+            this.Controls.Add(this.bVerImagen);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.lblDesEmpleado);
             this.Controls.Add(this.lblIdEmpleado);
@@ -654,9 +667,6 @@
         private MigControls.MigTextbox txtIdOficinaDestinatario;
         private System.Windows.Forms.Label label11;
         private MigControls.MigDataGridView dgDetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdImagen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Formato;
         private System.Windows.Forms.Button btnQuitarArchivo;
         private System.Windows.Forms.Button btnAgregarImagen;
         private MigControls.MigTextbox txtIdArea;
@@ -665,6 +675,10 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblDesEmpleado;
         private System.Windows.Forms.Label lblIdEmpleado;
+        private System.Windows.Forms.Button bVerImagen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Archivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Formato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
 
 
     }
