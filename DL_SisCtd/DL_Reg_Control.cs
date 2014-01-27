@@ -51,9 +51,15 @@ namespace DLSisCtd
                 _ControlDetalle.IdActividad = reader.GetString(reader.GetOrdinal("IdActividad"));
                 _ControlDetalle.NroSecuencia = reader.GetString(reader.GetOrdinal("NroSecuencia"));
                 if (!reader.IsDBNull(reader.GetOrdinal("FechaRecepcion")))
+                {
                     _ControlDetalle.FechaRecepcion = reader.GetDateTime(reader.GetOrdinal("FechaRecepcion"));
+<<<<<<< .mine
+                    _ControlDetalle.IdOficinaRecepcion = reader.GetString(reader.GetOrdinal("IdOficinaRecepcion"));
+                }
+=======
                 if (!reader.IsDBNull(reader.GetOrdinal("IdOficinaRecepcion")))
                     _ControlDetalle.IdOficinaRecepcion = reader.GetString(reader.GetOrdinal("IdOficinaRecepcion"));
+>>>>>>> .r144
                 _ControlDetalle.Observacion = reader.GetString(reader.GetOrdinal("Observacion"));
                 _ControlDetalle.Orden = reader.GetInt32(reader.GetOrdinal("Orden"));
             }
@@ -467,7 +473,7 @@ namespace DLSisCtd
             }
 
         }
-        public void Enviar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        public void Enviar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle, List<BE_Reg_ControlImagenes> ListaImagenes)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
             {
@@ -483,6 +489,34 @@ namespace DLSisCtd
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() + "' ";
 
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    int nFila = 1;
+                    foreach (BE_Reg_ControlImagenes Imagen in ListaImagenes)
+                    {
+                        string sIdImagen = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, "Insert_Reg_ControlImagenes",
+                        BE_Helper.oBE_Sis_Cliente.IdCliente,
+                        Imagen.Nombre,
+                        Imagen.Archivo,
+                        Imagen.PesoArchivo,
+                        Imagen.ExtensionImagen,
+                        BE_Helper.oBE_Sis_Usuario.IdUsuario,
+                        oBE_Reg_ControlDetalle.IdControl));
+
+                        string sIdAnexo = nFila.ToString();
+                        sSql = "INSERT	INTO Reg_ControlDetalleAnexos VALUES( ";
+                        sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "', ";
+                        sSql += "       '" + oBE_Reg_ControlDetalle.IdControl + "', ";
+                        sSql += "       '" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() + "', ";
+                        sSql += "       right('" +  sIdAnexo + "',2),  ";
+                        sSql += "       '" + sIdImagen + "',  ";
+                        sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
+                        SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                        nFila += 1;
+                    }
+
+
+                    
                     sTrans.Commit();
                 }
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
