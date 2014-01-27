@@ -114,12 +114,11 @@ namespace BLSisCtd
         {
             oDL_Reg_Control.Recepcionar(oBE_Reg_ControlDetalle);
         }
-        public void Enviar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle)
+        public void Enviar(BE_Reg_ControlDetalle oBE_Reg_ControlDetalle, List<BE_Reg_ControlImagenes> ListaImagenes)
         {
-            oDL_Reg_Control.Enviar(oBE_Reg_ControlDetalle);
+            oDL_Reg_Control.Enviar(oBE_Reg_ControlDetalle, ListaImagenes);
         }
-
-
+        
         #endregion
     }
 }
