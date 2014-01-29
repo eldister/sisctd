@@ -22,6 +22,14 @@ namespace DLSisCtd
             return ConexionDAO.fDatatable("List_Reg_ControlDetalle", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl);
         }
 
+        public DataTable  Get_ControlImp(string sIdControl)
+        {
+            sSql = "select  * from Reg_Control ";
+            sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'";
+
+            return ConexionDAO.fDatatable(sSql);
+
+        }
 
         #endregion
 
@@ -213,7 +221,7 @@ namespace DLSisCtd
                     }
                     
 
-                    sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "_" + oBE_Reg_Control.IdOficinaRecepcion.Trim() + "_" + sCorrelativo;
+                    sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yyyy") +  oBE_Reg_Control.IdOficinaRecepcion.Trim() +  sCorrelativo;
                     sSql = "INSERT	INTO Reg_Control VALUES( ";
                     sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "', ";
                     sSql += "       '" + sIdControl + "', ";
