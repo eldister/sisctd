@@ -18,7 +18,7 @@ namespace DLSisCtd
             sSql += "from   T_MaestroCliente a ";
             sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
             sSql += "       a.RazonSocial like '%" + sDescripcion + "%' ";
-            sSql += "order by a.RazonSocial ";
+            sSql += "order by a.IdMaestroCliente Desc ";
             return ConexionDAO.fDatatable(sSql);
         }
         public DataTable Buscar()
@@ -80,10 +80,14 @@ namespace DLSisCtd
         }
         public void Insertar(BE_T_MaestroCliente oBE_T_MaestroCliente)
         {
+            sSql = "select right('00000'+convert(varchar(5),max(convert(int,idMaestroCliente))+1),5) from T_MaestroCliente ";
+            string sIdCliente = Convert.ToString(ConexionDAO.fEscalar(sSql));
+
             sSql = "insert into T_MaestroCliente values ";
             sSql += "(";
             sSql += "'" + BE_Helper.oBE_Sis_Cliente.IdCliente + "',";
-            sSql += "'" + oBE_T_MaestroCliente.IdMaestroCliente + "',";
+            sSql += "'" + sIdCliente  + "',";
+            //sSql += "'" + oBE_T_MaestroCliente.IdMaestroCliente + "',";
             sSql += "'" + oBE_T_MaestroCliente.TipoPersona.Substring(0,1) + "',";
             sSql += "'" + oBE_T_MaestroCliente.TipoDoi + "',";
             sSql += "'" + oBE_T_MaestroCliente.NumeroDoi + "',";
