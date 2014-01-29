@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtIdControl = new MigControls.MigTextbox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +49,7 @@
             this.bAsignarImagen = new System.Windows.Forms.ToolStripButton();
             this.bQuitarImagen = new System.Windows.Forms.ToolStripButton();
             this.bVerImagen = new System.Windows.Forms.ToolStripButton();
+            this.bSello = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripSeparator();
             this.bCerrar = new System.Windows.Forms.ToolStripButton();
             this.Stb = new System.Windows.Forms.StatusStrip();
@@ -209,6 +210,7 @@
             this.bAsignarImagen,
             this.bQuitarImagen,
             this.bVerImagen,
+            this.bSello,
             this.toolStripButton4,
             this.bCerrar});
             this.BarraSis.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
@@ -298,6 +300,15 @@
             this.bVerImagen.ToolTipText = "Eliminar (F4)";
             this.bVerImagen.Click += new System.EventHandler(this.bVerImagen_Click);
             // 
+            // bSello
+            // 
+            this.bSello.Image = global::SisCtd.Properties.Resources.Toolbar_Print;
+            this.bSello.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bSello.Name = "bSello";
+            this.bSello.Size = new System.Drawing.Size(52, 20);
+            this.bSello.Text = "Sello";
+            this.bSello.Click += new System.EventHandler(this.bSello_Click);
+            // 
             // toolStripButton4
             // 
             this.toolStripButton4.Name = "toolStripButton4";
@@ -336,8 +347,8 @@
             this.dgControl.AllowUserToAddRows = false;
             this.dgControl.AllowUserToDeleteRows = false;
             this.dgControl.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
-            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
+            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgControl.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -435,10 +446,10 @@
             this.dgDetalle.AllowUserToAddRows = false;
             this.dgDetalle.AllowUserToDeleteRows = false;
             this.dgDetalle.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Ivory;
-            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetalle.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -522,5 +533,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnBajar;
         private System.Windows.Forms.Button btnSubir;
+        private System.Windows.Forms.ToolStripButton bSello;
     }
 }
