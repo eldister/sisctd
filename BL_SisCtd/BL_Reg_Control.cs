@@ -21,6 +21,10 @@ namespace BLSisCtd
         {
             return oDL_Reg_Control.Listar_Detalle(sIdControl);
         }
+        public DataTable Get_ControlImp(string nIdControl)
+        {
+            return oDL_Reg_Control.Get_ControlImp(nIdControl);
+        }
 
         #endregion
 
