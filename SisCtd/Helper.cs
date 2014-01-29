@@ -662,7 +662,13 @@ namespace SisCtd
         {
             ConfigurationManager.RefreshSection("appSettings");
             string sRuta = ConfigurationManager.AppSettings["RutaReportes"]; ;
-            if (sRuta == "") { sRuta = System.Windows.Forms.Application.StartupPath + "\\reportes\\"; }
+//            string sRuta = ""; ;
+            
+            //if (sRuta == "") { sRuta = System.Windows.Forms.Application.StartupPath + "\\reportes\\"; }
+            if (sRuta == "") 
+               { 
+                sRuta = "C:\\Sistemas\\TramiteDC\\DEVSisCtd\\trunk\\SisCtd\\Reportes\\" ;
+                }
             return sRuta;
         }
 
