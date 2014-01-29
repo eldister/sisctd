@@ -86,8 +86,8 @@
             // 
             // treMenu
             // 
-            this.treMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.treMenu.BackColor = System.Drawing.SystemColors.Window;
             this.treMenu.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treMenu.ImageIndex = 0;
@@ -95,7 +95,7 @@
             this.treMenu.Location = new System.Drawing.Point(187, 57);
             this.treMenu.Name = "treMenu";
             this.treMenu.SelectedImageIndex = 0;
-            this.treMenu.Size = new System.Drawing.Size(213, 477);
+            this.treMenu.Size = new System.Drawing.Size(213, 460);
             this.treMenu.TabIndex = 3;
             this.treMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treMenu_AfterSelect);
             this.treMenu.DoubleClick += new System.EventHandler(this.treMenu_DoubleClick);
@@ -109,8 +109,8 @@
             // 
             // treMenuPerfil
             // 
-            this.treMenuPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treMenuPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.treMenuPerfil.BackColor = System.Drawing.SystemColors.Window;
             this.treMenuPerfil.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treMenuPerfil.ImageIndex = 0;
@@ -118,7 +118,7 @@
             this.treMenuPerfil.Location = new System.Drawing.Point(406, 57);
             this.treMenuPerfil.Name = "treMenuPerfil";
             this.treMenuPerfil.SelectedImageIndex = 0;
-            this.treMenuPerfil.Size = new System.Drawing.Size(213, 477);
+            this.treMenuPerfil.Size = new System.Drawing.Size(213, 460);
             this.treMenuPerfil.TabIndex = 4;
             this.treMenuPerfil.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treMenuPerfil_AfterSelect);
             this.treMenuPerfil.DoubleClick += new System.EventHandler(this.treMenuPerfil_DoubleClick);
@@ -334,8 +334,8 @@
             this.dgUsuarios.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
             this.dgUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.dgUsuarios.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -347,7 +347,7 @@
             this.dgUsuarios.RowHeadersWidth = 25;
             this.dgUsuarios.RowTemplate.Height = 18;
             this.dgUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgUsuarios.Size = new System.Drawing.Size(428, 477);
+            this.dgUsuarios.Size = new System.Drawing.Size(428, 460);
             this.dgUsuarios.StandardTab = true;
             this.dgUsuarios.TabIndex = 1;
             this.dgUsuarios.SelectionChanged += new System.EventHandler(this.dgUsuarios_SelectionChanged);
