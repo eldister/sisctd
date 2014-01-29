@@ -50,7 +50,7 @@ namespace SisCtd
                 {
                     case Helper.eOpcion.Nuevo:
                         this.Text = " Nuevo";
-                        txtIdControl.Text = "????_???_???????";
+                        txtIdControl.Text = "??????????????";
                         lblFechaRecepcion.Text = DateTime.Now.ToString("dd/MM/yyyy");
                         lblIdOficinaRecepcion.Text = oBL_Sis_Usuario.Get_IdOficina(BE_Helper.oBE_Sis_Usuario.IdUsuario);
                         break;
@@ -64,6 +64,9 @@ namespace SisCtd
                             this.Text = " Consultar";
                             txtIdTipoDocumento.ReadOnly = true;
                             BtnGrabar.Visible = false;
+                            grpSeguimiento.Visible = true;
+                            lblCodigoBarra.Visible = true;
+                            lblCodigoBarraTit.Visible = true;
                         }
                         else
                         {
