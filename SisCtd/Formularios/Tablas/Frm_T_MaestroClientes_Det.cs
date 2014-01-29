@@ -36,6 +36,8 @@ namespace SisCtd
                 {
                     case Helper.eOpcion.Nuevo:
                         this.Text = " Nuevo";
+                        txtCodigo.Enabled = false;
+                        txtCodigo.Text = "?????";
                         cboTipoPersona.SelectedIndex = 0;
                         cboTipoDoi.SelectedIndex = 0;
                         break;
