@@ -12,8 +12,8 @@ namespace DLSisCtd
 
         // ----- PRODUCCION -----------------------------------------------------------------------------------------
 
-        //public static string sDBservidor = "RAFAEL\\SQL2008";
-        //public static string sDBPassword = "123456";
+        public static string sDBservidor = "RAFAEL\\SQL2008";
+        public static string sDBPassword = "123456";
 
         public static string sDBusuario = "sa";
         public static string sDBnombre = "bddoc";
@@ -24,8 +24,8 @@ namespace DLSisCtd
         //public static string sDBusuario = "userdoc";
         //public static string sDBnombre = "bddoc";
 
-        public static string sDBservidor = "(local)";
-        public static string sDBPassword = "Imp1234$";
+        //public static string sDBservidor = "(local)";
+        //public static string sDBPassword = "Imp1234$";
 
 
         // ---- DESARROLLO SQL 2000---------------------------------------------------------------------------------

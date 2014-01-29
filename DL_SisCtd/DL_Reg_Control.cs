@@ -327,6 +327,10 @@ namespace DLSisCtd
                         oBE_Reg_ControlImagenes.ExtensionImagen,
                         BE_Helper.oBE_Sis_Usuario.IdUsuario,
                         sIdControl));
+
+                    sSql = "update Reg_Control set IdImagen='" + sIdImagen + "' where IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl + "'";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
                     sTrans.Commit();
                     return sIdImagen;
                 }

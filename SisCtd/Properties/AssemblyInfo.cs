@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("SisGpd")]
+[assembly: AssemblyTitle("SisCtd")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Iron Mountain S.A.")]
-[assembly: AssemblyProduct("Sistema de Registro de Documentos del Bbva (SisBbva)")]
-[assembly: AssemblyCopyright("©  2008")]
+[assembly: AssemblyCompany("V Systems")]
+[assembly: AssemblyProduct("Sistema de Control Documentario")]
+[assembly: AssemblyCopyright("©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
