@@ -57,6 +57,7 @@ namespace SisCtd
         private void Listar(Helper.eListar eListar)
         {
             DataTable Dt = new DataTable();
+            DataTable Dt1 = new DataTable();
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -85,9 +86,17 @@ namespace SisCtd
                     dgControl.Columns["IdImagen"].Visible = false;
                 }
                 else
-                {
-                    Helper.Exportar(Dt, "TiposDocumento");
-                }
+                    if (eListar == Helper.eListar.Excel)
+                    {
+                        Helper.Exportar(Dt, "TiposDocumento");
+                    }
+                    else
+                    {
+                        Get_IdControl(true);
+                        Dt1 = oBL_Reg_Control.Get_ControlImp(sIdControl);
+                        Helper.MostrarReporte("Sello", "Sello", Dt1 );
+                        Dt1.Dispose();
+                    }
                 Dt.Dispose();
             }
             catch (Exception ex)
@@ -209,6 +218,11 @@ namespace SisCtd
         {
             Listar(Helper.eListar.Excel);
         }
+        private void bSello_Click(object sender, EventArgs e)
+        {
+            Listar(Helper.eListar.Reporte);
+        }
+
 
         private void bAsignarImagen_Click(object sender, EventArgs e)
         {
@@ -351,6 +365,7 @@ namespace SisCtd
             }
         }
 
+
         #endregion
 
         #region Eventos Objetos
@@ -437,6 +452,7 @@ namespace SisCtd
             Helper.Buscar_Grilla(dgDetalle, sNroSecuencia, 0);
         }
         #endregion
+
 
 
 
