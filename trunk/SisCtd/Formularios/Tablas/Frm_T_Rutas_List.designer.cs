@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cboEstado = new MigControls.MigCombobox();
@@ -259,8 +259,8 @@
             this.Dg1.AllowUserToAddRows = false;
             this.Dg1.AllowUserToDeleteRows = false;
             this.Dg1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
-            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
+            this.Dg1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dg1.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.Dg1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dg1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -298,7 +298,7 @@
             // 
             this.btnBajar.Image = global::SisCtd.Properties.Resources._16__Fill_down_;
             this.btnBajar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBajar.Location = new System.Drawing.Point(584, 118);
+            this.btnBajar.Location = new System.Drawing.Point(860, 128);
             this.btnBajar.Name = "btnBajar";
             this.btnBajar.Size = new System.Drawing.Size(24, 35);
             this.btnBajar.TabIndex = 679;
@@ -309,7 +309,7 @@
             // 
             this.btnSubir.Image = global::SisCtd.Properties.Resources._16__Fill_up_;
             this.btnSubir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubir.Location = new System.Drawing.Point(584, 80);
+            this.btnSubir.Location = new System.Drawing.Point(860, 90);
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.Size = new System.Drawing.Size(24, 37);
             this.btnSubir.TabIndex = 678;
@@ -355,8 +355,8 @@
             this.dgActividades.AllowUserToAddRows = false;
             this.dgActividades.AllowUserToDeleteRows = false;
             this.dgActividades.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Ivory;
-            this.dgActividades.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
+            this.dgActividades.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgActividades.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgActividades.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgActividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -368,7 +368,7 @@
             this.dgActividades.RowHeadersWidth = 25;
             this.dgActividades.RowTemplate.Height = 18;
             this.dgActividades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActividades.Size = new System.Drawing.Size(567, 203);
+            this.dgActividades.Size = new System.Drawing.Size(842, 203);
             this.dgActividades.StandardTab = true;
             this.dgActividades.TabIndex = 675;
             // 

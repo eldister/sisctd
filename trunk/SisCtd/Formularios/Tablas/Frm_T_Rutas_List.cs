@@ -144,7 +144,10 @@ namespace SisCtd
                 dgActividades.DataSource = Dt; Helper.FormatoGrilla(dgActividades, false);
                 dgActividades.Columns["Orden"].Width = 40;
                 dgActividades.Columns["IdActividad"].Width = 100;
-                dgActividades.Columns["Actividad"].Width = 300;
+                dgActividades.Columns["Actividad"].Width = 200;
+                dgActividades.Columns["DuracionEnDias"].Width = 100;
+                dgActividades.Columns["Oficina"].Width = 170;
+                dgActividades.Columns["Area"].Width = 200;
 
                 Dt.Dispose();
             }
