@@ -23,6 +23,8 @@ namespace SisCtd
         {
             //TxtUsu.Text = "admin";
             //TxtPas.Text = "123456";
+            Helper.LLenar_Combobox(oBL_Sis_Cliente.Listar("A"), cboCliente, 0);
+            
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -46,8 +48,9 @@ namespace SisCtd
 
         private void TxtUsu_TextChanged(object sender, EventArgs e)
         {
-            cboCliente.Items.Clear();
-            cboCliente.Text = "";
+            cboCliente.Text = "DEMO";
+            //cboCliente.Items.Clear();
+            //cboCliente.Text = "";
         }
 
         private void TxtPas_KeyPress(object sender, KeyPressEventArgs e)
