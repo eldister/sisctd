@@ -21,6 +21,8 @@ namespace SisCtd
         BE_T_RutaActividad oBE_T_RutaActividad = new BE_T_RutaActividad();
         BL_T_Ruta oBL_T_Ruta = new BL_T_Ruta();
         BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
+        BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
+        BL_T_Area oBL_T_Area = new BL_T_Area();
 
         #endregion
 
@@ -64,6 +66,8 @@ namespace SisCtd
                         if (oBE_T_RutaActividad != null)
                         {
                             txtActividad.Text = oBE_T_RutaActividad.IdActividad;
+                            txtIdOficina.Text = oBE_T_RutaActividad.IdOficina;
+                            txtIdArea.Text = oBE_T_RutaActividad.IdArea;
                         }
                         break;
                 }
@@ -90,7 +94,9 @@ namespace SisCtd
             {
                 oBE_T_RutaActividad.IdRuta = txtCodigo.Text.Trim();
                 oBE_T_RutaActividad.IdActividad = txtActividad.Text.Trim();
-                oBE_T_RutaActividad.DuracionenDia = Convert.ToInt32(txtDuracionendias.Text.Trim()); 
+                oBE_T_RutaActividad.DuracionenDia = Convert.ToInt32(txtDuracionendias.Text.Trim());
+                oBE_T_RutaActividad.IdOficina = txtIdOficina.Text.Trim();
+                oBE_T_RutaActividad.IdArea = txtIdArea.Text.Trim();
 
                 if (oBE_T_RutaActividad.IdActividad == "")
                 {
@@ -130,6 +136,8 @@ namespace SisCtd
             {
                 case "txtRuta": lblRuta.Text = oBL_T_Ruta.Get_Descripcion(txtCodigo.Text); break;
                 case "txtActividad": lblActividad.Text = oBL_T_Actividad.Get_Descripcion(txtActividad.Text); break;
+                case "txtIdOficina": lblOficina.Text = oBL_T_Oficina.Get_Descripcion(txtIdOficina.Text); break;
+                case "txtIdArea": lblArea.Text = oBL_T_Area.Get_Descripcion(txtIdArea.Text); break;
             }
 
         }
@@ -141,6 +149,8 @@ namespace SisCtd
                 switch (txt.Name)
                 {
                     case "txtActividad": txtActividad.Text = Helper.Buscar(oBL_T_Actividad.Buscar()); break;
+                    case "txtIdOficina": txtIdOficina.Text = Helper.Buscar(oBL_T_Oficina.Buscar()); break;
+                    case "txtIdArea": txtIdArea.Text = Helper.Buscar(oBL_T_Area.Buscar()); break;
                 }
             }
         }
