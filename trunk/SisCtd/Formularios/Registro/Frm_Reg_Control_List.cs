@@ -172,7 +172,7 @@ namespace SisCtd
         private void Abrir_Detalle(Helper.eOpcion qOpcion)
         {
             Frm_Reg_Control_Det fDet = new Frm_Reg_Control_Det(qOpcion, sIdControl);
-            fDet.ShowDialog();
+             fDet.ShowDialog();
             if (fDet.bGrabo == true)
             {
                 Listar(Helper.eListar.Grilla);
@@ -221,6 +221,8 @@ namespace SisCtd
         private void bSello_Click(object sender, EventArgs e)
         {
             Listar(Helper.eListar.Reporte);
+            //using (Engine btengine = new Engine(true)) ;
+
         }
 
 
