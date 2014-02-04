@@ -68,7 +68,12 @@ namespace DLSisCtd
                     _ControlDetalle.IdOficinaRecepcion = reader.GetString(reader.GetOrdinal("IdOficinaRecepcion"));
                 _ControlDetalle.Observacion = reader.GetString(reader.GetOrdinal("Observacion"));
                 _ControlDetalle.Orden = reader.GetInt32(reader.GetOrdinal("Orden"));
+                _ControlDetalle.IdAreaDestinatario = reader.GetString(reader.GetOrdinal("IdAreaDestinatario"));
+                _ControlDetalle.IdOficinaDestinatario  = reader.GetString(reader.GetOrdinal("IdOficinaDestinatario"));
+                _ControlDetalle.IdEmpleadoDestinatario  = reader.GetString(reader.GetOrdinal("IdEmpleadoDestinatario"));
+
             }
+
             else
             {
                 _ControlDetalle = null;
@@ -240,14 +245,26 @@ namespace DLSisCtd
                     sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
+                    //sSql = "insert into Reg_ControlDetalle ";
+                    //sSql += "select	a.IdCliente,'" + sIdControl + "',right(0+convert(varchar(2),Orden),2),Orden, ";
+                    //sSql += "       IdActividad, ";
+                    //sSql += "       null,null,null,null, ";
+                    //sSql += "       null,null,null,null, ";
+                    //sSql += "       '',a.DuracionEnDias,'Pendiente', ";
+                    //sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "' ";
+                    //sSql += "from	T_RutaActividad a  ";
+                    //sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdRuta='" + oBE_Reg_Control.IdRuta + "' ";
+                    //SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
                     sSql = "insert into Reg_ControlDetalle ";
                     sSql += "select	a.IdCliente,'" + sIdControl + "',right(0+convert(varchar(2),Orden),2),Orden, ";
-                    sSql += "       IdActividad, ";
-                    sSql += "       null,null,null,null, ";
+                    sSql += "       a.IdActividad, ";
+                    sSql += "       a.IdOficina,b.IdEmpleadoResponsable,a.IdArea,null, ";
                     sSql += "       null,null,null,null, ";
                     sSql += "       '',a.DuracionEnDias,'Pendiente', ";
                     sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "' ";
                     sSql += "from	T_RutaActividad a  ";
+                    sSql += "       left join T_Area b on a.IdArea = b.IdArea  ";
                     sSql += "where	a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdRuta='" + oBE_Reg_Control.IdRuta + "' ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
@@ -267,8 +284,8 @@ namespace DLSisCtd
                     sSql += "       IdAreaRecepcion='" + sIdArea + "', ";
                     sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl + "' and NroSecuencia=1 ";
-
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
                     
                     sTrans.Commit();
                     return sIdControl;
@@ -276,6 +293,44 @@ namespace DLSisCtd
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
         }
+
+        public string Actualizar(BE_Reg_Control oBE_Reg_Control)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    string sIdControl = "";
+                    sIdControl = oBE_Reg_Control.IdControl;
+
+                    sSql = "drop table tmp009";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    sSql = "select  a.IdControl,a.NroSecuencia,b.IdAreaRecepcion,b.IdOficinaRecepcion,b.IdEmpleadoRecepcion into tmp009 ";
+                    sSql += "from   Reg_ControlDetalle a";
+                    sSql += "       inner join Reg_ControlDetalle b on a.IdControl = b.IdControl  and b.NroSecuencia = a.NroSecuencia + 1  ";
+                    sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdControl='" + oBE_Reg_Control.IdControl  + "' ";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    sSql = "Update  Reg_ControlDetalle set ";
+                    sSql += "       IdOficinaDestinatario=b.IdOficinaRecepcion, ";
+                    sSql += "       IdEmpleadoDestinatario=b.IdEmpleadoRecepcion, ";
+                    sSql += "       IdAreaDestinatario=b.IdAreaRecepcion ";
+                    sSql += "from	Reg_ControlDetalle a ";
+                    sSql += "        left join tmp009 b on a.IdControl = b.IdControl and a.NroSecuencia = b.NroSecuencia  ";
+                    sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdControl='" + oBE_Reg_Control.IdControl + "' ";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                    sTrans.Commit();
+                    return sIdControl;
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+        }
+
+
+
         public void Modificar(BE_Reg_Control oBE_Reg_Control)
         {
             using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
