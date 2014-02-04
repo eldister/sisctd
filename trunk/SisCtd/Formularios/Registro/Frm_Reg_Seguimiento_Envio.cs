@@ -130,6 +130,9 @@ namespace SisCtd
                             lblDesOficinaRecepcion.Text = oBL_T_Oficina.Get_Descripcion(lblIdOficinaRecepcion.Text);
                             lblFechaRecepcion.Text = oBE_Reg_ControlDetalle.FechaRecepcion.ToString("dd/MM/yyyy");
                             txtObservacion.Text = oBE_Reg_ControlDetalle.Observacion;
+                            txtIdOficinaDestinatario.Text = oBE_Reg_ControlDetalle.IdOficinaDestinatario ;
+                            txtIdArea.Text = oBE_Reg_ControlDetalle.IdAreaDestinatario ;
+                            lblIdEmpleado.Text = oBE_Reg_ControlDetalle.IdEmpleadoDestinatario ;
                         }
                         else
                         {
@@ -346,6 +349,7 @@ namespace SisCtd
         }
         #endregion
 
+        
 
 
 

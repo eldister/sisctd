@@ -62,6 +62,9 @@
             this.txtIdOficinaDestinatario = new MigControls.MigTextbox();
             this.label11 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
+            this.Archivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Formato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnQuitarArchivo = new System.Windows.Forms.Button();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.txtIdArea = new MigControls.MigTextbox();
@@ -71,9 +74,6 @@
             this.lblDesEmpleado = new System.Windows.Forms.Label();
             this.lblIdEmpleado = new System.Windows.Forms.Label();
             this.bVerImagen = new System.Windows.Forms.Button();
-            this.Archivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Formato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -400,7 +400,7 @@
             this.txtIdOficinaDestinatario.ColorSalida = System.Drawing.Color.White;
             this.txtIdOficinaDestinatario.Decimales = 2;
             this.txtIdOficinaDestinatario.Guiones = false;
-            this.txtIdOficinaDestinatario.Location = new System.Drawing.Point(135, 279);
+            this.txtIdOficinaDestinatario.Location = new System.Drawing.Point(135, 283);
             this.txtIdOficinaDestinatario.MaxLength = 25;
             this.txtIdOficinaDestinatario.Name = "txtIdOficinaDestinatario";
             this.txtIdOficinaDestinatario.PasarEnter = true;
@@ -444,6 +444,27 @@
             this.dgDetalle.Size = new System.Drawing.Size(518, 94);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 8;
+            // 
+            // Archivo
+            // 
+            this.Archivo.HeaderText = "Nombre del Archivo";
+            this.Archivo.Name = "Archivo";
+            this.Archivo.ReadOnly = true;
+            this.Archivo.Width = 400;
+            // 
+            // Formato
+            // 
+            this.Formato.HeaderText = "Formato";
+            this.Formato.Name = "Formato";
+            this.Formato.ReadOnly = true;
+            this.Formato.Width = 60;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Visible = false;
             // 
             // btnQuitarArchivo
             // 
@@ -549,27 +570,6 @@
             this.bVerImagen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bVerImagen.UseVisualStyleBackColor = true;
             this.bVerImagen.Click += new System.EventHandler(this.bVerImagen_Click);
-            // 
-            // Archivo
-            // 
-            this.Archivo.HeaderText = "Nombre del Archivo";
-            this.Archivo.Name = "Archivo";
-            this.Archivo.ReadOnly = true;
-            this.Archivo.Width = 400;
-            // 
-            // Formato
-            // 
-            this.Formato.HeaderText = "Formato";
-            this.Formato.Name = "Formato";
-            this.Formato.ReadOnly = true;
-            this.Formato.Width = 60;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Visible = false;
             // 
             // Frm_Reg_Seguimiento_Envio
             // 
