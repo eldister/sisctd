@@ -213,6 +213,8 @@ namespace SisCtd
                 if (qOpcion == Helper.eOpcion.Nuevo)
                 {
                     sIdControl = oBL_Reg_Control.Insertar(oBE_Reg_Control);
+                    oBE_Reg_Control.IdControl = sIdControl;
+                    sIdControl = oBL_Reg_Control.Actualizar(oBE_Reg_Control);
                 }
                 if (qOpcion == Helper.eOpcion.Modificar)
                 {
