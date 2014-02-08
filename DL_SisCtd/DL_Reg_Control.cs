@@ -13,7 +13,7 @@ namespace DLSisCtd
         #region Listados
         public DataTable Listar(string sIdControl, string sNroDocumento, string sRazonSocial,string sEstado)
         {
-            if (sEstado == "Total") sEstado = "";
+            if (sEstado == "Todos") sEstado = "";
             return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
@@ -68,9 +68,12 @@ namespace DLSisCtd
                     _ControlDetalle.IdOficinaRecepcion = reader.GetString(reader.GetOrdinal("IdOficinaRecepcion"));
                 _ControlDetalle.Observacion = reader.GetString(reader.GetOrdinal("Observacion"));
                 _ControlDetalle.Orden = reader.GetInt32(reader.GetOrdinal("Orden"));
-                _ControlDetalle.IdAreaDestinatario = reader.GetString(reader.GetOrdinal("IdAreaDestinatario"));
-                _ControlDetalle.IdOficinaDestinatario  = reader.GetString(reader.GetOrdinal("IdOficinaDestinatario"));
-                _ControlDetalle.IdEmpleadoDestinatario  = reader.GetString(reader.GetOrdinal("IdEmpleadoDestinatario"));
+                if (!reader.IsDBNull(reader.GetOrdinal("IdAreaDestinatario")))
+                   _ControlDetalle.IdAreaDestinatario = reader.GetString(reader.GetOrdinal("IdAreaDestinatario"));
+                if (!reader.IsDBNull(reader.GetOrdinal("IdOficinaDestinatario")))
+                   _ControlDetalle.IdOficinaDestinatario  = reader.GetString(reader.GetOrdinal("IdOficinaDestinatario"));
+                if (!reader.IsDBNull(reader.GetOrdinal("IdEmpleadoDestinatario")))
+                   _ControlDetalle.IdEmpleadoDestinatario  = reader.GetString(reader.GetOrdinal("IdEmpleadoDestinatario"));
 
             }
 
@@ -206,7 +209,7 @@ namespace DLSisCtd
                 {
                     string sIdControl = ""; string sCorrelativo = "";
 
-                    sSql = "select  '000000'+convert(varchar(7),Correlativo+1) ";
+                    sSql = "select  right('000000'+convert(varchar(7),Correlativo+1),7) ";
                     sSql += "from   T_Numeracion ";
                     sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año='" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "'";
                     sCorrelativo = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
@@ -241,6 +244,7 @@ namespace DLSisCtd
                     sSql += "       null, ";
                     sSql += "       null, ";
                     sSql += "       null, ";
+                    sSql += "       '" + oBE_Reg_Control.CodBarra + "', ";
                     sSql += "       'Pendiente', ";
                     sSql += "       convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
@@ -303,15 +307,14 @@ namespace DLSisCtd
                 try
                 {
                     string sIdControl = "";
-                    sIdControl = oBE_Reg_Control.IdControl;
 
-                    sSql = "drop table tmp009";
+                    sSql = "if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tmp009]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [dbo].[tmp009] ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
                     sSql = "select  a.IdControl,a.NroSecuencia,b.IdAreaRecepcion,b.IdOficinaRecepcion,b.IdEmpleadoRecepcion into tmp009 ";
                     sSql += "from   Reg_ControlDetalle a";
                     sSql += "       inner join Reg_ControlDetalle b on a.IdControl = b.IdControl  and b.NroSecuencia = a.NroSecuencia + 1  ";
-                    sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdControl='" + oBE_Reg_Control.IdControl  + "' ";
+                    sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdControl='" + oBE_Reg_Control.IdControl + "' ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
                     sSql = "Update  Reg_ControlDetalle set ";
@@ -327,6 +330,62 @@ namespace DLSisCtd
                 }
                 catch (Exception ex) { sTrans.Rollback(); throw ex; }
             }
+        }
+
+        public void ActualizarCodBarra(BE_Reg_Control oBE_Reg_Control)
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try
+                {
+                    sSql = "update Reg_Control set ";
+                    sSql += "       codbarra = '" + oBE_Reg_Control.CodBarra  + "' ";
+                    sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + oBE_Reg_Control.IdControl + "' ";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+        }
+
+        public DataTable Reporte()
+        {
+            using (SqlConnection sCn = new SqlConnection(ConexionDAO.sConexion))
+            {
+                sCn.Open();
+                SqlTransaction sTrans = sCn.BeginTransaction();
+                try 
+                {
+
+                    sSql = "if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[tmp098]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [dbo].[tmp098] ";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+
+                    sSql = "select IdControl, min(NroSecuencia) as nrosecuencia into tmp098 ";
+                    sSql += "from   Reg_ControlDetalle ";
+                    sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Estado = 'Pendiente' group by idcontrol ";
+                    SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    sTrans.Commit();
+
+                    sSql = "select a.*,b.NumeroDoi,b.RazonSocial,c.Descripcion as dOficina,y.IdAreaRecepcion, d.Descripcion as dArea, y.FechaRecepcion, ";
+                    sSql += "       case when ISNULL(y.FechaRecepcion,'')='' then 'Recepcion' else 'Envio' end as EstadoRuta ";
+                    sSql += "from reg_control a ";
+                    sSql += "   left join tmp098 x on a.IdControl = x.IdControl ";
+                    sSql += "   left join Reg_ControlDetalle y on a.IdCliente = y.IdCliente and a.IdControl = y.IdControl and y.NroSecuencia = x.NroSecuencia ";
+                    sSql += "   left join T_MaestroCliente b on a.IdCliente = b.IdCliente  and a.IdMaestroCliente = b.IdMaestroCliente ";
+                    sSql += "   left join T_Oficina c on a.IdCliente = c.IdCliente  and a.IdOficinaRecepcion  = c.Idoficina  ";
+                    sSql += "   left join T_Area d on a.IdCliente = d.IdCliente and y.IdAreaRecepcion =d.IdArea  ";
+                    //SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+
+                    return ConexionDAO.fDatatable(sSql);
+
+                }
+                catch (Exception ex) { sTrans.Rollback(); throw ex; }
+            }
+
         }
 
 
@@ -546,13 +605,29 @@ namespace DLSisCtd
                 SqlTransaction sTrans = sCn.BeginTransaction();
                 try
                 {
+
+                    string sOrdent = ""; 
+
+                    sSql = "select  count(*)  ";
+                    sSql += "from   Reg_ControlDetalle ";
+                    sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' ";
+                    sOrdent = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
+
+                     if (sOrdent == oBE_Reg_ControlDetalle.NroSecuencia.ToString().Trim())
+                         {
+                             sSql = "Update  Reg_Control set ";
+                             sSql += "       Estado='Terminado' ";
+                             sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' ";
+                             SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
+                         }
+
                     sSql = "Update  Reg_ControlDetalle set ";
                     sSql += "       IdOficinaDestinatario='" + oBE_Reg_ControlDetalle.IdOficinaDestinatario + "', ";
                     sSql += "       IdEmpleadoDestinatario='" + oBE_Reg_ControlDetalle.IdEmpleadoDestinatario + "', ";
                     sSql += "       IdAreaDestinatario='" + oBE_Reg_ControlDetalle.IdAreaDestinatario + "', ";
+                    sSql += "       Estado='Terminado', ";
                     sSql += "       FechaDestinatario=convert(varchar,getdate(),112) ";
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() + "' ";
-
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
                     int nFila = 1;
