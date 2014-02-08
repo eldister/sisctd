@@ -26,6 +26,11 @@ namespace BLSisCtd
             return oDL_Reg_Control.Get_ControlImp(nIdControl);
         }
 
+        public DataTable Reporte()
+        {
+            return oDL_Reg_Control.Reporte();
+        }
+
         #endregion
 
         #region Obtener Valores
@@ -78,6 +83,15 @@ namespace BLSisCtd
         {
             return oDL_Reg_Control.Insertar(oBE_Reg_Control);
         }
+        public string Actualizar(BE_Reg_Control oBE_Reg_Control)
+        {
+            return oDL_Reg_Control.Actualizar(oBE_Reg_Control);
+        }
+        public void ActualizarCodBarra(BE_Reg_Control oBE_Reg_Control)
+        {
+             oDL_Reg_Control.ActualizarCodBarra(oBE_Reg_Control);
+        }
+
         public void Modificar(BE_Reg_Control oBE_Reg_Control)
         {
             oDL_Reg_Control.Modificar(oBE_Reg_Control);
