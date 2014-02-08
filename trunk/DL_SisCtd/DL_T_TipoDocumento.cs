@@ -41,14 +41,25 @@ namespace DLSisCtd
         }
         public DataTable Listar_RutaActividad(string sIdRuta)
         {
-            sSql = "select 	a.Orden,a.IdActividad,b.Descripcion, ";
-            sSql += "       case when b.Estado = 1 then '' else 'I' end as Estado ";
-            sSql += "from	T_RutaActividad a ";
-            sSql += "       left join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
+            sSql = "select 	a.Orden, a.IdActividad, ";
+            sSql += "       b.Descripcion as Actividad, DuracionEnDias as Duracion, left(c.Descripcion,30) as Oficina, left(d.Descripcion,30) as Area ";
+            sSql += "from 	T_RutaActividad a ";
+            sSql += "       inner join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
+            sSql += "       left join T_Oficina c on a.IdCliente=c.IdCliente and a.IdOficina=c.IdOficina ";
+            sSql += "       left join T_Area d on a.IdCliente=d.IdCliente and a.IdArea=d.IdArea ";
             sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
-            sSql += "       a.IdRuta = '" + sIdRuta + "'";
-            sSql += "order by a.orden ";
+            sSql += "       a.IdRuta = '" + sIdRuta + "' ";
+            sSql += "order by a.orden,a.IdActividad ";
             return ConexionDAO.fDatatable(sSql);
+
+            //sSql = "select 	a.Orden,a.IdActividad,b.Descripcion, ";
+            //sSql += "       case when b.Estado = 1 then '' else 'I' end as Estado ";
+            //sSql += "from	T_RutaActividad a ";
+            //sSql += "       left join T_Actividad b on a.IdCliente=b.IdCliente and a.IdActividad=b.IdActividad ";
+            //sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+            //sSql += "       a.IdRuta = '" + sIdRuta + "'";
+            //sSql += "order by a.orden ";
+            //return ConexionDAO.fDatatable(sSql);
         }
         public DataTable Buscar()
         {
