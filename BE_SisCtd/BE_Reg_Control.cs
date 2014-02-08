@@ -20,6 +20,7 @@ namespace BESisCtd
 		private DateTime? fechaTermino;
 		private string idImagen;
 		private string estado;
+        private byte[] codBarra;
 		private DateTime fechaRegistro;
 		private string horaRegistro;
 		private string usuarioRegistro;
@@ -38,7 +39,7 @@ namespace BESisCtd
 		/// <summary>
 		/// Initializes a new instance of the Reg_Control class.
 		/// </summary>
-		public BE_Reg_Control(string idCliente, string idControl, DateTime fechaRecepcion, string idOficinaRecepcion, string idTipoDocumento, string idRuta, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string observacion, DateTime? fechaInicio, DateTime? fechaTermino, string idImagen, string estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
+		public BE_Reg_Control(string idCliente, string idControl, DateTime fechaRecepcion, string idOficinaRecepcion, string idTipoDocumento, string idRuta, string idMaestroCliente, string nroDocumento, DateTime fechaDocumento, string observacion, DateTime? fechaInicio, DateTime? fechaTermino, string idImagen, byte [] codBarra, string estado, DateTime fechaRegistro, string horaRegistro, string usuarioRegistro)
 		{
 			this.idCliente = idCliente;
 			this.idControl = idControl;
@@ -54,6 +55,7 @@ namespace BESisCtd
 			this.fechaTermino = fechaTermino;
 			this.idImagen = idImagen;
 			this.estado = estado;
+            this.codBarra = codBarra;
 			this.fechaRegistro = fechaRegistro;
 			this.horaRegistro = horaRegistro;
 			this.usuarioRegistro = usuarioRegistro;
@@ -178,6 +180,15 @@ namespace BESisCtd
 			get { return idImagen; }
 			set { idImagen = value; }
 		}
+
+        /// <summary>
+        /// Gets or sets the IdImagen value.
+        /// </summary>
+        public virtual byte [] CodBarra
+        {
+            get { return codBarra; }
+            set { codBarra = value; }
+        }
 
 		/// <summary>
 		/// Gets or sets the Estado value.
