@@ -76,7 +76,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(936, 32);
+            this.panel1.Size = new System.Drawing.Size(1059, 32);
             this.panel1.TabIndex = 2;
             // 
             // lblEstado
@@ -175,7 +175,7 @@
             this.BarraSis.Location = new System.Drawing.Point(0, 0);
             this.BarraSis.Name = "BarraSis";
             this.BarraSis.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.BarraSis.Size = new System.Drawing.Size(936, 23);
+            this.BarraSis.Size = new System.Drawing.Size(1059, 23);
             this.BarraSis.TabIndex = 3;
             // 
             // bNuevo
@@ -244,7 +244,7 @@
             this.LblMensaje});
             this.Stb.Location = new System.Drawing.Point(0, 197);
             this.Stb.Name = "Stb";
-            this.Stb.Size = new System.Drawing.Size(936, 22);
+            this.Stb.Size = new System.Drawing.Size(1059, 22);
             this.Stb.TabIndex = 662;
             this.Stb.Text = "statusStrip1";
             // 
@@ -275,7 +275,7 @@
             this.dgTipoDocumento.RowHeadersWidth = 25;
             this.dgTipoDocumento.RowTemplate.Height = 18;
             this.dgTipoDocumento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTipoDocumento.Size = new System.Drawing.Size(936, 142);
+            this.dgTipoDocumento.Size = new System.Drawing.Size(1059, 142);
             this.dgTipoDocumento.StandardTab = true;
             this.dgTipoDocumento.TabIndex = 0;
             this.dgTipoDocumento.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTipoDocumento_CellClick);
@@ -294,7 +294,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 219);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(936, 276);
+            this.panel2.Size = new System.Drawing.Size(1059, 276);
             this.panel2.TabIndex = 1;
             // 
             // btnQuitar
@@ -345,7 +345,7 @@
             this.dgActividades.RowHeadersWidth = 25;
             this.dgActividades.RowTemplate.Height = 18;
             this.dgActividades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActividades.Size = new System.Drawing.Size(484, 203);
+            this.dgActividades.Size = new System.Drawing.Size(625, 203);
             this.dgActividades.StandardTab = true;
             this.dgActividades.TabIndex = 3;
             // 
@@ -388,7 +388,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(936, 495);
+            this.ClientSize = new System.Drawing.Size(1059, 495);
             this.Controls.Add(this.dgTipoDocumento);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BarraSis);
