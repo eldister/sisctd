@@ -60,7 +60,10 @@
             this.grpSeguimiento = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblIdOficinaRecepcionDes = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblHoraRecepcion = new System.Windows.Forms.Label();
             this.grpSeguimiento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -147,7 +150,7 @@
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.PasarEnter = true;
-            this.txtObservacion.Size = new System.Drawing.Size(417, 65);
+            this.txtObservacion.Size = new System.Drawing.Size(433, 65);
             this.txtObservacion.TabIndex = 6;
             this.txtObservacion.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
@@ -157,7 +160,7 @@
             this.lblDesTipoDocumento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDesTipoDocumento.Location = new System.Drawing.Point(215, 71);
             this.lblDesTipoDocumento.Name = "lblDesTipoDocumento";
-            this.lblDesTipoDocumento.Size = new System.Drawing.Size(322, 20);
+            this.lblDesTipoDocumento.Size = new System.Drawing.Size(339, 20);
             this.lblDesTipoDocumento.TabIndex = 10;
             this.lblDesTipoDocumento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -167,7 +170,7 @@
             this.lblDesMaestroCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDesMaestroCliente.Location = new System.Drawing.Point(215, 99);
             this.lblDesMaestroCliente.Name = "lblDesMaestroCliente";
-            this.lblDesMaestroCliente.Size = new System.Drawing.Size(322, 20);
+            this.lblDesMaestroCliente.Size = new System.Drawing.Size(338, 20);
             this.lblDesMaestroCliente.TabIndex = 11;
             this.lblDesMaestroCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -318,7 +321,7 @@
             this.lblCodigoBarra.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblCodigoBarra.Location = new System.Drawing.Point(8, 390);
             this.lblCodigoBarra.Name = "lblCodigoBarra";
-            this.lblCodigoBarra.Size = new System.Drawing.Size(143, 52);
+            this.lblCodigoBarra.Size = new System.Drawing.Size(145, 60);
             this.lblCodigoBarra.TabIndex = 27;
             this.lblCodigoBarra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblCodigoBarra.Visible = false;
@@ -351,7 +354,7 @@
             // 
             this.lblFechaRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
             this.lblFechaRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblFechaRecepcion.Location = new System.Drawing.Point(466, 15);
+            this.lblFechaRecepcion.Location = new System.Drawing.Point(406, 15);
             this.lblFechaRecepcion.Name = "lblFechaRecepcion";
             this.lblFechaRecepcion.Size = new System.Drawing.Size(71, 20);
             this.lblFechaRecepcion.TabIndex = 28;
@@ -360,7 +363,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(353, 19);
+            this.label4.Location = new System.Drawing.Point(293, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 13);
             this.label4.TabIndex = 29;
@@ -418,13 +421,34 @@
             this.lblIdOficinaRecepcionDes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblIdOficinaRecepcionDes.Location = new System.Drawing.Point(215, 43);
             this.lblIdOficinaRecepcionDes.Name = "lblIdOficinaRecepcionDes";
-            this.lblIdOficinaRecepcionDes.Size = new System.Drawing.Size(322, 20);
+            this.lblIdOficinaRecepcionDes.Size = new System.Drawing.Size(339, 20);
             this.lblIdOficinaRecepcionDes.TabIndex = 34;
             this.lblIdOficinaRecepcionDes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(228, 380);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 43);
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // lblHoraRecepcion
+            // 
+            this.lblHoraRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblHoraRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblHoraRecepcion.Location = new System.Drawing.Point(483, 14);
+            this.lblHoraRecepcion.Name = "lblHoraRecepcion";
+            this.lblHoraRecepcion.Size = new System.Drawing.Size(71, 20);
+            this.lblHoraRecepcion.TabIndex = 37;
+            this.lblHoraRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Frm_Reg_Control_Det
             // 
-            this.ClientSize = new System.Drawing.Size(551, 456);
+            this.ClientSize = new System.Drawing.Size(569, 458);
+            this.Controls.Add(this.lblHoraRecepcion);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblIdOficinaRecepcionDes);
             this.Controls.Add(this.grpSeguimiento);
@@ -465,6 +489,7 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Reg_Control_Det_KeyPress);
             this.grpSeguimiento.ResumeLayout(false);
             this.grpSeguimiento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -504,6 +529,8 @@
         private System.Windows.Forms.GroupBox grpSeguimiento;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblIdOficinaRecepcionDes;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblHoraRecepcion;
 
     }
 }
