@@ -129,6 +129,7 @@ namespace SisCtd
                             lblIdOficinaRecepcion.Text = oBE_Reg_ControlDetalle.IdOficinaRecepcion;
                             lblDesOficinaRecepcion.Text = oBL_T_Oficina.Get_Descripcion(lblIdOficinaRecepcion.Text);
                             lblFechaRecepcion.Text = oBE_Reg_ControlDetalle.FechaRecepcion.ToString("dd/MM/yyyy");
+                            lblHoraRecepcion.Text = oBE_Reg_ControlDetalle.FechaRecepcion.ToString("hh:mm tt");
                             txtObservacion.Text = oBE_Reg_ControlDetalle.Observacion;
                             txtIdOficinaDestinatario.Text = oBE_Reg_ControlDetalle.IdOficinaDestinatario ;
                             txtIdArea.Text = oBE_Reg_ControlDetalle.IdAreaDestinatario ;
@@ -141,6 +142,7 @@ namespace SisCtd
                         }
 
                         lblFechaEnvio.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        lblHoraEnvio.Text = DateTime.Now.ToString("hh:mm tt");
                         txtIdOficinaDestinatario.Focus();
                     }
                     else
@@ -329,6 +331,8 @@ namespace SisCtd
                 oBE_Reg_ControlDetalle.IdOficinaDestinatario = txtIdOficinaDestinatario.Text;
                 oBE_Reg_ControlDetalle.IdAreaDestinatario = txtIdArea.Text;
                 oBE_Reg_ControlDetalle.IdEmpleadoDestinatario = lblIdEmpleado.Text;
+                oBE_Reg_Control.FechaRecepcion = Convert.ToDateTime(lblFechaRecepcion.Text + " " + lblHoraRecepcion.Text);
+
                 
                 oBE_Reg_ControlDetalle.Observacion = txtObservacion.Text;
                 oBL_Reg_Control.Enviar(oBE_Reg_ControlDetalle, ListaImagenes);
@@ -349,21 +353,10 @@ namespace SisCtd
         }
         #endregion
 
-        
+        private void Frm_Reg_Seguimiento_Envio_Load(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+                
     }
 }

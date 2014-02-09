@@ -74,6 +74,11 @@
             this.lblDesEmpleado = new System.Windows.Forms.Label();
             this.lblIdEmpleado = new System.Windows.Forms.Label();
             this.bVerImagen = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblHoraEnvio = new System.Windows.Forms.Label();
+            this.lblHoraRecepcion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -571,9 +576,52 @@
             this.bVerImagen.UseVisualStyleBackColor = true;
             this.bVerImagen.Click += new System.EventHandler(this.bVerImagen_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre del Archivo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 400;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Formato";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "nombre";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // lblHoraEnvio
+            // 
+            this.lblHoraEnvio.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblHoraEnvio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblHoraEnvio.Location = new System.Drawing.Point(230, 254);
+            this.lblHoraEnvio.Name = "lblHoraEnvio";
+            this.lblHoraEnvio.Size = new System.Drawing.Size(73, 20);
+            this.lblHoraEnvio.TabIndex = 90;
+            this.lblHoraEnvio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblHoraRecepcion
+            // 
+            this.lblHoraRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblHoraRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblHoraRecepcion.Location = new System.Drawing.Point(230, 192);
+            this.lblHoraRecepcion.Name = "lblHoraRecepcion";
+            this.lblHoraRecepcion.Size = new System.Drawing.Size(72, 20);
+            this.lblHoraRecepcion.TabIndex = 91;
+            this.lblHoraRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Frm_Reg_Seguimiento_Envio
             // 
             this.ClientSize = new System.Drawing.Size(560, 569);
+            this.Controls.Add(this.lblHoraRecepcion);
+            this.Controls.Add(this.lblHoraEnvio);
             this.Controls.Add(this.bVerImagen);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.lblDesEmpleado);
@@ -625,6 +673,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Envio de Documentos";
+            this.Load += new System.EventHandler(this.Frm_Reg_Seguimiento_Envio_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Reg_Seguimiento_Envio_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).EndInit();
             this.ResumeLayout(false);
@@ -679,6 +728,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Archivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Formato;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Label lblHoraEnvio;
+        private System.Windows.Forms.Label lblHoraRecepcion;
 
 
     }
