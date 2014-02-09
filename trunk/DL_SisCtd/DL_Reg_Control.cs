@@ -31,6 +31,15 @@ namespace DLSisCtd
 
         }
 
+        public DataTable Listar_DocumentosAnexos(string sIdControl, string sNroSecuencia)
+        {
+            sSql = "select b.Idimagen, b.Nombre,b.ExtensionImagen,b.PesoArchivo   from Reg_ControlDetalleAnexos a ";
+            sSql += " left join Reg_ControlImagenes b on a.IdCliente = b.IdCliente and a.IdImagen  = b.Idimagen ";
+            sSql += "where  a.IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and a.IdControl = '" + sIdControl + "' and a.NroSecuencia = '" + sNroSecuencia + "' ";
+            return ConexionDAO.fDatatable(sSql);
+
+        }
+
         #endregion
 
         #region Obtener Valores
@@ -233,7 +242,8 @@ namespace DLSisCtd
                     sSql = "INSERT	INTO Reg_Control VALUES( ";
                     sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "', ";
                     sSql += "       '" + sIdControl + "', ";
-                    sSql += "       convert(varchar,getdate(),112), ";
+                    //sSql += "       '" + oBE_Reg_Control.FechaRecepcion.ToString("yyyyMMdd HH':'mm':'s")  + "',  ";
+                    sSql += " convert(varchar,getdate(),112)+' '+convert(varchar,getdate(),108), ";
                     sSql += "       '" + oBE_Reg_Control.IdOficinaRecepcion + "',  ";
                     sSql += "       '" + oBE_Reg_Control.IdTipoDocumento + "',  ";
                     sSql += "       '" + oBE_Reg_Control.IdRuta + "', ";
@@ -286,7 +296,8 @@ namespace DLSisCtd
                     sSql += "       IdOficinaRecepcion='" + oBE_Reg_Control.IdOficinaRecepcion + "', ";
                     sSql += "       IdEmpleadoRecepcion='" + sIdEmpleado + "', ";
                     sSql += "       IdAreaRecepcion='" + sIdArea + "', ";
-                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
+                    sSql += "       FechaRecepcion = convert(varchar,getdate(),112)+' '+convert(varchar,getdate(),108) ";
+                    //sSql += "       FechaRecepcion='" + oBE_Reg_Control.FechaRecepcion.ToString("yyyyMMdd HH':'mm':'s") + "'  ";
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + sIdControl + "' and NroSecuencia=1 ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
@@ -587,7 +598,7 @@ namespace DLSisCtd
                     sSql += "       IdEmpleadoRecepcion='" + oBE_Reg_ControlDetalle.IdEmpleadoRecepcion + "', ";
                     sSql += "       IdAreaRecepcion='" + oBE_Reg_ControlDetalle.IdAreaRecepcion + "', ";
                     sSql += "       Observacion='" + oBE_Reg_ControlDetalle.Observacion + "', ";
-                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112) ";
+                    sSql += "       FechaRecepcion=convert(varchar,getdate(),112)+' '+convert(varchar,getdate(),108) ";
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() +"' ";
 
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
@@ -626,7 +637,7 @@ namespace DLSisCtd
                     sSql += "       IdEmpleadoDestinatario='" + oBE_Reg_ControlDetalle.IdEmpleadoDestinatario + "', ";
                     sSql += "       IdAreaDestinatario='" + oBE_Reg_ControlDetalle.IdAreaDestinatario + "', ";
                     sSql += "       Estado='Terminado', ";
-                    sSql += "       FechaDestinatario=convert(varchar,getdate(),112) ";
+                    sSql += "       FechaDestinatario=convert(varchar,getdate(),112)+' '+convert(varchar,getdate(),108) ";
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' and NroSecuencia='" + oBE_Reg_ControlDetalle.NroSecuencia.ToString() + "' ";
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
 
