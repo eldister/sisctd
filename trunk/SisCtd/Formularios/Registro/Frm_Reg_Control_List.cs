@@ -9,12 +9,17 @@ using BLSisCtd;
 using BESisCtd;
 using System.IO;
 using System.Diagnostics;
+using Limilabs.Barcode;
+using System.Drawing.Imaging;
+
 namespace SisCtd
 {
     public partial class Frm_Reg_Control_List : Form
     {
         #region Declaración Variables
         BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
+        BE_Reg_Control oBE_Reg_Control = new BE_Reg_Control();
+
         string sIdControl, sNroSecuencia;
  
         #endregion
@@ -68,7 +73,7 @@ namespace SisCtd
                     dgControl.DataSource = Dt; Helper.FormatoGrilla(dgControl, false);
                     LblMensaje.Text = " Registros Encontrados : " + dgControl.Rows.Count.ToString();
                     dgControl.Columns["IdControl"].Width = 130;
-                    dgControl.Columns["Fecha Recepción"].Width = 90;
+                    dgControl.Columns["Fecha Recepción"].Width = 160;
                     dgControl.Columns["IdOficinaRecepcion"].Visible = false;
                     dgControl.Columns["Oficina Recepción"].Width = 150;
                     dgControl.Columns["IdTipoDocumento"].Width = 100;
@@ -92,9 +97,26 @@ namespace SisCtd
                     }
                     else
                     {
+                        BaseBarcode barcode = BarcodeFactory.GetBarcode(Symbology.Code128   );
+
+                        barcode.Number = sIdControl ;
+                        barcode.ChecksumAdd = true  ;
+                        barcode.Height = 40;
+                        
+
+                        // Render barcode:
+                        this.pictureBox1.Image = barcode.Render();
+                        oBE_Reg_Control.CodBarra = ClsConvertImagen.ImageToByteArray(pictureBox1.Image);
+                        oBE_Reg_Control.IdControl = sIdControl;
+                        oBL_Reg_Control.ActualizarCodBarra(oBE_Reg_Control);
+
+                        // You can also save it to file:
+                        //barcode.Save("c:\\sistemas\\barcode.jpg", Limilabs.Barcode.ImageType.Jpeg );
+                        //this.pictureBox1.Image.Save("c:\\sistemas\\barcode.gif", System.Drawing.Imaging.ImageFormat.Gif);
+
                         Get_IdControl(true);
                         Dt1 = oBL_Reg_Control.Get_ControlImp(sIdControl);
-                        Helper.MostrarReporte("Sello", "Sello", Dt1 );
+                        Helper.MostrarReporte("Sello96", "Sello96", Dt1);
                         Dt1.Dispose();
                     }
                 Dt.Dispose();
@@ -124,13 +146,13 @@ namespace SisCtd
                 dgDetalle.Columns["Empleado Recepción"].Width = 120;
                 dgDetalle.Columns["IdAreaRecepcion"].Visible = false;
                 dgDetalle.Columns["Area Recepción"].Width = 120;
-                dgDetalle.Columns["Fecha Recepción"].Width = 120;
+                dgDetalle.Columns["Fecha Recepción"].Width = 160;
                 dgDetalle.Columns["IdOficinaDestinatario"].Visible = false;
                 dgDetalle.Columns["Oficina Destinatario"].Width = 120;
                 dgDetalle.Columns["IdEmpleadoDestinatario"].Visible = false;
                 dgDetalle.Columns["Empleado Destinatario"].Width = 120;
                 dgDetalle.Columns["IdAreaDestinatario"].Visible = false;
-                dgDetalle.Columns["Fecha Destinatario"].Width = 120;
+                dgDetalle.Columns["Fecha Destinatario"].Width = 160;
 
                 dgDetalle.Columns["Estado"].Width = 80;
 
@@ -221,7 +243,7 @@ namespace SisCtd
         private void bSello_Click(object sender, EventArgs e)
         {
             Listar(Helper.eListar.Reporte);
-            //using (Engine btengine = new Engine(true)) ;
+            ////using (Engine btengine = new Engine(true)) ;
 
         }
 
@@ -366,6 +388,15 @@ namespace SisCtd
                 oBL_Reg_Control = null;
             }
         }
+        private void btnVerDocumento_Click(object sender, EventArgs e)
+        {
+            if (Get_IdControl(true) == false) return;
+            if (Get_NroSecuencia(true) == false) return;
+
+            Frm_VerDocumentos_Envio fEnvd = new Frm_VerDocumentos_Envio(sIdControl,sNroSecuencia );
+            fEnvd.ShowDialog();
+
+        }
 
 
         #endregion
@@ -454,6 +485,7 @@ namespace SisCtd
             Helper.Buscar_Grilla(dgDetalle, sNroSecuencia, 0);
         }
         #endregion
+
 
 
 

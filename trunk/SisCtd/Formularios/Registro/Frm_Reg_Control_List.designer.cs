@@ -56,6 +56,8 @@
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgControl = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnVerDocumento = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSubir = new System.Windows.Forms.Button();
             this.btnBajar = new System.Windows.Forms.Button();
             this.btnQuitarActividad = new System.Windows.Forms.Button();
@@ -67,6 +69,7 @@
             this.Stb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgControl)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -371,6 +374,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnVerDocumento);
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.btnSubir);
             this.panel2.Controls.Add(this.btnBajar);
             this.panel2.Controls.Add(this.btnQuitarActividad);
@@ -382,6 +387,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(996, 220);
             this.panel2.TabIndex = 1;
+            // 
+            // btnVerDocumento
+            // 
+            this.btnVerDocumento.Image = global::SisCtd.Properties.Resources._045;
+            this.btnVerDocumento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerDocumento.Location = new System.Drawing.Point(254, 187);
+            this.btnVerDocumento.Name = "btnVerDocumento";
+            this.btnVerDocumento.Size = new System.Drawing.Size(110, 23);
+            this.btnVerDocumento.TabIndex = 8;
+            this.btnVerDocumento.Text = "&Ver Documentos";
+            this.btnVerDocumento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerDocumento.UseVisualStyleBackColor = true;
+            this.btnVerDocumento.Click += new System.EventHandler(this.btnVerDocumento_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(866, 170);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // btnSubir
             // 
@@ -494,6 +521,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgControl)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetalle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -534,5 +562,7 @@
         private System.Windows.Forms.Button btnBajar;
         private System.Windows.Forms.Button btnSubir;
         private System.Windows.Forms.ToolStripButton bSello;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnVerDocumento;
     }
 }
