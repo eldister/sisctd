@@ -60,6 +60,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.lblDesAreaRecepcion = new System.Windows.Forms.Label();
             this.lblIdAreaRecepcion = new System.Windows.Forms.Label();
+            this.lblHoraRecepcion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -397,9 +398,21 @@
             this.lblIdAreaRecepcion.TabIndex = 51;
             this.lblIdAreaRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblHoraRecepcion
+            // 
+            this.lblHoraRecepcion.BackColor = System.Drawing.Color.LemonChiffon;
+            this.lblHoraRecepcion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblHoraRecepcion.Location = new System.Drawing.Point(222, 208);
+            this.lblHoraRecepcion.Name = "lblHoraRecepcion";
+            this.lblHoraRecepcion.Size = new System.Drawing.Size(72, 20);
+            this.lblHoraRecepcion.TabIndex = 92;
+            this.lblHoraRecepcion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblHoraRecepcion.Click += new System.EventHandler(this.lblHoraRecepcion_Click);
+            // 
             // Frm_Reg_Seguimiento_Recepcion
             // 
             this.ClientSize = new System.Drawing.Size(558, 430);
+            this.Controls.Add(this.lblHoraRecepcion);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblDesAreaRecepcion);
             this.Controls.Add(this.lblIdAreaRecepcion);
@@ -482,6 +495,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblDesAreaRecepcion;
         private System.Windows.Forms.Label lblIdAreaRecepcion;
+        private System.Windows.Forms.Label lblHoraRecepcion;
 
     }
 }

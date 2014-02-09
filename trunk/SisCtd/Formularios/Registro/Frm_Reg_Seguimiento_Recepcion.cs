@@ -39,6 +39,7 @@ namespace SisCtd
         private void Frm_Reg_Seguimiento_Recepcion_Load(object sender, EventArgs e)
         {
             lblFechaRecepcion.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lblHoraRecepcion.Text = DateTime.Now.ToString("hh:mm tt");
         }
         private void Frm_Reg_Seguimiento_Recepcion_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -116,6 +117,7 @@ namespace SisCtd
                         //Buscando Datos de Recepcion con respecto al Empleado
 
                         lblFechaRecepcion.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        lblHoraRecepcion.Text = DateTime.Now.ToString("hh:mm tt");
                         lblIdEmpleado.Text = sIdEmpleado;
                         lblDesEmpleado.Text = oBE_T_Empleado.Nombre;
                         lblIdOficinaRecepcion.Text = oBE_T_Empleado.IdOficina;
@@ -201,6 +203,11 @@ namespace SisCtd
         }
 
         #endregion
+
+        private void lblHoraRecepcion_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
     }
