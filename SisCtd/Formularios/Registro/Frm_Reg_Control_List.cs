@@ -9,7 +9,6 @@ using BLSisCtd;
 using BESisCtd;
 using System.IO;
 using System.Diagnostics;
-using Limilabs.Barcode;
 using System.Drawing.Imaging;
 
 namespace SisCtd
@@ -97,26 +96,14 @@ namespace SisCtd
                     }
                     else
                     {
-                        BaseBarcode barcode = BarcodeFactory.GetBarcode(Symbology.Code128   );
-
-                        barcode.Number = sIdControl ;
-                        barcode.ChecksumAdd = true  ;
-                        barcode.Height = 40;
-                        
-
                         // Render barcode:
-                        this.pictureBox1.Image = barcode.Render();
-                        oBE_Reg_Control.CodBarra = ClsConvertImagen.ImageToByteArray(pictureBox1.Image);
+                        //oBE_Reg_Control.CodBarra = ClsConvertImagen.ImageToByteArray(pictureBox1.Image);
                         oBE_Reg_Control.IdControl = sIdControl;
                         oBL_Reg_Control.ActualizarCodBarra(oBE_Reg_Control);
 
-                        // You can also save it to file:
-                        //barcode.Save("c:\\sistemas\\barcode.jpg", Limilabs.Barcode.ImageType.Jpeg );
-                        //this.pictureBox1.Image.Save("c:\\sistemas\\barcode.gif", System.Drawing.Imaging.ImageFormat.Gif);
-
                         Get_IdControl(true);
                         Dt1 = oBL_Reg_Control.Get_ControlImp(sIdControl);
-                        Helper.MostrarReporte("Sello96", "Sello96", Dt1);
+                        Helper.MostrarReporte("Sello39", "Sello39", Dt1);
                         Dt1.Dispose();
                     }
                 Dt.Dispose();

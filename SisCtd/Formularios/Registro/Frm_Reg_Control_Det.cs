@@ -9,7 +9,6 @@ using BLSisCtd;
 using BESisCtd;
 using System.Runtime.InteropServices;
 using System.Drawing.Text;
-using Limilabs.Barcode;
 using System.Drawing.Imaging;
 
 namespace SisCtd
@@ -218,13 +217,7 @@ namespace SisCtd
                 oBE_Reg_Control.Estado = lblEstado.Text;
                 oBE_Reg_Control.IdRuta = cboRuta.SelectedValue.ToString();
                 
-                BaseBarcode barcode = BarcodeFactory.GetBarcode(Symbology.Code128);
-                barcode.Number = sIdControl;
-                barcode.ChecksumAdd = true;
-                barcode.Height = 40;
-                // Render barcode:
-                this.pictureBox1.Image = barcode.Render();
-                // You can also save it to file:
+
                 oBE_Reg_Control.CodBarra = ClsConvertImagen.ImageToByteArray(pictureBox1.Image);
 
                 //barcode.Save("c:\\sistemas\\barcode.jpg", Limilabs.Barcode.ImageType.Jpeg);
