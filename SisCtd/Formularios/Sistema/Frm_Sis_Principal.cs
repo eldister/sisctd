@@ -159,6 +159,12 @@ namespace SisCtd
                 case "0202": mFormHijo = new Frm_Reg_Seguimiento_Envio(); Abrir_Normal(); break;
                 case "0203": mFormHijo = new Frm_Reg_Seguimiento_Recepcion(); Abrir_Normal(); break;
 
+                //Consulta
+                case "0701": mFormHijo = new Frm_Con_Control_List(); Abrir(); break;
+
+                //Reportes
+                case "0801": mFormHijo = new Frm_Rep_Reportes(); Abrir(); break;
+
                 //Sistema
                 case "0901": mFormHijo = new Frm_Sis_Usuarios(); Abrir(); break;
                 case "0902": mFormHijo = new Frm_Sis_Acceso(); Abrir_Normal(); break;
