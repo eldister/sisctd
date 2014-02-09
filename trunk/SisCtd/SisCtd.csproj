@@ -95,6 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Consultas\Frm_Con_Control_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Consultas\Frm_Con_Control_List.designer.cs">
+      <DependentUpon>Frm_Con_Control_List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Consultas\Frm_Con_Registro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,18 @@
     </Compile>
     <Compile Include="Formularios\Registro\Frm_Reg_Seguimiento_Recepcion.designer.cs">
       <DependentUpon>Frm_Reg_Seguimiento_Recepcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_VerDocumentos_Envio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registro\Frm_Reg_VerDocumentos_Envio.designer.cs">
+      <DependentUpon>Frm_Reg_VerDocumentos_Envio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reportes\Frm_Rep_Reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reportes\Frm_Rep_Reportes.designer.cs">
+      <DependentUpon>Frm_Rep_Reportes.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Sistema\Frm_About.cs">
       <SubType>Form</SubType>
@@ -266,6 +284,9 @@
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Consultas\Frm_Con_Control_List.resx">
+      <DependentUpon>Frm_Con_Control_List.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consultas\Frm_Con_Registro.resx">
       <DependentUpon>Frm_Con_Registro.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro\Frm_Reg_Seguimiento_Recepcion.resx">
       <DependentUpon>Frm_Reg_Seguimiento_Recepcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registro\Frm_Reg_VerDocumentos_Envio.resx">
+      <DependentUpon>Frm_Reg_VerDocumentos_Envio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reportes\Frm_Rep_Reportes.resx">
+      <DependentUpon>Frm_Rep_Reportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_About.resx">
       <DependentUpon>Frm_About.cs</DependentUpon>
@@ -372,6 +399,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utilitario\ClsConvertImagen.cs" />
     <Compile Include="Utilitario\Entidades Temp\TmpDocumento.cs" />
     <Compile Include="Utilitario\Entidades Temp\TmpDocumentoDatos.cs" />
     <Compile Include="Utilitario\Entidades Temp\TmpLegajo.cs" />
@@ -388,6 +416,7 @@
     <None Include="Resources\control.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Thumbs.db" />
     <None Include="Resources\Toolbar.Close.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +449,12 @@
     <None Include="Resources\045.ico" />
     <None Include="Resources\interface.gif" />
     <Content Include="reportes.ico" />
+    <Content Include="Resources\16 %28Db delete%29.ico" />
+    <Content Include="Resources\16 %28Db edit%29.ico" />
+    <Content Include="Resources\16 %28Db insert%29.ico" />
+    <Content Include="Resources\16 %28Fill down%29.ico" />
+    <Content Include="Resources\16 %28Fill up%29.ico" />
+    <Content Include="Resources\175.ICO" />
     <Content Include="Resources\210.ICO" />
     <Content Include="Resources\APPTL.ICO" />
     <None Include="Resources\ATTACHED.ICO" />
@@ -431,6 +466,8 @@
     <Content Include="Resources\Imagen1.jpg" />
     <None Include="Resources\logopdf.jpg" />
     <None Include="Resources\logo_vsistems.jpg" />
+    <Content Include="Resources\images.jpg" />
+    <Content Include="Resources\INTERNET.ICO" />
     <Content Include="Resources\up.ico" />
     <None Include="Resources\usu.gif" />
     <None Include="Resources\Toolbar.Open.gif" />
@@ -472,7 +509,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Formularios\Procesos\" />
-    <Folder Include="Formularios\Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE_SisCtd\BE_SisCtd.csproj">
