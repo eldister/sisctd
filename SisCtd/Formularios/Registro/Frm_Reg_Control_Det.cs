@@ -9,6 +9,9 @@ using BLSisCtd;
 using BESisCtd;
 using System.Runtime.InteropServices;
 using System.Drawing.Text;
+using Limilabs.Barcode;
+using System.Drawing.Imaging;
+
 namespace SisCtd
 {
     public partial class Frm_Reg_Control_Det : Form
@@ -23,6 +26,7 @@ namespace SisCtd
         public Boolean bGrabo = false;
         Helper.eOpcion qOpcion;
 
+        
         BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
         BE_Reg_Control oBE_Reg_Control = new BE_Reg_Control();
 
@@ -30,6 +34,8 @@ namespace SisCtd
         BL_T_MaestroCliente oBL_T_MaestroCliente = new BL_T_MaestroCliente();
         BL_Sis_Usuario oBL_Sis_Usuario = new BL_Sis_Usuario();
         BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
+        ClsConvertImagen ConvImagen = new ClsConvertImagen();
+        
 
         #endregion
 
@@ -52,6 +58,7 @@ namespace SisCtd
                         this.Text = " Nuevo";
                         txtIdControl.Text = "??????????????";
                         lblFechaRecepcion.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        lblHoraRecepcion.Text = DateTime.Now.ToString("HH:mm:ss");
                         lblIdOficinaRecepcion.Text = oBL_Sis_Usuario.Get_IdOficina(BE_Helper.oBE_Sis_Usuario.IdUsuario);
                         break;
                     case Helper.eOpcion.Modificar:
@@ -81,6 +88,7 @@ namespace SisCtd
                         {
                             txtIdControl.Text = oBE_Reg_Control.IdControl.ToString();
                             lblFechaRecepcion.Text = oBE_Reg_Control.FechaRecepcion.ToString("dd/MM/yyyy");
+                            lblHoraRecepcion.Text = oBE_Reg_Control.FechaRecepcion.ToString("hh:mm tt");
                             lblIdOficinaRecepcion.Text = oBE_Reg_Control.IdOficinaRecepcion;
                             txtIdTipoDocumento.Text = oBE_Reg_Control.IdTipoDocumento;
                             txtIdMaestroCliente.Text= oBE_Reg_Control.IdMaestroCliente;
@@ -200,7 +208,7 @@ namespace SisCtd
                 }
             
                 oBE_Reg_Control.IdControl = sIdControl;
-                oBE_Reg_Control.FechaRecepcion = Helper.CFecha(lblFechaRecepcion.Text);
+                oBE_Reg_Control.FechaRecepcion = Convert.ToDateTime(lblFechaRecepcion.Text + " " + lblHoraRecepcion.Text);
                 oBE_Reg_Control.IdOficinaRecepcion = lblIdOficinaRecepcion.Text;
                 oBE_Reg_Control.IdTipoDocumento = txtIdTipoDocumento.Text.Trim();
                 oBE_Reg_Control.IdMaestroCliente = txtIdMaestroCliente.Text.Trim();
@@ -209,13 +217,26 @@ namespace SisCtd
                 oBE_Reg_Control.Observacion = txtObservacion.Text;
                 oBE_Reg_Control.Estado = lblEstado.Text;
                 oBE_Reg_Control.IdRuta = cboRuta.SelectedValue.ToString();
+                
+                BaseBarcode barcode = BarcodeFactory.GetBarcode(Symbology.Code128);
+                barcode.Number = sIdControl;
+                barcode.ChecksumAdd = true;
+                barcode.Height = 40;
+                // Render barcode:
+                this.pictureBox1.Image = barcode.Render();
+                // You can also save it to file:
+                oBE_Reg_Control.CodBarra = ClsConvertImagen.ImageToByteArray(pictureBox1.Image);
+
+                //barcode.Save("c:\\sistemas\\barcode.jpg", Limilabs.Barcode.ImageType.Jpeg);
+                //this.pictureBox1.Image.Save("c:\\sistemas\\barcode.gif", System.Drawing.Imaging.ImageFormat.Gif);
+
 
                 if (qOpcion == Helper.eOpcion.Nuevo)
                 {
                     sIdControl = oBL_Reg_Control.Insertar(oBE_Reg_Control);
                     oBE_Reg_Control.IdControl = sIdControl;
                     sIdControl = oBL_Reg_Control.Actualizar(oBE_Reg_Control);
-                }
+                } 
                 if (qOpcion == Helper.eOpcion.Modificar)
                 {
                     oBL_Reg_Control.Modificar(oBE_Reg_Control);
