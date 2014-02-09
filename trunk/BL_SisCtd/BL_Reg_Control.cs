@@ -26,6 +26,11 @@ namespace BLSisCtd
             return oDL_Reg_Control.Get_ControlImp(nIdControl);
         }
 
+        public DataTable Listar_DocumentosAnexos(string nIdControl, string nNroSecuencia)
+        {
+            return oDL_Reg_Control.Listar_DocumentosAnexos(nIdControl, nNroSecuencia);
+        }
+
         public DataTable Reporte()
         {
             return oDL_Reg_Control.Reporte();
