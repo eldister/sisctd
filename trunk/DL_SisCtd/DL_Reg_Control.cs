@@ -218,13 +218,13 @@ namespace DLSisCtd
                 {
                     string sIdControl = ""; string sCorrelativo = "";
 
-                    sSql = "select  right('000000'+convert(varchar(7),Correlativo+1),7) ";
+                    sSql = "select  right('00000'+convert(varchar(5),Correlativo+1),5) ";
                     sSql += "from   T_Numeracion ";
                     sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año='" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "'";
                     sCorrelativo = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
                     if (sCorrelativo == "")
                     {
-                        sCorrelativo = "0000001";
+                        sCorrelativo = "00001";
                         sSql = "insert  into T_Numeracion values (";
                         sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "','" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "','" + oBE_Reg_Control.IdOficinaRecepcion + "','" + sCorrelativo + "') ";
                         SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
@@ -236,9 +236,10 @@ namespace DLSisCtd
                         sSql += "where  IdCliente = '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and Año = '" + oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + "' and IdOficina='" + oBE_Reg_Control.IdOficinaRecepcion + "' ";
                         SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
                     }
-                    
 
-                    sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yyyy") +  oBE_Reg_Control.IdOficinaRecepcion.Trim() +  sCorrelativo;
+
+                    //sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yyyy") + oBE_Reg_Control.IdOficinaRecepcion.Trim() + sCorrelativo;
+                    sIdControl = oBE_Reg_Control.FechaRecepcion.ToString("yy") + oBE_Reg_Control.IdOficinaRecepcion.Trim().Substring(0,1) + sCorrelativo;
                     sSql = "INSERT	INTO Reg_Control VALUES( ";
                     sSql += "       '" + BE_Helper.oBE_Sis_Cliente.IdCliente + "', ";
                     sSql += "       '" + sIdControl + "', ";
