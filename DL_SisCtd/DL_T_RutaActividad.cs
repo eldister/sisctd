@@ -107,8 +107,8 @@ namespace DLSisCtd
             sSql += "'" + oBE_T_RutaActividad.IdRuta + "',";
             sSql += "'" + oBE_T_RutaActividad.IdActividad + "',";
             sSql += "'" + oBE_T_RutaActividad.Orden + "',";
-            sSql += "'" + oBE_T_RutaActividad.IdOficina + "',";
-            sSql += "'" + oBE_T_RutaActividad.IdArea + "',";
+            sSql += " case when isnull('" + oBE_T_RutaActividad.IdOficina + "','')='' then null else '" + oBE_T_RutaActividad.IdOficina + "' end  ,";
+            sSql += " case when isnull('" + oBE_T_RutaActividad.IdArea + "','')='' then null else '" + oBE_T_RutaActividad.IdArea + "' end  ,";
             sSql += "'" + oBE_T_RutaActividad.DuracionenDia + "',";
             sSql += "convert(varchar,getdate(),112),convert(varchar,getdate(),108),'" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "') ";
             ConexionDAO.fExecute(sSql);
