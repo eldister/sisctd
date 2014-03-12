@@ -165,7 +165,7 @@
             // 
             this.lblActividad.BackColor = System.Drawing.SystemColors.Info;
             this.lblActividad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblActividad.Location = new System.Drawing.Point(184, 36);
+            this.lblActividad.Location = new System.Drawing.Point(183, 36);
             this.lblActividad.Name = "lblActividad";
             this.lblActividad.Size = new System.Drawing.Size(373, 20);
             this.lblActividad.TabIndex = 754;
@@ -189,7 +189,7 @@
             this.txtIdOficina.ColorSalida = System.Drawing.Color.White;
             this.txtIdOficina.Decimales = 2;
             this.txtIdOficina.Guiones = false;
-            this.txtIdOficina.Location = new System.Drawing.Point(115, 60);
+            this.txtIdOficina.Location = new System.Drawing.Point(116, 60);
             this.txtIdOficina.MaxLength = 10;
             this.txtIdOficina.Name = "txtIdOficina";
             this.txtIdOficina.PasarEnter = true;
@@ -202,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 64);
+            this.label4.Location = new System.Drawing.Point(14, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 756;
@@ -212,7 +212,7 @@
             // 
             this.lblArea.BackColor = System.Drawing.SystemColors.Info;
             this.lblArea.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblArea.Location = new System.Drawing.Point(184, 86);
+            this.lblArea.Location = new System.Drawing.Point(183, 86);
             this.lblArea.Name = "lblArea";
             this.lblArea.Size = new System.Drawing.Size(373, 20);
             this.lblArea.TabIndex = 760;
@@ -247,7 +247,7 @@
             // 
             // Frm_T_RutaActividad
             // 
-            this.ClientSize = new System.Drawing.Size(562, 152);
+            this.ClientSize = new System.Drawing.Size(572, 152);
             this.Controls.Add(this.lblArea);
             this.Controls.Add(this.txtIdArea);
             this.Controls.Add(this.label7);
