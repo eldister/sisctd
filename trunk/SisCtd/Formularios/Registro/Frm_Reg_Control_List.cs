@@ -31,11 +31,16 @@ namespace SisCtd
             bModificar.Enabled = Helper.sAcceso.Substring(1, 1) == "1" ? true : false;
             bEliminar.Enabled = Helper.sAcceso.Substring(2, 1) == "1" ? true : false;
             bExportar.Enabled = Helper.sAcceso.Substring(4, 1) == "1" ? true : false;
+            bAsignarImagen.Enabled = Helper.sAcceso.Substring(0, 1) == "1" ? true : false;
+            bQuitarImagen.Enabled = Helper.sAcceso.Substring(0, 1) == "1" ? true : false;
+            btnQuitarActividad.Enabled = Helper.sAcceso.Substring(0, 1) == "1" ? true : false;
+            btnAgregarActividad.Enabled = Helper.sAcceso.Substring(1, 1) == "1" ? true : false;
             Helper.FormatoGrilla(dgControl);
         }
         private void Frm_Reg_Control_List_Load(object sender, EventArgs e)
         {
             cboEstado.SelectedIndex = 0;
+            cboEstadoDet.SelectedIndex = 0;
             Listar(Helper.eListar.Grilla); Listar_Detalle();
         }
         private void Frm_Reg_Control_List_KeyDown(object sender, KeyEventArgs e)
@@ -104,6 +109,7 @@ namespace SisCtd
                         Get_IdControl(true);
                         Dt1 = oBL_Reg_Control.Get_ControlImp(sIdControl);
                         Helper.MostrarReporte("Sello39", "Sello39", Dt1);
+                        //Helper.ImprimirReporte("Sello39", "Sello39", Dt1);
                         Dt1.Dispose();
                     }
                 Dt.Dispose();
@@ -119,7 +125,7 @@ namespace SisCtd
             {
                 this.Cursor = Cursors.WaitCursor;
                 Get_IdControl(false);
-                Dt = oBL_Reg_Control.Listar_Detalle(sIdControl);
+                Dt = oBL_Reg_Control.Listar_Detalle(sIdControl, cboEstadoDet.Text );
 
                 dgDetalle.DataSource = Dt; Helper.FormatoGrilla(dgDetalle, false);
                 dgDetalle.Columns["NroSecuencia"].Visible = false;
@@ -393,6 +399,10 @@ namespace SisCtd
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
             Listar(Helper.eListar.Grilla);
+            Listar_Detalle();
+        }
+        private void cboEstadoDet_TextChanged(object sender, EventArgs e)
+        {
             Listar_Detalle();
         }
 
