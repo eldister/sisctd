@@ -76,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 66);
+            this.label3.Location = new System.Drawing.Point(14, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 736;
@@ -90,7 +90,7 @@
             this.txtArea.ColorSalida = System.Drawing.Color.White;
             this.txtArea.Decimales = 2;
             this.txtArea.Guiones = false;
-            this.txtArea.Location = new System.Drawing.Point(149, 62);
+            this.txtArea.Location = new System.Drawing.Point(149, 85);
             this.txtArea.MaxLength = 10;
             this.txtArea.Name = "txtArea";
             this.txtArea.PasarEnter = true;
@@ -104,7 +104,7 @@
             // 
             this.lblArea.BackColor = System.Drawing.SystemColors.Info;
             this.lblArea.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblArea.Location = new System.Drawing.Point(217, 62);
+            this.lblArea.Location = new System.Drawing.Point(217, 85);
             this.lblArea.Name = "lblArea";
             this.lblArea.Size = new System.Drawing.Size(373, 20);
             this.lblArea.TabIndex = 4;
@@ -141,7 +141,7 @@
             // 
             this.lblPosicion.BackColor = System.Drawing.SystemColors.Info;
             this.lblPosicion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblPosicion.Location = new System.Drawing.Point(217, 86);
+            this.lblPosicion.Location = new System.Drawing.Point(217, 109);
             this.lblPosicion.Name = "lblPosicion";
             this.lblPosicion.Size = new System.Drawing.Size(372, 20);
             this.lblPosicion.TabIndex = 746;
@@ -155,7 +155,7 @@
             this.txtPosicion.ColorSalida = System.Drawing.Color.White;
             this.txtPosicion.Decimales = 2;
             this.txtPosicion.Guiones = false;
-            this.txtPosicion.Location = new System.Drawing.Point(149, 86);
+            this.txtPosicion.Location = new System.Drawing.Point(149, 109);
             this.txtPosicion.MaxLength = 10;
             this.txtPosicion.Name = "txtPosicion";
             this.txtPosicion.PasarEnter = true;
@@ -168,7 +168,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 90);
+            this.label4.Location = new System.Drawing.Point(14, 113);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 747;
@@ -178,7 +178,7 @@
             // 
             this.lblOficina.BackColor = System.Drawing.SystemColors.Info;
             this.lblOficina.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblOficina.Location = new System.Drawing.Point(217, 110);
+            this.lblOficina.Location = new System.Drawing.Point(217, 61);
             this.lblOficina.Name = "lblOficina";
             this.lblOficina.Size = new System.Drawing.Size(372, 20);
             this.lblOficina.TabIndex = 749;
@@ -192,12 +192,12 @@
             this.txtOficina.ColorSalida = System.Drawing.Color.White;
             this.txtOficina.Decimales = 2;
             this.txtOficina.Guiones = false;
-            this.txtOficina.Location = new System.Drawing.Point(149, 110);
+            this.txtOficina.Location = new System.Drawing.Point(149, 61);
             this.txtOficina.MaxLength = 10;
             this.txtOficina.Name = "txtOficina";
             this.txtOficina.PasarEnter = true;
             this.txtOficina.Size = new System.Drawing.Size(62, 20);
-            this.txtOficina.TabIndex = 6;
+            this.txtOficina.TabIndex = 2;
             this.txtOficina.Tipo = MigControls.MigTextbox.TipoVal.Numerico;
             this.txtOficina.TextChanged += new System.EventHandler(this.PonerDescrip_TextChanged);
             this.txtOficina.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AyudaF1_KeyDown);
@@ -205,7 +205,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 114);
+            this.label5.Location = new System.Drawing.Point(14, 65);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 750;
@@ -264,7 +264,7 @@
             // 
             this.ChkResponsable.AutoSize = true;
             this.ChkResponsable.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChkResponsable.Location = new System.Drawing.Point(603, 66);
+            this.ChkResponsable.Location = new System.Drawing.Point(605, 87);
             this.ChkResponsable.Name = "ChkResponsable";
             this.ChkResponsable.Size = new System.Drawing.Size(89, 18);
             this.ChkResponsable.TabIndex = 4;
