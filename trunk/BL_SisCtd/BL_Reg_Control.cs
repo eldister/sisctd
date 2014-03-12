@@ -17,9 +17,14 @@ namespace BLSisCtd
             return oDL_Reg_Control.Listar(sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
-        public DataTable Listar_Detalle(string sIdControl)
+        public DataTable Listar_Doc(string sIdControl, string sNroDocumento, string sRazonSocial, string sEstado)
         {
-            return oDL_Reg_Control.Listar_Detalle(sIdControl);
+            return oDL_Reg_Control.Listar(sIdControl, sNroDocumento, sRazonSocial, sEstado);
+        }
+
+        public DataTable Listar_Detalle(string sIdControl, string sEstado)
+        {
+            return oDL_Reg_Control.Listar_Detalle(sIdControl, sEstado);
         }
         public DataTable Get_ControlImp(string nIdControl)
         {
