@@ -19,6 +19,8 @@ namespace SisCtd
         BL_Reg_Control oBL_Reg_Control = new BL_Reg_Control();
         BE_Reg_ControlDetalle oBE_Reg_ControlDetalle = new BE_Reg_ControlDetalle();
         BL_T_Actividad oBL_T_Actividad = new BL_T_Actividad();
+        BL_T_Oficina oBL_T_Oficina = new BL_T_Oficina();
+        BL_T_Area oBL_T_Area = new BL_T_Area();
 
         #endregion
 
@@ -80,6 +82,9 @@ namespace SisCtd
             switch (txt.Name)
             {
                 case "txtActividad": lblActividad.Text = oBL_T_Actividad.Get_Descripcion(txtActividad.Text); break;
+                case "txtIdOficina": lblOficina.Text = oBL_T_Oficina.Get_Descripcion(txtIdOficina.Text); break;
+                case "txtIdArea": lblArea.Text = oBL_T_Area.Get_Descripcion(txtIdArea.Text); break;
+
             }
 
         }
@@ -91,12 +96,19 @@ namespace SisCtd
                 switch (txt.Name)
                 {
                     case "txtActividad": txtActividad.Text = Helper.Buscar(oBL_T_Actividad.Buscar()); break;
+                    case "txtIdOficina": txtIdOficina.Text = Helper.Buscar(oBL_T_Oficina.Buscar()); break;
+                    case "txtIdArea": txtIdArea.Text = Helper.Buscar(oBL_T_Area.Buscar()); break;
                 }
             }
         }
 
 
         #endregion
+
+        private void Frm_Reg_Control_Actividad_Load(object sender, EventArgs e)
+        {
+
+        }
 
         
     }
