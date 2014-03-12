@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CboTipos = new MigControls.MigCombobox();
+            this.chkTodo = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboArea = new MigControls.MigCombobox();
             this.txtIdControl = new MigControls.MigTextbox();
@@ -64,6 +66,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CboTipos);
+            this.panel1.Controls.Add(this.chkTodo);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cboArea);
             this.panel1.Controls.Add(this.txtIdControl);
@@ -79,6 +83,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(996, 58);
             this.panel1.TabIndex = 2;
+            // 
+            // CboTipos
+            // 
+            this.CboTipos.BackColor = System.Drawing.Color.White;
+            this.CboTipos.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.CboTipos.ColorSalida = System.Drawing.Color.White;
+            this.CboTipos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboTipos.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboTipos.FormattingEnabled = true;
+            this.CboTipos.Items.AddRange(new object[] {
+            "Envio",
+            "Recepcion"});
+            this.CboTipos.Location = new System.Drawing.Point(831, 29);
+            this.CboTipos.Name = "CboTipos";
+            this.CboTipos.PasarEnter = true;
+            this.CboTipos.Size = new System.Drawing.Size(112, 22);
+            this.CboTipos.TabIndex = 93;
+            this.CboTipos.Tipo = MigControls.MigCombobox.TipoVal.Numerico;
+            // 
+            // chkTodo
+            // 
+            this.chkTodo.AutoSize = true;
+            this.chkTodo.Location = new System.Drawing.Point(493, 9);
+            this.chkTodo.Name = "chkTodo";
+            this.chkTodo.Size = new System.Drawing.Size(56, 17);
+            this.chkTodo.TabIndex = 10;
+            this.chkTodo.Text = "Todos";
+            this.chkTodo.UseVisualStyleBackColor = true;
+            this.chkTodo.CheckedChanged += new System.EventHandler(this.chkTodo_CheckedChanged);
             // 
             // label4
             // 
@@ -134,11 +167,11 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(810, 35);
+            this.lblEstado.Location = new System.Drawing.Point(772, 7);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(40, 13);
+            this.lblEstado.Size = new System.Drawing.Size(45, 13);
             this.lblEstado.TabIndex = 7;
-            this.lblEstado.Text = "Estado";
+            this.lblEstado.Text = "Estados";
             // 
             // cboEstado
             // 
@@ -155,7 +188,7 @@
             "Cerrado",
             "Anulado",
             "Todos"});
-            this.cboEstado.Location = new System.Drawing.Point(856, 30);
+            this.cboEstado.Location = new System.Drawing.Point(851, 4);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.PasarEnter = true;
             this.cboEstado.Size = new System.Drawing.Size(92, 22);
@@ -435,5 +468,7 @@
         private System.Windows.Forms.Button btnVerDocumento;
         private MigControls.MigCombobox cboArea;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkTodo;
+        private MigControls.MigCombobox CboTipos;
     }
 }
