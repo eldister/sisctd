@@ -15,6 +15,15 @@ namespace DLSisCtd
         {
             sSql = "select 	a.* ";
             sSql += "from 	Sis_Cliente a ";
+            if (sEstado == "A") sSql += "where a.estado=1";
+            if (sEstado == "I") sSql += "where a.estado=0";
+            sSql += "order by a.descripcion ";
+            return ConexionDAO.fDatatable(sSql);
+        }
+        public DataTable Listar_Consis(string sEstado)
+        {
+            sSql = "select 	a.* ";
+            sSql += "from 	Sis_Cliente a ";
             if (BE_Helper.oBE_Sis_Usuario.IdPerfil != "00") sSql += " inner join Sis_UsuarioCliente b on a.Idcliente=b.Idcliente and b.Idusuario='" + BE_Helper.oBE_Sis_Usuario.IdUsuario + "'";
             if (sEstado == "A") sSql += "where a.estado=1";
             if (sEstado == "I") sSql += "where a.estado=0";
