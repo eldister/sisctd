@@ -107,7 +107,7 @@ namespace SisCtd
             {
                 this.Cursor = Cursors.WaitCursor;
                 Get_IdControl(false);
-                Dt = oBL_Reg_Control.Listar_Detalle(sIdControl);
+                Dt = oBL_Reg_Control.Listar_Detalle(sIdControl, cboEstado.Text );
 
                 dgDetalle.DataSource = Dt; Helper.FormatoGrilla(dgDetalle, false);
                 dgDetalle.Columns["NroSecuencia"].Visible = false;
@@ -182,6 +182,18 @@ namespace SisCtd
         private void oCancelar()
         {
             Helper.Cerrar_Ventana(this, (TabControl)this.Parent.Parent);
+        }
+
+        private void chkTodo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTodo.Checked == true)
+            {
+                cboArea.Enabled = false;
+            }
+            else
+            {
+                cboArea.Enabled = true; 
+            }
         }
 
         #endregion
@@ -448,6 +460,7 @@ namespace SisCtd
             Helper.Buscar_Grilla(dgDetalle, sNroSecuencia, 0);
         }
         #endregion
+
 
   
 
