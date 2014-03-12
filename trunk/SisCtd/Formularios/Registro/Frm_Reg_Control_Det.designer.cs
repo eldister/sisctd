@@ -146,7 +146,7 @@
             this.txtObservacion.Decimales = 2;
             this.txtObservacion.Guiones = false;
             this.txtObservacion.Location = new System.Drawing.Point(120, 213);
-            this.txtObservacion.MaxLength = 200;
+            this.txtObservacion.MaxLength = 400;
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.PasarEnter = true;
