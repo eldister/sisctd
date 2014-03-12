@@ -71,6 +71,7 @@ namespace SisCtd
             {
                 if (e.KeyChar == 13)
                 {
+                    //txtIdControl.Text = txtIdControl.Text.Trim().Substring(1, 8);
                     oBE_Reg_Control = oBL_Reg_Control.Get_Control(txtIdControl.Text);
                     if (oBE_Reg_Control != null)
                     {
