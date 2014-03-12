@@ -17,9 +17,9 @@ namespace DLSisCtd
             return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
-        public DataTable Listar_Detalle(string sIdControl)
+        public DataTable Listar_Detalle(string sIdControl, string sEstado)
         {
-            return ConexionDAO.fDatatable("List_Reg_ControlDetalle", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl);
+            return ConexionDAO.fDatatable("List_Reg_ControlDetalleN", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sEstado);
         }
 
         public DataTable  Get_ControlImp(string sIdControl)
@@ -574,10 +574,15 @@ namespace DLSisCtd
                 SqlTransaction sTrans = sCn.BeginTransaction();
                 try
                 {
-                    sSql = "delete  from Reg_ControlDetalle ";
+                    sSql = "update Reg_ControlDetalle set estado = 'Anulado' ";
                     sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
                     sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "' and ";
                     sSql += "       NroSecuencia = '" + oBE_Reg_ControlDetalle.NroSecuencia + "' ";
+
+                    //sSql = "delete  from Reg_ControlDetalle ";
+                    //sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and ";
+                    //sSql += "       IdControl = '" + oBE_Reg_ControlDetalle.IdControl + "' and ";
+                    //sSql += "       NroSecuencia = '" + oBE_Reg_ControlDetalle.NroSecuencia + "' ";
 
                     SqlHelper.ExecuteNonQuery(sTrans, CommandType.Text, sSql);
                     sTrans.Commit();
@@ -625,7 +630,7 @@ namespace DLSisCtd
                     sSql += "where	IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl='" + oBE_Reg_ControlDetalle.IdControl + "' ";
                     sOrdent = Convert.ToString(SqlHelper.ExecuteScalar(sTrans, CommandType.Text, sSql));
 
-                     if (sOrdent == oBE_Reg_ControlDetalle.NroSecuencia.ToString().Trim())
+                    if (sOrdent == oBE_Reg_ControlDetalle.NroSecuencia.ToString().Trim())
                          {
                              sSql = "Update  Reg_Control set ";
                              sSql += "       Estado='Terminado' ";
