@@ -569,6 +569,30 @@ namespace SisCtd
             catch (Exception ex) { throw ex; }
             finally { forma = null; rpt = null; }
         }
+        public static void ImprimirReporte(string sTitulo, string nombrereporte, DataTable Dt, params string[] matriz)
+        {
+            Frm_Sis_ReportesView forma = new Frm_Sis_ReportesView();
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                string rutaRpt = Helper.fRutaReporte();
+                rpt.Load(rutaRpt + nombrereporte + ".rpt", OpenReportMethod.OpenReportByDefault);
+                rpt.SetDataSource(Dt);
+                for (int c = 0; c < matriz.Length; c++)
+                {
+                    rpt.DataDefinition.FormulaFields[c].Text = "'" + matriz[c].ToString() + "'";
+                }
+                rpt.PrintToPrinter(2,true,1,1);
+                //forma.Report.ReportSource = rpt;
+                //forma.Text = sTitulo;
+                //forma.ShowDialog();
+                //forma.Dispose();
+                rpt.Dispose();
+            }
+            catch (Exception ex) { throw ex; }
+            finally { forma = null; rpt = null; }
+        }
+
         public static void LoadReporte()
         {
             Frm_Sis_ReportesView forma = new Frm_Sis_ReportesView();
