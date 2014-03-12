@@ -218,7 +218,7 @@ namespace SisCtd
                 oBE_Reg_Control.IdRuta = cboRuta.SelectedValue.ToString();
                 
 
-                oBE_Reg_Control.CodBarra = ClsConvertImagen.ImageToByteArray(pictureBox1.Image);
+                //oBE_Reg_Control.CodBarra = ClsConvertImagen.ImageToByteArray(pictureBox1.Image);
 
                 //barcode.Save("c:\\sistemas\\barcode.jpg", Limilabs.Barcode.ImageType.Jpeg);
                 //this.pictureBox1.Image.Save("c:\\sistemas\\barcode.gif", System.Drawing.Imaging.ImageFormat.Gif);
