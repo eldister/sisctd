@@ -175,7 +175,7 @@
             this.txtObservacion.Decimales = 2;
             this.txtObservacion.Guiones = false;
             this.txtObservacion.Location = new System.Drawing.Point(135, 359);
-            this.txtObservacion.MaxLength = 200;
+            this.txtObservacion.MaxLength = 300;
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.PasarEnter = true;
