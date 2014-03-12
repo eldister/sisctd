@@ -61,6 +61,21 @@ namespace DLSisCtd
             int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from sis_usuario where idperfil ='" + sIdperfil + "' "));
             return (nCant > 0 ? true : false);
         }
+        public Boolean Existe_Usuario_Empresa(string sIdUsuario, string sEmpresa)
+        {
+            if  (sIdUsuario.ToUpper() == "ADMIN")
+            {
+               return false;
+            }
+            else
+            {
+            int nCant = Convert.ToInt32(ConexionDAO.fEscalar("select count(*) from Sis_UsuarioCliente where idUsuario ='" + sIdUsuario + "' and idCliente = '"+ sEmpresa +"' "));
+            return (nCant > 0 ? false : true);
+            }
+
+            
+        }
+
         public string Get_IdOficina(string sIdUsuario)
         {
             sSql = "select	b.IdOficina ";
