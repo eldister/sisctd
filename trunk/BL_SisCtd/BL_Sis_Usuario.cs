@@ -41,6 +41,7 @@ namespace BLSisCtd
         {
             return oDL_Sis_Usuario.Existe_Perfil(sIdperfil);
         }
+
         public string Get_IdOficina(string sIdUsuario)
         {
             return oDL_Sis_Usuario.Get_IdOficina(sIdUsuario);
@@ -49,6 +50,11 @@ namespace BLSisCtd
         {
             return oDL_Sis_Usuario.Get_IdEmpleado(sIdUsuario);
         }
+        public Boolean Existe_Usuario_Empresa(string sIdUsuario, string sEmpresa)
+        {
+            return oDL_Sis_Usuario.Existe_Usuario_Empresa(sIdUsuario, sEmpresa);
+        }
+
         #endregion
 
         #region Operaciones
