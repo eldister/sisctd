@@ -47,7 +47,7 @@
             // BtnCancelar
             // 
             this.BtnCancelar.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.BtnCancelar.Location = new System.Drawing.Point(497, 128);
+            this.BtnCancelar.Location = new System.Drawing.Point(524, 128);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(80, 28);
             this.BtnCancelar.TabIndex = 9;
@@ -59,7 +59,7 @@
             // BtnGrabar
             // 
             this.BtnGrabar.Image = global::SisCtd.Properties.Resources.Toolbar_Save;
-            this.BtnGrabar.Location = new System.Drawing.Point(418, 128);
+            this.BtnGrabar.Location = new System.Drawing.Point(445, 128);
             this.BtnGrabar.Name = "BtnGrabar";
             this.BtnGrabar.Size = new System.Drawing.Size(80, 28);
             this.BtnGrabar.TabIndex = 8;
@@ -85,7 +85,7 @@
             this.txtDescripcion.ColorSalida = System.Drawing.Color.White;
             this.txtDescripcion.Decimales = 2;
             this.txtDescripcion.Guiones = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(108, 40);
+            this.txtDescripcion.Location = new System.Drawing.Point(135, 40);
             this.txtDescripcion.MaxLength = 50;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasarEnter = true;
@@ -101,7 +101,7 @@
             this.txtCodigo.ColorSalida = System.Drawing.Color.White;
             this.txtCodigo.Decimales = 2;
             this.txtCodigo.Guiones = false;
-            this.txtCodigo.Location = new System.Drawing.Point(108, 12);
+            this.txtCodigo.Location = new System.Drawing.Point(135, 12);
             this.txtCodigo.MaxLength = 12;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.PasarEnter = true;
@@ -135,7 +135,7 @@
             this.txtGerencia.ColorSalida = System.Drawing.Color.White;
             this.txtGerencia.Decimales = 2;
             this.txtGerencia.Guiones = false;
-            this.txtGerencia.Location = new System.Drawing.Point(108, 65);
+            this.txtGerencia.Location = new System.Drawing.Point(135, 65);
             this.txtGerencia.MaxLength = 10;
             this.txtGerencia.Name = "txtGerencia";
             this.txtGerencia.PasarEnter = true;
@@ -149,7 +149,7 @@
             // 
             this.lblGerencia.BackColor = System.Drawing.SystemColors.Info;
             this.lblGerencia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblGerencia.Location = new System.Drawing.Point(200, 65);
+            this.lblGerencia.Location = new System.Drawing.Point(227, 65);
             this.lblGerencia.Name = "lblGerencia";
             this.lblGerencia.Size = new System.Drawing.Size(380, 20);
             this.lblGerencia.TabIndex = 4;
@@ -166,7 +166,7 @@
             this.cboEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboEstado.Location = new System.Drawing.Point(108, 114);
+            this.cboEstado.Location = new System.Drawing.Point(135, 114);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.PasarEnter = true;
             this.cboEstado.Size = new System.Drawing.Size(93, 22);
@@ -186,7 +186,7 @@
             // 
             this.lblEmpleado.BackColor = System.Drawing.SystemColors.Info;
             this.lblEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmpleado.Location = new System.Drawing.Point(201, 90);
+            this.lblEmpleado.Location = new System.Drawing.Point(228, 90);
             this.lblEmpleado.Name = "lblEmpleado";
             this.lblEmpleado.Size = new System.Drawing.Size(377, 20);
             this.lblEmpleado.TabIndex = 752;
@@ -200,7 +200,7 @@
             this.txtEmpleado.ColorSalida = System.Drawing.Color.White;
             this.txtEmpleado.Decimales = 2;
             this.txtEmpleado.Guiones = false;
-            this.txtEmpleado.Location = new System.Drawing.Point(109, 90);
+            this.txtEmpleado.Location = new System.Drawing.Point(136, 90);
             this.txtEmpleado.MaxLength = 10;
             this.txtEmpleado.Name = "txtEmpleado";
             this.txtEmpleado.PasarEnter = true;
@@ -215,13 +215,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(119, 13);
             this.label2.TabIndex = 753;
-            this.label2.Text = "Empleado";
+            this.label2.Text = "Empleado Responsable";
             // 
             // Frm_T_Areas_Det
             // 
-            this.ClientSize = new System.Drawing.Size(586, 163);
+            this.ClientSize = new System.Drawing.Size(617, 163);
             this.Controls.Add(this.lblEmpleado);
             this.Controls.Add(this.txtEmpleado);
             this.Controls.Add(this.label2);
