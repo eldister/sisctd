@@ -89,16 +89,16 @@ namespace SisCtd
             cboCliente.Enabled = false;
             switch (vNode)
             {
-                case "0101": mFormHijo.Text = " Registro de Posiciones"; break;
+                case "0101": mFormHijo.Text = " Registro de Oficinas"; break;
                 case "0102": mFormHijo.Text = " Registro de Gerencias"; break;
                 case "0103": mFormHijo.Text = " Registro de Areas"; break;
-                case "0104": mFormHijo.Text = " Registro de Empleados"; break;
-                case "0105": mFormHijo.Text = " Registro de Oficinas"; break;
+                case "0104": mFormHijo.Text = " Registro de Posiciones"; break;
+                case "0105": mFormHijo.Text = " Registro de Empleados"; break;
 
                 case "0107": mFormHijo.Text = " Registro de Actividades"; break;
                 case "0108": mFormHijo.Text = " Registro de Rutas"; break;
 
-                case "0111": mFormHijo.Text = " Registro de Clientes"; break;
+                case "0111": mFormHijo.Text = " Registro de Proveedores/Clientes"; break;
 
                 case "0201": mFormHijo.Text = " Control de Documentos"; break;
 
