@@ -17,6 +17,12 @@ namespace DLSisCtd
             return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sEstado);
         }
 
+        public DataTable Listar_Doc(string sIdControl, string sNroDocumento, string sRazonSocial, string sArea, string sEstado)
+        {
+            if (sEstado == "Todos") sEstado = "";
+            return ConexionDAO.fDatatable("List_Reg_ControlDoc", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sArea, sEstado);
+        }
+
         public DataTable Listar_Detalle(string sIdControl, string sEstado)
         {
             return ConexionDAO.fDatatable("List_Reg_ControlDetalleN", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sEstado);
