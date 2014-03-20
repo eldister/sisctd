@@ -222,7 +222,7 @@
             this.txtNumero.MaxLength = 30;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.PasarEnter = true;
-            this.txtNumero.Size = new System.Drawing.Size(192, 20);
+            this.txtNumero.Size = new System.Drawing.Size(211, 20);
             this.txtNumero.TabIndex = 3;
             this.txtNumero.Tipo = MigControls.MigTextbox.TipoVal.TextoMayuscula;
             // 
