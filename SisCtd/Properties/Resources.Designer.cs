@@ -227,6 +227,14 @@ namespace SisCtd.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        internal static System.Drawing.Bitmap logo_Empresa
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("LaVenta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
         
         internal static System.Drawing.Bitmap logopdf {
             get {
