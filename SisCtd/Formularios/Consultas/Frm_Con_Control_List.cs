@@ -32,6 +32,8 @@ namespace SisCtd
         private void Frm_Con_Control_List_Load(object sender, EventArgs e)
         {
             cboEstado.SelectedIndex = 0;
+            chkTodo.Checked = true;
+            cboEstadoDet.SelectedIndex = 0;
             Listar(Helper.eListar.Grilla); Listar_Detalle();
         }
         private void Frm_Con_Control_List_KeyDown(object sender, KeyEventArgs e)
@@ -58,7 +60,14 @@ namespace SisCtd
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                Dt = oBL_Reg_Control.Listar(txtIdControl.Text, txtNroDocumento.Text.Trim(), txtRazonSocial.Text.Trim(), cboEstado.Text);
+                if (chkTodo.Checked == true)
+                {
+                    Dt = oBL_Reg_Control.Listar(txtIdControl.Text, txtNroDocumento.Text.Trim(), txtRazonSocial.Text.Trim(), cboEstado.Text);
+                }
+                else
+                {
+                    Dt = oBL_Reg_Control.Listar_Doc(txtIdControl.Text, txtNroDocumento.Text.Trim(), txtRazonSocial.Text.Trim(), Convert.ToString( cboArea.SelectedValue)    , cboEstado.Text);
+                }
                 
                 if (eListar == Helper.eListar.Grilla)
                 {
@@ -107,7 +116,7 @@ namespace SisCtd
             {
                 this.Cursor = Cursors.WaitCursor;
                 Get_IdControl(false);
-                Dt = oBL_Reg_Control.Listar_Detalle(sIdControl, cboEstado.Text );
+                Dt = oBL_Reg_Control.Listar_Detalle(sIdControl, cboEstadoDet.Text);
 
                 dgDetalle.DataSource = Dt; Helper.FormatoGrilla(dgDetalle, false);
                 dgDetalle.Columns["NroSecuencia"].Visible = false;
@@ -194,6 +203,8 @@ namespace SisCtd
             {
                 cboArea.Enabled = true; 
             }
+            Listar(Helper.eListar.Grilla);
+            Listar_Detalle();
         }
 
         #endregion

@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CboTipos = new MigControls.MigCombobox();
             this.chkTodo = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboArea = new MigControls.MigCombobox();
@@ -53,6 +52,8 @@
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgControl = new MigControls.MigDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboEstadoDet = new MigControls.MigCombobox();
             this.btnVerDocumento = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
@@ -66,7 +67,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.CboTipos);
             this.panel1.Controls.Add(this.chkTodo);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cboArea);
@@ -83,24 +83,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(996, 58);
             this.panel1.TabIndex = 2;
-            // 
-            // CboTipos
-            // 
-            this.CboTipos.BackColor = System.Drawing.Color.White;
-            this.CboTipos.ColorEntrada = System.Drawing.Color.LemonChiffon;
-            this.CboTipos.ColorSalida = System.Drawing.Color.White;
-            this.CboTipos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboTipos.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CboTipos.FormattingEnabled = true;
-            this.CboTipos.Items.AddRange(new object[] {
-            "Envio",
-            "Recepcion"});
-            this.CboTipos.Location = new System.Drawing.Point(831, 29);
-            this.CboTipos.Name = "CboTipos";
-            this.CboTipos.PasarEnter = true;
-            this.CboTipos.Size = new System.Drawing.Size(112, 22);
-            this.CboTipos.TabIndex = 93;
-            this.CboTipos.Tipo = MigControls.MigCombobox.TipoVal.Numerico;
             // 
             // chkTodo
             // 
@@ -136,6 +118,7 @@
             this.cboArea.Size = new System.Drawing.Size(417, 22);
             this.cboArea.TabIndex = 8;
             this.cboArea.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
+            this.cboArea.SelectionChangeCommitted += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // txtIdControl
             // 
@@ -351,6 +334,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.cboEstadoDet);
             this.panel2.Controls.Add(this.btnVerDocumento);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dgDetalle);
@@ -359,6 +344,35 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(996, 220);
             this.panel2.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(828, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Estado";
+            // 
+            // cboEstadoDet
+            // 
+            this.cboEstadoDet.BackColor = System.Drawing.Color.White;
+            this.cboEstadoDet.ColorEntrada = System.Drawing.Color.LemonChiffon;
+            this.cboEstadoDet.ColorSalida = System.Drawing.Color.White;
+            this.cboEstadoDet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstadoDet.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEstadoDet.FormattingEnabled = true;
+            this.cboEstadoDet.Items.AddRange(new object[] {
+            "Todos",
+            "Pendiente",
+            "Terminado  ",
+            "Anulado"});
+            this.cboEstadoDet.Location = new System.Drawing.Point(874, 3);
+            this.cboEstadoDet.Name = "cboEstadoDet";
+            this.cboEstadoDet.PasarEnter = true;
+            this.cboEstadoDet.Size = new System.Drawing.Size(92, 22);
+            this.cboEstadoDet.TabIndex = 11;
+            this.cboEstadoDet.Tipo = MigControls.MigCombobox.TipoVal.TextoMayuscula;
             // 
             // btnVerDocumento
             // 
@@ -469,6 +483,7 @@
         private MigControls.MigCombobox cboArea;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chkTodo;
-        private MigControls.MigCombobox CboTipos;
+        private System.Windows.Forms.Label label5;
+        private MigControls.MigCombobox cboEstadoDet;
     }
 }
