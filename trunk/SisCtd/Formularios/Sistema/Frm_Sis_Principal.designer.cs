@@ -80,9 +80,9 @@ namespace SisCtd
             // 
             this.lblVersion.AutoSize = false;
             this.lblVersion.BackColor = System.Drawing.SystemColors.Control;
-            this.lblVersion.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblVersion.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(150, 18);
             // 
@@ -90,9 +90,9 @@ namespace SisCtd
             // 
             this.lblUsuario.AutoSize = false;
             this.lblUsuario.BackColor = System.Drawing.SystemColors.Control;
-            this.lblUsuario.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblUsuario.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(250, 18);
             // 
@@ -236,6 +236,7 @@ namespace SisCtd
             // 
             this.picLogo.BackColor = System.Drawing.Color.White;
             this.picLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.picLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("picLogo.InitialImage")));
             this.picLogo.Location = new System.Drawing.Point(0, 0);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(255, 77);
