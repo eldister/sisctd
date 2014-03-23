@@ -40,7 +40,6 @@ namespace SisCtd
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.bMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cboCliente = new System.Windows.Forms.ToolStripComboBox();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +49,7 @@ namespace SisCtd
             this.panMenu = new System.Windows.Forms.Panel();
             this.TreOpc = new System.Windows.Forms.TreeView();
             this.picLogo = new System.Windows.Forms.PictureBox();
+            this.bSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.stbPrincipal.SuspendLayout();
             this.MenuSis.SuspendLayout();
             this.panMenu.SuspendLayout();
@@ -146,16 +146,6 @@ namespace SisCtd
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
-            // bSalir
-            // 
-            this.bSalir.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
-            this.bSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.bSalir.Name = "bSalir";
-            this.bSalir.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.bSalir.Size = new System.Drawing.Size(189, 28);
-            this.bSalir.Text = "Salir";
-            this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
-            // 
             // bMenu
             // 
             this.bMenu.Name = "bMenu";
@@ -243,6 +233,16 @@ namespace SisCtd
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 674;
             this.picLogo.TabStop = false;
+            // 
+            // bSalir
+            // 
+            this.bSalir.Image = global::SisCtd.Properties.Resources.Toolbar_Close;
+            this.bSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bSalir.Name = "bSalir";
+            this.bSalir.ShortcutKeys = System.Windows.Forms.Keys.F12;
+            this.bSalir.Size = new System.Drawing.Size(189, 28);
+            this.bSalir.Text = "Salir";
+            this.bSalir.Click += new System.EventHandler(this.bSalir_Click);
             // 
             // Frm_Sis_Principal
             // 
