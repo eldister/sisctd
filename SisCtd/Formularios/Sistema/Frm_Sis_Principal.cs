@@ -81,7 +81,7 @@ namespace SisCtd
             switch (BE_Helper.oBE_Sis_Cliente.IdCliente)
             {
                 case "DEMO": picLogo.Image = SisCtd.Properties.Resources.logo_vsistems; break;
-                case "LAVENTA": picLogo.Image = SisCtd.Properties.Resources.logo_Empresa; break;
+                case "LAVENTA": picLogo.Image = SisCtd.Properties.Resources.LaVenta ; break;
             }
         }
 
