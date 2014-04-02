@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkTodo = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,6 +57,8 @@
             this.btnVerDocumento = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgDetalle = new MigControls.MigDataGridView();
+            this.bFiltro = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.BarraSis.SuspendLayout();
             this.Stb.SuspendLayout();
@@ -239,6 +241,8 @@
             this.toolStripSeparator2,
             this.bVerImagen,
             this.toolStripButton4,
+            this.bFiltro,
+            this.toolStripSeparator1,
             this.bCerrar});
             this.BarraSis.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.BarraSis.Location = new System.Drawing.Point(0, 0);
@@ -269,7 +273,7 @@
             this.bVerImagen.Name = "bVerImagen";
             this.bVerImagen.Size = new System.Drawing.Size(87, 20);
             this.bVerImagen.Text = "&Ver Imagen";
-            this.bVerImagen.ToolTipText = "Eliminar (F4)";
+            this.bVerImagen.ToolTipText = "Ver Imagen";
             this.bVerImagen.Click += new System.EventHandler(this.bVerImagen_Click);
             // 
             // toolStripButton4
@@ -310,8 +314,8 @@
             this.dgControl.AllowUserToAddRows = false;
             this.dgControl.AllowUserToDeleteRows = false;
             this.dgControl.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Ivory;
-            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Ivory;
+            this.dgControl.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgControl.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -402,8 +406,8 @@
             this.dgDetalle.AllowUserToAddRows = false;
             this.dgDetalle.AllowUserToDeleteRows = false;
             this.dgDetalle.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Ivory;
-            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Ivory;
+            this.dgDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetalle.BackgroundColor = System.Drawing.Color.LightSlateGray;
@@ -420,6 +424,20 @@
             this.dgDetalle.Size = new System.Drawing.Size(954, 152);
             this.dgDetalle.StandardTab = true;
             this.dgDetalle.TabIndex = 0;
+            // 
+            // bFiltro
+            // 
+            this.bFiltro.Image = global::SisCtd.Properties.Resources._16__Filter_2_;
+            this.bFiltro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bFiltro.Name = "bFiltro";
+            this.bFiltro.Size = new System.Drawing.Size(54, 20);
+            this.bFiltro.Text = "&Filtro";
+            this.bFiltro.Click += new System.EventHandler(this.bFiltro_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
             // 
             // Frm_Con_Control_List
             // 
@@ -485,5 +503,7 @@
         private System.Windows.Forms.CheckBox chkTodo;
         private System.Windows.Forms.Label label5;
         private MigControls.MigCombobox cboEstadoDet;
+        private System.Windows.Forms.ToolStripButton bFiltro;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
