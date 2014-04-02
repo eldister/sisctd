@@ -95,7 +95,7 @@
             this.treMenu.Location = new System.Drawing.Point(187, 57);
             this.treMenu.Name = "treMenu";
             this.treMenu.SelectedImageIndex = 0;
-            this.treMenu.Size = new System.Drawing.Size(213, 460);
+            this.treMenu.Size = new System.Drawing.Size(213, 443);
             this.treMenu.TabIndex = 3;
             this.treMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treMenu_AfterSelect);
             this.treMenu.DoubleClick += new System.EventHandler(this.treMenu_DoubleClick);
@@ -118,7 +118,7 @@
             this.treMenuPerfil.Location = new System.Drawing.Point(406, 57);
             this.treMenuPerfil.Name = "treMenuPerfil";
             this.treMenuPerfil.SelectedImageIndex = 0;
-            this.treMenuPerfil.Size = new System.Drawing.Size(213, 460);
+            this.treMenuPerfil.Size = new System.Drawing.Size(213, 443);
             this.treMenuPerfil.TabIndex = 4;
             this.treMenuPerfil.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treMenuPerfil_AfterSelect);
             this.treMenuPerfil.DoubleClick += new System.EventHandler(this.treMenuPerfil_DoubleClick);
@@ -347,7 +347,7 @@
             this.dgUsuarios.RowHeadersWidth = 25;
             this.dgUsuarios.RowTemplate.Height = 18;
             this.dgUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgUsuarios.Size = new System.Drawing.Size(428, 460);
+            this.dgUsuarios.Size = new System.Drawing.Size(428, 443);
             this.dgUsuarios.StandardTab = true;
             this.dgUsuarios.TabIndex = 1;
             this.dgUsuarios.SelectionChanged += new System.EventHandler(this.dgUsuarios_SelectionChanged);
