@@ -11,10 +11,15 @@ namespace DLSisCtd
         string sSql;
 
         #region Listados
-        public DataTable Listar(string sIdControl, string sNroDocumento, string sRazonSocial,string sEstado)
+        //public DataTable Listar(string sIdControl, string sNroDocumento, string sRazonSocial,string sEstado)
+        //{
+        //    if (sEstado == "Todos") sEstado = "";
+        //    return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sEstado);
+        //}
+        public DataTable Listar(string sIdControl, string sNroDocumento, string sRazonSocial, string sEstado, string sOficina, string sArea, string sRuta, DateTime sDFecRec, DateTime sHFecRec, DateTime sDFecDoc, DateTime sHFecDoc)
         {
             if (sEstado == "Todos") sEstado = "";
-            return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sEstado);
+            return ConexionDAO.fDatatable("List_Reg_Control", BE_Helper.oBE_Sis_Cliente.IdCliente, sIdControl, sNroDocumento, sRazonSocial, sOficina,sArea,sRuta,sDFecRec,sHFecRec,sDFecDoc,sHFecDoc, sEstado);
         }
 
         public DataTable Listar_Doc(string sIdControl, string sNroDocumento, string sRazonSocial, string sArea, string sEstado)
@@ -435,10 +440,17 @@ namespace DLSisCtd
         }
         public void Eliminar(string sIdControl)
         {
-            sSql = "delete  from Reg_ControlDetalle  ";
+            //sSql = "delete  from Reg_ControlDetalle  ";
+            //sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'  ";
+            //ConexionDAO.fExecute(sSql);
+            //sSql = "delete  from Reg_Control  ";
+            //sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'  ";
+            //ConexionDAO.fExecute(sSql);
+
+            sSql = "update Reg_ControlDetalle set estado = 'Anulado'  ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'  ";
             ConexionDAO.fExecute(sSql);
-            sSql = "delete  from Reg_Control  ";
+            sSql = "update Reg_Control set estado = 'Anulado'   ";
             sSql += "where  IdCliente='" + BE_Helper.oBE_Sis_Cliente.IdCliente + "' and IdControl = '" + sIdControl + "'  ";
             ConexionDAO.fExecute(sSql);
         }
