@@ -26,6 +26,14 @@ namespace SisCtd
         public static int nForm;
         public static string sRutaImagenesSQL = "";
 
+        public static string sOficinaFil = "";
+        public static string sAreaFil = "";
+        public static string sRutaFil = "";
+        public static DateTime sDFecRec ;
+        public static DateTime sHFecRec ;
+        public static DateTime sDFecDoc ;
+        public static DateTime sHFecDoc;
+
         public static bool bEsc = false;
 
         private Helper()
