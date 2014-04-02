@@ -51,6 +51,7 @@
             this.bVerImagen = new System.Windows.Forms.ToolStripButton();
             this.bSello = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripSeparator();
+            this.bFiltro = new System.Windows.Forms.ToolStripButton();
             this.bCerrar = new System.Windows.Forms.ToolStripButton();
             this.Stb = new System.Windows.Forms.StatusStrip();
             this.LblMensaje = new System.Windows.Forms.ToolStripStatusLabel();
@@ -86,7 +87,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(996, 32);
+            this.panel1.Size = new System.Drawing.Size(996, 34);
             this.panel1.TabIndex = 2;
             // 
             // txtIdControl
@@ -119,7 +120,7 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(810, 10);
+            this.lblEstado.Location = new System.Drawing.Point(793, 10);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(40, 13);
             this.lblEstado.TabIndex = 7;
@@ -140,7 +141,7 @@
             "Cerrado",
             "Anulado",
             "Todos"});
-            this.cboEstado.Location = new System.Drawing.Point(856, 5);
+            this.cboEstado.Location = new System.Drawing.Point(839, 5);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.PasarEnter = true;
             this.cboEstado.Size = new System.Drawing.Size(92, 22);
@@ -215,6 +216,7 @@
             this.bVerImagen,
             this.bSello,
             this.toolStripButton4,
+            this.bFiltro,
             this.bCerrar});
             this.BarraSis.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.BarraSis.Location = new System.Drawing.Point(0, 0);
@@ -280,7 +282,7 @@
             this.bAsignarImagen.Name = "bAsignarImagen";
             this.bAsignarImagen.Size = new System.Drawing.Size(110, 20);
             this.bAsignarImagen.Text = "&Asignar Imagen";
-            this.bAsignarImagen.ToolTipText = "Eliminar (F4)";
+            this.bAsignarImagen.ToolTipText = "Asignar Imagen";
             this.bAsignarImagen.Click += new System.EventHandler(this.bAsignarImagen_Click);
             // 
             // bQuitarImagen
@@ -290,7 +292,7 @@
             this.bQuitarImagen.Name = "bQuitarImagen";
             this.bQuitarImagen.Size = new System.Drawing.Size(103, 20);
             this.bQuitarImagen.Text = "&Quitar Imagen";
-            this.bQuitarImagen.ToolTipText = "Eliminar (F4)";
+            this.bQuitarImagen.ToolTipText = "Quitar Imagen";
             this.bQuitarImagen.Click += new System.EventHandler(this.bQuitarImagen_Click);
             // 
             // bVerImagen
@@ -300,7 +302,7 @@
             this.bVerImagen.Name = "bVerImagen";
             this.bVerImagen.Size = new System.Drawing.Size(87, 20);
             this.bVerImagen.Text = "&Ver Imagen";
-            this.bVerImagen.ToolTipText = "Eliminar (F4)";
+            this.bVerImagen.ToolTipText = "Ver Imagen";
             this.bVerImagen.Click += new System.EventHandler(this.bVerImagen_Click);
             // 
             // bSello
@@ -309,13 +311,22 @@
             this.bSello.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bSello.Name = "bSello";
             this.bSello.Size = new System.Drawing.Size(52, 20);
-            this.bSello.Text = "Sello";
+            this.bSello.Text = "&Sello";
             this.bSello.Click += new System.EventHandler(this.bSello_Click);
             // 
             // toolStripButton4
             // 
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(6, 23);
+            // 
+            // bFiltro
+            // 
+            this.bFiltro.Image = global::SisCtd.Properties.Resources._16__Filter_2_;
+            this.bFiltro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bFiltro.Name = "bFiltro";
+            this.bFiltro.Size = new System.Drawing.Size(54, 20);
+            this.bFiltro.Text = "&Filtro";
+            this.bFiltro.Click += new System.EventHandler(this.bFiltro_Click);
             // 
             // bCerrar
             // 
@@ -356,7 +367,7 @@
             this.dgControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgControl.Location = new System.Drawing.Point(0, 55);
+            this.dgControl.Location = new System.Drawing.Point(0, 57);
             this.dgControl.MultiSelect = false;
             this.dgControl.Name = "dgControl";
             this.dgControl.PasarEnter = false;
@@ -364,7 +375,7 @@
             this.dgControl.RowHeadersWidth = 25;
             this.dgControl.RowTemplate.Height = 18;
             this.dgControl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgControl.Size = new System.Drawing.Size(996, 198);
+            this.dgControl.Size = new System.Drawing.Size(996, 196);
             this.dgControl.StandardTab = true;
             this.dgControl.TabIndex = 0;
             this.dgControl.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgControl_CellClick);
@@ -586,5 +597,6 @@
         private System.Windows.Forms.Button btnVerDocumento;
         private System.Windows.Forms.Label label4;
         private MigControls.MigCombobox cboEstadoDet;
+        private System.Windows.Forms.ToolStripButton bFiltro;
     }
 }
