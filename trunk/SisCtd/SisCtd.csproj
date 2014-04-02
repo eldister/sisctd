@@ -28,7 +28,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>\\192.168.1.33\DiscoD\SisCtd\</PublishUrl>
+    <PublishUrl>\\srvdatos\SISCTD\Instalador\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -41,11 +41,11 @@
     <ProductName>SisCtd</ProductName>
     <PublisherName>V Systems</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,6 +77,7 @@
     <Reference Include="CrystalDecisions.Web, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MigControls">
       <HintPath>..\..\..\..\..\..\..\..\..\..\Windows\Controles.Net\MigControls.dll</HintPath>
     </Reference>
@@ -142,6 +143,12 @@
     </Compile>
     <Compile Include="Formularios\Reportes\Frm_Rep_Reportes.designer.cs">
       <DependentUpon>Frm_Rep_Reportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Filtros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Sistema\Frm_Sis_Filtros.designer.cs">
+      <DependentUpon>Frm_Sis_Filtros.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Sistema\Frm_About.cs">
       <SubType>Form</SubType>
@@ -308,6 +315,9 @@
     <EmbeddedResource Include="Formularios\Reportes\Frm_Rep_Reportes.resx">
       <DependentUpon>Frm_Rep_Reportes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Sistema\Frm_Sis_Filtros.resx">
+      <DependentUpon>Frm_Sis_Filtros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Sistema\Frm_About.resx">
       <DependentUpon>Frm_About.cs</DependentUpon>
     </EmbeddedResource>
@@ -454,6 +464,7 @@
     <Content Include="Resources\16 %28Db insert%29.ico" />
     <Content Include="Resources\16 %28Fill down%29.ico" />
     <Content Include="Resources\16 %28Fill up%29.ico" />
+    <None Include="Resources\16 %28Filter-2%29.ico" />
     <Content Include="Resources\175.ICO" />
     <Content Include="Resources\210.ICO" />
     <Content Include="Resources\APPTL.ICO" />
@@ -468,6 +479,8 @@
     <None Include="Resources\logo_vsistems.jpg" />
     <Content Include="Resources\images.jpg" />
     <Content Include="Resources\INTERNET.ICO" />
+    <None Include="Resources\LaVenta.jpg" />
+    <None Include="Resources\LaVentaOri.jpg" />
     <Content Include="Resources\up.ico" />
     <None Include="Resources\usu.gif" />
     <None Include="Resources\Toolbar.Open.gif" />
@@ -519,6 +532,28 @@
       <Project>{18001EF3-87D8-4CAF-950B-421B7866B066}</Project>
       <Name>BL_SisCtd</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="es\Microsoft.VisualBasic.PowerPacks.Vs.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>Satellite</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualBasic.PowerPacks.Vs">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
