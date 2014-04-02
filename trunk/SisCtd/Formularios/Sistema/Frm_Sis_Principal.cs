@@ -103,6 +103,10 @@ namespace SisCtd
 
                 case "0201": mFormHijo.Text = " Control de Documentos"; break;
 
+                case "0701": mFormHijo.Text = " Consulta de Documentos"; break;
+
+                case "0801": mFormHijo.Text = " Reportes Documentos"; break;
+
             }
             foreach (TabPage TB in tabPrincipal.TabPages)
             {
