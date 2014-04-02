@@ -25,6 +25,13 @@ namespace SisCtd
         {
             InitializeComponent();
             bExportar.Enabled = Helper.sAcceso.Substring(4, 1) == "1" ? true : false;
+            Helper.sOficinaFil = "";
+            Helper.sAreaFil = "";
+            Helper.sRutaFil = "";
+            Helper.sDFecDoc = Convert.ToDateTime("01/01/1973");
+            Helper.sHFecDoc = Convert.ToDateTime("01/01/2999");
+            Helper.sDFecRec = Convert.ToDateTime("01/01/1973");
+            Helper.sHFecRec = Convert.ToDateTime("01/01/2999");
             Helper.FormatoGrilla(dgControl);
             Helper.LLenar_Combobox(oBL_T_Area.Listar("",""), cboArea, "Descripcion", "IdArea");
 
@@ -62,7 +69,7 @@ namespace SisCtd
                 this.Cursor = Cursors.WaitCursor;
                 if (chkTodo.Checked == true)
                 {
-                    Dt = oBL_Reg_Control.Listar(txtIdControl.Text, txtNroDocumento.Text.Trim(), txtRazonSocial.Text.Trim(), cboEstado.Text);
+                    Dt = oBL_Reg_Control.Listar(txtIdControl.Text, txtNroDocumento.Text.Trim(), txtRazonSocial.Text.Trim(), cboEstado.Text,Helper.sOficinaFil,Helper.sAreaFil,Helper.sRutaFil,Helper.sDFecRec,Helper.sHFecRec,Helper.sDFecDoc,Helper.sHFecDoc);
                 }
                 else
                 {
@@ -74,7 +81,7 @@ namespace SisCtd
                     dgControl.DataSource = Dt; Helper.FormatoGrilla(dgControl, false);
                     LblMensaje.Text = " Registros Encontrados : " + dgControl.Rows.Count.ToString();
                     dgControl.Columns["IdControl"].Width = 130;
-                    dgControl.Columns["Fecha Recepción"].Width = 90;
+                    dgControl.Columns["Fecha Recepción"].Width = 160;
                     dgControl.Columns["IdOficinaRecepcion"].Visible = false;
                     dgControl.Columns["Oficina Recepción"].Width = 150;
                     dgControl.Columns["IdTipoDocumento"].Width = 100;
@@ -352,7 +359,14 @@ namespace SisCtd
                 bytes = null;
             }
         }
-
+        private void bFiltro_Click(object sender, EventArgs e)
+        {
+            Frm_Sis_Filtros fFil = new Frm_Sis_Filtros();
+            fFil.ShowDialog();
+            Listar(Helper.eListar.Grilla);
+            Listar_Detalle();
+            fFil.Dispose();
+        }
         private void bCerrar_Click(object sender, EventArgs e)
         {
             oCancelar();
@@ -471,6 +485,7 @@ namespace SisCtd
             Helper.Buscar_Grilla(dgDetalle, sNroSecuencia, 0);
         }
         #endregion
+
 
 
   
